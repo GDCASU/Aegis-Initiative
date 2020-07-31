@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using Cinemachine;
 
 public class ShipMovement : MonoBehaviour
@@ -66,11 +65,6 @@ private Transform playerModel;
     void SetSpeed(float x)
     {
         dolly.m_Speed = x;
-    }
-
-    void SetCameraZoom(float zoom, float duration)
-    {
-        cameraParent.DOLocalMove(new Vector3(0, 0, zoom), duration);
     }
 
     void FieldOfView(float fov)
