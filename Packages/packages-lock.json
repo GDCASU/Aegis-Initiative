@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.bennykok.hierarchy-header": {
+      "version": "https://github.com/BennyKok/unity-hierarchy-header.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2cad0b63b643d1942676199ccb6f95d5f0f6a566"
+    },
     "com.unity.cinemachine": {
       "version": "2.6.0",
       "depth": 0,
