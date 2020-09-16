@@ -16,6 +16,9 @@ private Transform playerModel;
     [Header("Parameters")]
     public float xySpeed = 18;
     public float forwardSpeed = 6;
+    public float roll = 20;
+    public float pitch = 20;
+    public float yaw = 20;
 
     [Space]
 
@@ -59,7 +62,9 @@ private Transform playerModel;
     void RotationLook(Transform target, float h, float v)
     {
         Vector3 targetEulerAngels = target.localEulerAngles;
-        target.localEulerAngles = new Vector3(targetEulerAngels.x, Mathf.LerpAngle(targetEulerAngels.y, 0,  .1f), Mathf.LerpAngle(targetEulerAngels.z, -h * 20, .1f));
+        target.localEulerAngles = new Vector3(
+            Mathf.LerpAngle(targetEulerAngels.x, -v * pitch, .1f), Mathf.LerpAngle(targetEulerAngels.y, h * yaw,  .1f), Mathf.LerpAngle(targetEulerAngels.z, -h * roll, .1f)
+        );
     }
 
     void SetSpeed(float x)
