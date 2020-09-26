@@ -8,7 +8,7 @@ public class BasicPlayerShooting : MonoBehaviour
     public float speed;
     public int magSize;
     public GameObject bulletPrefab;
-    public GameObject bullet;
+    private GameObject bullet;
     public Transform spawnR;
     public Transform spawnL;
     public bool alternate;
@@ -39,6 +39,7 @@ public class BasicPlayerShooting : MonoBehaviour
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward * speed;
                     timerTwo = fireRate;
                 }
+                timerTwo -= Time.deltaTime;
             }
             else 
             {
@@ -53,6 +54,5 @@ public class BasicPlayerShooting : MonoBehaviour
             }          
         }
         timerOne -= Time.deltaTime;
-        timerTwo -= Time.deltaTime;
     }
 }
