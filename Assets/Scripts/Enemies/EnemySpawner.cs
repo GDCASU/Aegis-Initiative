@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         Vector3 temp = GameObject.Find("GameDollyCart").GetComponent<BoxCollider>().size; //grab collider size
-        adjustLocation = 2.0f;
+        adjustLocation = 1.5f; //number to spawn ships farther or closer
 
         initialX = temp.x * adjustLocation;
         initialY = temp.y * adjustLocation;
