@@ -46,6 +46,7 @@ public class InputManager : MonoBehaviour {
         controller,
         keyboard
     }
+    public static int inputType;
     public static InputMode inputMode = InputMode.both;
     // there is literally no reason for this to exist ffs
     [SerializeField]
@@ -108,6 +109,8 @@ public class InputManager : MonoBehaviour {
         playerButtons[PlayerButton.UI_Submit] = playerActions[4];
         playerButtons[PlayerButton.UI_Cancel] = playerActions[5];
         playerButtons[PlayerButton.Pause] = playerActions[6];
+        if (inputType == 1) inputMode = InputMode.controller;
+        if (inputType == 2) inputMode = InputMode.keyboard;
     }
     public static bool GetButtonDown(PlayerButton button) {
         bool input = false;
