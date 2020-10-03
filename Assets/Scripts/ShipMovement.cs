@@ -35,8 +35,8 @@ private Transform playerModel;
 
     void Update()
     {
-        float h = joystick ? Input.GetAxis("Horizontal") : Input.GetAxis("Mouse X");
-        float v = joystick ? Input.GetAxis("Vertical") : Input.GetAxis("Mouse Y");
+        float h = joystick ? InputManager.GetAxis(PlayerInput.PlayerAxis.MoveHorizontal) : InputManager.GetAxis(PlayerInput.PlayerAxis.CameraHorizontal);
+        float v = joystick ? InputManager.GetAxis(PlayerInput.PlayerAxis.MoveVertical) : InputManager.GetAxis(PlayerInput.PlayerAxis.CameraHorizontal);
 
         LocalMove(h, v, xySpeed);
         RotationLook(playerModel, h, v);
