@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 862613278402934190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 7096561867946085860}
   m_RootOrder: 0
@@ -140,3 +140,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveMovement: 1
+  maxWavePeak: 1.2
+  minWaveDip: 0
+  waveFrequency: 0.5
+  maxAngle: 10
+  shipSpeed: 2
+  hover: 1
+  hoverTimer: 3
+  leaveDirection: 1

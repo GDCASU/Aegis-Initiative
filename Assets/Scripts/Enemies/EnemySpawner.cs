@@ -22,26 +22,24 @@ public class EnemySpawner : MonoBehaviour
     {
         public spawnLocation SpawnLocation;
         public GameObject enemyPrefab; //enemy prefab
+        [Range(0.0f, 4.0f)]
+        public float adjustLocation; //spawn ships closer or farther from player
     }
 
     [SerializeField]
     public enemies[] _enemies; //array of enemy struct
 
-    private float adjustLocation; //adjust spawning around DollyCart box collider size.
     private float initialX;
     private float initialY;
     private float xSpawnAdjustment;
     private float ySpawnAdjustment;
     private float zSpawnAdjustment;
     private Vector3 spawnAdjustment;
+    Vector3 temp;
 
     private void Start()
     {
-        Vector3 temp = GameObject.Find("GameDollyCart").GetComponent<BoxCollider>().size; //grab collider size
-        adjustLocation = 1.5f; //number to spawn ships farther or closer
-
-        initialX = temp.x * adjustLocation;
-        initialY = temp.y * adjustLocation;
+        temp = GameObject.Find("GameDollyCart").GetComponent<BoxCollider>().size; //grab collider size
         zSpawnAdjustment = -2.0f;
     }
 
@@ -55,8 +53,8 @@ public class EnemySpawner : MonoBehaviour
             //other.GetComponent<PlayerInfo>().enemiesOnScreen--;
             for (int x = 0; x < _enemies.Length; x++) //loop through enemies to spawn
             {
-                xSpawnAdjustment = initialX;
-                ySpawnAdjustment = initialY;
+                xSpawnAdjustment = temp.x * _enemies[x].adjustLocation;
+                ySpawnAdjustment = temp.y * _enemies[x].adjustLocation;
                 switch (_enemies[x].SpawnLocation) //chance x and/or y adjustment based on selected location
                 {
                     case spawnLocation.TopLeft:
