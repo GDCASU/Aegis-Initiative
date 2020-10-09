@@ -21,7 +21,6 @@ public class Triggers : MonoBehaviour
     // start boolean can be taken out if this is easy to do
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("test");
         if (other.gameObject.name=="Start Trigger")
         {
             flow.ExecuteBlock("start");
