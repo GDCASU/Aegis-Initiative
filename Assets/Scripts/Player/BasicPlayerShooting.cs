@@ -22,7 +22,7 @@ public class BasicPlayerShooting : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot))
         {
             if (alternate)
             {
