@@ -4032,32 +4032,6 @@ MonoBehaviour:
   targetAlpha:
     floatRef: {fileID: 0}
     floatVal: 0
---- !u!1 &1803655621 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8230660173473167890, guid: e143cebcb041c2c47b5bb6dc5d1c4591,
-    type: 3}
-  m_PrefabInstance: {fileID: 8230660172509263290}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1803655622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803655621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0957298378642f459eda138141ed49a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 0.2
-  speed: 25
-  magSize: 100
-  bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
-    type: 3}
-  spawnR: {fileID: 637792562}
-  spawnL: {fileID: 1708113895}
-  alternate: 0
 --- !u!1 &1857240232
 GameObject:
   m_ObjectHideFlags: 0
