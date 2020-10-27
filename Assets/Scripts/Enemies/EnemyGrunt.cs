@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
+using Collision = Fungus.Collision;
 
 public class EnemyGrunt : Enemy
 {
     public Animation animations;
     public AnimationClip flying;
     public AnimationClip flyIn;
+    public float health;
+    public bool hit;
     private Vector3 start;
     private float waitTime;
     private bool isflying;
@@ -16,6 +20,7 @@ public class EnemyGrunt : Enemy
     {
         animations.Play(flyIn.name);
         waitTime = flyIn.length;
+        health = 50;
     }
     private void FixedUpdate()
     {
@@ -27,8 +32,17 @@ public class EnemyGrunt : Enemy
             isflying = true;
         }
     }
+    private void OnCollisionEnter(UnityEngine.Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            health -= 2;
+            hit = true;
+        }
+    }
     private void Update()
     {
+        if(health <= 0) Destroy(gameObject);
         if(isflying)transform.localPosition = Vector3.Lerp(start,start+new Vector3(-25f,0,0),1);
     }
 }

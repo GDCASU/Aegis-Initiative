@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    float health;
     GameObject prefab;
 
     public void OnCollisionEnter(Collision collision)
@@ -13,6 +12,8 @@ public class Enemy : MonoBehaviour
         {
             //health -= collision.gameObject.GetComponent<PlayerShot>().damage;
         }
+        
     }
+    
 
 }
