@@ -466,7 +466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142908653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.11429505, z: -1}
+  m_LocalPosition: {x: 0, y: 0.09459589, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 702749051}
@@ -489,9 +489,9 @@ MonoBehaviour:
   target: {fileID: 1267470249}
   offset: {x: 0, y: 0.15, z: -1}
   limits: {x: 0.2, y: 0.2}
-  smoothTimeX: 0.65
-  smoothTimeYpos: 0.3445
-  smoothTimeYneg: 0.1625
+  smoothTimeX: 0.4
+  smoothTimeYpos: 0.33
+  smoothTimeYneg: 0.135
 --- !u!1 &193484057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,7 +1899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297650280}
   m_LocalRotation: {x: 0, y: 0.008444931, z: 0, w: 0.99996436}
-  m_LocalPosition: {x: -18.69972, y: 7.334295, z: -198.38947}
+  m_LocalPosition: {x: -18.69972, y: 7.3145957, z: -198.38947}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4371,6 +4371,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1803655622, guid: e143cebcb041c2c47b5bb6dc5d1c4591, type: 3}
+      propertyPath: alternate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4763769614444653610, guid: e143cebcb041c2c47b5bb6dc5d1c4591,
         type: 3}
       propertyPath: m_Mesh
@@ -4431,7 +4435,7 @@ PrefabInstance:
     - target: {fileID: 8230660173473167891, guid: e143cebcb041c2c47b5bb6dc5d1c4591,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8230660173473167891, guid: e143cebcb041c2c47b5bb6dc5d1c4591,
         type: 3}
