@@ -10,6 +10,7 @@ public class EnemyGrunt : Enemy
     public AnimationClip flying;
     public AnimationClip flyIn;
     public float health;
+    public bool hit;
     private Vector3 start;
     private float waitTime;
     private bool isflying;
@@ -36,6 +37,7 @@ public class EnemyGrunt : Enemy
         if (collision.gameObject.CompareTag("Bullet"))
         {
             health -= 2;
+            hit = true;
         }
     }
     private void Update()
