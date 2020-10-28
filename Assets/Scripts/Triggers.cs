@@ -10,13 +10,6 @@ public class Triggers : MonoBehaviour
     public float timer=0;
     public CinemachineDollyCart cart;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (timer <= 0) cart.enabled = true;
@@ -28,13 +21,12 @@ public class Triggers : MonoBehaviour
     // start boolean can be taken out if this is easy to do
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("test");
-        if (start)
+        if (other.gameObject.name=="Start Trigger")
         {
             flow.ExecuteBlock("start");
             start = false;
         }
-        else //else if ()
+        if(other.gameObject.name == "End Trigger")
         {
             flow.ExecuteBlock("finish");
         }
