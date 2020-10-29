@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -9,43 +10,41 @@ using UnityEngine;
 public class ProfileData
 {
     public readonly static string profileFilepathTemplate = "/profile_{0}.data";
-    public readonly static string characterFilepathTemplate = "/profile_{0}_character_{1}.data";
 
-    [Header("Actual Profile Variables")]
-    public int profileIndex;
-    public string profileName;
+    public int index;
+    public string name;
     public List<CharacterData> characterList;
-
-    [Header("File stuff")]
-    public string profileFilepath;
-    public string[] CharacterFileNames
-    {
-        get
-        {
-            string[] fileNames = new string[characterList.Count];
-
-            for(int x = 0; x < fileNames.Length; x++)
-            {
-                fileNames[x] = string.Format(characterFilepathTemplate, profileIndex, characterList[x].id);
-            }
-
-            return fileNames;
-        }
-    }
     public ProfileSaveFormat SaveFormat
     {
         get
         {
-            return new ProfileSaveFormat(profileIndex, profileName, CharacterFileNames);
+            CharacterSaveFormat[] characterSaves = new CharacterSaveFormat[characterList.Count];
+            for(int x = 0; x < characterSaves.Length; x++)
+            {
+                characterSaves[x] = characterList[x].SaveFormat;
+            }
+
+            return new ProfileSaveFormat(index, name, characterSaves);
         }
     }
 
     public ProfileData(int index, string name)
     {
-        profileIndex = index;
-        profileName = name;
+        this.index = index;
+        this.name = name;
         characterList = new List<CharacterData>();
-        profileFilepath = string.Format(profileFilepathTemplate, profileIndex);
+    }
+
+    public ProfileData(ProfileSaveFormat save)
+    {
+        index = save.index;
+        name = save.name;
+
+        characterList = new List<CharacterData>();
+        for(int x = 0; x < save.characterList.Length; x++)
+        {
+            characterList.Add(new CharacterData(save.characterList[x]));
+        }
     }
 }
 
@@ -56,14 +55,14 @@ public class ProfileData
 [System.Serializable]
 public class ProfileSaveFormat
 {
-    public int profileIndex;
-    public string profileName;
-    public string[] CharacterFilepaths;
+    public int index;
+    public string name;
+    public CharacterSaveFormat[] characterList;
 
-    public ProfileSaveFormat(int index, string name, string[] characters)
+    public ProfileSaveFormat(int index, string name, CharacterSaveFormat[] characters)
     {
-        profileIndex = index;
-        profileName = name;
-        CharacterFilepaths = characters;
+        this.index = index;
+        this.name = name;
+        characterList = characters;
     }
 }

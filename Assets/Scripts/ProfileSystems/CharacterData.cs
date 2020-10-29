@@ -24,6 +24,14 @@ public class CharacterData
         this.level = level;
         this.xp = xp;
     }
+
+    public CharacterData(CharacterSaveFormat save)
+    {
+        id = save.id;
+        name = save.name;
+        level = save.level;
+        xp = save.xp;
+    }
 }
 
 [System.Serializable]

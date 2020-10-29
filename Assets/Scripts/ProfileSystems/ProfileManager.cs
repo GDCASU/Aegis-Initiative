@@ -50,15 +50,7 @@ public class ProfileManager : MonoBehaviour
 
     public void SaveProfile(int profileIndex)
     {
-        //Saves the profile boj
-        SaveManager.SaveContent(profiles[profileIndex].SaveFormat, profiles[profileIndex].profileFilepath);
-
-        //Goes through characters within profile and save them all
-        string[] characterFileNames = profiles[profileIndex].CharacterFileNames;
-        for (int x = 0; x < profiles[profileIndex].characterList.Count; x++)
-        {
-            SaveManager.SaveContent(profiles[profileIndex].characterList[x].SaveFormat, characterFileNames[x]);
-        }
+        SaveManager.SaveContent(profiles[profileIndex].SaveFormat, string.Format(ProfileData.profileFilepathTemplate, profileIndex));
     }
 
     /// <summary>
@@ -77,26 +69,14 @@ public class ProfileManager : MonoBehaviour
         profiles = new ProfileData[profileCount];
 
         //For loop to go through each profile
-        for (int profileIndex = 0; profileIndex < profiles.Length; profileIndex++)
+        for (int x = 0; x < profiles.Length; x++)
         {
-            ProfileSaveFormat profileSaveData = SaveManager.LoadContent(string.Format(ProfileData.profileFilepathTemplate, profileIndex)) as ProfileSaveFormat;
+            ProfileSaveFormat profileSaveData = SaveManager.LoadContent(string.Format(ProfileData.profileFilepathTemplate, x)) as ProfileSaveFormat;
 
             if (profileSaveData != null)
             {
-                ProfileData loadedProfile = new ProfileData(profileIndex, profileSaveData.profileName);
-
-                //For loop to go through each character within the loaded profile
-                for(int characterIndex = 0; characterIndex < profileSaveData.CharacterFilepaths.Length; characterIndex++)
-                {
-                    CharacterSaveFormat characterSaveData = SaveManager.LoadContent(profileSaveData.CharacterFilepaths[characterIndex]) as CharacterSaveFormat;
-
-                    if (characterSaveData != null)
-                    {
-                        loadedProfile.characterList.Add(new CharacterData(characterSaveData.id, characterSaveData.name, characterSaveData.level, characterSaveData.xp));
-                    }
-                }
-
-                profiles[profileIndex] = loadedProfile;
+                ProfileData loadedProfile = new ProfileData(profileSaveData);
+                profiles[x] = loadedProfile;
             }
         }
     }
