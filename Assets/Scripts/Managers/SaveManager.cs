@@ -43,12 +43,15 @@ public static class SaveManager
                 BinaryFormatter formatter = new BinaryFormatter();
                 FileStream stream = new FileStream(fullPath, FileMode.Open);
 
-                return formatter.Deserialize(stream);
+                System.Object loadedObject = formatter.Deserialize(stream);
+                stream.Close();
+
+                return loadedObject;
             }
         }
         catch(Exception e)
         {
-            Debug.Log("File does not exist:\n" + fullPath);
+            Debug.Log("File could not be loaded:\n" + fullPath + "\n" + e);
         }
         
         return null;

@@ -8,8 +8,8 @@ using UnityEngine;
 /// </summary>
 public class ProfileData
 {
-    public readonly static string profileFilenameHeader = "p";
-    public readonly static string characterFilenameHeader = "c";
+    public readonly static string profileFilepathTemplate = "/profile_{0}.data";
+    public readonly static string characterFilepathTemplate = "/profile_{0}_character_{1}.data";
 
     [Header("Actual Profile Variables")]
     public int profileIndex;
@@ -26,7 +26,7 @@ public class ProfileData
 
             for(int x = 0; x < fileNames.Length; x++)
             {
-                fileNames[x] = "/" + profileFilenameHeader + "_" + characterFilenameHeader + "_" + characterList[x].id;
+                fileNames[x] = string.Format(characterFilepathTemplate, profileIndex, characterList[x].id);
             }
 
             return fileNames;
@@ -45,7 +45,7 @@ public class ProfileData
         profileIndex = index;
         profileName = name;
         characterList = new List<CharacterData>();
-        profileFilepath = "/" + profileFilenameHeader + "_" + profileIndex;
+        profileFilepath = string.Format(profileFilepathTemplate, profileIndex);
     }
 }
 

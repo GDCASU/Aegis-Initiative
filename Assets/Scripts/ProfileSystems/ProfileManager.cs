@@ -12,6 +12,23 @@ public class ProfileManager : MonoBehaviour
     public int currentProfileIndex = 0;
     public int profileCount = 3;
 
+    private void Start()
+    {
+        LoadAllProfiles();
+
+        /**
+         * Test code
+         */
+        CreateProfile(0, "Nick");
+        profiles[0].characterList.Add(new CharacterData("0", "Feebee", 10, 50));
+        CreateProfile(2, "Christian");
+        profiles[2].characterList.Add(new CharacterData("0", "Connor", 4, 3));
+        profiles[2].characterList.Add(new CharacterData("1", "Daddy Long Legs"));
+        profiles[2].characterList.Add(new CharacterData("23", "Daniel"));
+        //SaveCurrentProfile();
+        //SaveProfile(2);
+    }
+
     /// <summary>
     /// Method used to create a new profile obj
     /// </summary>
@@ -31,20 +48,25 @@ public class ProfileManager : MonoBehaviour
         return false;
     }
 
+    public void SaveProfile(int profileIndex)
+    {
+        //Saves the profile boj
+        SaveManager.SaveContent(profiles[profileIndex].SaveFormat, profiles[profileIndex].profileFilepath);
+
+        //Goes through characters within profile and save them all
+        string[] characterFileNames = profiles[profileIndex].CharacterFileNames;
+        for (int x = 0; x < profiles[profileIndex].characterList.Count; x++)
+        {
+            SaveManager.SaveContent(profiles[profileIndex].characterList[x].SaveFormat, characterFileNames[x]);
+        }
+    }
+
     /// <summary>
     /// Method to save the currently selected profile
     /// </summary>
     public void SaveCurrentProfile()
     {
-        //Saves the profile boj
-        SaveManager.SaveContent(profiles[currentProfileIndex].SaveFormat, profiles[currentProfileIndex].profileFilepath);
-
-        //Goes through characters within profile and save them all
-        string[] characterFileNames = profiles[currentProfileIndex].CharacterFileNames;
-        for(int x = 0; x < profiles[currentProfileIndex].characterList.Count; x++)
-        {
-            SaveManager.SaveContent(profiles[currentProfileIndex].characterList[x].SaveFormat, characterFileNames[x]);
-        }
+        SaveProfile(currentProfileIndex);
     }
 
     /// <summary>
@@ -57,11 +79,11 @@ public class ProfileManager : MonoBehaviour
         //For loop to go through each profile
         for (int profileIndex = 0; profileIndex < profiles.Length; profileIndex++)
         {
-            ProfileSaveFormat profileSaveData = SaveManager.LoadContent(ProfileData.profileFilenameHeader + profileIndex) as ProfileSaveFormat;
+            ProfileSaveFormat profileSaveData = SaveManager.LoadContent(string.Format(ProfileData.profileFilepathTemplate, profileIndex)) as ProfileSaveFormat;
 
             if (profileSaveData != null)
             {
-                ProfileData profile = new ProfileData(profileIndex, profileSaveData.profileName);
+                ProfileData loadedProfile = new ProfileData(profileIndex, profileSaveData.profileName);
 
                 //For loop to go through each character within the loaded profile
                 for(int characterIndex = 0; characterIndex < profileSaveData.CharacterFilepaths.Length; characterIndex++)
@@ -70,9 +92,11 @@ public class ProfileManager : MonoBehaviour
 
                     if (characterSaveData != null)
                     {
-                        profile.characterList.Add(new CharacterData(characterSaveData.id, characterSaveData.name, characterSaveData.level, characterSaveData.xp));
+                        loadedProfile.characterList.Add(new CharacterData(characterSaveData.id, characterSaveData.name, characterSaveData.level, characterSaveData.xp));
                     }
                 }
+
+                profiles[profileIndex] = loadedProfile;
             }
         }
     }
