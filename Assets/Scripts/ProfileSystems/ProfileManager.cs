@@ -15,18 +15,6 @@ public class ProfileManager : MonoBehaviour
     private void Start()
     {
         LoadAllProfiles();
-
-        /**
-         * Test code
-         */
-        CreateProfile(0, "Nick");
-        profiles[0].characterList.Add(new CharacterData("0", "Feebee", 10, 50));
-        CreateProfile(2, "Christian");
-        profiles[2].characterList.Add(new CharacterData("0", "Connor", 4, 3));
-        profiles[2].characterList.Add(new CharacterData("1", "Daddy Long Legs"));
-        profiles[2].characterList.Add(new CharacterData("23", "Daniel"));
-        //SaveCurrentProfile();
-        //SaveProfile(2);
     }
 
     /// <summary>
@@ -50,7 +38,7 @@ public class ProfileManager : MonoBehaviour
 
     public void SaveProfile(int profileIndex)
     {
-        SaveManager.SaveContent(profiles[profileIndex].SaveFormat, string.Format(ProfileData.profileFilepathTemplate, profileIndex));
+        SaveManager.SaveContent(profiles[profileIndex], string.Format(ProfileData.profileFilepathTemplate, profileIndex));
     }
 
     /// <summary>
@@ -71,13 +59,23 @@ public class ProfileManager : MonoBehaviour
         //For loop to go through each profile
         for (int x = 0; x < profiles.Length; x++)
         {
-            ProfileSaveFormat profileSaveData = SaveManager.LoadContent(string.Format(ProfileData.profileFilepathTemplate, x)) as ProfileSaveFormat;
-
-            if (profileSaveData != null)
-            {
-                ProfileData loadedProfile = new ProfileData(profileSaveData);
-                profiles[x] = loadedProfile;
-            }
+            profiles[x] = SaveManager.LoadContent(string.Format(ProfileData.profileFilepathTemplate, x)) as ProfileData;
         }
+    }
+
+    /// <summary>
+    /// Method that creates some test profiles. This should not actually be used
+    /// throughout the game
+    /// </summary>
+    private void TestSaveProfiles()
+    {
+        CreateProfile(0, "Nick");
+        profiles[0].characterList.Add(new CharacterData("0", "Feebee", 10, 50));
+        CreateProfile(2, "Christian");
+        profiles[2].characterList.Add(new CharacterData("0", "Connor", 4, 3));
+        profiles[2].characterList.Add(new CharacterData("1", "Daddy Long Legs"));
+        profiles[2].characterList.Add(new CharacterData("23", "Daniel"));
+        SaveCurrentProfile();
+        SaveProfile(2);
     }
 }
