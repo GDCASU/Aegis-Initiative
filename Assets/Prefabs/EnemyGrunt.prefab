@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7983703137698454368}
   - component: {fileID: 7983703137698454369}
   - component: {fileID: 7983703137698454370}
+  - component: {fileID: 8577454423840793230}
+  - component: {fileID: 3223857889117997041}
   m_Layer: 0
   m_Name: EnemyGrunt
   m_TagString: Untagged
@@ -135,4 +137,29 @@ MonoBehaviour:
   animations: {fileID: 7983703137698454368}
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
-  waitTime: 0
+--- !u!65 &8577454423840793230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113695171806212359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48921293, y: 0.46135193, z: 0.08685871}
+  m_Center: {x: 0, y: -0.054785572, z: 0.017890342}
+--- !u!114 &3223857889117997041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3113695171806212359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageRate: 2

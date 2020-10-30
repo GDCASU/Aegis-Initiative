@@ -23,9 +23,15 @@ public class EnemyHealth : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "BulletPrefab(Clone)")
+        if (other.gameObject.tag == "PlayerBullet")
         {
-            Health -= DamageRate;
+            Debug.Log(Health);
+            //DamageRate = other.gameObject.GetComponent<Bullet>().damage;
+            takeDamage(DamageRate);            
         }
+    }
+    public void takeDamage(int damage)
+    {
+        Health -= damage;
     }
 }
