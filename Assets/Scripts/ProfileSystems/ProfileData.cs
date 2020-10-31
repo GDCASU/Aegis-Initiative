@@ -26,26 +26,26 @@ public class ProfileData
      * Key = an index representation of a level
      * Value = The score achieved
      * 
-     * farthestStage:
+     * currentStage:
      * This helps keep tracks of game progess by knowing which stage they last beat
      */
-    public int index;
+    public int profileID;
     public string name;
     private List<CopilotData> copilotList;
     public Dictionary<int, int> stageScores;
-    public int farthestStage;
+    public int currentStage;
     public int newGamePlusCount;
 
     /// <summary>
     /// Constructor to make a brand new profile
     /// </summary>
-    public ProfileData(int index, string name)
+    public ProfileData(int id, string name)
     {
-        this.index = index;
+        this.profileID = id;
         this.name = name;
         this.copilotList = new List<CopilotData>();
         this.stageScores = new Dictionary<int, int>();
-        this.farthestStage = 0;
+        this.currentStage = 0;
         this.newGamePlusCount = 0;
     }
 
@@ -53,13 +53,13 @@ public class ProfileData
     /// Constructor to make a new profile using more
     /// pre-defined variabes
     /// </summary>
-    public ProfileData(int index, string name, List<CopilotData> copilotList, Dictionary<int, int> stageScores, int farthestStage, int newGamePlusCount)
+    public ProfileData(int id, string name, List<CopilotData> copilotList, Dictionary<int, int> stageScores, int currentStage, int newGamePlusCount)
     {
-        this.index = index;
+        this.profileID = id;
         this.name = name;
         this.copilotList = copilotList;
         this.stageScores = stageScores;
-        this.farthestStage = farthestStage;
+        this.currentStage = currentStage;
         this.newGamePlusCount = newGamePlusCount;
     }
 
