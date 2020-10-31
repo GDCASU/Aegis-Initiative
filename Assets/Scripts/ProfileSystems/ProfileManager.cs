@@ -43,17 +43,11 @@ public class ProfileManager : MonoBehaviour
         SaveManager.SaveContent(profiles[profileIndex], string.Format(ProfileData.profileFilepathTemplate, profileIndex));
     }
 
-    /// <summary>
-    /// Method to save the currently selected profile
-    /// </summary>
     public void SaveCurrentProfile()
     {
         SaveProfile(currentProfileIndex);
     }
 
-    /// <summary>
-    /// Method to load in all available profiles
-    /// </summary>
     public void LoadAllProfiles()
     {
         profiles = new ProfileData[profileCount];

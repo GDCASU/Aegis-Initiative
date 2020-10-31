@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 /// <summary>
-/// Class that holds data for individual characters
+/// Class that holds data for individual copilot characters
 /// </summary>
 [System.Serializable]
 public class CopilotData

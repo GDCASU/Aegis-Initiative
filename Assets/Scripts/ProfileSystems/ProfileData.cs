@@ -6,21 +6,39 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Class that holds data for individual profiles as well
-/// as some save file management stuff
+/// Class that holds data for individual profiles
 /// </summary>
 [System.Serializable]
 public class ProfileData
 {
+    /**
+     * This is the template format on how profile files are saved. Meant
+     * to be used with string.Format() to fill in {0}
+     */
     public readonly static string profileFilepathTemplate = "/profile_{0}.data";
 
+    /**
+     * index:
+     * I gave profiles an index to give them numerical identifiers
+     * as well as being able to use them within a sort of list
+     * 
+     * stageScores:
+     * Key = an index representation of a level
+     * Value = The score achieved
+     * 
+     * farthestStage:
+     * This helps keep tracks of game progess by knowing which stage they last beat
+     */
     public int index;
     public string name;
     private List<CopilotData> copilotList;
     public Dictionary<int, int> stageScores;
-    public int farthestStage;   //This helps keep tracks of game progess by knowing which stage they last beat
+    public int farthestStage;
     public int newGamePlusCount;
 
+    /// <summary>
+    /// Constructor to make a brand new profile
+    /// </summary>
     public ProfileData(int index, string name)
     {
         this.index = index;
@@ -31,16 +49,26 @@ public class ProfileData
         this.newGamePlusCount = 0;
     }
 
-    public ProfileData(int index, string name, List<CopilotData> characterList, Dictionary<int, int> stageScores, int farthestStage, int newGamePlusCount)
+    /// <summary>
+    /// Constructor to make a new profile using more
+    /// pre-defined variabes
+    /// </summary>
+    public ProfileData(int index, string name, List<CopilotData> copilotList, Dictionary<int, int> stageScores, int farthestStage, int newGamePlusCount)
     {
         this.index = index;
         this.name = name;
-        this.copilotList = characterList;
+        this.copilotList = copilotList;
         this.stageScores = stageScores;
         this.farthestStage = farthestStage;
         this.newGamePlusCount = newGamePlusCount;
     }
 
+    /// <summary>
+    /// Method to add a new copilot to the profile. This handles
+    /// checking to make sure the pilot has not already been added
+    /// </summary>
+    /// <param name="newPilot">The pilot being added</param>
+    /// <returns>True if added and false otherwise</returns>
     public bool AddCopilot(CopilotData newPilot)
     {
         foreach (CopilotData pilot in copilotList)
@@ -50,6 +78,12 @@ public class ProfileData
         return true;
     }
 
+    /// <summary>
+    /// Simple method to get a copilot for this profile 
+    /// based on the pilots name
+    /// </summary>
+    /// <param name="pilotName">Name of the pilot to find</param>
+    /// <returns>The found copilot object</returns>
     public CopilotData GetCopilot(string pilotName)
     {
         foreach(CopilotData pilot in copilotList)
