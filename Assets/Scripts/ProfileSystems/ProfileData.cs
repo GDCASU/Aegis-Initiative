@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using FMOD;
+using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,14 +16,45 @@ public class ProfileData
 
     public int index;
     public string name;
-    public List<CharacterData> characterList;
+    private List<CopilotData> copilotList;
+    public Dictionary<int, int> stageScores;
+    public int farthestStage;   //This helps keep tracks of game progess by knowing which stage they last beat
+    public int newGamePlusCount;
 
-    public ProfileData(int index, string name, List<CharacterData> characterList = null)
+    public ProfileData(int index, string name)
     {
         this.index = index;
         this.name = name;
+        this.copilotList = new List<CopilotData>();
+        this.stageScores = new Dictionary<int, int>();
+        this.farthestStage = 0;
+        this.newGamePlusCount = 0;
+    }
 
-        if (characterList == null) this.characterList = new List<CharacterData>();
-        else this.characterList = characterList;
+    public ProfileData(int index, string name, List<CopilotData> characterList, Dictionary<int, int> stageScores, int farthestStage, int newGamePlusCount)
+    {
+        this.index = index;
+        this.name = name;
+        this.copilotList = characterList;
+        this.stageScores = stageScores;
+        this.farthestStage = farthestStage;
+        this.newGamePlusCount = newGamePlusCount;
+    }
+
+    public bool AddCopilot(CopilotData newPilot)
+    {
+        foreach (CopilotData pilot in copilotList)
+            if (pilot.name.Equals(newPilot.name)) return false;
+
+        copilotList.Add(newPilot);
+        return true;
+    }
+
+    public CopilotData GetCopilot(string pilotName)
+    {
+        foreach(CopilotData pilot in copilotList)
+            if (pilot.name.Equals(pilotName)) return pilot;
+
+        return null;
     }
 }

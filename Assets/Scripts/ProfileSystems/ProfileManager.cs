@@ -15,6 +15,8 @@ public class ProfileManager : MonoBehaviour
     private void Start()
     {
         LoadAllProfiles();
+
+        //TestSaveProfiles();
     }
 
     /// <summary>
@@ -70,11 +72,11 @@ public class ProfileManager : MonoBehaviour
     private void TestSaveProfiles()
     {
         CreateProfile(0, "Nick");
-        profiles[0].characterList.Add(new CharacterData("0", "Feebee", 10, 50));
+        profiles[0].AddCopilot(new CopilotData("Feebee", 10, 50, true));
         CreateProfile(2, "Christian");
-        profiles[2].characterList.Add(new CharacterData("0", "Connor", 4, 3));
-        profiles[2].characterList.Add(new CharacterData("1", "Daddy Long Legs"));
-        profiles[2].characterList.Add(new CharacterData("23", "Daniel"));
+        profiles[2].AddCopilot(new CopilotData("Connor", 4, 3, true));
+        profiles[2].AddCopilot(new CopilotData("Daddy Long Legs"));
+        profiles[2].AddCopilot(new CopilotData("Daniel"));
         SaveCurrentProfile();
         SaveProfile(2);
     }
