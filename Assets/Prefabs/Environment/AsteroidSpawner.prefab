@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1030911457504830772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030911457504830769}
+  - component: {fileID: 1030911457504830774}
+  - component: {fileID: 1030911457504830775}
+  m_Layer: 0
+  m_Name: AsteroidSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1030911457504830769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030911457504830772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15, y: 7.9, z: 221.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1030911457504830774
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030911457504830772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 28.296795, y: 37.06675, z: 113.1812}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1030911457504830775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030911457504830772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97751818d348c244b883f77dbe651213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  small: 10
+  medium: 10
+  big: 10
+  smallSizeRange: {x: 1, y: 10}
+  mediumSizeRange: {x: 11, y: 30}
+  bigSizeRange: {x: 31, y: 50}
+  velocityRange: {x: -500, y: 500}
+  asteroidPrefab1: {fileID: 8299096602537148577, guid: 70545e60bbc560846b2e220d3440193f,
+    type: 3}
+  asteroidPrefab2: {fileID: 8872751114067391931, guid: bf4fa86b9c5bf844a80d8e7281d20a81,
+    type: 3}
+  asteroidPrefab3: {fileID: 5191091008356267035, guid: ce2a34da6d9ac1246a0496657891a84d,
+    type: 3}
+  asteroidPrefab4: {fileID: 5987238900573238461, guid: 19660514c8e817e4197759a49caf517f,
+    type: 3}
