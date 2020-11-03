@@ -66,7 +66,7 @@ public class SpeedTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             dollyCart = other.transform.GetComponentInParent<Cinemachine.CinemachineDollyCart>();
-            shipCamera = other.transform.parent.transform.Find("CM vcam1");
+            shipCamera = other.transform.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().transform; // Changed this so that it uses a component instead of a name to reduce the risk of having to retouch the script anytime that the camera name is changed
             cameraScript = shipCamera.GetComponent<CameraFollow>();
 
             StartCoroutine(AdjustSpeed());
