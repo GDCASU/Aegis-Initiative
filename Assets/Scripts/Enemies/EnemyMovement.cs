@@ -36,14 +36,15 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     [Range(0.0f, 15.0f)]
     private float maxAngle = 10.0f; //max angle of ship
+    [Space]
     [SerializeField]
     [Range(0.0f, 5.0f)]
     private float shipSpeed = 2;
     [SerializeField]
-    private bool hover = true;
+    private bool hover = true; //does ship stay near player
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float hoverTimer = 3.0f;
+    private float hoverTimer = 3.0f; //how long ship stays
     [SerializeField]
     private LeaveDirection leaveDirection;
 
@@ -183,10 +184,10 @@ public class EnemyMovement : MonoBehaviour
                 RotateShip(Mathf.LerpAngle(0, flyAwayPitch, 1f), Mathf.LerpAngle(0, -flyAwayYaw, 1f), Mathf.LerpAngle(0, -flyAwayRoll, 1f)); //pitch/-yaw/-roll
                 break;
             case (LeaveDirection.Left):
-                RotateShip(0, Mathf.LerpAngle(0, flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, flyAwayRoll * 1.5f, 1f)); //yaw/roll
+                RotateShip(0, Mathf.LerpAngle(0, flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, flyAwayRoll * 1.5f, 1f)); //0/yaw/roll
                 break;
             case (LeaveDirection.Right):
-                RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, -flyAwayRoll * 1.5f, 1f)); //-yaw/-roll
+                RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, -flyAwayRoll * 1.5f, 1f)); //0/-yaw/-roll
                 break;
         }
         transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * 3);
