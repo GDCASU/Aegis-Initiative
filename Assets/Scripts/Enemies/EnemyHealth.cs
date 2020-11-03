@@ -25,8 +25,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerBullet")
         {
-            Debug.Log(Health);
-            //DamageRate = other.gameObject.GetComponent<Bullet>().damage;
+            //Debug.Log(Health);
+            DamageRate = other.gameObject.GetComponent<Bullet>().damage;
             takeDamage(DamageRate);            
         }
     }
