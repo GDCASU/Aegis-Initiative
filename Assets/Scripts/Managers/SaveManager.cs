@@ -58,13 +58,10 @@ public static class SaveManager
             FileStream stream = new FileStream(fullPath, FileMode.Open);
             try
             {
-                if (File.Exists(fullPath))
-                {
-                    System.Object loadedObject = formatter.Deserialize(stream);
-                    stream.Close();
+                System.Object loadedObject = formatter.Deserialize(stream);
+                stream.Close();
 
-                    return loadedObject;
-                }
+                return loadedObject;
             }
             catch (Exception e)
             {
