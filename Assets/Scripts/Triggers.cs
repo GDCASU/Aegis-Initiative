@@ -18,7 +18,7 @@ public class Triggers : MonoBehaviour
 
     private void Start()
     {
-        playerShip = GameObject.FindGameObjectWithTag("Player");
+        //playerShip = GameObject.FindGameObjectWithTag("Player"); its better to make sure that is set on the inspector rather than looking for it on the start
         levelFinished = false;
     }
 
