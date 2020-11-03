@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-        if (collision.gameObject.tag == "Bulelt") TakeDamge(collision.gameObject.GetComponent<Bullet>().damage);
+        if (collision.gameObject.tag == "Bullet") TakeDamge(collision.gameObject.GetComponent<Bullet>().damage);
     }
     private void Update()
     {

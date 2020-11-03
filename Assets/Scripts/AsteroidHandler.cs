@@ -57,7 +57,6 @@ public class AsteroidHandler : MonoBehaviour
                 prefab = asteroidPrefab4;
                 break;
         }
-        rng = Random.Range(0,3);
         Vector3 position = new Vector3(Random.Range(-(transform.localScale.x * GetComponent<BoxCollider>().size.x) / 2, (transform.localScale.x * GetComponent<BoxCollider>().size.x) / 2),
             Random.Range(-(transform.localScale.y * GetComponent<BoxCollider>().size.y) / 2, (transform.localScale.y * GetComponent<BoxCollider>().size.y) / 2),
             Random.Range(-(transform.localScale.z * GetComponent<BoxCollider>().size.z) / 2, (transform.localScale.z * GetComponent<BoxCollider>().size.z) / 2));
