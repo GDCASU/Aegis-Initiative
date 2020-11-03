@@ -32,14 +32,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 8768191065627883012}
-  - {fileID: -7761814064115490553}
+  - {fileID: 6159936382351922556}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: -7761814064115490553}
+  - {fileID: 6159936382351922556}
   StringsBanks:
   - {fileID: 8768191065627883012}
-  stringsBankWriteTime: 637366416556981596
+  stringsBankWriteTime: 637360432130704756
   cacheVersion: 3
 --- !u!114 &1342521438669997089
 MonoBehaviour:
@@ -59,6 +59,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &6159936382351922556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FireFoxFmod/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637360432130654890
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &8330828397789711611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FireFoxFmod/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637366416556981596
+  lastModified: 637360432130704756
   LoadResult: 0
   FileSizes:
   - Name: Desktop
