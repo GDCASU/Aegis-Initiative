@@ -58,3 +58,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemies: []
+  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}

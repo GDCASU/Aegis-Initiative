@@ -34,27 +34,28 @@ public class EnemySpawner : MonoBehaviour
     private float xSpawnAdjustment;
     private float ySpawnAdjustment;
     private float zSpawnAdjustment;
+    public Transform player;
     private Vector3 spawnAdjustment;
-    Vector3 temp;
+    private Vector3 playerScale;
 
     private void Start()
     {
-        temp = GameObject.Find("GameDollyCart").GetComponent<BoxCollider>().size; //grab collider size
         zSpawnAdjustment = -2.0f;
+        playerScale = player.localScale;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //print(other.name);
-        if (other.gameObject.name == "GameDollyCart")
+        if (other.gameObject.tag == "Player" )
         {
             //if (//other.GetComponent<PlayerInfo>().enemiesOnScreen == 0)
             //{
             //other.GetComponent<PlayerInfo>().enemiesOnScreen--;
             for (int x = 0; x < _enemies.Length; x++) //loop through enemies to spawn
             {
-                xSpawnAdjustment = temp.x * _enemies[x].adjustLocation;
-                ySpawnAdjustment = temp.y * _enemies[x].adjustLocation;
+                xSpawnAdjustment = playerScale.x * _enemies[x].adjustLocation;
+                ySpawnAdjustment = playerScale.y * _enemies[x].adjustLocation;
                 switch (_enemies[x].SpawnLocation) //chance x and/or y adjustment based on selected location
                 {
                     case spawnLocation.TopLeft:
