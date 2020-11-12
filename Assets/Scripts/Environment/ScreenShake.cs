@@ -52,6 +52,14 @@ public class ScreenShake : MonoBehaviour
         StartCoroutine(CameraMovement());
     }
 
+    public void ShakeCamera(float intensity, float frequency = 10f, float duration = 1f)
+    {
+        shakeIntensity = intensity;
+        shakeFrequency = frequency;
+        shakeDuration = duration;
+        ShakeCamera();
+    }
+
     private IEnumerator CameraMovement()
     {
         float initialPositionZ;

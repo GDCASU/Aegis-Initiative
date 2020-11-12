@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 5464987159832585486}
   - component: {fileID: 1077621587703858222}
   - component: {fileID: 4858473898675966920}
+  - component: {fileID: 601629049475976116}
   - component: {fileID: 2886750413520253739}
   - component: {fileID: 6821422713900445973}
   m_Layer: 0
@@ -964,6 +965,26 @@ MonoBehaviour:
   flow: {fileID: 0}
   timer: 3
   cart: {fileID: 4174455377587358401}
+--- !u!114 &601629049475976116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174455377501832922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 659b879f0e09eee4390cb3abc1201581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPermanent: 1
+  displacementTime: 5
+  transitionDuration: 1
+  cameraDistance: 0
+  shakeIntensity: 1
+  shakeMagnitudeRatio: {x: 0.5, y: 0.5}
+  shakeFrequency: 10
+  shakeDuration: 1
 --- !u!135 &2886750413520253739
 SphereCollider:
   m_ObjectHideFlags: 0

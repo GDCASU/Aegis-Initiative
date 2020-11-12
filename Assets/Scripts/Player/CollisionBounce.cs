@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class CollisionBounce : MonoBehaviour
 {
+    private ScreenShake screenShake;
+
+    private void Awake()
+    {
+        screenShake = GetComponent<ScreenShake>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        screenShake.ShakeCamera();
+    }
+
     void OnCollisionExit(Collision collision)
     {
         if (transform.localPosition.z != 0)
