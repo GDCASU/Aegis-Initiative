@@ -1,38 +1,21 @@
-﻿/*
- * Script triggers speed increase for dolly track when Player collides with attached GameObject. Can be permanent or temporary.
- * Script deals solely with local positions when transitioning camera.
- * 
- * RESTRICTIONS: X and Y positions after camera transition shall be the X and Y positions right before the transition.
- *               Shake duration can not exceed transition duration.
- * 
- * Author: Cristion Dominguez
- * Date: 30 Oct. 2020
- */
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedTrigger : ScreenShake
+public class ScreenShake : MonoBehaviour
 {
-    [Header("Speed Adjustment Type")]
-
     [SerializeField]
     private bool isPermanent = true;  // bool representing whether speed adjustment is permanent
 
-    [Header("Speed Adjustment Values")]
     [SerializeField]
-    private int dollyTrackSpeed = 10;  // new speed to set dolly track on
+    private float displacementTime = 5;  // time camera is displaced from original position
 
     [SerializeField]
-    private float activeTimeForTemporarySpeed = 5;  // time temporary speed lasts for
+    private float transitionDuration = 1;  // time to reach desired Z displacement
 
     [Header("Camera Displacement")]
     [SerializeField]
     private float cameraDistance;  // value to displace the camera's Z local position; positive values moves camera away
-
-    [SerializeField]
-    private float transitionDuration;  // time to reach desired Z displacement
 
     [Header("Camera Shake")]
     [SerializeField]
@@ -45,7 +28,7 @@ public class SpeedTrigger : ScreenShake
     private float shakeFrequency = 10;  // frequency of shaking; when set to low value, the camera shall shake slowly
 
     [SerializeField]
-    private float shakeDuration;  // duration of shaking; value can not exceed transition duration
+    private float shakeDuration = 1;  // duration of shaking; value can not exceed transition duration
 
     private float traumaExponent = 2;
 
@@ -57,67 +40,38 @@ public class SpeedTrigger : ScreenShake
 
     private Vector2 originalX_YPosition;  // original X and Y positions of the ship camera before transition
 
-    /// <summary>
-    /// Calls the AdjustSpeed coroutine when the Player collides with the object.
-    /// </summary>
-    /// <param name="other"> Collider of GameObject that passes through SpeedTrigger object </param>
-    private void OnTriggerEnter(Collider other)
+    public void ShakeCamera() //for script to call
     {
-        if (other.gameObject.tag == "Player")
-        {
-            dollyCart = other.transform.GetComponentInParent<Cinemachine.CinemachineDollyCart>();
-            shipCamera = other.transform.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().transform; // Changed this so that it uses a component instead of a name to reduce the risk of having to retouch the script anytime that the camera name is changed
-            cameraScript = shipCamera.GetComponent<CameraFollow>();
+        dollyCart = transform.GetComponentInParent<Cinemachine.CinemachineDollyCart>();
+        shipCamera = dollyCart.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().transform; // Changed this so that it uses a component instead of a name to reduce the risk of having to retouch the script anytime that the camera name is changed
+        cameraScript = shipCamera.GetComponent<CameraFollow>();
 
-            StartCoroutine(AdjustSpeed());
-        }
+        StartCoroutine(CameraMovement());
     }
 
-    /// <summary>
-    /// If speed adjustment is permanent, permantantly applies the new speed to the dolly track and calls the TransitionCamera coroutine once. Otherwise, temporarily applies the new
-    /// speed to the dolly track and calls the TransitionCamera coroutine twice.
-    /// </summary>
-    private IEnumerator AdjustSpeed()
+    private IEnumerator CameraMovement()
     {
         float initialPositionZ;
         float newPositionZ;
-
-        // If speed adjustment is permanent, then only transition camera once and set a permanent speed for dolly track.
-        if (isPermanent == true)
-        {
-            dollyCart.m_Speed = dollyTrackSpeed;  // apply new dolly track speed
-
-            initialPositionZ = shipCamera.localPosition.z;  // save initial z position
-            newPositionZ = shipCamera.localPosition.z - cameraDistance;  // calculate new z position
-            originalX_YPosition = new Vector2(shipCamera.localPosition.x, shipCamera.localPosition.y);  // the X and Y positions of camera before transitioning
-
-            StartCoroutine(TransitionCamera(initialPositionZ, newPositionZ, true));  // move camera to new Z position w/ shake effect
-            yield break;
-        }
-
-        // If speed adjustment is temporary, then set a temporary speed for dolly tracks and transition twice (first w/ shake, then w/o shake).
-        float initialSpeed = dollyCart.m_Speed;  // save initial dolly track speed
-        dollyCart.m_Speed = dollyTrackSpeed;  // apply new dolly track speed
 
         initialPositionZ = shipCamera.localPosition.z;  // save initial z position
         newPositionZ = shipCamera.localPosition.z - cameraDistance;  // calculate new z position
         originalX_YPosition = new Vector2(shipCamera.localPosition.x, shipCamera.localPosition.y);  // the X and Y positions of camera before transitioning
 
+        // If speed adjustment is permanent, then only transition camera once and set a permanent speed for dolly track.
+        if (isPermanent == true)
+        {
+            StartCoroutine(TransitionCamera(initialPositionZ, newPositionZ, true));  // move camera to new Z position w/ shake effect
+            yield break;
+        }
+
         StartCoroutine(TransitionCamera(initialPositionZ, newPositionZ, true));  // move camera to new Z position w/o shake effect
 
-        yield return new WaitForSeconds(activeTimeForTemporarySpeed);  // wait activeTimeForTemporarySpeed until executing next instructions
+        yield return new WaitForSeconds(displacementTime);  // wait activeTimeForTemporarySpeed until executing next instructions
 
         StartCoroutine(TransitionCamera(newPositionZ, initialPositionZ, false));  // move camera to initial Z position w/ shake effect
-
-        dollyCart.m_Speed = initialSpeed;  // apply initial dolly track speed
     }
 
-    /// <summary>
-    /// Transitions camera from start Z position to end Z position with shaking if it is enabled.
-    /// </summary>
-    /// <param name="startPositionZ"> starting Z position </param>
-    /// <param name="endPositionZ"> ending Z position </param>
-    /// <param name="doShake"> bool representing whether camera should shake during transition </param>
     private IEnumerator TransitionCamera(float startPositionZ, float endPositionZ, bool doShake)
     {
         float elapsedTime = 0;  // time passed since call of method
