@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class PoisonMushroom : MonoBehaviour
 {
-    //TODO: GeneratePoisonCloud method - create poison clouds every x increments of time
-
-    //TODO: DisableActiveAbilities method - disable player's active abilities when player flies through poision clouds
-
-    //TODO: TakeDamage method - decrease Mushroom health
-
-    //TODO: DestroyMushroom method - destroy mushroom when player collides or shoots it, then call generatePoisonCloud
-
     //Mushroom stats
     public int health; //Mushroom health
     public int damageNum; //amount of damage applied to Mushroom health
@@ -21,7 +13,6 @@ public class PoisonMushroom : MonoBehaviour
     private MeshRenderer mesh;
 
     //Generating clouds using Particle System
-    //public ParticleSystem cloud;
     private ParticleSystem cloud;
     public float timeGenerate; //duration for generating the clouds
 
@@ -82,7 +73,6 @@ public class PoisonMushroom : MonoBehaviour
         {
             Debug.Log("Collided with Player");
             health = 0;
-            //DestroyMushroom();
         }
         else if (collision.gameObject.tag == "Bullet")
         {
@@ -102,7 +92,10 @@ public class PoisonMushroom : MonoBehaviour
     //Destroy mushroom when player collides or shoots it, then call GeneratePoisonCloud
     public void DestroyMushroom()
     {
-        GeneratePoisonCloud();
+        // cloud.Stop();
+        // cloud.Clear();
+        // GeneratePoisonCloud();
+        // generateTimer = timeGenerate;
         collider.enabled = false;
         mesh.enabled = false;
     }
