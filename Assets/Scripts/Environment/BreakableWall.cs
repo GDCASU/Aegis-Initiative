@@ -5,9 +5,7 @@ using UnityEngine;
 public class BreakableWall : MonoBehaviour
 {
     /* Notes:
-     * The wall object with this script must also have the rigidbody and collider components
-     * Within the rigidbody component of the wall object, "is Kinematic" must NOT be checked for collision with player to work
-     * Within the rigidbody component of the wall object, check all the boxes under the "Constraints" tab so that it will not be moved by the bullets
+     * The wall object with this script must also have a collider component
      */
     public int wallHealth = 10;
     public int playerCollisionDamage= 5;
@@ -27,24 +25,23 @@ public class BreakableWall : MonoBehaviour
         //Debug.Log("Wall Destroyed");
         Destroy(gameObject);
     }
-
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Hit player");
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(playerCollisionDamage);
+            //collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(playerCollisionDamage);
 
             DestroyWall();
         }
 
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
             //Debug.Log("Hit bullet");
-            wallHealth -= collision.gameObject.GetComponent<Bullet>().damage;
+            wallHealth -= other.gameObject.GetComponent<Bullet>().damage;
 
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
-
     }
+
 }
