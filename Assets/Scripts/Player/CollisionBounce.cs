@@ -13,7 +13,8 @@ public class CollisionBounce : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        screenShake.ShakeCamera();
+        if (collision.gameObject.CompareTag("PlayerCollidable"))
+            screenShake.ShakeCamera();
     }
 
     void OnCollisionExit(Collision collision)
