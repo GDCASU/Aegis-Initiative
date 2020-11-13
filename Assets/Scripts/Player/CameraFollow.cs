@@ -24,9 +24,15 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Smooth Damp Time")]
     [Range(0, 1)]
-    public float smoothTime;
+    public float smoothTimeX = 0.65f;
+    [Range(0, 1)]
+    public float smoothTimeYpos = 0.3445f;
+    [Range(0, 1)]
+    public float smoothTimeYneg = 0.1625f;
 
     private Vector3 velocity = Vector3.zero;
+    private Vector3 lastPosition = Vector3.zero;
+    private Vector3 currentPosition = Vector3.zero;
 
     void Update()
     {
@@ -41,7 +47,7 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
         Vector3 localPos = transform.localPosition;
-
+        lastPosition = target.localPosition;
         transform.localPosition = new Vector3(Mathf.Clamp(localPos.x, -limits.x, limits.x), Mathf.Clamp(localPos.y, -limits.y, limits.y), localPos.z);
     }
 
@@ -49,7 +55,19 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 localPos = transform.localPosition;
         Vector3 targetLocalPos = t.transform.localPosition;
-        transform.localPosition = Vector3.SmoothDamp(localPos, new Vector3(targetLocalPos.x + offset.x, targetLocalPos.y + offset.y, localPos.z), ref velocity, smoothTime);
+        if(targetLocalPos.y >= lastPosition.y + 0.0001f) //clamp speed for positive Y
+        {
+            currentPosition = Vector3.SmoothDamp(localPos, new Vector3(targetLocalPos.x + offset.x, targetLocalPos.y + offset.y, localPos.z), ref velocity, smoothTimeYpos);
+        }
+        else if(targetLocalPos.y <= lastPosition.y - 0.0001f) //clamp speed for negative Y
+        {
+            currentPosition = Vector3.SmoothDamp(localPos, new Vector3(targetLocalPos.x + offset.x, targetLocalPos.y + offset.y, localPos.z), ref velocity, smoothTimeYneg);
+        }
+        else //clamp speed for X axis
+        {
+            currentPosition = Vector3.SmoothDamp(localPos, new Vector3(targetLocalPos.x + offset.x, targetLocalPos.y + offset.y, localPos.z), ref velocity, smoothTimeX);
+        }
+        transform.localPosition = currentPosition;
     }
 
     private void OnDrawGizmos()
