@@ -21,9 +21,14 @@ public class BounceMushroom : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        print("Hi");
+        print(collision.gameObject.name);
+
         if (collision.transform.tag == "Player")
         {
-            Transform player = collision.transform.Find("Player");
+            print(collision.gameObject.name);
+
+            Transform player = collision.transform;
             Vector2 direction;
 
             if (directionCustomizable)
