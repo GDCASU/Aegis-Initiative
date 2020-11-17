@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/Fungus/EditorResources/FungusEditorResources.asset
+fmod_editor.log
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset

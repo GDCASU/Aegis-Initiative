@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float bulletDespawnTime;
     public float timer;
+    public int damage;
 
     private void Start()
     {
