@@ -5,6 +5,13 @@
  * Date: 13 Nov. 2020
  */
 
+ /*
+  * Revision Author: Cristion Dominguez
+  * Revision Date: 16 Nov. 2020
+  * 
+  * Modifications: Removed a list of indexes corresponding to active units in an array and replaced the units array with a units list. Updated documentation as well.
+  */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,9 +37,7 @@ public class SwarmBehavior : MonoBehaviour
     [SerializeField]
     private float disperseTime = 1.5f;
 
-    private GameObject[] units;  // arrays of units
-
-    private List<int> activeUnitIndexes;  // list of indexes corresponding to active units
+    private List<GameObject> units;  // arrays of units
 
     private float healthPerUnit;
 
@@ -41,8 +46,7 @@ public class SwarmBehavior : MonoBehaviour
     public Action OnPlayerCollision;  // delegate holding the Disperse method of all the units
 
     /// <summary>
-    /// If swarm population >= 1, assigns unit values, instantiates unit prefabs in units array, and adds unit indexes in activeUnitIndexes list. Otherwise, destroys
-    /// swarm game object.
+    /// If swarm population >= 1, assigns unit values and instantiates unit prefabs in units list. Otherwise, destroys Swarm game object's parent.
     /// </summary>
     private void Start()
     {
@@ -52,17 +56,12 @@ public class SwarmBehavior : MonoBehaviour
             healthPerUnit = (float) totalHealth / swarmPopulation;
             damagePerUnit = (float) totalDamage / swarmPopulation;
     
-            // Initialize units array and activeUnitIndexes list.
-            units = new GameObject[swarmPopulation];
-            activeUnitIndexes = new List<int>();
+            // Initialize units list.
+            units = new List<GameObject>();
 
-            // Instantiate game objects from the unit prefab and insert them into units array.
-            // Add indexes to activeUnitIndexes list.
+            // Instantiate game objects from the unit prefab and insert them into units list.
             for (int i = 0; i < swarmPopulation; i++)
-            {
-                units[i] = Instantiate(unitPrefab, this.transform);
-                activeUnitIndexes.Add(i);
-            }
+                units.Add(Instantiate(unitPrefab, this.transform));
         }
         else
             Destroy(this.transform.parent.gameObject);
@@ -88,24 +87,27 @@ public class SwarmBehavior : MonoBehaviour
     }
 
     /// <summary>
-    /// Decreases Swarm health by damage value. If total health is <= 0, then destroys Swarm game object. If total health is <= to the 
+    /// Decreases Swarm health by damage value. If total health is <= 0, then destroys Swarm game object's parent. Otherwise, checks if the total health is not proportional
+    /// to the Swarm population and if so, reduces the Swarm population until it is proportional to the health again.
     /// </summary>
     /// <param name="damage"> amount to remove from Swarm health </param>
     public void TakeDamage(int damage)
     {
         totalHealth -= damage;
 
+        // If total health <= 0, then destroy parent game object and break out of function.
         if (totalHealth <= 0)
         {
             Destroy(this.transform.parent.gameObject);
             return;
         }
 
+        // Whilst total health is not proportional to Swarm population, remove a unit randomly and reduce Swarm population by 1.
         while (totalHealth <= (swarmPopulation - 1) * healthPerUnit)
         {
-            int removeUnitIndex = UnityEngine.Random.Range(0, activeUnitIndexes.Count);
-            units[activeUnitIndexes[removeUnitIndex]].GetComponent<SwarmUnit>().DisableUnit();
-            activeUnitIndexes.RemoveAt(removeUnitIndex);
+            int removeUnitIndex = UnityEngine.Random.Range(0, units.Count);
+            units[removeUnitIndex].GetComponent<SwarmUnit>().DisableUnit();
+            units.RemoveAt(removeUnitIndex);
             swarmPopulation--;
         }
     }
@@ -117,12 +119,12 @@ public class SwarmBehavior : MonoBehaviour
     private void DealDamage(PlayerHealth player)
     {        
         // Rounding is required because the product could be a value such as 0.9999, which would default to 0 even though a 1 is desired.
-        int damageDone = (int) Mathf.Round(activeUnitIndexes.Count * damagePerUnit);
+        int damageDone = (int) Mathf.Round(units.Count * damagePerUnit);
         player.TakeDamage(damageDone);
     }
 
     /// <summary>
-    /// Calls for each Swarm unit to disperse until disperse time is reached, at which point the Swarm game object shall be destroyed.
+    /// Calls for each Swarm unit to disperse until disperse time is reached, at which point the Swarm game object's parent shall be destroyed.
     /// </summary>
     private IEnumerator DisperseSwarm()
     {
