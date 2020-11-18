@@ -13,7 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedTrigger : ScreenShake
+public class SpeedTrigger : MonoBehaviour
 {
     [Header("Speed Adjustment Type")]
 

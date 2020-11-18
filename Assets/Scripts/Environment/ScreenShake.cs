@@ -32,7 +32,7 @@ public class ScreenShake : MonoBehaviour
 
     private float traumaExponent = 2;
 
-    private Cinemachine.CinemachineDollyCart dollyCart;  // dolly track behavior script
+    protected Cinemachine.CinemachineDollyCart dollyCart;  // dolly track behavior script
 
     private Transform shipCamera;  // camera following Player
 
