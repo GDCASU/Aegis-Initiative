@@ -5,30 +5,30 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
     [SerializeField]
-    private bool isPermanent = true;  // bool representing whether speed adjustment is permanent
+    protected bool isPermanent = true;  // bool representing whether speed adjustment is permanent
 
     [SerializeField]
-    private float displacementTime = 5;  // time camera is displaced from original position
+    protected float displacementTime = 5;  // time camera is displaced from original position
 
     [SerializeField]
-    private float transitionDuration = 1;  // time to reach desired Z displacement
+    protected float transitionDuration = 1;  // time to reach desired Z displacement
 
     [Header("Camera Displacement")]
     [SerializeField]
-    private float cameraDistance;  // value to displace the camera's Z local position; positive values moves camera away
+    protected float cameraDistance;  // value to displace the camera's Z local position; positive values moves camera away
 
     [Header("Camera Shake")]
     [SerializeField]
-    private float shakeIntensity = 1;  // initial intensity of the shake
+    protected float shakeIntensity = 1;  // initial intensity of the shake
 
     [SerializeField]
-    private Vector2 shakeMagnitudeRatio = Vector2.one * 0.5f;  // max magnitude of shake effect on the X and Y axes
+    protected Vector2 shakeMagnitudeRatio = Vector2.one * 0.5f;  // max magnitude of shake effect on the X and Y axes
 
     [SerializeField]
-    private float shakeFrequency = 10;  // frequency of shaking; when set to low value, the camera shall shake slowly
+    protected float shakeFrequency = 10;  // frequency of shaking; when set to low value, the camera shall shake slowly
 
     [SerializeField]
-    private float shakeDuration = 1;  // duration of shaking; value can not exceed transition duration
+    protected float shakeDuration = 1;  // duration of shaking; value can not exceed transition duration
 
     private float traumaExponent = 2;
 
@@ -40,12 +40,15 @@ public class ScreenShake : MonoBehaviour
 
     private Vector2 originalX_YPosition;  // original X and Y positions of the ship camera before transition
 
-    public void ShakeCamera() //for script to call
+    private void Awake()
     {
         dollyCart = transform.GetComponentInParent<Cinemachine.CinemachineDollyCart>();
         shipCamera = dollyCart.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().transform; // Changed this so that it uses a component instead of a name to reduce the risk of having to retouch the script anytime that the camera name is changed
         cameraScript = shipCamera.GetComponent<CameraFollow>();
+    }
 
+    public void ShakeCamera() //for script to call
+    {
         StartCoroutine(CameraMovement());
     }
 
