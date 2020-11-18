@@ -50,6 +50,10 @@ public class Triggers : MonoBehaviour
             endDirection = new Vector3(0, 0, endSpeed * Time.deltaTime);
             levelFinished = true;
         }
+        if(other.gameObject.tag == "Dialogue_Trigger")
+        {
+            flow.ExecuteBlock(other.gameObject.name);
+        }
     }
 
     private void EndLevel()
