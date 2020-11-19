@@ -131,7 +131,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4174455376537405810}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &69592915
+--- !u!114 &69592914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,18 +140,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 69592913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4db90e4e5d36ed4d878fd433a3620a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 659b879f0e09eee4390cb3abc1201581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPermanent: 0
+  isPermanent: 1
   displacementTime: 5
   transitionDuration: 1
-  cameraDistance: 1
+  cameraDistance: 0
   shakeIntensity: 1
   shakeMagnitudeRatio: {x: 0.5, y: 0.5}
   shakeFrequency: 10
   shakeDuration: 1
-  dollyTrackSpeed: 10
+  dollyCart: {fileID: 0}
+  shipCamera: {fileID: 0}
+  originalX_YPosition: {x: 0, y: 0}
 --- !u!135 &69592918
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -840,6 +842,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e498a2155eb5d444eabea761934c36a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &998434971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4174455377587358401, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+    type: 3}
+  m_PrefabInstance: {fileID: 4174455376537405810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a9c787e5d1bbf48a389834c4a9641c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1035253957
@@ -3337,8 +3351,17 @@ PrefabInstance:
       propertyPath: transitionDuration
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8309006470742943219, guid: b6b7e3ffd844fb1459311d541ed73950, type: 3}
+    - target: {fileID: 8309006470742943219, guid: b6b7e3ffd844fb1459311d541ed73950,
+        type: 3}
+      propertyPath: dollyCart
+      value: 
+      objectReference: {fileID: 998434971}
+    - target: {fileID: 8309006470742943219, guid: b6b7e3ffd844fb1459311d541ed73950,
+        type: 3}
+      propertyPath: dollyTrackSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6b7e3ffd844fb1459311d541ed73950, type: 3}
 --- !u!1 &1857240232
 GameObject:

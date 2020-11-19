@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
     [SerializeField]
-    protected bool isPermanent = true;  // bool representing whether speed adjustment is permanent
+    public bool isPermanent = true;  // bool representing whether speed adjustment is permanent
 
     [SerializeField]
     protected float displacementTime = 5;  // time camera is displaced from original position
@@ -15,7 +15,7 @@ public class ScreenShake : MonoBehaviour
 
     [Header("Camera Displacement")]
     [SerializeField]
-    protected float cameraDistance;  // value to displace the camera's Z local position; positive values moves camera away
+    public float cameraDistance;  // value to displace the camera's Z local position; positive values moves camera away
 
     [Header("Camera Shake")]
     [SerializeField]
@@ -30,17 +30,17 @@ public class ScreenShake : MonoBehaviour
     [SerializeField]
     protected float shakeDuration = 1;  // duration of shaking; value can not exceed transition duration
 
-    private float traumaExponent = 2;
+    protected float traumaExponent = 2;
+    [SerializeField]
+    public Cinemachine.CinemachineDollyCart dollyCart;  // dolly track behavior script
 
-    protected Cinemachine.CinemachineDollyCart dollyCart;  // dolly track behavior script
+    public Transform shipCamera;  // camera following Player
 
-    private Transform shipCamera;  // camera following Player
+    protected CameraFollow cameraScript;  // script that has camera following Player
 
-    private CameraFollow cameraScript;  // script that has camera following Player
+    public Vector2 originalX_YPosition;  // original X and Y positions of the ship camera before transition
 
-    private Vector2 originalX_YPosition;  // original X and Y positions of the ship camera before transition
-
-    private void Awake()
+    private void Start()
     {
         dollyCart = transform.GetComponentInParent<Cinemachine.CinemachineDollyCart>();
         shipCamera = dollyCart.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().transform; // Changed this so that it uses a component instead of a name to reduce the risk of having to retouch the script anytime that the camera name is changed
@@ -75,7 +75,7 @@ public class ScreenShake : MonoBehaviour
         StartCoroutine(TransitionCamera(newPositionZ, initialPositionZ, false));  // move camera to initial Z position w/ shake effect
     }
 
-    private IEnumerator TransitionCamera(float startPositionZ, float endPositionZ, bool doShake)
+    public  IEnumerator TransitionCamera(float startPositionZ, float endPositionZ, bool doShake)
     {
         float elapsedTime = 0;  // time passed since call of method
         float z, trauma;  // current Z position of camera; current trauma of camera shake (respectively)
