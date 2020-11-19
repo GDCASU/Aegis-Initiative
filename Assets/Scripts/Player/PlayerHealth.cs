@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public int health;
+    public int maxHealth;
     void Start()
     {
         health = 50;
+        maxHealth = 60;
     }
 
     // Update is called once per frame
@@ -22,6 +24,15 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
         print(health);
+    }
+
+    public void Heal(int heal)
+    {
+        if(health < maxHealth)
+        {
+            health += heal;
+        }
+        Debug.Log(health);
     }
     public void KillPlayer()
     {

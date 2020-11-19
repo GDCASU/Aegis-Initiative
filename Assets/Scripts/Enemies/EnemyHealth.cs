@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PlayerBullet")
+        if (other.gameObject.tag == "Bullet")
         {
             //Debug.Log(Health);
             DamageRate = other.gameObject.GetComponent<Bullet>().damage;
