@@ -17,5 +17,9 @@ public class Bullet : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer < 0) Destroy(transform.gameObject);
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+        if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+    }
 }

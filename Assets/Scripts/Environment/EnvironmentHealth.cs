@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnvironmentHealth : MonoBehaviour
 {
     public int health;
     public int collisionDamage;
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
             TakeDamage(health);
         }
     }
-    public virtual void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)

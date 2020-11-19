@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : EnvironmentHealth
 {
     Rigidbody rb;
     public Vector3 origin;
-    public int health;
     private BoxCollider bc;
     public Vector2 velocityRange;
     public Vector2 returnForceRange;
-    private int damage;
+    public int damage;
     public void SetProperties(Vector2 range, Vector3 o, int h)
     {
         float scale = Random.Range(range.x, range.y);
@@ -32,7 +31,7 @@ public class Asteroid : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-        if (collision.gameObject.tag == "Bullet") TakeDamge(collision.gameObject.GetComponent<Bullet>().damage);
+        if (collision.gameObject.tag == "Bullet") TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);
     }
     private void Update()
     {
@@ -43,5 +42,4 @@ public class Asteroid : MonoBehaviour
             rb.AddForce((transform.parent.position - transform.position)*Random.Range(returnForceRange.x,returnForceRange.y), ForceMode.Acceleration);
         }
     }
-    public void TakeDamge(int damage)=>health -= damage;
 }
