@@ -985,6 +985,9 @@ MonoBehaviour:
   shakeMagnitudeRatio: {x: 0.5, y: 0.5}
   shakeFrequency: 10
   shakeDuration: 1
+  dollyCart: {fileID: 4174455377587358401}
+  shipCamera: {fileID: 4174455376411874717}
+  originalX_YPosition: {x: 0, y: 0}
 --- !u!135 &2886750413520253739
 SphereCollider:
   m_ObjectHideFlags: 0
