@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CellShaderExample
+  m_Name: ToonShaderExample
   m_Shader: {fileID: -6465566751694194690, guid: a6995f8b25f58dc41809558ad67b46fa,
     type: 3}
   m_ShaderKeywords: 
@@ -34,6 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
+    - BOOLEAN_C6F11220: 1
     - Vector1_42B42031: 0.1
     - Vector1_70EE6245: 32
     - Vector1_D94C2B7F: 0.01
