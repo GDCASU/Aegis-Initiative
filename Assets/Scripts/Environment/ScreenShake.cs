@@ -42,14 +42,20 @@ public class ScreenShake : MonoBehaviour
 
     private void Start()
     {
-        dollyCart = transform.GetComponentInParent<Cinemachine.CinemachineDollyCart>();
-        shipCamera = dollyCart.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>().transform; // Changed this so that it uses a component instead of a name to reduce the risk of having to retouch the script anytime that the camera name is changed
         cameraScript = shipCamera.GetComponent<CameraFollow>();
     }
 
     public void ShakeCamera() //for script to call
     {
         StartCoroutine(CameraMovement());
+    }
+
+    public void ShakeCamera(float intensity, float frequency = 10f, float duration = 1f)
+    {
+        shakeIntensity = intensity;
+        shakeFrequency = frequency;
+        shakeDuration = duration;
+        ShakeCamera();
     }
 
     private IEnumerator CameraMovement()
