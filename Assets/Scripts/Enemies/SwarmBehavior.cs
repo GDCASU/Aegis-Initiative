@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SwarmBehavior : MonoBehaviour
+public class SwarmBehavior : EnemyHealth
 {
     [Header("Swarm Health and Damage")]
     [SerializeField]
@@ -74,14 +74,10 @@ public class SwarmBehavior : MonoBehaviour
     /// <param name="other"> the Collider that entered the Swarm Collider </param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Bullet")
+        if (other.tag == "Player")
         {
-            int bulletDamage = other.gameObject.GetComponent<Bullet>().damage;
-            TakeDamage(bulletDamage);
-        }
-        else if (other.tag == "Player")
-        {
-            DealDamage(other.GetComponent<PlayerHealth>());
+            int damageDone = (int)Mathf.Round(units.Count * damagePerUnit);
+            PlayerHealth.singleton.TakeDamage(damageDone);
             StartCoroutine(DisperseSwarm());
         }
     }
@@ -91,7 +87,7 @@ public class SwarmBehavior : MonoBehaviour
     /// to the Swarm population and if so, reduces the Swarm population until it is proportional to the health again.
     /// </summary>
     /// <param name="damage"> amount to remove from Swarm health </param>
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         totalHealth -= damage;
 
@@ -110,17 +106,6 @@ public class SwarmBehavior : MonoBehaviour
             units.RemoveAt(removeUnitIndex);
             swarmPopulation--;
         }
-    }
-
-    /// <summary>
-    /// Calculates damage by rounding the product of active unit count times damage per unit and deals damage to player.
-    /// </summary>
-    /// <param name="player"> the PlayerHealth script belonging to the player </param>
-    private void DealDamage(PlayerHealth player)
-    {        
-        // Rounding is required because the product could be a value such as 0.9999, which would default to 0 even though a 1 is desired.
-        int damageDone = (int) Mathf.Round(units.Count * damagePerUnit);
-        player.TakeDamage(damageDone);
     }
 
     /// <summary>

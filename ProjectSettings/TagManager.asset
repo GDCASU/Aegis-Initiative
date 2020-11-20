@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet
   - Dialogue_Trigger
+  - Enemy
+  - BreakableEnvironment
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Bullets
+  - Player
   - 
   - 
   - 
