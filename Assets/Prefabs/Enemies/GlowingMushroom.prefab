@@ -110,7 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageRate: 0
-  healingOrbPrefab: {fileID: 0}
+  healingOrbPrefab: {fileID: 1899905668301600895, guid: efba051404745f24489dd23ef21db6af,
+    type: 3}
+  healingOrb: {fileID: 0}
 --- !u!108 &9186472727861796116
 Light:
   m_ObjectHideFlags: 0

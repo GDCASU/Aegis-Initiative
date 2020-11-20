@@ -20,8 +20,9 @@ public class HealingOrb : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("DESTROYYYYY");
-            other.gameObject.GetComponentInChildren<PlayerHealth>().Heal(healPoints);
+            Debug.Log("health before: " + other.GetComponent<PlayerHealth>().health);
+            other.gameObject.GetComponent<PlayerHealth>().Heal(healPoints);
+            Debug.Log("health after: " + other.GetComponent<PlayerHealth>().health);
             Destroy(gameObject);
         }
     }

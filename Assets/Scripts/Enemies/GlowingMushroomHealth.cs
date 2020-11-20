@@ -5,9 +5,9 @@ using UnityEngine;
 public class GlowingMushroomHealth : MonoBehaviour
 {
     int health;
-    public int damageRate;
+    private int damageRate;
     public GameObject healingOrbPrefab;
-    public GameObject healingOrb;
+    private GameObject healingOrb;
     private Transform orbSpawn;
     // Start is called before the first frame update
     void Start()
