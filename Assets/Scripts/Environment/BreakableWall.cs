@@ -2,46 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakableWall : MonoBehaviour
+public class BreakableWall : EnvironmentHealth
 {
     /* Notes:
-     * The wall object with this script must also have a collider component
+     * The wall object with this script must also have the tag "BreakableEnvironment" and a collider
      */
-    public int wallHealth = 10;
-    public int playerCollisionDamage= 5;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (wallHealth <= 0)
-        {
-            DestroyWall();
-        }
-
-    }
-
-    void DestroyWall()
+    public void DestroyWall()
     {
         //Debug.Log("Wall Destroyed");
         Destroy(gameObject);
     }
-    public void OnTriggerEnter(Collider other)
+    
+    public override void TakeDamage(int damage)
     {
-        if (other.gameObject.CompareTag("Player"))
+        //Debug.Log("bullet hit");
+        health -= damage;
+        if (health <= 0)
+        {
+            DestroyWall();
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Hit player");
-            //collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(playerCollisionDamage);
+            PlayerHealth.singleton.TakeDamage(collisionDamage);
 
             DestroyWall();
         }
 
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            //Debug.Log("Hit bullet");
-            wallHealth -= other.gameObject.GetComponent<Bullet>().damage;
-
-            Destroy(other.gameObject);
-        }
     }
 
 }
