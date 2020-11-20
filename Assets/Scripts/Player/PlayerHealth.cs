@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health;
-    void Start()
+    public static PlayerHealth singleton;
+    public int health = 50;
+    private void Awake()
     {
-        health = 50;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (health <= 0)
-        {
-            KillPlayer();
-        }
+        if (singleton == null)
+            singleton = this;
+        else
+            Destroy(gameObject);
     }
     public void TakeDamage(int damage)
     {
         health -= damage;
-        print(health);
+        if (health <= 0)
+        {
+            KillPlayer();
+        }
     }
     public void KillPlayer()
     {
