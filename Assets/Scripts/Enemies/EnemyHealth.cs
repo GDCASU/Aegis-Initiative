@@ -4,34 +4,11 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    int Health;
-    public int DamageRate;
-    // Start is called before the first frame update
-    void Start()
+    public int health;
+    public int collisionDamage;
+    public virtual void TakeDamage(int damage)
     {
-        Health = 50;
-        DamageRate = 2;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "PlayerBullet")
-        {
-            //Debug.Log(Health);
-            DamageRate = other.gameObject.GetComponent<Bullet>().damage;
-            takeDamage(DamageRate);            
-        }
-    }
-    public void takeDamage(int damage)
-    {
-        Health -= damage;
+        health -= damage;
+        if (health <= 0)Destroy(gameObject);
     }
 }

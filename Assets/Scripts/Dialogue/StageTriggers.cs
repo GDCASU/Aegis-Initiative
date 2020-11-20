@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
 using Cinemachine;
-public class Triggers : MonoBehaviour
+public class StageTriggers : MonoBehaviour
 {
     public Flowchart flow;
     bool start = true;
@@ -12,13 +12,12 @@ public class Triggers : MonoBehaviour
 
     //end of level variables
     private Vector3 endDirection;
-    private GameObject playerShip;
+    public GameObject playerShip;
     private bool levelFinished;
     private float endSpeed;
 
     private void Start()
     {
-        //playerShip = GameObject.FindGameObjectWithTag("Player"); its better to make sure that is set on the inspector rather than looking for it on the start
         levelFinished = false;
     }
 
@@ -49,6 +48,10 @@ public class Triggers : MonoBehaviour
             endSpeed = playerShip.GetComponent<ShipMovement>().forwardSpeed;
             endDirection = new Vector3(0, 0, endSpeed * Time.deltaTime);
             levelFinished = true;
+        }
+        if(other.gameObject.tag == "Dialogue_Trigger")
+        {
+            flow.ExecuteBlock(other.gameObject.name);
         }
     }
 
