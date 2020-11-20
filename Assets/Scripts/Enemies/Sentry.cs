@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sentry : Enemy
+public class Sentry : EnemyHealth
 {
     public GameObject bulletPrefab;
+    public Transform gun;
     private GameObject player;
-    private Transform gun;
     private float bulletSpeed = 0.25f;
 
     void Start()
     {
-        gun = transform.GetChild(1).transform;
         StartCoroutine("Shoot");
     }
 

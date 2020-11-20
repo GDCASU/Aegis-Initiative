@@ -6,10 +6,10 @@ public class SentryTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.name == "GameDollyCart")
+        if (collider.CompareTag("Player"))
         {
             transform.parent.GetComponent<Sentry>().enabled = true;
-            transform.parent.GetComponent<Sentry>().SetPlayer(collider.transform.GetChild(1).gameObject);
+            transform.parent.GetComponent<Sentry>().SetPlayer(collider.gameObject);
         }
     }
 }

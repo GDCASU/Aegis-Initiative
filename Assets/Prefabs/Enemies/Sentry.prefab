@@ -199,3 +199,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
+  gun: {fileID: 3757594435021601556}
