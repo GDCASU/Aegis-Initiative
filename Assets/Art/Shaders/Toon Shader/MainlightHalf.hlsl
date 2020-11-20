@@ -7,7 +7,7 @@ void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, ou
         Direction = half3(0.5, 0.5, 0);
         Color = 1;
         DistanceAtten = 1;
-        ShadowAtten = 1;
+        ShadowAtten = 1; 
 #else
 #if SHADOWS_SCREEN
             half4 clipPos = TransformWorldToHClip(WorldPos);
