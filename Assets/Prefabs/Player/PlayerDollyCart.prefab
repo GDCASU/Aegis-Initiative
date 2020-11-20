@@ -28,8 +28,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4495749601200906055}
-  - {fileID: 4174455376101029952}
-  - {fileID: 4174455377136776853}
   - {fileID: 5464987158666677754}
   - {fileID: 5464987159728112431}
   m_Father: {fileID: 4174455377501832923}
@@ -302,36 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCam: {fileID: 0}
   shipWorldReference: {fileID: 2808460844284537296}
---- !u!1 &4174455376101029955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4174455376101029952}
-  m_Layer: 0
-  m_Name: SpawnRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4174455376101029952
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4174455376101029955}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09099846, y: 0, z: 0.37001315}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6056206408388045791}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4174455376115141649
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,36 +797,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &4174455377136776852
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4174455377136776853}
-  m_Layer: 0
-  m_Name: SpawnLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4174455377136776853
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4174455377136776852}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.093, y: 0, z: 0.37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6056206408388045791}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4174455377501832922
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,9 +813,9 @@ GameObject:
   - component: {fileID: 601629049475976116}
   - component: {fileID: 2886750413520253739}
   - component: {fileID: 6821422713900445973}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -938,6 +876,7 @@ MonoBehaviour:
   spawnR: {fileID: 5464987158666677754}
   spawnL: {fileID: 5464987159728112431}
   alternate: 0
+  dolly: {fileID: 0}
 --- !u!114 &1077621587703858222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,6 +904,7 @@ MonoBehaviour:
   flow: {fileID: 0}
   timer: 3
   cart: {fileID: 4174455377587358401}
+  playerShip: {fileID: 0}
 --- !u!114 &601629049475976116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,6 +927,7 @@ MonoBehaviour:
   shakeDuration: 1
   dollyCart: {fileID: 4174455377587358401}
   shipCamera: {fileID: 4174455376411874717}
+  cameraScript: {fileID: 4174455376411874690}
   originalX_YPosition: {x: 0, y: 0}
 --- !u!135 &2886750413520253739
 SphereCollider:
@@ -1029,7 +970,7 @@ GameObject:
   - component: {fileID: 4174455377587358401}
   m_Layer: 0
   m_Name: PlayerDollyCart
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1078,7 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5464987158666677754}
   m_Layer: 0
-  m_Name: SpawnRight
+  m_Name: BulletSpawnRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,11 +1033,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5464987158666677753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09099846, y: 0, z: 0.37001315}
+  m_LocalPosition: {x: 0.091, y: 0, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6056206408388045791}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5464987159728112430
 GameObject:
@@ -1108,7 +1049,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5464987159728112431}
   m_Layer: 0
-  m_Name: SpawnLeft
+  m_Name: BulletSpawnLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1122,11 +1063,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5464987159728112430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.093, y: 0, z: 0.37}
+  m_LocalPosition: {x: -0.09299952, y: 0, z: 0.40000305}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6056206408388045791}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6013571340837069800
 GameObject:

@@ -27,7 +27,7 @@ public class SpeedTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            screenShake = other.GetComponentInChildren<ScreenShake>();
+            screenShake = other.GetComponent<ScreenShake>();
             StartCoroutine(AdjustSpeed());
         }
     }

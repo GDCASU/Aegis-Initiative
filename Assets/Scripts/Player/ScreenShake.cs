@@ -36,14 +36,9 @@ public class ScreenShake : MonoBehaviour
 
     public Transform shipCamera;  // camera following Player
 
-    protected CameraFollow cameraScript;  // script that has camera following Player
+    public CameraFollow cameraScript;  // script that has camera following Player
 
     public Vector2 originalX_YPosition;  // original X and Y positions of the ship camera before transition
-
-    private void Start()
-    {
-        cameraScript = shipCamera.GetComponent<CameraFollow>();
-    }
 
     public void ShakeCamera() //for script to call
     {

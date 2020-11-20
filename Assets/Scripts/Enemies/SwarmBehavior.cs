@@ -77,7 +77,7 @@ public class SwarmBehavior : EnemyHealth
         if (other.tag == "Player")
         {
             int damageDone = (int)Mathf.Round(units.Count * damagePerUnit);
-            other.GetComponentInChildren<PlayerHealth>().TakeDamage(damageDone);
+            PlayerHealth.singleton.TakeDamage(damageDone);
             StartCoroutine(DisperseSwarm());
         }
     }
@@ -107,8 +107,6 @@ public class SwarmBehavior : EnemyHealth
             swarmPopulation--;
         }
     }
-
-    
 
     /// <summary>
     /// Calls for each Swarm unit to disperse until disperse time is reached, at which point the Swarm game object's parent shall be destroyed.

@@ -1,9 +1,8 @@
-﻿using Fungus;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGrunt : Enemy
+public class EnemyGrunt : EnemyHealth
 {
     public GameObject bulletPrefab;
     public Animation animations;
@@ -25,6 +24,10 @@ public class EnemyGrunt : Enemy
         animationWaitTime = flyIn.length;
         shootingWaitTime = 5.0f;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Bullet")TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);        
+    }
     private void FixedUpdate()
     {
         animationWaitTime -= Time.deltaTime;
@@ -44,7 +47,7 @@ public class EnemyGrunt : Enemy
             Quaternion NewRot = transform.rotation;
             transform.rotation = OriginalRot;
             transform.rotation = Quaternion.Lerp(transform.rotation, NewRot, 5f * Time.deltaTime);
-            Debug.Log(1 - Mathf.Abs(Quaternion.Dot(transform.rotation, NewRot)));
+            //Debug.Log(1 - Mathf.Abs(Quaternion.Dot(transform.rotation, NewRot)));
             if (1 - Mathf.Abs(Quaternion.Dot(transform.rotation, NewRot)) < 0.0001f)
             {
                 shoot = false;
@@ -61,7 +64,6 @@ public class EnemyGrunt : Enemy
                 Destroy(gameObject);
         }
     }
-
     IEnumerator Shoot()
     {
         for (int i = 0; i < bulletCount; i++)

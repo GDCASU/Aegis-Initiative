@@ -20,6 +20,6 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-        if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+        if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnvironmentHealth>().TakeDamage(damage);
     }
 }

@@ -30,8 +30,7 @@ public class Asteroid : EnvironmentHealth
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-        if (collision.gameObject.tag == "Bullet") TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);
+        if (collision.gameObject.tag == "Player") PlayerHealth.singleton.TakeDamage(damage);
     }
     private void Update()
     {
