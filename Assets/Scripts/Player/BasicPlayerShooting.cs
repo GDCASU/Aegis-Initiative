@@ -36,7 +36,7 @@ public class BasicPlayerShooting : MonoBehaviour
                 if (timerTwo < 0)
                 {
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
-                    bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
+                    bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
                     timerTwo = fireRate;
                 }
                 timerTwo -= Time.deltaTime;
@@ -48,7 +48,7 @@ public class BasicPlayerShooting : MonoBehaviour
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
-                    bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
+                    bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
                     timerOne = fireRate;
                 }
             }          
