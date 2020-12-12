@@ -22,6 +22,12 @@ public class EnemyMovement : MonoBehaviour
         Right
     }
 
+    public enum MoveDirection
+    {
+        Towards = -1,
+        Away = 1
+    }
+
     [SerializeField]
     private WaveMovement waveMovement;
     [SerializeField]
@@ -47,6 +53,8 @@ public class EnemyMovement : MonoBehaviour
     private float hoverTimer = 3.0f; //how long ship stays
     [SerializeField]
     private LeaveDirection leaveDirection;
+    [SerializeField]
+    private MoveDirection moveDirection;
 
     private bool atPosMax;
 
@@ -152,7 +160,7 @@ public class EnemyMovement : MonoBehaviour
 
         if(time > 0)
         {
-            transform.Translate(new Vector3(x, y, shipSpeed) * Time.deltaTime); //ship movement wave or no wave
+            transform.Translate(new Vector3(x, y, shipSpeed * (int)moveDirection) * Time.deltaTime); //ship movement wave or no wave
             time -= Time.deltaTime;
         }
         else
@@ -190,7 +198,7 @@ public class EnemyMovement : MonoBehaviour
                 RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, -flyAwayRoll * 1.5f, 1f)); //0/-yaw/-roll
                 break;
         }
-        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * 3);
+        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * (int)moveDirection * 3);
     }
 
     void RotateShip(float x, float y, float z)
