@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoisonMushroom : MonoBehaviour
+public class PoisonMushroom : EnvironmentHealth
 {
     //Mushroom stats
-    public int health; //Mushroom health
-    public int damageNum; //amount of damage applied to Mushroom health
     public float lifeTimer; //timer for destroying the Mushroom
     private float generateTimer; //timer for generating the clouds
     private BoxCollider collider;
@@ -35,18 +33,12 @@ public class PoisonMushroom : MonoBehaviour
             cloud.Stop();
             cloud.Clear();
         }
-        else if (generateTimer <= 0)
+        else if (generateTimer < 0)
         {
             GeneratePoisonCloud();
             generateTimer = timeGenerate;
         }
 
-        //Start death sequence
-        if (health <= 0)
-        {
-            lifeTimer -= Time.deltaTime;
-            DestroyMushroom();
-        }
         if (lifeTimer < 0)
         {
             Destroy(gameObject);
@@ -59,21 +51,14 @@ public class PoisonMushroom : MonoBehaviour
         cloud.Play();
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         health -= damage;
-    }
-
-    //If player collides with the Mushroom, then destroy this gameObject
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        //Start death sequence
+        if (health <= 0)
         {
-            health = 0;
-        }
-        else if (collision.gameObject.tag == "Bullet")
-        {
-            TakeDamage(2);
+            lifeTimer -= Time.deltaTime;
+            DestroyMushroom();
         }
     }
 
