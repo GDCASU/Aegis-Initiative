@@ -49,7 +49,6 @@ public class PoisonMushroom : MonoBehaviour
         }
         if (lifeTimer < 0)
         {
-            Debug.Log("Destroy Mushroom object");
             Destroy(gameObject);
         }
     }
@@ -58,7 +57,6 @@ public class PoisonMushroom : MonoBehaviour
     {
         cloud.Simulate(0.0f, true, true); //reset particle system timer
         cloud.Play();
-        Debug.Log("Generate clouds");
     }
 
     public void TakeDamage(int damage)
@@ -71,7 +69,6 @@ public class PoisonMushroom : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Collided with Player");
             health = 0;
         }
         else if (collision.gameObject.tag == "Bullet")
@@ -92,10 +89,6 @@ public class PoisonMushroom : MonoBehaviour
     //Destroy mushroom when player collides or shoots it, then call GeneratePoisonCloud
     public void DestroyMushroom()
     {
-        // cloud.Stop();
-        // cloud.Clear();
-        // GeneratePoisonCloud();
-        // generateTimer = timeGenerate;
         collider.enabled = false;
         mesh.enabled = false;
     }
