@@ -88,8 +88,9 @@ public class EnemySpawner : MonoBehaviour
                         break;
                 }
                 spawnAdjustment = new Vector3(xSpawnAdjustment, ySpawnAdjustment, zSpawnAdjustment); //spawn adjustment vector to add to other.gameObject.transform.position
-                GameObject enemy = Instantiate(_enemies[x].enemyPrefab, other.gameObject.transform.parent);
-                enemy.transform.localPosition = spawnAdjustment;
+                _enemies[x].enemyPrefab.transform.parent = other.gameObject.transform.parent;
+                _enemies[x].enemyPrefab.transform.localPosition = spawnAdjustment;
+                _enemies[x].enemyPrefab.SetActive(true);
             }
         }
     }
