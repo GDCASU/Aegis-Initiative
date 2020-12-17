@@ -8,9 +8,19 @@ using UnityEngine;
 /// </summary>
 public class ProfileManager : MonoBehaviour
 {
+    public static ProfileManager instance;
+
     public ProfileData[] profiles;
     public int currentProfileIndex = 0;
     public int profileCount = 3;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+
+        DontDestroyOnLoad(this);
+    }
 
     private void Start()
     {
