@@ -69,6 +69,19 @@ public class ProfileManager : MonoBehaviour
         }
     }
 
+    public List<CopilotData> GetCurrentCopilotList()
+    {
+        return GetCopilotList(currentProfileIndex);
+    }
+
+    public List<CopilotData> GetCopilotList(int index)
+    {
+        if (index < profileCount && profiles[index] != null) 
+            return profiles[index].CopilotList;
+
+        return null;
+    }
+
     /// <summary>
     /// Method that creates some test profiles. This should not actually be used
     /// throughout the game
