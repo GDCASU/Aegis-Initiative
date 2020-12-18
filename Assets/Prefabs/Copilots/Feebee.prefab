@@ -76,7 +76,8 @@ MonoBehaviour:
     level: 0
     experience: 0
     isUnlocked: 0
-  portrait: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
+  portrait: {fileID: 21300000, guid: 9ce6cf540ce2ece4dacce467ace3bca4, type: 3}
+  fullBody: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
   active: Dodge Roll
   activeDescription: Dodge Roll w/ Perfect Frame
   activeIcon: {fileID: 21300000, guid: 8d3c80dd0c2904cdbb745cf481348a76, type: 3}

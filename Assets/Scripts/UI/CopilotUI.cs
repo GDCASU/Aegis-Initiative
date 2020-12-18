@@ -14,6 +14,7 @@ public class CopilotUI : MonoBehaviour
     [Header("Active")]
     #region Active
     public Text activeDescription;
+    public Text activeName;
     public Button activeButton;
     public Text active;
     public Image activeIcon;
@@ -23,6 +24,7 @@ public class CopilotUI : MonoBehaviour
     [Header("Passive")]
     #region Passive
     public Text passiveDescription;
+    public Text passiveName;
     public Button passiveButton;
     public Text passive;
     public Image passiveIcon;
@@ -32,7 +34,8 @@ public class CopilotUI : MonoBehaviour
     [Header("Layout")]
     #region Layout
     public Button start;
-    public Image portrait;
+    public Text selectionName;
+    public Image fullBody;
     public GameObject copilotUI;
     public GameObject goBackPrompt;
     public GameObject selectionPanel;
@@ -52,6 +55,10 @@ public class CopilotUI : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    /// <summary>
+    /// Method used to create UI buttons for all the character found in a saved file and adds them to the ScrollViewContent
+    /// </summary>
+    /// <returns></returns>
     private void Start()
     {
         foreach (CopilotData copilot in ProfileManager.instance.GetCurrentCopilotList())
@@ -75,71 +82,122 @@ public class CopilotUI : MonoBehaviour
         }
         start.interactable = false;
     }
-    public void CharacterSelected(CopilotInfo copilot)
+    /// <summary>
+    /// Method used to pop up the selection panel and give a characters info as well as allow the player to choose their passive and active abilities.  Called  by a Unity UI button
+    /// </summary>
+    /// <param name="copilotInfo">The CopilotInfo of the selected character</param>
+    public void CharacterSelected(CopilotInfo copilotInfo)
     {
-        selected = copilot;
+        selected = copilotInfo;
+        selectionName.text = selected.copilotData.name;
         if (!selectionPanel.activeSelf) selectionPanel.SetActive(true);
+        activeName.text = selected.active;
         activeDescription.text = selected.activeDescription;
+        passiveName.text = selected.passive;
         passiveDescription.text = selected.passiveDescription;
-        portrait.sprite = selected.portrait;
-        if (selected.passive==passive.text)
-        {
-            activeButton.interactable = false;
-        }
-        else activeButton.interactable = true;
-        if (selected.active==active.text)
-        {
-            passiveButton.interactable = false;
-        }
-        else passiveButton.interactable = true;
-
+        fullBody.sprite = selected.fullBody;
+        //if (!(activeSelected && passiveSelected))
+        //{
+        //    if (selected.passive == passive.text)                     //Ensures that if a characters active/passive is selected their respective passve/active can't be selected as well
+        //    {
+        //        activeButton.interactable = false;
+        //    }
+        //    else activeButton.interactable = true;
+        //    if (selected.active == active.text)
+        //    {
+        //        passiveButton.interactable = false;
+        //    }
+        //    else passiveButton.interactable = true;
+        //}
     }
+    /// <summary>
+    /// Method used to assign the currently selected copilot's passive ability, this blockes their active from being able to be chosen as well. Called  by a Unity UI button
+    /// </summary>
     public void SelectPassive()
     {
+        if (selected.active == Copilots.singleton.active) ClearSelectedCopilotAbilities();
         passive.text = selected.passive;
         passiveIcon.sprite = selected.passiveIcon;
         Copilots.singleton.passive = selected.passive;
-        activeButton.interactable = false;
+        //activeButton.interactable = false;
         passiveSelected = true;
-        if (activeSelected && passiveSelected) start.interactable = true;
+        if (activeSelected && passiveSelected)
+        {
+            start.interactable = true;
+            //activeButton.interactable = true;
+            //passiveButton.interactable = true;
+        }
     }
+    /// <summary>
+    /// Method used to assign the currently selected copilot's active ability, this blockes their passive from being able to be chosen as well.  Called  by a Unity UI button
+    /// </summary>
     public void SelectActive()
     {
+        if (selected.passive == Copilots.singleton.passive) ClearSelectedCopilotAbilities();
         active.text = selected.active;
         activeIcon.sprite = selected.activeIcon;
         Copilots.singleton.active = selected.active;
-        passiveButton.interactable = false;
+        //passiveButton.interactable = false;
         activeSelected = true;
-        if (activeSelected && passiveSelected) start.interactable = true;
+        if (activeSelected && passiveSelected) 
+        {
+            start.interactable = true;
+            //activeButton.interactable = true;
+            //passiveButton.interactable = true;
+        } 
     }
+    /// <summary>
+    /// Method used to start the selected scene after selecting a active an a passive.  Called  by a Unity UI button
+    /// </summary>
     public void StartGame()
     {
         SceneManager.LoadScene(sceneToLoad,LoadSceneMode.Single);
     }
+    /// <summary>
+    /// Method used to pop up the "Are you sure?" prompt before returning to the Hub UI.  Called  by a Unity UI button
+    /// </summary>
     public void GoBackToHubPrompt()
     {
         goBackPrompt.SetActive(true);
     }
+    /// <summary>
+    /// Method used to go back to the Hub UI and resetting the CopilotsUI to their initial state.  Called  by a Unity UI button
+    /// </summary>
     public void GoBackToHubPromptConfirm()
     {
         selectionPanel.SetActive(false);
+        selectionName.text = "";
+        activeName.text = "";
+        activeDescription.text = "";
+        passiveName.text = "";
+        passiveDescription.text = "";
         activeButton.interactable = true;
         passiveButton.interactable = true;
-        passiveSelected = false;
-        activeSelected = false;
-        active.text = "";
-        passive.text = "";
-        activeDescription.text = "";
-        passiveDescription.text = "";
-        portrait.sprite = null;
-        passiveIcon.sprite = null;
-        activeIcon.sprite = null;
+        ClearSelectedCopilotAbilities();
+        fullBody.sprite = null;
         selected = null;
-        goBackPrompt.SetActive(false);
         copilotUI.SetActive(false);
+        goBackPrompt.SetActive(false);
     }
+    /// <summary>
+    /// Method used to ge back to the CopilotUI and turn off the "Are you sure?" prompt.  Called  by a Unity UI button
+    /// </summary>
     public void GoBackToHubPromptCancel() 
     {
         goBackPrompt.SetActive(false);
+    }
+    /// <summary>
+    /// Method used to reset the selected active and passive
+    /// </summary>
+    public void ClearSelectedCopilotAbilities()
+    {
+        Copilots.singleton.active = "";
+        Copilots.singleton.passive = "";
+        active.text = "Active Role";
+        passive.text = "Passive Role";
+        passiveSelected = false;
+        activeSelected = false;
+        passiveIcon.sprite = null;
+        activeIcon.sprite = null;
     }
 }

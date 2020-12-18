@@ -69,8 +69,9 @@ MonoBehaviour:
     name: Daddy Long Legs
     level: 0
     experience: 0
-    isUnlocked: 0
+    isUnlocked: 1
   portrait: {fileID: 21300000, guid: 57c4879a38ac2cc4fbefe2c0a918aac6, type: 3}
+  fullBody: {fileID: 21300000, guid: ed14cc18e1e37449eb670f2613314102, type: 3}
   active: longLegs
   activeDescription: you can use DaddyLongLegs long legs to stomp on enemies far
     away

@@ -9,6 +9,7 @@ public class CopilotInfo : MonoBehaviour
     public Character character;
     public CopilotData copilotData;
     public Sprite portrait;
+    public Sprite fullBody;
 
     [Header("Active")]
     #region Active
@@ -27,6 +28,7 @@ public class CopilotInfo : MonoBehaviour
     {
         character = copilotInfo.character;
         copilotData = copilotInfo.copilotData;
+        fullBody = copilotInfo.fullBody;
         portrait = copilotInfo.portrait;
 
         active = copilotInfo.active;
