@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class CopilotButton : MonoBehaviour
 {
-    CopilotInfo copilot;
-    private Image portrait;
+    public CopilotInfo copilotInfo;
+    public Image portrait;
     public Button button;
-    public void Select()=> CopilotUI.singleton.CharacterSelected(copilot);
+    public void Select()=> CopilotUI.singleton.CharacterSelected(copilotInfo);
 
     public void SetButton()
     {
-        portrait.sprite = copilot.portrait;
-        if (!copilot.copilotData.isUnlocked) button.interactable = false;
+        portrait.sprite = copilotInfo.portrait;
+        if (!copilotInfo.copilotData.isUnlocked) button.interactable = false;
     }
 
 }

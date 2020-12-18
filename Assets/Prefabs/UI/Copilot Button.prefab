@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1975206263503260821}
   - component: {fileID: 1975206263503260822}
   - component: {fileID: 6506135016220417607}
+  - component: {fileID: -9093253417283374367}
   m_Layer: 0
   m_Name: Copilot Button
   m_TagString: Untagged
@@ -239,7 +240,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644e953077f85f34bb2de102ba0aba06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  copilotInfo: {fileID: -9093253417283374367}
+  portrait: {fileID: 1975206264145488858}
   button: {fileID: 1975206263503260821}
+--- !u!114 &-9093253417283374367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975206263503260816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe15a552c635134580ba4fcafc83169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
+  copilotData:
+    name: 
+    level: 0
+    experience: 0
+    isUnlocked: 0
+  portrait: {fileID: 0}
+  active: 
+  activeDescription: 
+  activeIcon: {fileID: 0}
+  passive: 
+  passiveDescription: 
+  passiveIcon: {fileID: 0}
 --- !u!1 &1975206264145488852
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

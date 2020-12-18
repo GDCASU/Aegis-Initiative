@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2375490512028081143}
   - component: {fileID: -5133579134540755455}
   m_Layer: 0
-  m_Name: DaddyLonglegs
+  m_Name: Daddy Long Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: DaddyLongLegs
+  nameText: Daddy Long Legs
   nameColor: {r: 0, g: 0, b: 0, a: 1}
   soundEffect: {fileID: 0}
   portraits:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 2375490512028081143}
   copilotData:
-    name: DaddyLongLegs
+    name: Daddy Long Legs
     level: 0
     experience: 0
     isUnlocked: 0

@@ -42,7 +42,8 @@ public class CopilotUI : MonoBehaviour
 
     [Header("Copilot Prefabs")]
     #region Copilot Prefabs
-    public GameObject phoebePrefab;
+    public GameObject feebeePrefab;
+    public GameObject daddyLongLegs;
     #endregion
     private void Awake()
     {
@@ -53,21 +54,25 @@ public class CopilotUI : MonoBehaviour
     }
     private void Start()
     {
-        //foreach (CopilotData copilot in ProfileManager.instance.GetCurrentCopilotList())
-        //{
-        //    GameObject tempCopilotButton = Instantiate(copilotButtonPrefab);
-        //    CopilotInfo tempCopilotInfo = tempCopilotButton.GetComponent<CopilotInfo>();
-        //    switch (tempCopilotInfo.copilotData.name)
-        //    {
-        //        case "phoebe":
-        //            tempCopilotInfo = phoebePrefab.GetComponent<CopilotInfo>();
-        //            break;
-
-        //    }
-        //    tempCopilotInfo.copilotData = copilot;
-        //    tempCopilotButton.GetComponent<CopilotButton>().SetButton();
-        //    tempCopilotButton.transform.parent = scrollViewContent.transform;
-        //}
+        foreach (CopilotData copilot in ProfileManager.instance.GetCurrentCopilotList())
+        {
+            GameObject tempCopilotButton = Instantiate(copilotButtonPrefab);
+            CopilotInfo tempCopilotInfo = tempCopilotButton.GetComponent<CopilotButton>().copilotInfo;
+            switch (copilot.name)
+            {
+                case "Feebee": 
+                    feebeePrefab.GetComponent<CopilotInfo>().copilotData = copilot;
+                    tempCopilotInfo.CopyInfo(feebeePrefab.GetComponent<CopilotInfo>());
+                    break;
+                case "Daddy Long Legs": 
+                    daddyLongLegs.GetComponent<CopilotInfo>().copilotData = copilot;
+                    tempCopilotInfo.CopyInfo(daddyLongLegs.GetComponent<CopilotInfo>());
+                    break;
+            }
+            tempCopilotButton.GetComponent<CopilotButton>().SetButton();
+            tempCopilotButton.transform.SetParent(scrollViewContent.transform);
+            tempCopilotButton.transform.localScale = Vector3.one;
+        }
         start.interactable = false;
     }
     public void CharacterSelected(CopilotInfo copilot)
@@ -81,10 +86,12 @@ public class CopilotUI : MonoBehaviour
         {
             activeButton.interactable = false;
         }
-        if(selected.active==active.text)
+        else activeButton.interactable = true;
+        if (selected.active==active.text)
         {
             passiveButton.interactable = false;
         }
+        else passiveButton.interactable = true;
 
     }
     public void SelectPassive()
@@ -128,6 +135,7 @@ public class CopilotUI : MonoBehaviour
         passiveIcon.sprite = null;
         activeIcon.sprite = null;
         selected = null;
+        goBackPrompt.SetActive(false);
         copilotUI.SetActive(false);
     }
     public void GoBackToHubPromptCancel() 

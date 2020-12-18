@@ -22,5 +22,20 @@ public class CopilotInfo : MonoBehaviour
     public string passive;
     public string passiveDescription;
     public Sprite passiveIcon;
+
+    public void CopyInfo(CopilotInfo copilotInfo)
+    {
+        character = copilotInfo.character;
+        copilotData = copilotInfo.copilotData;
+        portrait = copilotInfo.portrait;
+
+        active = copilotInfo.active;
+        activeDescription = copilotInfo.activeDescription;
+        activeIcon = copilotInfo.activeIcon;
+
+        passive = copilotInfo.passive;
+        passiveDescription = copilotInfo.passiveDescription;
+        passiveIcon = copilotInfo.passiveIcon;
+    }
     #endregion
 }

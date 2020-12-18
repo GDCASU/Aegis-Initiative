@@ -88,13 +88,10 @@ public class ProfileManager : MonoBehaviour
     /// </summary>
     private void TestSaveProfiles()
     {
-        CreateProfile(0, "Nick");
-        profiles[0].AddCopilot(new CopilotData("Feebee", 10, 50, true));
-        CreateProfile(2, "Christian");
-        profiles[2].AddCopilot(new CopilotData("Connor", 4, 3, true));
-        profiles[2].AddCopilot(new CopilotData("Daddy Long Legs"));
-        profiles[2].AddCopilot(new CopilotData("Daniel"));
+        CreateProfile(0, "UITest");
+        profiles[0].AddCopilot(new CopilotData("Feebee", 4, 3, true));
+        profiles[0].AddCopilot(new CopilotData("Daddy Long Legs",0,0,true));
         SaveCurrentProfile();
-        SaveProfile(2);
+        SaveProfile(0);
     }
 }
