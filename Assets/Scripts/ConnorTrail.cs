@@ -18,8 +18,8 @@ public class ConnorTrail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.RotateAround(pos1.position, Vector3.forward, Time.deltaTime * speed);
-        transform.position += transform.up * Time.deltaTime * speed * -1;
+        transform.RotateAround(pos1.position, Vector3.forward, Time.deltaTime * speed);
+        //transform.position += transform.up * Time.deltaTime * speed * -1;
         
     }
 }
