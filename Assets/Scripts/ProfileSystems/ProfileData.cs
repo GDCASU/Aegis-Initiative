@@ -31,7 +31,14 @@ public class ProfileData
      */
     public int profileID;
     public string name;
-    private List<CopilotData> copilotList;
+    public List<CopilotData> CopilotList
+    {
+        get
+        {
+            return _copilotList;
+        }
+    }
+    private List<CopilotData> _copilotList;
     public Dictionary<int, int> stageScores;
     public int currentStage;
     public int newGamePlusCount;
@@ -43,7 +50,7 @@ public class ProfileData
     {
         this.profileID = id;
         this.name = name;
-        this.copilotList = new List<CopilotData>();
+        this._copilotList = new List<CopilotData>();
         this.stageScores = new Dictionary<int, int>();
         this.currentStage = 0;
         this.newGamePlusCount = 0;
@@ -57,7 +64,7 @@ public class ProfileData
     {
         this.profileID = id;
         this.name = name;
-        this.copilotList = copilotList;
+        this._copilotList = copilotList;
         this.stageScores = stageScores;
         this.currentStage = currentStage;
         this.newGamePlusCount = newGamePlusCount;
@@ -71,10 +78,10 @@ public class ProfileData
     /// <returns>True if added and false otherwise</returns>
     public bool AddCopilot(CopilotData newPilot)
     {
-        foreach (CopilotData pilot in copilotList)
+        foreach (CopilotData pilot in _copilotList)
             if (pilot.name.Equals(newPilot.name)) return false;
 
-        copilotList.Add(newPilot);
+        _copilotList.Add(newPilot);
         return true;
     }
 
@@ -86,7 +93,7 @@ public class ProfileData
     /// <returns>The found copilot object</returns>
     public CopilotData GetCopilot(string pilotName)
     {
-        foreach(CopilotData pilot in copilotList)
+        foreach(CopilotData pilot in _copilotList)
             if (pilot.name.Equals(pilotName)) return pilot;
 
         return null;
