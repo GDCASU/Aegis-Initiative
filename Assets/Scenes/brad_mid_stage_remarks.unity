@@ -125,6 +125,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &57328763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2375490512028081142, guid: 0be8805bb244f1b40a80f7a3b1928761,
+    type: 3}
+  m_PrefabInstance: {fileID: 1931184064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &57328766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57328763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8d92a5c0771f9499884ed79f6e1255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 3797595797109940604, guid: 8e9a44119b5ebf044b52309c3bab1706,
+    type: 3}
+  takeDamageRemarks:
+  - Watch it!
+  - Woah!
+  collectPickUpsRemarks: []
+  defeatEnemiesRemarks: []
+  lostStageRemarks: []
 --- !u!1 &313761473
 GameObject:
   m_ObjectHideFlags: 1
@@ -429,6 +455,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0bbe22c246e4c78ad8e9816cbae9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &759505839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4174455377501832922, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+    type: 3}
+  m_PrefabInstance: {fileID: 4174455376537405810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &759505848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759505839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51560f3e3292f5844bb726502d955c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 
+  passive: 
 --- !u!1 &892209652
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +524,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1931184064}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 57328763}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
@@ -554,7 +600,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0.72, z: 0}
 --- !u!114 &1222312400 stripped
 MonoBehaviour:
@@ -658,7 +704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1261523452 stripped
 GameObject:
@@ -1111,7 +1157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1519830018
 PrefabInstance:
@@ -1261,7 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1222312400}
+  selectedFlowchart: {fileID: 0}
 --- !u!4 &1649699271
 Transform:
   m_ObjectHideFlags: 1
@@ -1321,7 +1367,7 @@ PrefabInstance:
     - target: {fileID: 2475127396643024341, guid: cb49a5a1c4b5fc144afce012a06c619a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2475127396643024341, guid: cb49a5a1c4b5fc144afce012a06c619a,
         type: 3}
@@ -1549,7 +1595,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0.72, z: 0}
 --- !u!1001 &1888024049
 PrefabInstance:
@@ -1630,6 +1676,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50043580e70103a439bf70f5004c64d8, type: 3}
+--- !u!1 &1905190627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3756593794650973797, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+    type: 3}
+  m_PrefabInstance: {fileID: 4174455376537405810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1931184064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1697,6 +1749,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DaddyLonglegs
       objectReference: {fileID: 0}
+    - target: {fileID: 2375490512028081143, guid: 0be8805bb244f1b40a80f7a3b1928761,
+        type: 3}
+      propertyPath: portraitsFace
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be8805bb244f1b40a80f7a3b1928761, type: 3}
 --- !u!1001 &1945909498
@@ -1749,7 +1806,7 @@ PrefabInstance:
     - target: {fileID: 1815542136878888666, guid: 1fb76709e2eafec44bdf707d2ce70e11,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1815542136878888666, guid: 1fb76709e2eafec44bdf707d2ce70e11,
         type: 3}
@@ -2049,7 +2106,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -2148,7 +2205,7 @@ PrefabInstance:
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
@@ -2166,6 +2223,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358407, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: flow
+      value: 
+      objectReference: {fileID: 1222312400}
+    - target: {fileID: 4858473898675966920, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: playerShip
+      value: 
+      objectReference: {fileID: 1905190627}
+    - target: {fileID: 4858473898675966920, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: flow
       value: 
