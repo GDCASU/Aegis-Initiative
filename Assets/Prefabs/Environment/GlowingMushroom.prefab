@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9186472727861796116}
   m_Layer: 0
   m_Name: GlowingMushroom
-  m_TagString: Untagged
+  m_TagString: BreakableEnvironment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9186472727861796119}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba24eef5c9fbf84ea37eccc1e8981f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 30
+  collisionDamage: 0
   healingOrbPrefab: {fileID: 1899905668301600895, guid: efba051404745f24489dd23ef21db6af,
     type: 3}
 --- !u!108 &9186472727861796116
