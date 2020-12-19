@@ -8,9 +8,19 @@ using UnityEngine;
 /// </summary>
 public class ProfileManager : MonoBehaviour
 {
+    public static ProfileManager instance;
+
     public ProfileData[] profiles;
     public int currentProfileIndex = 0;
     public int profileCount = 3;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+
+        DontDestroyOnLoad(this);
+    }
 
     private void Start()
     {
@@ -57,6 +67,19 @@ public class ProfileManager : MonoBehaviour
         {
             profiles[x] = SaveManager.LoadContent(string.Format(ProfileData.profileFilepathTemplate, x)) as ProfileData;
         }
+    }
+
+    public List<CopilotData> GetCurrentCopilotList()
+    {
+        return GetCopilotList(currentProfileIndex);
+    }
+
+    public List<CopilotData> GetCopilotList(int index)
+    {
+        if (index < profileCount && profiles[index] != null) 
+            return profiles[index].CopilotList;
+
+        return null;
     }
 
     /// <summary>
