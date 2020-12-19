@@ -9,11 +9,11 @@ public class GlowingMushroom : EnvironmentHealth
     // Update is called once per frame
     public override void TakeDamage(int damage)
     {
-        health -= damage*(2);
+        health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
             Instantiate(healingOrbPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 }
