@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth singleton;
     public int health = 50;
+    public int maxHealth = 60;
     private void Awake()
     {
         if (singleton == null)
@@ -20,6 +21,12 @@ public class PlayerHealth : MonoBehaviour
         {
             KillPlayer();
         }
+    }
+
+    public void Heal(int heal)
+    {
+        if (health + heal > maxHealth) health = maxHealth;
+        else health += heal;        
     }
     public void KillPlayer()
     {
