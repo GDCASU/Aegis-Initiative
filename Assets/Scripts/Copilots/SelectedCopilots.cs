@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Copilots : MonoBehaviour
+public class SelectedCopilots : MonoBehaviour
 {
-    public static Copilots singleton;
+    public static SelectedCopilots singleton;
     public string active;
     public string passive;
     private void Awake()

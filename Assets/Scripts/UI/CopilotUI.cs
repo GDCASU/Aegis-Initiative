@@ -115,10 +115,10 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void SelectPassive()
     {
-        if (selected.active == Copilots.singleton.active) ClearSelectedCopilotAbilities();
+        if (selected.active == SelectedCopilots.singleton.active) ClearSelectedCopilotAbilities();
         passive.text = selected.passive;
         passiveIcon.sprite = selected.passiveIcon;
-        Copilots.singleton.passive = selected.passive;
+        SelectedCopilots.singleton.passive = selected.passive;
         //activeButton.interactable = false;
         passiveSelected = true;
         if (activeSelected && passiveSelected)
@@ -133,10 +133,10 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void SelectActive()
     {
-        if (selected.passive == Copilots.singleton.passive) ClearSelectedCopilotAbilities();
+        if (selected.passive == SelectedCopilots.singleton.passive) ClearSelectedCopilotAbilities();
         active.text = selected.active;
         activeIcon.sprite = selected.activeIcon;
-        Copilots.singleton.active = selected.active;
+        SelectedCopilots.singleton.active = selected.active;
         //passiveButton.interactable = false;
         activeSelected = true;
         if (activeSelected && passiveSelected) 
@@ -191,8 +191,8 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void ClearSelectedCopilotAbilities()
     {
-        Copilots.singleton.active = "";
-        Copilots.singleton.passive = "";
+        SelectedCopilots.singleton.active = "";
+        SelectedCopilots.singleton.passive = "";
         active.text = "Active Role";
         passive.text = "Passive Role";
         passiveSelected = false;
