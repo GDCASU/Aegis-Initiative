@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2375490512028081140}
   - component: {fileID: 2375490512028081143}
+  - component: {fileID: -5133579134540755455}
   m_Layer: 0
-  m_Name: DaddyLonglegs
+  m_Name: Daddy Long Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: DaddyLongLegs
+  nameText: Daddy Long Legs
   nameColor: {r: 0, g: 0, b: 0, a: 1}
   soundEffect: {fileID: 0}
   portraits:
@@ -51,3 +52,31 @@ MonoBehaviour:
   portraitsFace: 0
   setSayDialog: {fileID: 0}
   description: A long and stretched out boi
+--- !u!114 &-5133579134540755455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375490512028081142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe15a552c635134580ba4fcafc83169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 2375490512028081143}
+  copilotData:
+    name: Daddy Long Legs
+    level: 0
+    experience: 0
+    isUnlocked: 1
+  portrait: {fileID: 21300000, guid: 57c4879a38ac2cc4fbefe2c0a918aac6, type: 3}
+  fullBody: {fileID: 21300000, guid: ed14cc18e1e37449eb670f2613314102, type: 3}
+  active: longLegs
+  activeDescription: you can use DaddyLongLegs long legs to stomp on enemies far
+    away
+  activeIcon: {fileID: 21300000, guid: f2e901e070fff48cda67e3f446d80e79, type: 3}
+  passive: stretch
+  passiveDescription: whenever you get closed to englose areas you will stretch down
+    to avoid volliding with them
+  passiveIcon: {fileID: 21300000, guid: d18d934d212d442ee90406fd28e6eef6, type: 3}
