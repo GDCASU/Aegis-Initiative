@@ -28,10 +28,6 @@ public class Asteroid : EnvironmentHealth
             Random.Range(-velocityRange.x, velocityRange.y),
             Random.Range(-velocityRange.x, velocityRange.y), ForceMode.Acceleration);
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player") PlayerHealth.singleton.TakeDamage(damage);
-    }
     private void Update()
     {
         if (Mathf.Abs(transform.position.x - transform.parent.position.x) > bc.size.x * bc.gameObject.transform.localScale.x
