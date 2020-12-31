@@ -13,8 +13,8 @@ public class CopilotButton : MonoBehaviour
     public void SetButton()
     {
         portrait.sprite = copilotInfo.portrait;
-        name = copilotInfo.copilotData.name + "Button";
-        GetComponentInChildren<Text>().text = copilotInfo.copilotData.name;
+        name = copilotInfo.copilotData.name.ToString() + "Button";
+        GetComponentInChildren<Text>().text = copilotInfo.copilotData.name.ToString();
         if (!copilotInfo.copilotData.isUnlocked) button.interactable = false;
     }
 }

@@ -4,23 +4,49 @@ using UnityEngine;
 
 public class SelectedCopilots : MonoBehaviour
 {
-    public static SelectedCopilots singleton;
-    public string active;
-    public string passive;
-    public CopilotPassiveMechanic pass;
-    public CopilotActiveMechanic act;
-    private void Awake()
+    public CopilotPassiveMechanic passive;
+    public CopilotActiveMechanic active;
+    void Start()
     {
-        if (singleton == null)
-            singleton = this;
-        else
-            Destroy(gameObject);
-    }
-    private void Start()
-    {
-        active = "";
-        passive = "";
-        //gameObject.AddComponent(GameManager.singleton.passive.GetType());
-        //gameObject.AddComponent(GameManager.singleton.active.GetType());
+        gameObject.AddComponent(GameManager.singleton.active.GetType());
+        gameObject.AddComponent(GameManager.singleton.passive.GetType());
+        active = GetComponent<CopilotActiveMechanic>();
+        passive = GetComponent<CopilotPassiveMechanic>();
+        active.CopyInfo(GameManager.singleton.active);
+        passive.CopyInfo(GameManager.singleton.passive);
+        //switch (GameManager.singleton.passive.typeOfMechanic)
+        //{
+        //    case GameManager.TypeOfMechanic.Action:
+        //        break;
+        //    case GameManager.TypeOfMechanic.AOE:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Buff:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Create:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Event:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Transformative:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Vision:
+        //        break;
+        //}
+        //switch (GameManager.singleton.active.typeOfMechanic)
+        //{
+        //    case GameManager.TypeOfMechanic.Action:
+        //        break;
+        //    case GameManager.TypeOfMechanic.AOE:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Buff:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Create:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Event:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Transformative:
+        //        break;
+        //    case GameManager.TypeOfMechanic.Vision:
+        //        break;
+        //}
     }
 }

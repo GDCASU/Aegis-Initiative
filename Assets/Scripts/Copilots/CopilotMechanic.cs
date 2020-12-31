@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CopilotMechanic : MonoBehaviour
 {
-    public GameManager.TypeOfMechanic typeOfMechanic;
+    public TypeOfMechanic typeOfMechanic;
     public string abilityName;
     public string description;
     public Sprite icon;
@@ -16,9 +16,4 @@ public class CopilotMechanic : MonoBehaviour
         description = copilotMechanic.description;
         icon = copilotMechanic.icon;
     }
-    public void updateMechanic()
-    { 
-    
-    }
-
 }
