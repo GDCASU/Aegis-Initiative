@@ -7,23 +7,26 @@ using Fungus;
 public class CopilotInfo : MonoBehaviour
 {
     public Character character;
+    public GameManager.Copilots copilot;
     public CopilotData copilotData;
     public Sprite portrait;
     public Sprite fullBody;
 
     [Header("Active")]
     #region Active
-    public string active;
-    public string activeDescription;
-    public Sprite activeIcon;
+    public CopilotActiveMechanic copilotActive;
+    //public string active;
+    //public string activeDescription;
+    //public Sprite activeIcon;
     #endregion
 
     [Header("Passive")]
     #region Passive
-    public string passive;
-    public string passiveDescription;
-    public Sprite passiveIcon;
-
+    public CopilotPassiveMechanic copilotPassive;
+    //public string passive;
+    //public string passiveDescription;
+    //public Sprite passiveIcon;
+    #endregion
     public void CopyInfo(CopilotInfo copilotInfo)
     {
         character = copilotInfo.character;
@@ -31,13 +34,7 @@ public class CopilotInfo : MonoBehaviour
         fullBody = copilotInfo.fullBody;
         portrait = copilotInfo.portrait;
 
-        active = copilotInfo.active;
-        activeDescription = copilotInfo.activeDescription;
-        activeIcon = copilotInfo.activeIcon;
-
-        passive = copilotInfo.passive;
-        passiveDescription = copilotInfo.passiveDescription;
-        passiveIcon = copilotInfo.passiveIcon;
+        copilotActive.CopyInfo(copilotInfo.copilotActive);
+        copilotPassive.CopyInfo(copilotInfo.copilotPassive);
     }
-    #endregion
 }

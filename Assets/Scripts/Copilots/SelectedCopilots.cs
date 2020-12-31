@@ -7,6 +7,8 @@ public class SelectedCopilots : MonoBehaviour
     public static SelectedCopilots singleton;
     public string active;
     public string passive;
+    public CopilotPassiveMechanic pass;
+    public CopilotActiveMechanic act;
     private void Awake()
     {
         if (singleton == null)
@@ -18,5 +20,7 @@ public class SelectedCopilots : MonoBehaviour
     {
         active = "";
         passive = "";
+        //gameObject.AddComponent(GameManager.singleton.passive.GetType());
+        //gameObject.AddComponent(GameManager.singleton.active.GetType());
     }
 }

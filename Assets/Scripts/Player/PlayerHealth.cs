@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth singleton;
-    public int health = 50;
+    public float health = 50;
+    public float defense;
     private void Awake()
     {
         if (singleton == null)
@@ -15,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        health -= (float)damage*(1-defense);
         if (health <= 0)
         {
             KillPlayer();

@@ -17,5 +17,4 @@ public class CopilotButton : MonoBehaviour
         GetComponentInChildren<Text>().text = copilotInfo.copilotData.name;
         if (!copilotInfo.copilotData.isUnlocked) button.interactable = false;
     }
-
 }

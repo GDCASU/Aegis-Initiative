@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2375490512028081140}
   - component: {fileID: 2375490512028081143}
   - component: {fileID: -5133579134540755455}
+  - component: {fileID: 8537377698316233864}
+  - component: {fileID: 1237420779075435677}
   m_Layer: 0
   m_Name: Daddy Long Legs
   m_TagString: Untagged
@@ -65,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 2375490512028081143}
+  copilot: 0
   copilotData:
     name: Daddy Long Legs
     level: 0
@@ -72,11 +75,37 @@ MonoBehaviour:
     isUnlocked: 1
   portrait: {fileID: 21300000, guid: 57c4879a38ac2cc4fbefe2c0a918aac6, type: 3}
   fullBody: {fileID: 21300000, guid: ed14cc18e1e37449eb670f2613314102, type: 3}
-  active: longLegs
-  activeDescription: you can use DaddyLongLegs long legs to stomp on enemies far
-    away
-  activeIcon: {fileID: 21300000, guid: f2e901e070fff48cda67e3f446d80e79, type: 3}
-  passive: stretch
-  passiveDescription: whenever you get closed to englose areas you will stretch down
-    to avoid volliding with them
-  passiveIcon: {fileID: 21300000, guid: d18d934d212d442ee90406fd28e6eef6, type: 3}
+  copilotActive: {fileID: 8537377698316233864}
+  copilotPassive: {fileID: 1237420779075435677}
+--- !u!114 &8537377698316233864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375490512028081142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5851b2d5aae252242be7099990f4042b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 2
+  abilityName: Long Legs
+  description: step on enemies with long legs
+  icon: {fileID: 21300000, guid: 65cda1e3dd1ec8c4bb828adc5bb06c7d, type: 3}
+--- !u!114 &1237420779075435677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375490512028081142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65b49c79ebe31f4b8517b5f76159391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 0
+  abilityName: Stretch
+  description: you are wider and deal more damage
+  icon: {fileID: 21300000, guid: ea8f56c43254d41728f5ac4e8299b6c9, type: 3}
