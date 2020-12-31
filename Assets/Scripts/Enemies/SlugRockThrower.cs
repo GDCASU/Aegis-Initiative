@@ -46,7 +46,7 @@ public class SlugRockThrower : MonoBehaviour
              * It is based off the same equation but accounts for the initial velocity
              * Y = Y_0 + V_y_0 * t - 1/2 * g * t^2
              */
-            forceVector.y = ((targetPosition.y - transform.position.y) + 0.5f * Physics.gravity.y + Mathf.Pow(timeTillImpact, 2)) / timeTillImpact;
+            forceVector.y = ((targetPosition.y - transform.position.y) - 0.5f * Physics.gravity.y * Mathf.Pow(timeTillImpact, 2)) / timeTillImpact;
 
             rockRb.velocity = forceVector;
         }
