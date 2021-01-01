@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class FeebeePassive : CopilotPassiveMechanic
 {
-
+    public float defenseIncrease; 
+    private void Start()
+    {
+        PlayerHealth.singleton.defense = defenseIncrease;
+    }
 }
