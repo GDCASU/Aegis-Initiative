@@ -9,12 +9,6 @@ public class SlugRockThrower : MonoBehaviour
     public CinemachineSmoothPath path;
     public CinemachineDollyCart playerCart;
 
-    /**
-     * VARIABLES TO BE REMOVED AFTER PR APPROVAL
-     */
-    public float testSpread;
-    public float testRotation;
-
     /// <summary>
     /// Method that shoots rocks out in a square area around the player. Not all rocks are guaranteed
     /// to be able to collide with the player
@@ -113,13 +107,5 @@ public class SlugRockThrower : MonoBehaviour
             Random.Range(-rotationModifier, rotationModifier),
             Random.Range(-rotationModifier, rotationModifier)
         );
-    }
-
-    private void Update()
-    {
-        /**
-         * FOR TESTING PURPOSES ONLY. REMOVE ONCE PR APPROVED
-         */
-        if (Input.GetKeyDown(KeyCode.Space)) ShootRockAtPlayer(3f, testSpread, testRotation, transform.position);
     }
 }
