@@ -154,12 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39f5141cbcd92c408d86ab4e3320a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomTrackPositionRange: 0
-  randomTargetPositionRange: {x: 0, y: 0, z: 0}
   rockPrefab: {fileID: 5714699566054253260, guid: 2f23c964871367f46ae0d42eea64090b,
     type: 3}
   path: {fileID: 1857240233}
   playerCart: {fileID: 1712259400}
+  testSpread: 3
+  testRotation: 50
 --- !u!4 &35857179
 Transform:
   m_ObjectHideFlags: 0
