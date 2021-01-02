@@ -9,12 +9,12 @@ using UnityEngine.SocialPlatforms.Impl;
 [System.Serializable]
 public class CopilotData
 {
-    public string name;
+    public Copilots name;
     public int level;
     public int experience;
     public bool isUnlocked;
 
-    public CopilotData(string name, int level = 0, int experience = 0, bool isUnlocked = false)
+    public CopilotData(Copilots name, int level = 0, int experience = 0, bool isUnlocked = false)
     {
         this.name = name;
         this.level = level;

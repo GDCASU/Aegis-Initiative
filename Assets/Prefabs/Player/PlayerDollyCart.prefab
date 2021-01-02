@@ -811,6 +811,7 @@ GameObject:
   - component: {fileID: 1077621587703858222}
   - component: {fileID: 4858473898675966920}
   - component: {fileID: 601629049475976116}
+  - component: {fileID: 410760391349712135}
   - component: {fileID: 2886750413520253739}
   - component: {fileID: 6821422713900445973}
   m_Layer: 10
@@ -876,7 +877,6 @@ MonoBehaviour:
   spawnR: {fileID: 5464987158666677754}
   spawnL: {fileID: 5464987159728112431}
   alternate: 0
-  dolly: {fileID: 0}
 --- !u!114 &1077621587703858222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,6 +929,20 @@ MonoBehaviour:
   shipCamera: {fileID: 4174455376411874717}
   cameraScript: {fileID: 4174455376411874690}
   originalX_YPosition: {x: 0, y: 0}
+--- !u!114 &410760391349712135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174455377501832922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69457918251c05748b7b171df8211972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  maxHealth: 60
 --- !u!135 &2886750413520253739
 SphereCollider:
   m_ObjectHideFlags: 0

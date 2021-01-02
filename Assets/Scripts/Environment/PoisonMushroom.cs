@@ -63,12 +63,11 @@ public class PoisonMushroom : EnvironmentHealth
     }
 
     //If player collides with Particle System cloud
-    void OnParticleCollision(GameObject other)
+    public override void OnPlayerCollision()
     {
-        if (other.name == "Player")
-        {
-            Debug.Log("Deactivate Player's Active Abilities");
-        }
+        base.OnPlayerCollision();
+
+        Debug.Log("Deactivate Player's Active Abilities");
     }
 
     //Destroy mushroom when player collides or shoots it, then call GeneratePoisonCloud
