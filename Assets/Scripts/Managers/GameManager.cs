@@ -15,6 +15,24 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    public void ChangeActive(System.Type type, CopilotMechanic info)
+    {
+        if (active != null) RemoveActive();
+        gameObject.AddComponent(type);
+        active = GetComponent<CopilotActiveMechanic>();
+        active.CopyInfo(info);
+        active.enabled = false;
+    }
+    public void ChangePassive(System.Type type, CopilotMechanic info)
+    {
+        if (passive != null) RemovePassive();
+        gameObject.AddComponent(type);
+        passive = GetComponent<CopilotPassiveMechanic>();
+        passive.CopyInfo(info);
+        passive.enabled = false;
+    }
+    public void RemoveActive()=> Destroy(active);
+    public void RemovePassive()=> Destroy(passive);
 }
 
 public enum TypeOfMechanic
