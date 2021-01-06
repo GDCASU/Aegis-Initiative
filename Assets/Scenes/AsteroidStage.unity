@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &90917019 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6276305171376843204, guid: 2c04bb611c018fd478016be0d4fface7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1136702077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &94103648
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205446100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -349, y: 26.6, z: 864}
+  m_LocalPosition: {x: -829, y: 26.6, z: 864}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -402,7 +408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689124327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -244, y: 26.6, z: 736}
+  m_LocalPosition: {x: -538, y: 26.6, z: 736}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -579,6 +585,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4174455375993779331, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 90917019}
+    - target: {fileID: 4174455376538911295, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 90917019}
     - target: {fileID: 4174455377587358400, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_Name
@@ -848,29 +864,29 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: 0}
     roll: 0
+  - position: {x: 0, y: 0, z: 50}
+    roll: 0
   - position: {x: 0, y: 0, z: 100}
+    roll: 15
+  - position: {x: 0, y: 0, z: 150}
     roll: 0
-  - position: {x: 0, y: 0, z: 200}
+  - position: {x: -5, y: 0, z: 200}
     roll: 0
-  - position: {x: 0, y: 0, z: 300}
+  - position: {x: -25, y: 0, z: 300}
     roll: 0
-  - position: {x: 0, y: 0, z: 400}
+  - position: {x: -50, y: 0, z: 400}
     roll: 0
-  - position: {x: 0, y: 0, z: 500}
+  - position: {x: -100, y: 0, z: 500}
     roll: 0
-  - position: {x: 0, y: 0, z: 600}
+  - position: {x: -150, y: 0, z: 600}
     roll: 0
-  - position: {x: 0, y: 0, z: 700}
+  - position: {x: -200, y: 0, z: 700}
     roll: 0
-  - position: {x: 0, y: 0, z: 800}
+  - position: {x: -275, y: 0, z: 800}
     roll: 0
-  - position: {x: 0, y: 0, z: 900}
+  - position: {x: -350, y: 0, z: 900}
     roll: 0
-  - position: {x: 0, y: 0, z: 1000}
-    roll: 0
-  - position: {x: 0, y: 0, z: 105}
-    roll: 0
-  - position: {x: 0, y: 0, z: 115}
+  - position: {x: -450, y: 0, z: 1000}
     roll: 0
 --- !u!4 &1601722840
 Transform:
