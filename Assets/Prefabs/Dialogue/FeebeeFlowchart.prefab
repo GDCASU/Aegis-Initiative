@@ -70,9 +70,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 6572918113728831419}
+  - {fileID: 6572918113728831422}
   selectedCommands:
-  - {fileID: 6572918113728831424}
+  - {fileID: 6572918113728831427}
   variables: []
   description: 
   stepPause: 0
@@ -100,12 +100,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 50.82834
     y: 218.54884
-    width: 159
+    width: 139
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 9
-  blockName: Test_Level_Remark
+  blockName: Taking Damage
   description: Test block for mid level dialogue
   eventHandler: {fileID: 6572918113728831418}
   commandList:
@@ -131,7 +131,8 @@ MonoBehaviour:
   indentLevel: 0
   storyText: placeholder
   description: 
-  character: {fileID: 0}
+  character: {fileID: 3337853821374279804, guid: 01213e3c17b838147b90e07b0f34a5f1,
+    type: 3}
   portrait: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -284,7 +285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 29
   indentLevel: 0
-  targetTextObject: {fileID: 0}
+  targetTextObject: {fileID: 7203367352742838088, guid: 76a3200967b936b4cac8bb42aa7bdf2d,
+    type: 3}
   text:
     stringRef: {fileID: 0}
     stringVal: 
@@ -305,7 +307,7 @@ MonoBehaviour:
   itemId: 28
   indentLevel: 0
   targetObjects:
-  - {fileID: 0}
+  - {fileID: 6219106472063152532, guid: 4daba1c5090c9ef479e09bd5c5043648, type: 3}
   tweenType: 2
   waitUntilFinished:
     booleanRef: {fileID: 0}
@@ -415,7 +417,7 @@ MonoBehaviour:
   itemId: 32
   indentLevel: 0
   targetObjects:
-  - {fileID: 0}
+  - {fileID: 6219106472063152532, guid: 4daba1c5090c9ef479e09bd5c5043648, type: 3}
   tweenType: 2
   waitUntilFinished:
     booleanRef: {fileID: 0}
