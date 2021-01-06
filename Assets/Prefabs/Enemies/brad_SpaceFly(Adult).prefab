@@ -112,8 +112,8 @@ MonoBehaviour:
   collisionDamage: 5
   bullet: {fileID: 6795240632834866146, guid: b8e2597185f1005428bd25b0a8a79dc7, type: 3}
   numBullets: 3
-  shootTimerMin: 2
-  shootTimerMax: 6
+  shootTimerMin: 6
+  shootTimerMax: 14
   rateOfFire: 10
 --- !u!1 &8781798778084259135
 GameObject:

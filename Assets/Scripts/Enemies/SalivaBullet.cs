@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//BULLET FOR SPACE FLY (ADULT)
+/// <summary>
+/// BULLET FOR SPACE FLY (ADULT) !!!!!!
+/// </summary>
+
 public class SalivaBullet : Bullet
 {
     [SerializeField]
-    private float bulletSpeed = 0.10f;
+    private float bulletSpeed = 0.07f;
 
     private bool reachedDest = false;
     Vector3 targetPos;
 
     void Start()
     {
+
+        //face player
         Vector3 dir = transform.TransformDirection(targetPos - transform.localPosition);
         transform.rotation = Quaternion.LookRotation(dir);
+
         timer = bulletDespawnTime;
     }
 
@@ -23,19 +29,8 @@ public class SalivaBullet : Bullet
         timer -= Time.deltaTime;
         if (timer < 0) Destroy(transform.gameObject);
 
-        
-        if (Vector3.Distance(targetPos, transform.localPosition) < 0.01f) //reached target
-        {
-            //transform.SetParent(null); //remove from dolly
-            reachedDest = true; //don't allow it to continue using "MoveTowards"
-        }
-        else
-        {
-            transform.localPosition += transform.forward * bulletSpeed;
-
-            /*if(!reachedDest) //hasn't reached set targetPos yet
-                transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetPos, bulletSpeed);*/
-        }
+        //move toward grabbed player location
+        transform.localPosition += transform.forward * bulletSpeed;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -47,7 +42,8 @@ public class SalivaBullet : Bullet
         }
     }
 
-    public void SetTarget(Vector3 target) //set target position for this burst
+    //set target position for this burst
+    public void SetTarget(Vector3 target)
     {
         targetPos = target;
     }

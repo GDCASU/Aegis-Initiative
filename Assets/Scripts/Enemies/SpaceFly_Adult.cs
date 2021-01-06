@@ -10,9 +10,9 @@ public class SpaceFly_Adult : EnemyHealth
     [SerializeField]
     private int numBullets = 3;
     [SerializeField]
-    private float shootTimerMin = 2.0f;
+    private float shootTimerMin = 6.0f;
     [SerializeField]
-    private float shootTimerMax = 6.0f;
+    private float shootTimerMax = 14.0f;
     private float shootTimer;
     [SerializeField]
     private float rateOfFire = 10f;
@@ -20,10 +20,14 @@ public class SpaceFly_Adult : EnemyHealth
     Vector3 playerPos;
     private WaitForSeconds rof;
 
+    private int shots;
+
     private void Start()
     {
-        shootTimer = Random.Range(shootTimerMin, shootTimerMax);
-        rof = new WaitForSeconds(1/rateOfFire);
+        shootTimer = Random.Range(shootTimerMin, shootTimerMax); //timer within a range
+        rof = new WaitForSeconds(1.0f/rateOfFire); //for Shoot();
+
+        shots = 0;
     }
 
     private void FixedUpdate()
@@ -31,8 +35,9 @@ public class SpaceFly_Adult : EnemyHealth
         if(shootTimer <= 0)
         {
             playerPos = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-            StartCoroutine(Shoot());
             shootTimer = Random.Range(shootTimerMin, shootTimerMax);
+            shots = 0;
+            StartCoroutine(Shoot());
         }
         else
         {
@@ -42,10 +47,11 @@ public class SpaceFly_Adult : EnemyHealth
 
     IEnumerator Shoot()
     {
-        for(int i = 0; i < numBullets; i++)
+        while(shots < numBullets) //shoot set number of bullets
         {
             GameObject temp = Instantiate(bullet, transform.position, Quaternion.identity, GameObject.Find("PlayerDollyCart").transform);
             temp.GetComponent<SalivaBullet>().SetTarget(playerPos);
+            shots++;
 
             yield return rof;
         }

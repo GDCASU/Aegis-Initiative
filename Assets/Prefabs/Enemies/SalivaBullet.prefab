@@ -111,4 +111,4 @@ MonoBehaviour:
   bulletDespawnTime: 2
   timer: 0
   damage: 10
-  bulletSpeed: 0.1
+  bulletSpeed: 0.07
