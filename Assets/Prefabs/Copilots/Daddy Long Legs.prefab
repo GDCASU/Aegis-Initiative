@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -5133579134540755455}
   - component: {fileID: 8537377698316233864}
   - component: {fileID: 1237420779075435677}
+  - component: {fileID: -417383991283087005}
   m_Layer: 0
   m_Name: Daddy Long Legs
   m_TagString: Untagged
@@ -67,9 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 2375490512028081143}
-  copilot: 0
   copilotData:
-    name: Daddy Long Legs
+    name: 0
     level: 0
     experience: 0
     isUnlocked: 1
@@ -109,3 +109,29 @@ MonoBehaviour:
   abilityName: Stretch
   description: you are wider and deal more damage
   icon: {fileID: 21300000, guid: ea8f56c43254d41728f5ac4e8299b6c9, type: 3}
+--- !u!114 &-417383991283087005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375490512028081142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd22c4f4a0e9aa49ac80e5da42e3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 78378921611262690, guid: 673146f1088924340b667ba4705eb85b,
+    type: 3}
+  enteringStage:
+  - entering
+  exitingStage:
+  - exiting
+  takingDamage:
+  - bruh moment
+  collectingPickUps:
+  - dopamine hit
+  defeatingEnemies:
+  - slaughter them all *flushed*
+  losingStage:
+  - sadge
