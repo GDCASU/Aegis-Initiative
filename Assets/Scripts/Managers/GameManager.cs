@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour
     {
         if (active != null) RemoveActive();
         activeCopilot = info.gameObject;
-        gameObject.AddComponent(type);
-        active = GetComponent<CopilotActiveMechanic>();
+        active = gameObject.AddComponent(type) as CopilotActiveMechanic;
         active.CopyInfo(info);
         active.enabled = false;
     }
@@ -30,19 +29,20 @@ public class GameManager : MonoBehaviour
     {
         if (passive != null) RemovePassive();
         passiveCopilot = info.gameObject;
-        gameObject.AddComponent(type);
-        passive = GetComponent<CopilotPassiveMechanic>();
+        passive = gameObject.AddComponent(type) as CopilotPassiveMechanic;
         passive.CopyInfo(info);
         passive.enabled = false;
     }
     public void RemoveActive()
     {
         Destroy(active);
+        active = null;
         activeCopilot = null;
     }
     public void RemovePassive()
     {
         Destroy(passive);
+        passive = null;
         activeCopilot = null;
     }
 }

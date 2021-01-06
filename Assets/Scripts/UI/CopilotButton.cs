@@ -9,6 +9,10 @@ public class CopilotButton : MonoBehaviour
     public Image portrait;
     public Button button;
     public GameObject copilotPrefab;
+
+    /**
+     * Method used by UI
+     */
     public void Select()=> CopilotUI.singleton.CharacterSelected(copilotPrefab);
 
     public void SetButton(GameObject prefab)

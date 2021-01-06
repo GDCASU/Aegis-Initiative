@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth singleton;
     public int health = 50;
     public int maxHealth = 60;
-    public float defense { get; set; }
+    public float defense;
     private void Awake()
     {
         if (singleton == null)
