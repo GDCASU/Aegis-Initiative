@@ -7,9 +7,9 @@ public class FeebeeActive : CopilotActiveMechanic
     public ShipMovement shipMovement;
     public float speedOfDodge;
     public float numberofRolls = 1;
+    public float timeOfRoll;
     public bool rollPerforming;
     public Vector3 rollDirection;
-    public float timeOfRoll;
     private float timer;
     private void Start()
     {
@@ -37,6 +37,13 @@ public class FeebeeActive : CopilotActiveMechanic
             }
             else EndRoll();
         }
+    }
+    public override void CopyInfo(CopilotMechanic copilotMechanic)
+    {
+        base.CopyInfo(copilotMechanic);
+        speedOfDodge = ((FeebeeActive)copilotMechanic).speedOfDodge;
+        numberofRolls = ((FeebeeActive)copilotMechanic).numberofRolls;
+        timeOfRoll= ((FeebeeActive)copilotMechanic).timeOfRoll;
     }
     public void EndRoll()
     {

@@ -9,6 +9,7 @@ public class CopilotUI : MonoBehaviour
     public static CopilotUI singleton;
 
     private CopilotInfo selected;
+    private GameObject selectedPrefab;
     public string sceneToLoad;
 
     [Header("Active")]
@@ -83,12 +84,13 @@ public class CopilotUI : MonoBehaviour
         start.interactable = false;
     }
     /// <summary>
-    /// Method used to pop up the selection panel and give a characters info as well as allow the player to choose their passive and active abilities.  Called  by a Unity UI button
+    /// Method used to pop up the selection panel and give a copilot's info as well as allow the player to choose their passive and active abilities.  Called  by a Unity UI button
     /// </summary>
-    /// <param name="copilotInfo">The CopilotInfo of the selected character</param>
-    public void CharacterSelected(CopilotInfo copilotInfo)
+    /// <param name="copilotPrefab">The Prefab of the selected copilot</param>
+    public void CharacterSelected(GameObject copilotPrefab)
     {
-        selected = copilotInfo;
+        selectedPrefab = copilotPrefab;
+        selected = copilotPrefab.GetComponent<CopilotInfo>();
         selectionName.text = selected.copilotData.name.ToString();
         if (!selectionPanel.activeSelf) selectionPanel.SetActive(true);
         activeName.text = selected.copilotActive.abilityName;

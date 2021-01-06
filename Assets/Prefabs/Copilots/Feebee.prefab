@@ -101,9 +101,9 @@ MonoBehaviour:
   shipMovement: {fileID: 0}
   speedOfDodge: 3
   numberofRolls: 1
+  timeOfRoll: 0.3
   rollPerforming: 0
   rollDirection: {x: 0, y: 0, z: 0}
-  timeOfRoll: 0.3
 --- !u!114 &6305573297492744777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,4 +120,4 @@ MonoBehaviour:
   abilityName: Stubborn
   description: blah
   icon: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
-  defenseIncrease: 0
+  defenseIncrease: 0.2

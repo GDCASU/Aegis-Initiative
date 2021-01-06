@@ -9,4 +9,9 @@ public class FeebeePassive : CopilotPassiveMechanic
     {
         PlayerHealth.singleton.defense = defenseIncrease;
     }
+    public override void CopyInfo(CopilotMechanic copilotMechanic)
+    {
+        base.CopyInfo(copilotMechanic);
+        defenseIncrease = ((FeebeePassive)copilotMechanic).defenseIncrease;
+    }
 }

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager singleton;
     public CopilotMechanic active;
     public CopilotMechanic passive;
+    public GameObject activeCopilot;
+    public GameObject passiveCopilot;
 
     private void Awake()
     {
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     public void ChangeActive(System.Type type, CopilotMechanic info)
     {
         if (active != null) RemoveActive();
+        activeCopilot = info.gameObject;
         gameObject.AddComponent(type);
         active = GetComponent<CopilotActiveMechanic>();
         active.CopyInfo(info);
@@ -26,13 +29,22 @@ public class GameManager : MonoBehaviour
     public void ChangePassive(System.Type type, CopilotMechanic info)
     {
         if (passive != null) RemovePassive();
+        passiveCopilot = info.gameObject;
         gameObject.AddComponent(type);
         passive = GetComponent<CopilotPassiveMechanic>();
         passive.CopyInfo(info);
         passive.enabled = false;
     }
-    public void RemoveActive()=> Destroy(active);
-    public void RemovePassive()=> Destroy(passive);
+    public void RemoveActive()
+    {
+        Destroy(active);
+        activeCopilot = null;
+    }
+    public void RemovePassive()
+    {
+        Destroy(passive);
+        activeCopilot = null;
+    }
 }
 
 public enum TypeOfMechanic
