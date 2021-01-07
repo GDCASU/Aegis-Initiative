@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8412601976711246255}
   - component: {fileID: 3337853821374279804}
   - component: {fileID: 3387098961694321353}
+  - component: {fileID: 365653576477132568}
+  - component: {fileID: 6305573297492744777}
   m_Layer: 0
   m_Name: Feebee
   m_TagString: Untagged
@@ -72,15 +74,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 3337853821374279804}
   copilotData:
-    name: Feebee
+    name: 0
     level: 0
     experience: 0
-    isUnlocked: 0
+    isUnlocked: 1
   portrait: {fileID: 21300000, guid: 9ce6cf540ce2ece4dacce467ace3bca4, type: 3}
   fullBody: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
-  active: Dodge Roll
-  activeDescription: Dodge Roll w/ Perfect Frame
-  activeIcon: {fileID: 21300000, guid: 8d3c80dd0c2904cdbb745cf481348a76, type: 3}
-  passive: Stubborn
-  passiveDescription: Increased Defense Stat
-  passiveIcon: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
+  copilotActive: {fileID: 365653576477132568}
+  copilotPassive: {fileID: 6305573297492744777}
+--- !u!114 &365653576477132568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a6d35055f9a2d46a46476258a12390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 2
+  abilityName: Barrel Roll
+  description: blah blah
+  icon: {fileID: 21300000, guid: f2e901e070fff48cda67e3f446d80e79, type: 3}
+  shipMovement: {fileID: 0}
+  speedOfDodge: 3
+  numberofRolls: 1
+  timeOfRoll: 0.3
+  rollPerforming: 0
+  rollDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &6305573297492744777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182c952c4e4f3e042b4596aa093eb086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 0
+  abilityName: Stubborn
+  description: blah
+  icon: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
+  defenseIncrease: 0.2
