@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
     private float damageMultiplier = 1f;  // amount to multiply incoming damage by
     private IEnumerator vulnerabilityLifecycle;  // event dictating how long a vulnerability effect should last
-
+    
     private void Awake()
     {
         if (singleton == null)
@@ -42,8 +42,7 @@ public class PlayerHealth : MonoBehaviour
         {
             KillPlayer();
         }
-    }
-
+    }    
     public void Heal(int heal)
     {
         if (health + heal > maxHealth) health = maxHealth;
