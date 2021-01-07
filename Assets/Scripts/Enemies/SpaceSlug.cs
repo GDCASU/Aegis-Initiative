@@ -6,8 +6,6 @@ using Cinemachine;
 public class SpaceSlug : MonoBehaviour
 {
     public int damage; //damage dealt to Player health
-    // public Transform[] spaceSlugBody;
-
 
     public CinemachineSmoothPath path = default;
     public CinemachineSmoothPath playerPath;
@@ -19,15 +17,13 @@ public class SpaceSlug : MonoBehaviour
     Vector3 end;
 
     public float timeAhead;
-    public float height;
+    public float height; //max height of the slug track
     public float speed;
-    public int widthRange;
+    public int widthRange; //horizontal range of the slug track
 
     // Start is called before the first frame update
     void Start()
     {
-        // lineRenderer.positionCount = numPoints;   
-        // DrawCubicCurve();
         playerCart = PlayerHealth.singleton.GetComponentInParent<CinemachineDollyCart>();
         rng = new System.Random();
         start = new Vector3();
@@ -47,10 +43,8 @@ public class SpaceSlug : MonoBehaviour
 
     private void SlugTest()
     {
-        int side = rng.Next(2); //0 = left, 1 = right
-        // Vector3 start = new Vector3();
-        // Vector3 middle = new Vector3();
-        // Vector3 end = new Vector3();
+        int side = rng.Next(2); //0 = left side of player track, 1 = right side of player track
+
         middle = playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)) + Vector3.up * height;
         if (side == 0)
         {

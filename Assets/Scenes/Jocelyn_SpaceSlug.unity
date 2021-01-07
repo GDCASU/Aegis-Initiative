@@ -1123,7 +1123,7 @@ PrefabInstance:
     - target: {fileID: 5236962398301690403, guid: 77c477de3f78d114280294a81dc5eafd,
         type: 3}
       propertyPath: speed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5236962398301690403, guid: 77c477de3f78d114280294a81dc5eafd,
         type: 3}
@@ -1138,7 +1138,7 @@ PrefabInstance:
     - target: {fileID: 5236962398301690403, guid: 77c477de3f78d114280294a81dc5eafd,
         type: 3}
       propertyPath: timeAhead
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5236962398301690404, guid: 77c477de3f78d114280294a81dc5eafd,
         type: 3}
