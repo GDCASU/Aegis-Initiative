@@ -9,6 +9,7 @@ public class CopilotUI : MonoBehaviour
     public static CopilotUI singleton;
 
     private CopilotInfo selected;
+    private GameObject selectedPrefab;
     public string sceneToLoad;
 
     [Header("Active")]
@@ -61,34 +62,35 @@ public class CopilotUI : MonoBehaviour
     /// <returns></returns>
     private void Start()
     {
+        GameObject tempPrefab = feebeePrefab;//just to have a default
         foreach (CopilotData copilot in ProfileManager.instance.GetCurrentCopilotList())
         {
-            GameObject tempCopilotButton = Instantiate(copilotButtonPrefab);
-            CopilotInfo tempCopilotInfo = tempCopilotButton.GetComponent<CopilotButton>().copilotInfo;
+            GameObject tempButton = Instantiate(copilotButtonPrefab);
+            CopilotButton tempCopilotButton = tempButton.GetComponent<CopilotButton>();
             switch (copilot.name)
             {
-                case Copilots.Feebee: 
-                    feebeePrefab.GetComponent<CopilotInfo>().copilotData = copilot;
-                    tempCopilotInfo.CopyInfo(feebeePrefab.GetComponent<CopilotInfo>());
+                case Copilots.Feebee:
+                    tempPrefab = feebeePrefab;
                     break;
-                case Copilots.DaddyLongLegs: 
-                    daddyLongLegs.GetComponent<CopilotInfo>().copilotData = copilot;
-                    tempCopilotInfo.CopyInfo(daddyLongLegs.GetComponent<CopilotInfo>());
+                case Copilots.DaddyLongLegs:
+                    tempPrefab = daddyLongLegs;
                     break;
             }
-            tempCopilotButton.GetComponent<CopilotButton>().SetButton();
-            tempCopilotButton.transform.SetParent(scrollViewContent.transform);
-            tempCopilotButton.transform.localScale = Vector3.one;
+            tempPrefab.GetComponent<CopilotInfo>().copilotData = copilot;
+            tempCopilotButton.SetButton(tempPrefab);
+            tempButton.transform.SetParent(scrollViewContent.transform);
+            tempButton.transform.localScale = Vector3.one;
         }
         start.interactable = false;
     }
     /// <summary>
-    /// Method used to pop up the selection panel and give a characters info as well as allow the player to choose their passive and active abilities.  Called  by a Unity UI button
+    /// Method used to pop up the selection panel and give a copilot's info as well as allow the player to choose their passive and active abilities.  Called  by a Unity UI button
     /// </summary>
-    /// <param name="copilotInfo">The CopilotInfo of the selected character</param>
-    public void CharacterSelected(CopilotInfo copilotInfo)
+    /// <param name="copilotPrefab">The Prefab of the selected copilot</param>
+    public void CharacterSelected(GameObject copilotPrefab)
     {
-        selected = copilotInfo;
+        selectedPrefab = copilotPrefab;
+        selected = copilotPrefab.GetComponent<CopilotInfo>();
         selectionName.text = selected.copilotData.name.ToString();
         if (!selectionPanel.activeSelf) selectionPanel.SetActive(true);
         activeName.text = selected.copilotActive.abilityName;
@@ -102,10 +104,12 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void SelectPassive()
     {
-        if (selected.copilotActive.abilityName == GameManager.singleton.active.abilityName) ClearSelectedCopilotAbilities();
+        if (GameManager.singleton.active!=null &&
+            selected.copilotActive.abilityName == GameManager.singleton.active.abilityName)
+            ClearSelectedCopilotAbilities();
         passive.text = selected.copilotPassive.abilityName;
         passiveIcon.sprite = selected.copilotPassive.icon;
-        GameManager.singleton.passive.CopyInfo(selected.copilotPassive);
+        GameManager.singleton.ChangePassive(selected.copilotPassive.GetType(),selected.copilotPassive);
 
         passiveSelected = true;
         if (activeSelected && passiveSelected) start.interactable = true;
@@ -116,10 +120,12 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void SelectActive()
     {
-        if (selected.copilotPassive.abilityName == GameManager.singleton.passive.abilityName) ClearSelectedCopilotAbilities();
+        if (GameManager.singleton.passive != null && 
+            selected.copilotPassive.abilityName == GameManager.singleton.passive.abilityName)
+            ClearSelectedCopilotAbilities();
         active.text = selected.copilotActive.abilityName;
         activeIcon.sprite = selected.copilotActive.icon;
-        GameManager.singleton.active.CopyInfo(selected.copilotActive);
+        GameManager.singleton.ChangeActive(selected.copilotActive.GetType(), selected.copilotActive);
 
         activeSelected = true;
         if (activeSelected && passiveSelected) start.interactable = true;
@@ -169,8 +175,8 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void ClearSelectedCopilotAbilities()
     {
-        GameManager.singleton.active.abilityName = "";
-        GameManager.singleton.passive.abilityName = "";
+        GameManager.singleton.RemoveActive();
+        GameManager.singleton.RemovePassive();
         active.text = "Active Role";
         passive.text = "Passive Role";
         passiveSelected = false;

@@ -8,10 +8,17 @@ public class CopilotButton : MonoBehaviour
     public CopilotInfo copilotInfo;
     public Image portrait;
     public Button button;
-    public void Select()=> CopilotUI.singleton.CharacterSelected(copilotInfo);
+    public GameObject copilotPrefab;
 
-    public void SetButton()
+    /**
+     * Method used by UI
+     */
+    public void Select()=> CopilotUI.singleton.CharacterSelected(copilotPrefab);
+
+    public void SetButton(GameObject prefab)
     {
+        copilotPrefab = prefab;
+        copilotInfo = copilotPrefab.GetComponent<CopilotInfo>();
         portrait.sprite = copilotInfo.portrait;
         name = copilotInfo.copilotData.name.ToString() + "Button";
         GetComponentInChildren<Text>().text = copilotInfo.copilotData.name.ToString();

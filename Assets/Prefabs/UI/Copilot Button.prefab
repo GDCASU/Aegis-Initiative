@@ -93,9 +93,6 @@ GameObject:
   - component: {fileID: 423335447106819500}
   - component: {fileID: 423335447106819503}
   - component: {fileID: 4971065424945039230}
-  - component: {fileID: 2267822760374348760}
-  - component: {fileID: -8018959758349386730}
-  - component: {fileID: -34118417335247654}
   m_Layer: 0
   m_Name: Copilot Button
   m_TagString: Untagged
@@ -242,64 +239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644e953077f85f34bb2de102ba0aba06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  copilotInfo: {fileID: 2267822760374348760}
+  copilotInfo: {fileID: 0}
   portrait: {fileID: 423335448071090915}
   button: {fileID: 423335447106819500}
---- !u!114 &2267822760374348760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423335447106819497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe15a552c635134580ba4fcafc83169, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  copilot: 0
-  copilotData:
-    name: 
-    level: 0
-    experience: 0
-    isUnlocked: 0
-  portrait: {fileID: 0}
-  fullBody: {fileID: 0}
-  copilotActive: {fileID: -8018959758349386730}
-  copilotPassive: {fileID: -34118417335247654}
---- !u!114 &-8018959758349386730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423335447106819497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32b3418cc8a8f8488dc9cf2a5fed24c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeOfMechanic: 0
-  abilityName: 
-  description: 
-  icon: {fileID: 0}
---- !u!114 &-34118417335247654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423335447106819497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c61fc49b8241d4497327b5ff791b8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeOfMechanic: 0
-  abilityName: 
-  description: 
-  icon: {fileID: 0}
+  copilotPrefab: {fileID: 0}
 --- !u!1 &423335448071090925
 GameObject:
   m_ObjectHideFlags: 0
