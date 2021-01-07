@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth singleton;
     public int health = 50;
     public int maxHealth = 60;
-    public float defense { get; set; }
+    public float defense; 
 
     private float damageMultiplier = 1f;  // amount to multiply incoming damage by
     private IEnumerator vulnerabilityLifecycle;  // event dictating how long a vulnerability effect should last
