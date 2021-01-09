@@ -15,11 +15,14 @@ public class SpaceSlug : MonoBehaviour
     Vector3 start;
     Vector3 middle;
     Vector3 end;
+    public bool timerReset;
 
     public float timeAhead;
     public float height; //max height of the slug track
     public float speed;
     public int widthRange; //horizontal range of the slug track
+    public float maxTime = 10;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -29,19 +32,23 @@ public class SpaceSlug : MonoBehaviour
         start = new Vector3();
         middle = new Vector3();
         end = new Vector3();
-        SlugTest();
+        SpawnSlug();
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if (slugCart.transform.position == end)
+        if (slugCart.transform.position == end)timerReset = true;
+        if (timerReset) timer -= Time.deltaTime;
+        if (timer <= 0)
         {
-            SlugTest();
-        }
+            timer = rng.Next((int)maxTime);
+            timerReset = false;
+            SpawnSlug();
+        } 
     }
 
-    private void SlugTest()
+    private void SpawnSlug()
     {
         int side = rng.Next(2); //0 = left side of player track, 1 = right side of player track
 
