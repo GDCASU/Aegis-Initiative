@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     public struct enemies //struct for which enemies to spawn
     {
         public spawnLocation SpawnLocation;
-        public GameObject enemyPrefab; //enemy prefab
+        public GameObject enemy; //enemy in the scene
         [Tooltip("-1 is the middle of the screen and 1 is the edge")]
         [Range(-1.0f, 1.0f)]
         public float adjustPlaneLocation; //spawn ships closer or farther from player on 2D plane
@@ -88,8 +88,9 @@ public class EnemySpawner : MonoBehaviour
                         break;
                 }
                 spawnAdjustment = new Vector3(xSpawnAdjustment, ySpawnAdjustment, zSpawnAdjustment); //spawn adjustment vector to add to other.gameObject.transform.position
-                GameObject enemy = Instantiate(_enemies[x].enemyPrefab, other.gameObject.transform.parent);
-                enemy.transform.localPosition = spawnAdjustment;
+                _enemies[x].enemy.transform.parent = other.gameObject.transform.parent;
+                _enemies[x].enemy.transform.localPosition = spawnAdjustment;
+                _enemies[x].enemy.SetActive(true);
             }
         }
     }
