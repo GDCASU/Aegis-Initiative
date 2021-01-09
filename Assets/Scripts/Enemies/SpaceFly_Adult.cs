@@ -10,22 +10,22 @@ public class SpaceFly_Adult : EnemyHealth
     [SerializeField]
     private int numBullets = 3;
     [SerializeField]
-    private float shootTimerMin = 6.0f;
+    private float shootTimerMin = 6.0f; //min time until next shot
     [SerializeField]
-    private float shootTimerMax = 14.0f;
+    private float shootTimerMax = 14.0f; //max time until next shot
     private float shootTimer;
     [SerializeField]
-    private float rateOfFire = 10f;
+    private float rateOfFire = 10f; //RoF for designer
 
     Vector3 playerPos;
-    private WaitForSeconds rof;
+    private WaitForSeconds realRateOfFire; //for Shoot();
 
     private int shots;
 
     private void Start()
     {
         shootTimer = Random.Range(shootTimerMin, shootTimerMax); //timer within a range
-        rof = new WaitForSeconds(1.0f/rateOfFire); //for Shoot();
+        realRateOfFire = new WaitForSeconds(1.0f/rateOfFire); //for Shoot();
 
         shots = 0;
     }
@@ -34,7 +34,7 @@ public class SpaceFly_Adult : EnemyHealth
     {
         if(shootTimer <= 0)
         {
-            playerPos = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
+            playerPos = PlayerHealth.singleton.transform.localPosition;
             shootTimer = Random.Range(shootTimerMin, shootTimerMax);
             shots = 0;
             StartCoroutine(Shoot());
@@ -53,7 +53,7 @@ public class SpaceFly_Adult : EnemyHealth
             temp.GetComponent<SalivaBullet>().SetTarget(playerPos);
             shots++;
 
-            yield return rof;
+            yield return realRateOfFire;
         }
 
         yield return null;
