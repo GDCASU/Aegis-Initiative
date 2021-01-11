@@ -73,9 +73,8 @@ public class SpaceSlug : MonoBehaviour
         speed = path.PathLength / timeAhead - 3;
         if (attack)
         {
-            float y = middle.y;
             Vector3 direction = start - new Vector3(middle.x, end.y, middle.z);
-            middle +=new Vector3(direction.x*.25f,y, direction.z/2f * .25f);
+            middle +=new Vector3(direction.x*.25f,0, direction.z/2f * .25f);
             //Vector3 depthAdjustment= playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead+2, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)+2);
             //start += new Vector3(depthAdjustment.x, 0, depthAdjustment.z) * .25f;
         }
