@@ -18,10 +18,16 @@ public class SpaceSlug : MonoBehaviour
     public bool timerReset;
 
     public float timeAhead;
-    public float height; //max height of the slug track
+    public float maxHeight; //max height of the slug track
+    public float minHeight; //min height of the slug track
     public float speed;
-    public int widthRange; //horizontal range of the slug track
+    public int outerWidthRange; //horizontal range of the slug track
+    public int closeWidthMin;
+    public int closeWidthMax;
     public float maxTime = 10;
+    public float chancesOfAttack;
+    public float speedAdjustmentMultiplier;
+    public bool attack;
     private float timer;
 
     // Start is called before the first frame update
@@ -32,6 +38,7 @@ public class SpaceSlug : MonoBehaviour
         start = new Vector3();
         middle = new Vector3();
         end = new Vector3();
+        timer = maxTime;
         SpawnSlug();
     }
 
@@ -42,8 +49,9 @@ public class SpaceSlug : MonoBehaviour
         if (timerReset) timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            timer = rng.Next((int)maxTime);
+            timer = maxTime;
             timerReset = false;
+            attack = (rng.Next(100) >= chancesOfAttack) ? false : true;
             SpawnSlug();
         } 
     }
@@ -51,17 +59,25 @@ public class SpaceSlug : MonoBehaviour
     private void SpawnSlug()
     {
         int side = rng.Next(2); //0 = left side of player track, 1 = right side of player track
-
-        middle = playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)) + Vector3.up * height;
+        middle = playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)) + Vector3.up * maxHeight;
         if (side == 0)
         {
-            start = middle - 2 * Vector3.up * height - playerCart.transform.right.normalized * rng.Next(widthRange);
-            end = middle - 2 * Vector3.up * height + playerCart.transform.right.normalized * rng.Next(widthRange);
+            start = middle - minHeight * Vector3.up * maxHeight - playerCart.transform.right.normalized * rng.Next(outerWidthRange);
+            end = middle - minHeight * Vector3.up * maxHeight + playerCart.transform.right.normalized * ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange));
         }
         else
         {
-            start = middle -  2 * Vector3.up * height + playerCart.transform.right.normalized * rng.Next(widthRange);
-            end = middle -  2 * Vector3.up * height - playerCart.transform.right.normalized * rng.Next(widthRange);
+            start = middle - minHeight * Vector3.up * maxHeight + playerCart.transform.right.normalized * rng.Next(outerWidthRange);
+            end = middle - minHeight * Vector3.up * maxHeight - playerCart.transform.right.normalized * ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange));
+        }
+        speed = path.PathLength / timeAhead - 3;
+        if (attack)
+        {
+            float y = middle.y;
+            Vector3 direction = start - new Vector3(middle.x, end.y, middle.z);
+            middle +=new Vector3(direction.x*.25f,y, direction.z/2f * .25f);
+            //Vector3 depthAdjustment= playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead+2, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)+2);
+            //start += new Vector3(depthAdjustment.x, 0, depthAdjustment.z) * .25f;
         }
 
         path.m_Waypoints[0].position = start;
@@ -71,9 +87,11 @@ public class SpaceSlug : MonoBehaviour
         path.InvalidateDistanceCache();
         slugCart.m_Position = 0;
 
+        if (attack) speed = path.PathLength / (timeAhead*speedAdjustmentMultiplier);
+        else speed = path.PathLength / timeAhead;
+
         //speed
         slugCart.m_Speed = speed;
-
     }
 
     //If player collides with SpaceSlug, Player takes damage
