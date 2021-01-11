@@ -2014,17 +2014,17 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.58
+      value: -18.48
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.76
+      value: 7.23
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -111.8
+      value: -183.16
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -2034,7 +2034,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3825083
+      value: 0.013808778
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -2044,7 +2044,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92395204
+      value: 0.9999047
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -2059,7 +2059,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 44.978
+      value: 1.582
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -2068,9 +2068,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
+      propertyPath: _enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1324024756}
+    - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
+        type: 3}
+      propertyPath: _enemies.Array.data[0].enemyPrefab
+      value: 
+      objectReference: {fileID: 8781798778084259135, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+    - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
+        type: 3}
+      propertyPath: _enemies.Array.data[1].enemyPrefab
+      value: 
+      objectReference: {fileID: 8781798778084259135, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+    - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
+        type: 3}
+      propertyPath: _enemies.Array.data[1].SpawnLocation
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546205, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_Name
