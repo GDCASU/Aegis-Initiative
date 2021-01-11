@@ -24,9 +24,7 @@ namespace PlayerInput {
     [Serializable]
     public enum PlayerButton
     {
-        Jump,
-        Swap,
-        PickUp,
+        ActiveAbility,
         Shoot,
         UI_Submit,     // UI Button
         UI_Cancel,     // UI Button
@@ -50,7 +48,7 @@ public class InputManager : MonoBehaviour {
     public static InputMode inputMode = InputMode.both;
     // there is literally no reason for this to exist ffs
     [SerializeField]
-    public static PlayerAction[] playerActions = new PlayerAction[7];
+    public static PlayerAction[] playerActions = new PlayerAction[5];
 
     public static Dictionary<KeyCode, string> playerXboxButtons = new Dictionary<KeyCode, string> {
         {KeyCode.JoystickButton0, "A"},
@@ -88,27 +86,21 @@ public class InputManager : MonoBehaviour {
         ResetKeycodes();
     }
     public static void ResetKeycodes () {
-        playerActions[0].keyboardKey = KeyCode.Space;
-        playerActions[0].xboxKey = KeyCode.JoystickButton0;
-        playerActions[1].keyboardKey = KeyCode.LeftShift;
-        playerActions[1].xboxKey = KeyCode.JoystickButton2;
-        playerActions[2].keyboardKey = KeyCode.Mouse0;
-        playerActions[2].xboxKey = KeyCode.JoystickButton4;
-        playerActions[3].keyboardKey = KeyCode.Mouse1;
-        playerActions[3].xboxKey = KeyCode.JoystickButton5;
-        playerActions[4].keyboardKey = KeyCode.KeypadEnter;
-        playerActions[4].xboxKey = KeyCode.JoystickButton0;
-        playerActions[5].keyboardKey = KeyCode.Escape;
-        playerActions[5].xboxKey = KeyCode.JoystickButton1;
-        playerActions[6].keyboardKey = KeyCode.Escape;
-        playerActions[6].xboxKey = KeyCode.JoystickButton7;
-        playerButtons[PlayerButton.Jump] = playerActions[0];
-        playerButtons[PlayerButton.Swap] = playerActions[1];
-        playerButtons[PlayerButton.PickUp] = playerActions[2];
-        playerButtons[PlayerButton.Shoot] = playerActions[3];
-        playerButtons[PlayerButton.UI_Submit] = playerActions[4];
-        playerButtons[PlayerButton.UI_Cancel] = playerActions[5];
-        playerButtons[PlayerButton.Pause] = playerActions[6];
+        playerActions[0].keyboardKey = KeyCode.LeftShift;
+        playerActions[0].xboxKey = KeyCode.JoystickButton2;
+        playerActions[1].keyboardKey = KeyCode.Space;
+        playerActions[1].xboxKey = KeyCode.JoystickButton0;
+        playerActions[2].keyboardKey = KeyCode.KeypadEnter;
+        playerActions[2].xboxKey = KeyCode.JoystickButton0;
+        playerActions[3].keyboardKey = KeyCode.Escape;
+        playerActions[3].xboxKey = KeyCode.JoystickButton1;
+        playerActions[4].keyboardKey = KeyCode.Escape;
+        playerActions[4].xboxKey = KeyCode.JoystickButton7;
+        playerButtons[PlayerButton.ActiveAbility] = playerActions[0];
+        playerButtons[PlayerButton.Shoot] = playerActions[1];
+        playerButtons[PlayerButton.UI_Submit] = playerActions[2];
+        playerButtons[PlayerButton.UI_Cancel] = playerActions[3];
+        playerButtons[PlayerButton.Pause] = playerActions[4];
         if (inputType == 1) inputMode = InputMode.controller;
         if (inputType == 2) inputMode = InputMode.keyboard;
     }
