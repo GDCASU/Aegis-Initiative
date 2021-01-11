@@ -126,8 +126,8 @@ GameObject:
   - component: {fileID: 2885135157591468495}
   - component: {fileID: 2210952100676215902}
   m_Layer: 0
-  m_Name: brad_SpaceFly(Adult)
-  m_TagString: Untagged
+  m_Name: brad_SpaceFlyAdult
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
