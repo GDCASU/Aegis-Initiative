@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3387098961694321353}
   - component: {fileID: 365653576477132568}
   - component: {fileID: 6305573297492744777}
-  - component: {fileID: -3254075398667020721}
   m_Layer: 0
   m_Name: Feebee
   m_TagString: Untagged
@@ -78,7 +77,7 @@ MonoBehaviour:
     name: 0
     level: 0
     experience: 0
-    isUnlocked: 0
+    isUnlocked: 1
   portrait: {fileID: 21300000, guid: 9ce6cf540ce2ece4dacce467ace3bca4, type: 3}
   fullBody: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
   copilotActive: {fileID: 365653576477132568}
@@ -99,6 +98,12 @@ MonoBehaviour:
   abilityName: Barrel Roll
   description: blah blah
   icon: {fileID: 21300000, guid: f2e901e070fff48cda67e3f446d80e79, type: 3}
+  shipMovement: {fileID: 0}
+  speedOfDodge: 3
+  numberofRolls: 1
+  timeOfRoll: 0.3
+  rollPerforming: 0
+  rollDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6305573297492744777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,52 +120,4 @@ MonoBehaviour:
   abilityName: Stubborn
   description: blah
   icon: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
---- !u!114 &-3254075398667020721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4153349408766037956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd22c4f4a0e9aa49ac80e5da42e3ffd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pilotFlowchart: {fileID: 6572918113728831403, guid: 7505f15c5fb58854f9dad75322c77e79,
-    type: 3}
-  enteringStage:
-  - Alright, let's do this!
-  - Hold on, looks like we're in for a bumpy ride... especially with <i>you</i> at
-    the helm.
-  - Hurry up or we'll miss all the action!
-  - Took you long enough, buckle up and let's go!
-  - Come on, hit it! My grandma flies faster than you.
-  - We're going to absolutely destroy this mission!
-  exitingStage:
-  - What a surprise, we made it out alive
-  - Huh... nice flying out there.
-  - Take that!
-  - WOOHOO!!
-  takingDamage:
-  - Watch it!
-  - Woah!
-  - Careful, idiot!
-  - Are you trying to kill us?
-  - Don't scratch the paint!
-  - I'm not paying for that...
-  - Hey, I just got the last dent out of this!
-  collectingPickUps:
-  - Good, we needed that.
-  - Sweet!
-  - Rad!
-  defeatingEnemies:
-  - Got 'em!
-  - Woah! Nice shot...
-  - Take that!
-  - Bye bye!
-  - They should've never mess with us.
-  losingStage:
-  - Crap, now I gotta fly myself home...
-  - We're losing control of the ship!
-  - We're going down! Hold on!
+  defenseIncrease: 0.2
