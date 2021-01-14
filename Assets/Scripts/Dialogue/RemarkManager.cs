@@ -7,44 +7,116 @@ using UnityEngine.UI;
 
 public class RemarkManager : MonoBehaviour
 {
+    public static RemarkManager singleton;
+
     private GameObject passivePilot;
     private GameObject activePilot;
 
-    public GameObject DialogueUI;
-    public GameObject nameText;
-    public GameObject imageBlock;
+    [SerializeField]
+    private float chanceToSpeak = 100.0f;
 
-    public GameObject tempFeebee;
+    public Flowchart flowChart;
 
-    float timer = 5.0f;
-    public Flowchart tempChart;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake() //set singletone
     {
-        nameText.GetComponent<Text>().text = "Feebee";
-        //tempChart = tempFeebee.GetComponent<RemarkList>().pilotFlowchart;
-        tempChart.FindBlock("Taking Damage").CommandList[0].GetComponent<Fungus.FadeUI>().targetObjects[0] = DialogueUI;
-        tempChart.ExecuteBlock("Taking Damage");
+        if (singleton == null)
+            singleton = this;
+        else
+            Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        if(timer < 0)
+        passivePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().passive.gameObject;
+        activePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().active.gameObject;
+        //tempChart = tempFeebee.GetComponent<RemarkList>().pilotFlowchart;
+        //tempChart.FindBlock("Taking Damage").CommandList[0].GetComponent<Fungus.FadeUI>().targetObjects[0] = DialogueUI;
+    }
+    //Random float landed in proper range
+    private bool DialogueSuccessful()
+    {
+        bool result = false;
+        float rand = Random.Range(0.0f, 100.0f);
+
+        if(rand <= chanceToSpeak)
         {
-            //tempChart.FindBlock("Taking Damage").CommandList[0].GetComponent<Fungus.FadeUI>().targetObjects[0] = DialogueUI;
-            //tempChart.FindBlock("Test_Level_Remark");
-            //tempChart.ExecuteBlock("Test_Level_Remark");
+            result = true;
+        }
+
+        return result;
+    }
+    //choose passive or active pilot
+    private void ActivateDialogue(string _input)
+    {
+        int temp = Random.Range(0, 2);
+        Debug.Log(temp);
+        if (temp == 0)
+        {
+            passiveRemark(_input);
         }
         else
         {
-            timer -= Time.deltaTime;
+            activeRemark(_input);
         }
     }
 
-    public void TakingDamageDialogue()
+    private void passiveRemark(string _input)
     {
+        string blockToCall = passivePilot.name + _input;
+        flowChart.ExecuteBlock(blockToCall);
+    }
 
+    private void activeRemark(string _input)
+    {
+        string blockToCall = activePilot.name + _input;
+        flowChart.ExecuteBlock(blockToCall);
+    }
+
+    public void EnteringStage()
+    {
+        if (DialogueSuccessful())
+        {
+            ActivateDialogue(" Entering Stage");
+        }
+    }
+
+    public void ExitingStage()
+    {
+        if (DialogueSuccessful())
+        {
+            ActivateDialogue(" Exiting Stage");
+        }
+    }
+
+    public void TakingDamage()
+    {
+        if(DialogueSuccessful())
+        {
+            ActivateDialogue(" Damage");
+        }
+    }
+
+    public void CollectingPickUps()
+    {
+        if (DialogueSuccessful())
+        {
+            ActivateDialogue(" Collecting Pick-Ups");
+        }
+    }
+
+    public void DefeatingEnemies()
+    {
+        if (DialogueSuccessful())
+        {
+            ActivateDialogue(" Defeating Enemies");
+        }
+    }
+
+    public void LoseStage()
+    {
+        if (DialogueSuccessful())
+        {
+            ActivateDialogue(" Lose Stage");
+        }
     }
 }

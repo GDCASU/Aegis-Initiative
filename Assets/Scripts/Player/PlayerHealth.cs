@@ -35,9 +35,11 @@ public class PlayerHealth : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
     public void TakeDamage(int damage)
     {
         health -= Mathf.RoundToInt((float)damage * damageMultiplier * (1f - defense));
+        RemarkManager.singleton.TakingDamage(); //added by Brad for when player takes damage
         if (health <= 0)
         {
             KillPlayer();
