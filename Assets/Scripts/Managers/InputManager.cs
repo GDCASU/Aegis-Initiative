@@ -88,7 +88,7 @@ public class InputManager : MonoBehaviour {
     public static void ResetKeycodes () {
         playerActions[0].keyboardKey = KeyCode.LeftShift;
         playerActions[0].xboxKey = KeyCode.JoystickButton2;
-        playerActions[1].keyboardKey = KeyCode.Space;
+        playerActions[1].keyboardKey = KeyCode.Mouse1;
         playerActions[1].xboxKey = KeyCode.JoystickButton0;
         playerActions[2].keyboardKey = KeyCode.KeypadEnter;
         playerActions[2].xboxKey = KeyCode.JoystickButton0;
