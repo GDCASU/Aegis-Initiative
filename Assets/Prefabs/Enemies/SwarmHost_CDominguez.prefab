@@ -125,8 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e9344d4b4c46f41af000f825e62679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  collisionDamage: 0
   totalHealth: 100
   totalDamage: 20
   unitPrefab: {fileID: 8556706018873613575, guid: ba9c7cbfa3ddb984e8496caa9ddf75e5,
@@ -177,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMovement: 1
+  waveMovement: 0
   maxWavePeak: 1.2
   minWaveDip: 0
   waveFrequency: 0.5
@@ -185,5 +183,4 @@ MonoBehaviour:
   shipSpeed: 2
   hover: 1
   hoverTimer: 3
-  leaveDirection: 1
-  moveDirection: -1
+  leaveDirection: 0
