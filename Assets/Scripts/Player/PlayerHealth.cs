@@ -36,6 +36,14 @@ public class PlayerHealth : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamage(0);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         health -= Mathf.RoundToInt((float)damage * damageMultiplier * (1f - defense));

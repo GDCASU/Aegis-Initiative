@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class RemarkManager : MonoBehaviour
 {
     public static RemarkManager singleton;
+    public bool importantDialogueActive = false;
 
     private GameObject passivePilot;
     private GameObject activePilot;
@@ -32,13 +33,14 @@ public class RemarkManager : MonoBehaviour
         //tempChart = tempFeebee.GetComponent<RemarkList>().pilotFlowchart;
         //tempChart.FindBlock("Taking Damage").CommandList[0].GetComponent<Fungus.FadeUI>().targetObjects[0] = DialogueUI;
     }
+
     //Random float landed in proper range
     private bool DialogueSuccessful()
     {
         bool result = false;
         float rand = Random.Range(0.0f, 100.0f);
 
-        if(rand <= chanceToSpeak)
+        if (!importantDialogueActive && rand <= chanceToSpeak)
         {
             result = true;
         }
@@ -72,6 +74,14 @@ public class RemarkManager : MonoBehaviour
         flowChart.ExecuteBlock(blockToCall);
     }
 
+    public void SetImportantDialogue(bool input)
+    {
+        importantDialogueActive = input;
+    }
+
+    /// <summary>
+    /// Random remark functions to call are below here --------------------------------
+    /// </summary>
     public void EnteringStage()
     {
         if (DialogueSuccessful())
@@ -90,7 +100,7 @@ public class RemarkManager : MonoBehaviour
 
     public void TakingDamage()
     {
-        if(DialogueSuccessful())
+        if (DialogueSuccessful())
         {
             ActivateDialogue(" Damage");
         }
