@@ -22,6 +22,7 @@ public class FrederickActive : CopilotActiveMechanic
 
     private void Update()
     {
+        //Starts timer for active
         if (!_activeIsActive && InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
         {
             _activeIsActive = true;
@@ -29,6 +30,7 @@ public class FrederickActive : CopilotActiveMechanic
 
             playerBullet.damage = activeDamage;
         }
+        //Handles timer for active
         else if (_activeIsActive)
         {
             _timerCount -= Time.deltaTime;
