@@ -34,13 +34,6 @@ public class RemarkManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
-    void Start()
-    {
-        passivePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().passive.gameObject;
-        activePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().active.gameObject;
-    }
-
     //Random float landed in proper range
     private bool DialogueSuccessful()
     {
@@ -49,8 +42,8 @@ public class RemarkManager : MonoBehaviour
         //HARDCODED
         //WEE WOO WEE WOO
         //CHANGE LATER AWAY FROM FIND AAAAAAAHHHHHHHHH!!!!!!!!!!!!!!!
-        passiveChart = GameObject.Find("DaddyLongLegs").GetComponent<SetupFlowchart>().sceneFlowchart;
-        activeChart = GameObject.Find("Feebee").GetComponent<SetupFlowchart>().sceneFlowchart;
+        passiveChart = GameManager.singleton.passiveCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
+        activeChart = GameManager.singleton.activeCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
 
         bool result = false;
         float rand = Random.Range(0.0f, 100.0f);
