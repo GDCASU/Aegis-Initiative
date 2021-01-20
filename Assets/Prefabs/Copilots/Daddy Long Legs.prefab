@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8537377698316233864}
   - component: {fileID: 1237420779075435677}
   - component: {fileID: -417383991283087005}
+  - component: {fileID: -188011486350989331}
   m_Layer: 0
   m_Name: Daddy Long Legs
   m_TagString: Untagged
@@ -135,3 +136,18 @@ MonoBehaviour:
   - slaughter them all *flushed*
   losingStage:
   - sadge
+--- !u!114 &-188011486350989331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375490512028081142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 6572918113728831403, guid: 2aeb70cc63a7b4f41827cfd959e4f2c4,
+    type: 3}
+  sceneFlowchart: {fileID: 0}

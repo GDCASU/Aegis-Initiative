@@ -8,10 +8,9 @@ using UnityEngine.UI;
 public class RemarkManager : MonoBehaviour
 {
     public static RemarkManager singleton;
-
+    
     [Header("Booleans")]
-    //[HideInInspector]
-    public bool dialogueRunning = false;
+    [HideInInspector]
     public bool importantDialogueActive = false;
 
     private GameObject passivePilot;
@@ -40,7 +39,11 @@ public class RemarkManager : MonoBehaviour
     {
         passivePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().passive.gameObject;
         activePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().active.gameObject;
+    }
 
+    //Random float landed in proper range
+    private bool DialogueSuccessful()
+    {
         //THIS IS HARD CODED
         //CHANGE LATER
         //HARDCODED
@@ -48,11 +51,7 @@ public class RemarkManager : MonoBehaviour
         //CHANGE LATER AWAY FROM FIND AAAAAAAHHHHHHHHH!!!!!!!!!!!!!!!
         passiveChart = GameObject.Find("DaddyLongLegs").GetComponent<SetupFlowchart>().sceneFlowchart;
         activeChart = GameObject.Find("Feebee").GetComponent<SetupFlowchart>().sceneFlowchart;
-    }
 
-    //Random float landed in proper range
-    private bool DialogueSuccessful()
-    {
         bool result = false;
         float rand = Random.Range(0.0f, 100.0f);
 
@@ -90,6 +89,17 @@ public class RemarkManager : MonoBehaviour
         }
     }
 
+    public void SetImportantDialogue(bool input)
+    {
+        importantDialogueActive = input;
+    }
+
+    /// <summary>
+    /// STORY DIALOGUE BELOW HERE -----------------------------
+    /// </summary>
+    /// <param name="_input"></param>
+    /// <param name="_pilot"></param>
+
     public void ActivateHiddenDialogue(string _input, GameObject _pilot)
     {
         ExecuteDialogue(_input, _pilot);
@@ -111,10 +121,11 @@ public class RemarkManager : MonoBehaviour
             }
         }
 
-        lastBlock = storyFlowchart.FindBlock(_input);
-        foreach(Command currCommand in lastBlock.CommandList)
+        lastBlock = storyFlowchart.FindBlock(_input); //grab executing block
+        //change character/portrait to active or passive
+        foreach (Command currCommand in lastBlock.CommandList)
         {
-            switch(currCommand)
+            switch (currCommand)
             {
                 case Say info:
                     info._Character = _pilot.GetComponent<Character>(); //choose character
@@ -127,10 +138,7 @@ public class RemarkManager : MonoBehaviour
         storyFlowchart.ExecuteBlock(_input);
     }
 
-    public void SetImportantDialogue(bool input)
-    {
-        importantDialogueActive = input;
-    }
+    //-----------------------------------------------
 
     /// <summary>
     /// Random remark functions to call are below here --------------------------------
@@ -139,7 +147,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue(" Entering Stage");
+            ActivatePilotDialogue("Entering Stage");
         }
     }
 
@@ -147,7 +155,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue(" Exiting Stage");
+            ActivatePilotDialogue("Exiting Stage");
         }
     }
 
@@ -163,7 +171,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue(" Collecting Pick-Ups");
+            ActivatePilotDialogue("Collecting Pick-Ups");
         }
     }
 
@@ -171,7 +179,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue(" Defeating Enemies");
+            ActivatePilotDialogue("Defeating Enemies");
         }
     }
 
@@ -179,7 +187,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue(" Lose Stage");
+            ActivatePilotDialogue("Lose Stage");
         }
     }
 }
