@@ -21,5 +21,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
         if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnvironmentHealth>().TakeDamage(damage);
+        //if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<PlayerInfo>().TakeDamage(damage);
+        Destroy(transform.gameObject);
     }
 }
