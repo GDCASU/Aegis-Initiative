@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3387098961694321353}
   - component: {fileID: 365653576477132568}
   - component: {fileID: 6305573297492744777}
+  - component: {fileID: 8134944865317195555}
   m_Layer: 0
   m_Name: Feebee
   m_TagString: Untagged
@@ -89,7 +90,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4153349408766037956}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18a6d35055f9a2d46a46476258a12390, type: 3}
   m_Name: 
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4153349408766037956}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 182c952c4e4f3e042b4596aa093eb086, type: 3}
   m_Name: 
@@ -121,3 +122,18 @@ MonoBehaviour:
   description: blah
   icon: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
   defenseIncrease: 0.2
+--- !u!114 &8134944865317195555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 6572918113728831403, guid: 7505f15c5fb58854f9dad75322c77e79,
+    type: 3}
+  sceneFlowchart: {fileID: 0}
