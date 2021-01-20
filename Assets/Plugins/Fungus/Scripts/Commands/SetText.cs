@@ -17,7 +17,7 @@ namespace Fungus
     public class SetText : Command, ILocalizable 
     {
         [Tooltip("Text object to set text on. Can be a UI Text, Text Field or Text Mesh object.")]
-        [SerializeField] protected GameObject targetTextObject;
+        public GameObject targetTextObject; //CHANGED FROM "[SERIALIZEFIELD] PROTECTED" TO "PUBLIC"
         
         [Tooltip("String value to assign to the text object")]
         [FormerlySerializedAs("stringData")]
