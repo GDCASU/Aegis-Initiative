@@ -8,15 +8,25 @@ using UnityEngine.UI;
 public class RemarkManager : MonoBehaviour
 {
     public static RemarkManager singleton;
+
+    [Header("Booleans")]
+    //[HideInInspector]
+    public bool dialogueRunning = false;
     public bool importantDialogueActive = false;
 
     private GameObject passivePilot;
     private GameObject activePilot;
+    private Flowchart passiveChart;
+    private Flowchart activeChart;
 
+    private Block lastBlock;
+
+    [Header("Adjustments")]
     [SerializeField]
     private float chanceToSpeak = 100.0f;
 
-    public Flowchart flowChart;
+    [Header("Flowchart")]
+    public Flowchart storyFlowchart;
 
     private void Awake() //set singletone
     {
@@ -30,8 +40,14 @@ public class RemarkManager : MonoBehaviour
     {
         passivePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().passive.gameObject;
         activePilot = PlayerHealth.singleton.GetComponent<SelectedCopilots>().active.gameObject;
-        //tempChart = tempFeebee.GetComponent<RemarkList>().pilotFlowchart;
-        //tempChart.FindBlock("Taking Damage").CommandList[0].GetComponent<Fungus.FadeUI>().targetObjects[0] = DialogueUI;
+
+        //THIS IS HARD CODED
+        //CHANGE LATER
+        //HARDCODED
+        //WEE WOO WEE WOO
+        //CHANGE LATER AWAY FROM FIND AAAAAAAHHHHHHHHH!!!!!!!!!!!!!!!
+        passiveChart = GameObject.Find("DaddyLongLegs").GetComponent<SetupFlowchart>().sceneFlowchart;
+        activeChart = GameObject.Find("Feebee").GetComponent<SetupFlowchart>().sceneFlowchart;
     }
 
     //Random float landed in proper range
@@ -48,30 +64,67 @@ public class RemarkManager : MonoBehaviour
         return result;
     }
     //choose passive or active pilot
-    private void ActivateDialogue(string _input)
+    public void ActivatePilotDialogue(string _input)
     {
+        //make sure old dialogue does not effect new dialogue
+        if(lastBlock != null)
+        {
+            if(lastBlock.IsExecuting())
+            {
+                lastBlock.Stop();
+            }
+        }
+
         int temp = Random.Range(0, 2);
-        Debug.Log(temp);
         if (temp == 0)
         {
-            passiveRemark(_input);
+            //string blockToCall = passivePilot.name + _input;
+            lastBlock = passiveChart.FindBlock(_input);
+            passiveChart.ExecuteBlock(_input);
         }
         else
         {
-            activeRemark(_input);
+            //string blockToCall = activePilot.name + _input;
+            lastBlock = activeChart.FindBlock(_input);
+            activeChart.ExecuteBlock(_input);
         }
     }
 
-    private void passiveRemark(string _input)
+    public void ActivateHiddenDialogue(string _input, GameObject _pilot)
     {
-        string blockToCall = passivePilot.name + _input;
-        flowChart.ExecuteBlock(blockToCall);
+        ExecuteDialogue(_input, _pilot);
     }
 
-    private void activeRemark(string _input)
+    public void ActivateStoryDialogue(string _input, GameObject _pilot)
     {
-        string blockToCall = activePilot.name + _input;
-        flowChart.ExecuteBlock(blockToCall);
+        ExecuteDialogue(_input, _pilot);
+    }
+
+    private void ExecuteDialogue(string _input, GameObject _pilot)
+    {
+        //make sure old dialogue does not effect new dialogue
+        if (lastBlock != null)
+        {
+            if (lastBlock.IsExecuting())
+            {
+                lastBlock.Stop();
+            }
+        }
+
+        lastBlock = storyFlowchart.FindBlock(_input);
+        foreach(Command currCommand in lastBlock.CommandList)
+        {
+            switch(currCommand)
+            {
+                case Say info:
+                    info._Character = _pilot.GetComponent<Character>(); //choose character
+                    info.Portrait = _pilot.GetComponent<CopilotInfo>().fullBody; //CHANGE TO DESIRED PORTRAIT WHEN MORE ARE MADE
+                    break;
+                default:
+                    break;
+            }
+        }
+        storyFlowchart.ExecuteBlock(_input);
     }
 
     public void SetImportantDialogue(bool input)
@@ -86,7 +139,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivateDialogue(" Entering Stage");
+            ActivatePilotDialogue(" Entering Stage");
         }
     }
 
@@ -94,7 +147,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivateDialogue(" Exiting Stage");
+            ActivatePilotDialogue(" Exiting Stage");
         }
     }
 
@@ -102,7 +155,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivateDialogue(" Damage");
+            ActivatePilotDialogue("Taking Damage");
         }
     }
 
@@ -110,7 +163,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivateDialogue(" Collecting Pick-Ups");
+            ActivatePilotDialogue(" Collecting Pick-Ups");
         }
     }
 
@@ -118,7 +171,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivateDialogue(" Defeating Enemies");
+            ActivatePilotDialogue(" Defeating Enemies");
         }
     }
 
@@ -126,7 +179,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivateDialogue(" Lose Stage");
+            ActivatePilotDialogue(" Lose Stage");
         }
     }
 }

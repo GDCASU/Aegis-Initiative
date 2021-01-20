@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Update()
+    private void Update() //DELETE LATER
     {
         if(Input.GetKeyDown(KeyCode.K))
         {

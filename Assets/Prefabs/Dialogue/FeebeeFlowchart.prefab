@@ -18,12 +18,12 @@ GameObject:
   - component: {fileID: 6572918113728831428}
   - component: {fileID: 6572918113728831429}
   - component: {fileID: 6572918113728831431}
-  - component: {fileID: 6572918113728831427}
   - component: {fileID: 6572918113728831426}
-  - component: {fileID: 6572918113728831425}
   - component: {fileID: 6572918113728831424}
   - component: {fileID: 6572918113728831430}
   - component: {fileID: 6572918113728831417}
+  - component: {fileID: 4535547312377855911}
+  - component: {fileID: 8369997491996024974}
   m_Layer: 0
   m_Name: FeebeeFlowchart
   m_TagString: Untagged
@@ -72,7 +72,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 6572918113728831422}
   selectedCommands:
-  - {fileID: 6572918113728831427}
+  - {fileID: 6572918113728831423}
   variables: []
   description: 
   stepPause: 0
@@ -109,11 +109,11 @@ MonoBehaviour:
   description: Test block for mid level dialogue
   eventHandler: {fileID: 6572918113728831418}
   commandList:
+  - {fileID: 4535547312377855911}
   - {fileID: 6572918113728831417}
   - {fileID: 6572918113728831423}
   - {fileID: 6572918113728831416}
   - {fileID: 6572918113728831426}
-  - {fileID: 6572918113728831427}
   suppressAllAutoSelections: 0
 --- !u!114 &6572918113728831423
 MonoBehaviour:
@@ -129,11 +129,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 0
-  storyText: placeholder
+  storyText: '[~Watch it!|Woah!|Careful, idiot!|Are you trying to kill us?|Don''t
+    scratch the paint!|I''m not paying for that...|Hey, I just got the last dent
+    out of this!]'
   description: 
-  character: {fileID: 3337853821374279804, guid: 01213e3c17b838147b90e07b0f34a5f1,
-    type: 3}
-  portrait: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
+  character: {fileID: 0}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -159,7 +160,7 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 2
+    floatVal: 0.4
   durationOLD: 0
 --- !u!114 &6572918113728831418
 MonoBehaviour:
@@ -203,11 +204,11 @@ MonoBehaviour:
   description: second test block
   eventHandler: {fileID: 6572918113728831431}
   commandList:
+  - {fileID: 8369997491996024974}
   - {fileID: 6572918113728831430}
   - {fileID: 6572918113728831428}
   - {fileID: 6572918113728831429}
   - {fileID: 6572918113728831424}
-  - {fileID: 6572918113728831425}
   suppressAllAutoSelections: 0
 --- !u!114 &6572918113728831428
 MonoBehaviour:
@@ -226,7 +227,7 @@ MonoBehaviour:
   storyText: placeholder
   description: 
   character: {fileID: 0}
-  portrait: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -252,7 +253,7 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 2
+    floatVal: 0.4
   durationOLD: 0
 --- !u!114 &6572918113728831431
 MonoBehaviour:
@@ -271,27 +272,6 @@ MonoBehaviour:
   tagFilter: []
   FireOn: 1
   collisionVar: {fileID: 0}
---- !u!114 &6572918113728831427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6572918113728831436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c0367bf08d147bd80b5454de50e9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 29
-  indentLevel: 0
-  targetTextObject: {fileID: 7203367352742838088, guid: 76a3200967b936b4cac8bb42aa7bdf2d,
-    type: 3}
-  text:
-    stringRef: {fileID: 0}
-    stringVal: 
-  description: 
-  _textObjectObsolete: {fileID: 0}
 --- !u!114 &6572918113728831426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +287,7 @@ MonoBehaviour:
   itemId: 28
   indentLevel: 0
   targetObjects:
-  - {fileID: 6219106472063152532, guid: 4daba1c5090c9ef479e09bd5c5043648, type: 3}
+  - {fileID: 0}
   tweenType: 2
   waitUntilFinished:
     booleanRef: {fileID: 0}
@@ -322,26 +302,6 @@ MonoBehaviour:
   targetAlpha:
     floatRef: {fileID: 0}
     floatVal: 0
---- !u!114 &6572918113728831425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6572918113728831436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c0367bf08d147bd80b5454de50e9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 31
-  indentLevel: 0
-  targetTextObject: {fileID: 0}
-  text:
-    stringRef: {fileID: 0}
-    stringVal: 
-  description: 
-  _textObjectObsolete: {fileID: 0}
 --- !u!114 &6572918113728831424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +377,7 @@ MonoBehaviour:
   itemId: 32
   indentLevel: 0
   targetObjects:
-  - {fileID: 6219106472063152532, guid: 4daba1c5090c9ef479e09bd5c5043648, type: 3}
+  - {fileID: 0}
   tweenType: 2
   waitUntilFinished:
     booleanRef: {fileID: 0}
@@ -432,3 +392,57 @@ MonoBehaviour:
   targetAlpha:
     floatRef: {fileID: 0}
     floatVal: 1
+--- !u!114 &4535547312377855911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572918113728831436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 34
+  indentLevel: 0
+  storyText: 
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 0
+  waitForClick: 0
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &8369997491996024974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572918113728831436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 35
+  indentLevel: 0
+  storyText: 
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 0
+  waitForClick: 0
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}

@@ -38,12 +38,12 @@ public class StageTriggers : MonoBehaviour
     {
         if (other.gameObject.name=="Start Trigger")
         {
-            flow.ExecuteBlock("start");
+            //flow.ExecuteBlock("start");
             start = false;
         }
         if(other.gameObject.name == "End Trigger")
         {
-            flow.ExecuteBlock("finish");
+            //flow.ExecuteBlock("finish");
             //store final cart speed and execute end of level
             endSpeed = playerShip.GetComponent<ShipMovement>().forwardSpeed;
             endDirection = new Vector3(0, 0, endSpeed * Time.deltaTime);
@@ -51,7 +51,34 @@ public class StageTriggers : MonoBehaviour
         }
         if(other.gameObject.tag == "Dialogue_Trigger")
         {
-            flow.ExecuteBlock(other.gameObject.name);
+            GameObject passivePilot = gameObject.GetComponent<SelectedCopilots>().passive.gameObject;
+            GameObject activePilot = gameObject.GetComponent<SelectedCopilots>().active.gameObject;
+            string specialName = other.gameObject.GetComponent<DialogueTriggers>().hiddenPilot.ToString();
+            //check if it is hidden dialogue or not
+            if(specialName.CompareTo("Any") != 0)
+            {
+                //does the player have the hidden pilot selected
+                if(passivePilot.name.CompareTo(specialName) == 0)
+                {
+                    RemarkManager.singleton.ActivateHiddenDialogue(other.gameObject.name, passivePilot);
+                }
+                else if(activePilot.name.CompareTo(specialName) == 0)
+                {
+                    RemarkManager.singleton.ActivateHiddenDialogue(other.gameObject.name, activePilot);
+                }
+            }
+            else //it is not hidden dialogue
+            {
+                //check chosen pilot on dialogue trigger
+                if(other.gameObject.GetComponent<DialogueTriggers>().chosenPilot == DialogueTriggers.DialoguePilot.passive)
+                {
+                    RemarkManager.singleton.ActivateStoryDialogue(other.gameObject.name, passivePilot);
+                }
+                else
+                {
+                    RemarkManager.singleton.ActivateStoryDialogue(other.gameObject.name, activePilot);
+                }
+            }
         }
     }
 

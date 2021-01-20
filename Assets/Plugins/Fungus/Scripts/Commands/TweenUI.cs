@@ -13,7 +13,7 @@ namespace Fungus
     public abstract class TweenUI : Command 
     {
         [Tooltip("List of objects to be affected by the tween")]
-        [SerializeField] public List<GameObject> targetObjects = new List<GameObject>();
+        public List<GameObject> targetObjects = new List<GameObject>(); //CHANGED FROM "[SERIALIZEFIELD] PROTECTED" TO "PUBLIC"
         
         [Tooltip("Type of tween easing to apply")]
         [SerializeField] protected LeanTweenType tweenType = LeanTweenType.easeOutQuad;
