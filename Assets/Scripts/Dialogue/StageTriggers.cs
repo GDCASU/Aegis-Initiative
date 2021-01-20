@@ -53,8 +53,6 @@ public class StageTriggers : MonoBehaviour
         {
             GameObject passivePilot = GameManager.singleton.passiveCopilot;
             GameObject activePilot = GameManager.singleton.activeCopilot;
-            print(passivePilot.name);
-            print(activePilot.name);
             string specialName = other.gameObject.GetComponent<DialogueTriggers>().hiddenPilot.ToString();
             //check if it is hidden dialogue or not
             if(specialName.CompareTo("Any") != 0)
