@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4153349408766037956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8412601976711246255}
+  - component: {fileID: 3337853821374279804}
+  - component: {fileID: 3387098961694321353}
+  - component: {fileID: 365653576477132568}
+  - component: {fileID: 6305573297492744777}
+  - component: {fileID: 8134944865317195555}
+  m_Layer: 0
+  m_Name: Feebee
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8412601976711246255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3337853821374279804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: Feebee
+  nameColor: {r: 1, g: 1, b: 1, a: 1}
+  soundEffect: {fileID: 0}
+  portraits:
+  - {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
+  portraitsFace: 0
+  setSayDialog: {fileID: 0}
+  description: "Hailing from the desert planet of Fare, Feebee is a member of a tiny,
+    fox-like species.  However, don\u2019t let her small stature fool you! She\u2019s
+    tough and a bit of a bully.  Highly intelligent and sly, you aren\u2019t sure
+    you can trust her completely, but she\u2019s a damn good tank, so at least you
+    know she\u2019s willing to make sacrifices for the team, should you choose her. 
+    She puts up a cool facade, but deep down she really does care about her teammates,
+    her friends.  Not that she\u2019d ever let them know!"
+--- !u!114 &3387098961694321353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe15a552c635134580ba4fcafc83169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 3337853821374279804}
+  copilotData:
+    name: 0
+    level: 0
+    experience: 0
+    isUnlocked: 1
+  portrait: {fileID: 21300000, guid: 9ce6cf540ce2ece4dacce467ace3bca4, type: 3}
+  fullBody: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
+  copilotActive: {fileID: 365653576477132568}
+  copilotPassive: {fileID: 6305573297492744777}
+--- !u!114 &365653576477132568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a6d35055f9a2d46a46476258a12390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 2
+  abilityName: Barrel Roll
+  description: blah blah
+  icon: {fileID: 21300000, guid: f2e901e070fff48cda67e3f446d80e79, type: 3}
+  shipMovement: {fileID: 0}
+  speedOfDodge: 3
+  numberofRolls: 1
+  timeOfRoll: 0.3
+  rollPerforming: 0
+  rollDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &6305573297492744777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182c952c4e4f3e042b4596aa093eb086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 0
+  abilityName: Stubborn
+  description: blah
+  icon: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
+  defenseIncrease: 0.2
+--- !u!114 &8134944865317195555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153349408766037956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 6572918113728831403, guid: 7505f15c5fb58854f9dad75322c77e79,
+    type: 3}
+  sceneFlowchart: {fileID: 0}

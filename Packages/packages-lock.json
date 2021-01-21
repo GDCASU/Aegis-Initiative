@@ -1,5 +1,24 @@
 {
   "dependencies": {
+    "com.unity.animation.rigging": {
+      "version": "0.3.4-preview",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.burst": "1.2.0-preview.12",
+        "com.unity.test-framework": "1.0.7"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.burst": {
+      "version": "1.2.0-preview.12",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.1.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.cinemachine": {
       "version": "2.6.0",
       "depth": 0,
@@ -44,6 +63,22 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.mathematics": {
+      "version": "1.1.0",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.probuilder": {
+      "version": "4.2.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "8.2.0",
       "depth": 1,
@@ -53,29 +88,26 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.render-pipelines.high-definition": {
+    "com.unity.render-pipelines.universal": {
       "version": "8.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.render-pipelines.core": "8.2.0",
-        "com.unity.shadergraph": "8.2.0",
-        "com.unity.visualeffectgraph": "8.2.0",
-        "com.unity.render-pipelines.high-definition-config": "8.2.0"
+        "com.unity.shadergraph": "8.2.0"
       },
       "url": "https://packages.unity.com"
-    },
-    "com.unity.render-pipelines.high-definition-config": {
-      "version": "file:../LocalPackages/com.unity.render-pipelines.high-definition-config",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.render-pipelines.core": "7.3.1"
-      }
     },
     "com.unity.searcher": {
       "version": "4.0.9",
       "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.settings-manager": {
+      "version": "1.0.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -124,15 +156,6 @@
       "dependencies": {
         "com.unity.modules.ui": "1.0.0"
       }
-    },
-    "com.unity.visualeffectgraph": {
-      "version": "8.2.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.shadergraph": "8.2.0"
-      },
-      "url": "https://packages.unity.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
