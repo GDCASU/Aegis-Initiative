@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BulletSource 
+{
+    Player,
+    Enemy
+};
 public class Bullet : MonoBehaviour
 {
     public float bulletDespawnTime;
     public float timer;
     public int damage;
+    public BulletSource bulletSource;
 
     private void Start()
     {
@@ -19,7 +25,15 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-        if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnvironmentHealth>().TakeDamage(damage);
+        if (bulletSource == BulletSource.Player)
+        {
+            if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+            if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnvironmentHealth>().TakeDamage(damage);
+        }
+        //else
+        //{
+        //    if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<PlayerInfo>().TakeDamage(damage);
+        //}
+        Destroy(transform.gameObject);
     }
 }
