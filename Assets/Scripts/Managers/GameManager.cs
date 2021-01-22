@@ -60,5 +60,6 @@ public enum TypeOfMechanic
 public enum Copilots
 {
     DaddyLongLegs = -1,
-    Feebee = 0
+    Feebee = 0,
+    Frederick = 1,
 };
