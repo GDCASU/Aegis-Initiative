@@ -33,15 +33,6 @@ public class SalivaBullet : Bullet
         transform.localPosition += transform.forward * bulletSpeed;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.transform.CompareTag("Player")) //hit player
-        {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-            Destroy(gameObject);
-        }
-    }
-
     //set target position for this burst
     public void SetTarget(Vector3 target)
     {
