@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 22 Jan. 2021
+ * 
+ * Modification: Class obtains bullet damage from PlayerInfo script upon prefab creation.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +13,14 @@ public class Bullet : MonoBehaviour
 {
     public float bulletDespawnTime;
     public float timer;
+
+    [System.NonSerialized]
     public int damage;
 
     private void Start()
     {
         timer = bulletDespawnTime;
+        damage = PlayerInfo.singleton.bulletDamage;
     }
     private void Update()
     {

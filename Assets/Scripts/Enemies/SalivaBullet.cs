@@ -37,7 +37,7 @@ public class SalivaBullet : Bullet
     {
         if(collision.transform.CompareTag("Player")) //hit player
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            collision.gameObject.GetComponent<PlayerInfo>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }
