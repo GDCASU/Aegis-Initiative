@@ -33,7 +33,7 @@ public class SpaceSlug : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerCart = PlayerHealth.singleton.GetComponentInParent<CinemachineDollyCart>();
+        playerCart = PlayerInfo.singleton.GetComponentInParent<CinemachineDollyCart>();
         rng = new System.Random();
         start = new Vector3();
         middle = new Vector3();
@@ -99,7 +99,7 @@ public class SpaceSlug : MonoBehaviour
         if (other.name == "Player")
         {
             //call Player's TakeDamage() method
-            other.GetComponent<PlayerHealth>().TakeDamage(damage);
+            other.GetComponent<PlayerInfo>().TakeDamage(damage);
         }
     }
 }
