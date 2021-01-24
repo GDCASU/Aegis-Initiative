@@ -32,7 +32,6 @@ public class SalivaBullet : Bullet
         //move toward grabbed player location
         transform.localPosition += transform.forward * bulletSpeed;
     }
-
     //set target position for this burst
     public void SetTarget(Vector3 target)
     {
