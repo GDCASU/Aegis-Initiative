@@ -7,16 +7,17 @@ public class MushroomFriendActive : CopilotActiveMechanic
     //for testing
     public float health; //to visualize when testing
 
-    //real stuff
     public int heal; //amount to heal player
     public float healTime; //time to restore health
+    private bool healPlayer; //check that Player is allowed to heal
 
+    //variables for spore particle system
     public float sporeTimer;
     public bool sporeStart;
-    private bool healPlayer;
     private ParticleSystem spores;
-    private MeshRenderer bubbleMesh;
 
+    //variables for healing bubble
+    private MeshRenderer bubbleMesh;
     private Vector3 bubbleScale;
     private bool bubbleInflated;
 
@@ -29,41 +30,27 @@ public class MushroomFriendActive : CopilotActiveMechanic
         bubbleMesh = transform.GetChild(0).GetComponent<MeshRenderer>();
         bubbleMesh.enabled = false;
         bubbleInflated = false;
-
         bubbleScale = new Vector3(0.01f, 0.01f, 0.01f);
-
     }
 
     void Update()
     {
-        //if (healPlayer)
-        //{
-        //    //if (InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        sporeTimer = healTime;
-        //        spores.Simulate(0.0f, true, true); //reset particle system sporeTimer
-        //        spores.Play();
-        //    }
-        //}
-
+        //if Player can heal, activate Player active ability and show healing bubble
         if (healPlayer)
         {
-            //if (InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
             {
                 bubbleMesh.enabled = true;
             }
         }
 
+        //start spore particle system
         if (sporeStart)
         {
             sporeTimer = healTime;
             spores.Simulate(0.0f, true, true); //reset particle system sporeTimer
             spores.Play();
-
             sporeStart = false;
-            print("start spores");
         }
 
         if (sporeTimer > 0)
@@ -71,9 +58,10 @@ public class MushroomFriendActive : CopilotActiveMechanic
             sporeTimer -= Time.deltaTime;
         }
 
+        //stop spore particle system and reset healing bubble
         if (sporeTimer < 0)
         {
-            PlayerHealth.singleton.health = PlayerHealth.singleton.maxHealth; 
+            PlayerInfo.singleton.health = PlayerInfo.singleton.maxHealth; 
             spores.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             healPlayer = false;
             sporeTimer = 0;
@@ -83,6 +71,7 @@ public class MushroomFriendActive : CopilotActiveMechanic
             bubbleMesh.enabled = false;
         }
 
+        //if healing bubble was activated, scale bubble up
         if (!bubbleInflated && bubbleMesh.enabled)
         {
             if (bubbleMesh.transform.localScale.x >= 0.7f)
@@ -96,7 +85,8 @@ public class MushroomFriendActive : CopilotActiveMechanic
             }
         }
 
-        if (!healPlayer && PlayerHealth.singleton.health <= PlayerHealth.singleton.maxHealth * 0.25f)
+        //if Player health is 25% or lower, allow Player to heal
+        if (!healPlayer && PlayerInfo.singleton.health <= PlayerInfo.singleton.maxHealth * 0.25f)
         {
             healPlayer = true;
         }
