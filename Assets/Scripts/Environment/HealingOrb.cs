@@ -13,7 +13,7 @@ public class HealingOrb : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerHealth>().Heal(healPoints);
+            other.gameObject.GetComponent<PlayerInfo>().Heal(healPoints);
             Destroy(gameObject);
         }
     }

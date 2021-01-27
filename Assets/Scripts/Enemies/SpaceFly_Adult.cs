@@ -34,7 +34,7 @@ public class SpaceFly_Adult : EnemyHealth
     {
         if(shootTimer <= 0)
         {
-            playerPos = PlayerHealth.singleton.transform.localPosition;
+            playerPos = PlayerInfo.singleton.transform.localPosition;
             shootTimer = Random.Range(shootTimerMin, shootTimerMax);
             shots = 0;
             StartCoroutine(Shoot());

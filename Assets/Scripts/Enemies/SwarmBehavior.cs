@@ -69,7 +69,7 @@ public class SwarmBehavior : EnemyHealth
 
     /// <summary>
     /// If a bullet passes through Swarm Collider, accesses the damage of the bullet and applies damage to Swarm. Else if a player passes through Swarm Collider,
-    /// accesses the player's PlayerHealth script to deal damage to player and then disperses the Swarm.
+    /// accesses the player's PlayerInfo script to deal damage to player and then disperses the Swarm.
     /// </summary>
     /// <param name="other"> the Collider that entered the Swarm Collider </param>
     private void OnTriggerEnter(Collider other)
@@ -77,7 +77,7 @@ public class SwarmBehavior : EnemyHealth
         if (other.tag == "Player")
         {
             int damageDone = (int)Mathf.Round(units.Count * damagePerUnit);
-            PlayerHealth.singleton.TakeDamage(damageDone);
+            PlayerInfo.singleton.TakeDamage(damageDone);
             StartCoroutine(DisperseSwarm());
         }
     }

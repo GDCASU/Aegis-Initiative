@@ -7,6 +7,14 @@
  * 
  */
 
+ /*
+  * Revision Author: Cristion Dominguez
+  * Revision Date: 22 Jan. 2021
+  * 
+  * Modification: The vulnerability effect is invoked by referencing the PlayerInfo script.
+  * 
+  */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,10 +83,10 @@ public class FlyLarvae : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            PlayerHealth playerHealth = collision.transform.GetComponent<PlayerHealth>();
+            PlayerInfo PlayerInfo = collision.transform.GetComponent<PlayerInfo>();
 
-            playerHealth.TakeDamage(damage);
-            playerHealth.ApplyVulnerability(vulnerabilityDamageMultiplier, vulnerabilityActiveTime);
+            PlayerInfo.TakeDamage(damage);
+            PlayerInfo.AddStatusEffect(StatusEffects.VULNERABILITY, vulnerabilityDamageMultiplier, vulnerabilityActiveTime);
 
             Destroy(this.gameObject);
         }
