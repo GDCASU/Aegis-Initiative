@@ -20,7 +20,7 @@ public class FrederickPassive : CopilotPassiveMechanic
     {
         playerShooting = GetComponent<BasicPlayerShooting>();
 
-        _defaultFirerate = playerShooting.fireRate;
+        _defaultFirerate = PlayerInfo.singleton.fireRate;
         _defaultSpeed = playerShooting.speed;
     }
 
@@ -52,7 +52,7 @@ public class FrederickPassive : CopilotPassiveMechanic
     /// </summary>
     private void SetPlayerShoot(float firerate, float speed)
     {
-        playerShooting.fireRate = firerate;
+       PlayerInfo.singleton.fireRate = firerate;
         playerShooting.speed = speed;
     }
 

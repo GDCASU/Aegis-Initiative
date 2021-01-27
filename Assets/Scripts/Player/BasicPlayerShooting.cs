@@ -11,8 +11,6 @@ using UnityEngine;
 
 public class BasicPlayerShooting : MonoBehaviour
 {
-    //public float fireRate;
-
     public float speed;
     public int magSize;
     public GameObject bulletPrefab;
