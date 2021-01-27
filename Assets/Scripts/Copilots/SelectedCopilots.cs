@@ -14,6 +14,8 @@ public class SelectedCopilots : MonoBehaviour
         passive = GetComponent<CopilotPassiveMechanic>();
         active.CopyInfo(GameManager.singleton.active);
         passive.CopyInfo(GameManager.singleton.passive);
+        GameManager.singleton.activeCopilot=Instantiate(GameManager.singleton.activeCopilot);
+        GameManager.singleton.passiveCopilot = Instantiate(GameManager.singleton.passiveCopilot);
         //switch (GameManager.singleton.passive.typeOfMechanic)
         //{
         //    case GameManager.TypeOfMechanic.Action:

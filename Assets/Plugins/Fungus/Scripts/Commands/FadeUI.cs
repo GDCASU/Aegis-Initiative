@@ -32,7 +32,7 @@ namespace Fungus
         [SerializeField] protected FloatData targetAlpha = new FloatData(1f);
 
         protected override void ApplyTween(GameObject go)
-        {
+        {   
             var images = go.GetComponentsInChildren<Image>();
             for (int i = 0; i < images.Length; i++)
             {

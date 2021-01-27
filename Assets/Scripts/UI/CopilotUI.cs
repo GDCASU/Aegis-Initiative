@@ -48,6 +48,7 @@ public class CopilotUI : MonoBehaviour
     #region Copilot Prefabs
     public GameObject feebeePrefab;
     public GameObject daddyLongLegs;
+    public GameObject frederickPrefab;
     #endregion
     private void Awake()
     {
@@ -74,6 +75,9 @@ public class CopilotUI : MonoBehaviour
                     break;
                 case Copilots.DaddyLongLegs:
                     tempPrefab = daddyLongLegs;
+                    break;
+                case Copilots.Frederick:
+                    tempPrefab = frederickPrefab;
                     break;
             }
             tempPrefab.GetComponent<CopilotInfo>().copilotData = copilot;

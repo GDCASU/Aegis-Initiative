@@ -8,24 +8,24 @@ public class HealthUI : MonoBehaviour
     public GameObject boss;
     public GameObject player;
     public GameObject bossHealthBar;
-    public GameObject playerHealthBar;
+    public GameObject PlayerInfoBar;
     private EnemyHealth bossHealth;
-    private PlayerHealth playerHealth;
+    private PlayerInfo PlayerInfo;
     private Slider bossSlider;
     private Slider playerSlider;
 
     void Start()
     {
         if (bossHealth != null) bossHealth = boss.GetComponent<EnemyHealth>();
-        playerHealth = player.GetComponent<PlayerHealth>();
+        PlayerInfo = player.GetComponent<PlayerInfo>();
         if (bossSlider != null) bossSlider = bossHealthBar.GetComponent<Slider>();
-        playerSlider = playerHealthBar.GetComponent<Slider>();
+        playerSlider = PlayerInfoBar.GetComponent<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (bossSlider != null) bossSlider.value = bossHealth.health;
-        playerSlider.value =  playerHealth.health;
+        playerSlider.value =  PlayerInfo.health;
     }
 }
