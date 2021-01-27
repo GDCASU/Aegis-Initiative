@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1418954563417724050}
   m_Layer: 0
   m_Name: Bounce Mushroom
-  m_TagString: BreakableEnvironment
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
