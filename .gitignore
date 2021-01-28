@@ -58,7 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-Assets/Fungus/EditorResources/FungusEditorResources.asset
+*Assets/Fungus/EditorResources/FungusEditorResources.asset
 fmod_editor.log
-Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
-ProjectSettings/Packages/com.unity.probuilder/Settings.json
+*Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+*ProjectSettings/Packages/com.unity.settings-manager/Settings.json
+*ProjectSettings/Packages/com.unity.probuilder/Settings.json
