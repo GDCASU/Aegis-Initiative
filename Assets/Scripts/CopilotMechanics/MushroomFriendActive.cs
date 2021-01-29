@@ -6,6 +6,7 @@ public class MushroomFriendActive : CopilotActiveMechanic
 {
     public GameObject HealingBubblePrefab;
     private HealingBubble healingBubbleScript;
+    private GameObject healingBubble;
     public int heal; //amount to heal player
     public float healTime; //time to restore health
     public bool healPlayer; //check that Player is allowed to heal
@@ -21,12 +22,13 @@ public class MushroomFriendActive : CopilotActiveMechanic
         //if Player can heal, activate Player active ability and show healing bubble
         if (healPlayer)
         {
+            print("calling it");
             if (InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
             {
-                if (GameObject.Find("HealingBubble(Clone)") == null)
+                if (healingBubble == null)
                 {
-                    Instantiate(HealingBubblePrefab, PlayerInfo.singleton.transform);
-                    healingBubbleScript = GameObject.Find("HealingBubble(Clone)").GetComponent<HealingBubble>();
+                    healingBubble = Instantiate(HealingBubblePrefab, PlayerInfo.singleton.transform);
+                    healingBubbleScript = healingBubble.GetComponent<HealingBubble>();
                     healingBubbleScript.SetSporeTimer(healTime);
                 }
                 else

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4370711079907685497}
   - component: {fileID: -3657987713156087961}
   - component: {fileID: -7654958617384181299}
+  - component: {fileID: -465708827105228876}
   m_Layer: 0
   m_Name: Frederick
   m_TagString: Untagged
@@ -117,3 +118,17 @@ MonoBehaviour:
   passiveCooldown: 2
   passiveFirerate: 0.02
   passiveSpeed: 50
+--- !u!114 &-465708827105228876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3027878373083091316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 0}
+  sceneFlowchart: {fileID: 0}

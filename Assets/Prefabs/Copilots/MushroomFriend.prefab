@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1845149114513795917}
   - component: {fileID: 1845149114513795916}
   - component: {fileID: 1845149114513795912}
+  - component: {fileID: 1030898534346295407}
   m_Layer: 0
   m_Name: MushroomFriend
   m_TagString: Untagged
@@ -82,7 +83,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845149114513795889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebd00e82fc8f4c543ae8dd10dbb327a5, type: 3}
   m_Name: 
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845149114513795889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec30166e28010d24ca4c1ba62ae6075b, type: 3}
   m_Name: 
@@ -114,6 +115,17 @@ MonoBehaviour:
   icon: {fileID: 0}
   defenseIncrease: 1
   sporeTimer: 5
-  healthLost: 0
-  health: 0
-  spores: []
+--- !u!114 &1030898534346295407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845149114513795889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 0}
+  sceneFlowchart: {fileID: 0}

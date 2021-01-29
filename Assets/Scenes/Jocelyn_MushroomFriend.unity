@@ -273,7 +273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &918990720
 PrefabInstance:
@@ -340,7 +340,7 @@ PrefabInstance:
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
@@ -357,18 +357,68 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4597591846386312941, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: health
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4931640489998877274, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: active
       value: 
-      objectReference: {fileID: 1072319552}
+      objectReference: {fileID: 0}
     - target: {fileID: 4931640489998877274, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: passive
       value: 
-      objectReference: {fileID: 1072319556}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
+--- !u!1 &941636504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4174455377501832922, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+    type: 3}
+  m_PrefabInstance: {fileID: 918990720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &941636515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941636504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec30166e28010d24ca4c1ba62ae6075b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 0
+  abilityName: 
+  description: 
+  icon: {fileID: 0}
+  defenseIncrease: 1
+  sporeTimer: 5
+--- !u!114 &941636516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941636504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd00e82fc8f4c543ae8dd10dbb327a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMechanic: 0
+  abilityName: 
+  description: 
+  icon: {fileID: 0}
+  HealingBubblePrefab: {fileID: 7820509114651452771, guid: 0c4c09eb4c790a44ebc4ef3a0875c533,
+    type: 3}
+  heal: 5
+  healTime: 5
+  healPlayer: 0
 --- !u!1001 &1069762959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -414,7 +464,7 @@ PrefabInstance:
     - target: {fileID: 6276305171376843203, guid: 2c04bb611c018fd478016be0d4fface7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6276305171376843203, guid: 2c04bb611c018fd478016be0d4fface7,
         type: 3}
@@ -438,124 +488,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c04bb611c018fd478016be0d4fface7, type: 3}
---- !u!1 &1072319549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1072319551}
-  - component: {fileID: 1072319550}
-  - component: {fileID: 1072319553}
-  - component: {fileID: 1072319552}
-  - component: {fileID: 1072319556}
-  m_Layer: 0
-  m_Name: MushroomFriend
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1072319550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072319549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: Character Name
-  nameColor: {r: 1, g: 1, b: 1, a: 1}
-  soundEffect: {fileID: 0}
-  portraits: []
-  portraitsFace: 0
-  setSayDialog: {fileID: 0}
-  description: 
---- !u!4 &1072319551
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072319549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.69, y: 6.95, z: -197.335}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1072319552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072319549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebd00e82fc8f4c543ae8dd10dbb327a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeOfMechanic: 0
-  abilityName: 
-  description: 
-  icon: {fileID: 0}
-  health: 10.1
-  HealingBubblePrefab: {fileID: 7820509114651452771, guid: 0c4c09eb4c790a44ebc4ef3a0875c533,
-    type: 3}
-  heal: 5
-  healTime: 5
-  healPlayer: 0
---- !u!114 &1072319553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072319549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe15a552c635134580ba4fcafc83169, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  copilotData:
-    name: 0
-    level: 0
-    experience: 0
-    isUnlocked: 0
-  portrait: {fileID: 0}
-  fullBody: {fileID: 0}
-  copilotActive: {fileID: 1072319552}
-  copilotPassive: {fileID: 1072319556}
---- !u!114 &1072319556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072319549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec30166e28010d24ca4c1ba62ae6075b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeOfMechanic: 0
-  abilityName: 
-  description: 
-  icon: {fileID: 0}
-  defenseIncrease: 1
-  sporeTimer: 5
-  healthLost: 0
-  health: 0
-  spores: []
 --- !u!1001 &1261369913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 2859108968384898446, guid: 126d88173fb2d994182d3a1a6f756c07,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2859108968384898446, guid: 126d88173fb2d994182d3a1a6f756c07,
         type: 3}
