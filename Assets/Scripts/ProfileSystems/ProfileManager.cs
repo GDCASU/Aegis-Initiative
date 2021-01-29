@@ -14,6 +14,9 @@ public class ProfileManager : MonoBehaviour
     public int currentProfileIndex = 0;
     public int profileCount = 3;
 
+    [SerializeField]
+    private bool saveTestProfiles;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -26,7 +29,7 @@ public class ProfileManager : MonoBehaviour
     {
         LoadAllProfiles();
 
-        //TestSaveProfiles();
+        if (saveTestProfiles) TestSaveProfiles();
     }
 
     /// <summary>
@@ -91,6 +94,7 @@ public class ProfileManager : MonoBehaviour
         CreateProfile(0, "UITest");
         profiles[0].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
         profiles[0].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
+        profiles[0].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
         SaveCurrentProfile();
         SaveProfile(0);
     }

@@ -93,6 +93,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnAdjustment = new Vector3(xSpawnAdjustment, ySpawnAdjustment, zSpawnAdjustment); //spawn adjustment vector to add to other.gameObject.transform.position
                 _enemies[x].enemy.transform.parent = other.gameObject.transform.parent;
                 _enemies[x].enemy.transform.localPosition = spawnAdjustment;
+                _enemies[x].enemy.transform.localRotation = Quaternion.identity;
                 _enemies[x].enemy.SetActive(true);
             }
         }
