@@ -6,10 +6,10 @@ public class MushroomFriendPassive : CopilotPassiveMechanic
 {
     public int defenseIncrease; //amount to increase defense
     public float sporeTimer; //lifetime of spores
-    public int healthLost; //set threshold amount of 10% health decrease
-    public int health; //to detect if health decreased or increased
+    private int healthLost; //set threshold amount of 10% health decrease
+    private int health; //to detect if health decreased or increased
     private bool defenseUp; //check if spores should be added to increase defense
-    public List<float> spores; 
+    private List<float> spores; 
 
     void Start()
     {
