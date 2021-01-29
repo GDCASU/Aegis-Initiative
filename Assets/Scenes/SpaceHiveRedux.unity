@@ -1954,6 +1954,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaveAsteroidSpawner1
       objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: numberOfSmall
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfSmall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfMedium
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfBig
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0314f50195dc6394b9112db888616046, type: 3}
 --- !u!111 &810482228 stripped
@@ -3450,7 +3470,7 @@ PrefabInstance:
     - target: {fileID: 1030911457504830769, guid: 0314f50195dc6394b9112db888616046,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1030911457504830769, guid: 0314f50195dc6394b9112db888616046,
         type: 3}
@@ -3486,6 +3506,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SurfaceAsteroidSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: numberOfSmall
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: numberOfMedium
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: numberOfBig
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfBig
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfMedium
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfSmall
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0314f50195dc6394b9112db888616046, type: 3}
@@ -5300,6 +5350,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CaveAsteroidSpawner2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: numberOfSmall
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: numberOfMedium
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: numberOfBig
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfSmall
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfMedium
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030911457504830775, guid: 0314f50195dc6394b9112db888616046,
+        type: 3}
+      propertyPath: healthOfBig
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0314f50195dc6394b9112db888616046, type: 3}
@@ -47675,7 +47755,7 @@ Transform:
   m_LocalScale: {x: 19.721962, y: 19.721962, z: 19.721962}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2555820637773142774
 MeshRenderer:
