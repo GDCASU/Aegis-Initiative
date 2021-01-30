@@ -161,71 +161,29 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: -5}
     roll: 0
-  - position: {x: 0, y: 0, z: 20}
+  - position: {x: 0, y: 7, z: 20}
     roll: 0
-  - position: {x: 7.5, y: 2.5, z: 30}
-    roll: -25
-  - position: {x: 15, y: 5, z: 40}
-    roll: 25
-  - position: {x: 15, y: 5, z: 50}
-    roll: 37.5
-  - position: {x: 0, y: 0, z: 60}
-    roll: 50
-  - position: {x: -15, y: -2.5, z: 50}
-    roll: 25
-  - position: {x: -25, y: -5, z: 50}
-    roll: -25
-  - position: {x: -30, y: -5, z: 60}
+  - position: {x: 0, y: 3, z: 40}
     roll: 0
-  - position: {x: -30, y: 0, z: 70}
+  - position: {x: 0, y: 1, z: 60}
     roll: 0
-  - position: {x: -30, y: 5, z: 80}
+  - position: {x: 0, y: 1, z: 100}
     roll: 0
-  - position: {x: -30, y: 5, z: 90}
+  - position: {x: 50, y: 10, z: 150}
     roll: 0
-  - position: {x: -25, y: -10, z: 100}
-    roll: -25
-  - position: {x: -22.5, y: -20, z: 105}
-    roll: -50
-  - position: {x: 0, y: -20, z: 110}
+  - position: {x: 0, y: 20, z: 200}
     roll: 0
-  - position: {x: 22.5, y: -20, z: 115}
+  - position: {x: -50, y: 10, z: 150}
     roll: 0
-  - position: {x: 45, y: -20, z: 120}
+  - position: {x: -100, y: 5, z: 100}
     roll: 0
-  - position: {x: 67.5, y: -20, z: 125}
-    roll: 25
-  - position: {x: 75, y: -20, z: 130}
-    roll: 25
-  - position: {x: 75, y: -20, z: 135}
-    roll: 12.5
-  - position: {x: 75, y: -20, z: 145}
+  - position: {x: -150, y: 10, z: 100}
     roll: 0
-  - position: {x: 75, y: -20, z: 155}
+  - position: {x: -200, y: 5, z: 100}
     roll: 0
-  - position: {x: 75, y: -5, z: 160}
-    roll: 100
-  - position: {x: 75, y: 5, z: 155}
+  - position: {x: -250, y: 5, z: 150}
     roll: 0
-  - position: {x: 75, y: 5, z: 150}
-    roll: 0
-  - position: {x: 65, y: 5, z: 140}
-    roll: 0
-  - position: {x: 45, y: 5, z: 130}
-    roll: -50
-  - position: {x: 25, y: 5, z: 130}
-    roll: -25
-  - position: {x: 5, y: 5, z: 135}
-    roll: -50
-  - position: {x: 0, y: 5, z: 140}
-    roll: -50
-  - position: {x: 0, y: 5, z: 145}
-    roll: 0
-  - position: {x: 0, y: 5, z: 150}
-    roll: 0
-  - position: {x: 0, y: 5, z: 175}
-    roll: 0
-  - position: {x: 0, y: 5, z: 200}
+  - position: {x: -250, y: 5, z: 200}
     roll: 0
 --- !u!4 &564453310
 Transform:
@@ -441,7 +399,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846497776}
-  m_LocalRotation: {x: 0.011173828, y: -0.033353508, z: 0.00037291707, w: 0.9993811}
+  m_LocalRotation: {x: -0.18419895, y: 0.0074897036, z: 0.0014036547, w: 0.9828595}
   m_LocalPosition: {x: -1.0668516, y: 1.3735876, z: -4.791156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -622,7 +580,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593785951}
-  m_LocalRotation: {x: 0.011173828, y: -0.033353508, z: 0.00037291707, w: 0.9993811}
+  m_LocalRotation: {x: -0.18419895, y: 0.0074897036, z: 0.0014036547, w: 0.9828595}
   m_LocalPosition: {x: -1.0668516, y: 1.3735876, z: -4.791156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
