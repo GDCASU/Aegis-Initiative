@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -5133579134540755455}
   - component: {fileID: 8537377698316233864}
   - component: {fileID: 1237420779075435677}
+  - component: {fileID: -188011486350989331}
   m_Layer: 0
   m_Name: Daddy Long Legs
   m_TagString: Untagged
@@ -67,14 +68,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 2375490512028081143}
-  copilot: 0
   copilotData:
-    name: Daddy Long Legs
-    level: 0
-    experience: 0
+    name: -1
+    level: 4
+    experience: 3
     isUnlocked: 1
   portrait: {fileID: 21300000, guid: 57c4879a38ac2cc4fbefe2c0a918aac6, type: 3}
-  fullBody: {fileID: 21300000, guid: ed14cc18e1e37449eb670f2613314102, type: 3}
+  fullBody: {fileID: 21300000, guid: 6d5c34a95aa09ce4a9be9f7258a02c0d, type: 3}
   copilotActive: {fileID: 8537377698316233864}
   copilotPassive: {fileID: 1237420779075435677}
 --- !u!114 &8537377698316233864
@@ -109,3 +109,18 @@ MonoBehaviour:
   abilityName: Stretch
   description: you are wider and deal more damage
   icon: {fileID: 21300000, guid: ea8f56c43254d41728f5ac4e8299b6c9, type: 3}
+--- !u!114 &-188011486350989331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375490512028081142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 6572918113728831403, guid: 2aeb70cc63a7b4f41827cfd959e4f2c4,
+    type: 3}
+  sceneFlowchart: {fileID: 0}

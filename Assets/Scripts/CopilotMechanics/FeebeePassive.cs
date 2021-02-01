@@ -7,7 +7,7 @@ public class FeebeePassive : CopilotPassiveMechanic
     public float defenseIncrease; 
     private void Start()
     {
-        PlayerHealth.singleton.defense = defenseIncrease;
+        PlayerInfo.singleton.defense = defenseIncrease;
     }
     public override void CopyInfo(CopilotMechanic copilotMechanic)
     {
