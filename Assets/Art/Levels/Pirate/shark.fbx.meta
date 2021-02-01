@@ -6,7 +6,22 @@ ModelImporter:
   - first:
       74: -28716885282145656
     second: root|mp_Action
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pufferfish.dark
+    second: {fileID: 2100000, guid: fe299c05f6c390249bda1800f6eb2751, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pufferfish.eyes
+    second: {fileID: 2100000, guid: ae79a3dd1bc2dde41b51b09763f33281, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pufferfish.light
+    second: {fileID: 2100000, guid: c3b19c3eafb1ffc4db77ace0a998a383, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
