@@ -42,7 +42,11 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            if (collision.gameObject.tag == "Player") collision.gameObject.GetComponent<PlayerInfo>().TakeDamage(damage);
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.GetComponent<PlayerInfo>().TakeDamage(damage);
+                collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
         }
         Destroy(transform.gameObject);
     }

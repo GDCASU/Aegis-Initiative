@@ -96,7 +96,7 @@ public class SpaceSlug : MonoBehaviour
     //If player collides with SpaceSlug, Player takes damage
     void OnCollision(GameObject other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
             //call Player's TakeDamage() method
             other.GetComponent<PlayerInfo>().TakeDamage(damage);
