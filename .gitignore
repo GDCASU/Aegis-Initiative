@@ -63,3 +63,4 @@ fmod_editor.log
 *Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
 *ProjectSettings/Packages/com.unity.settings-manager/Settings.json
 *ProjectSettings/Packages/com.unity.probuilder/Settings.json
+*.meta
