@@ -868,10 +868,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: 1
   xySpeed: 2
+  xyAcceleration: 0.06
   forwardSpeed: 6
   roll: 15
-  pitch: 15
-  yaw: 20
+  pitch: 8
+  yaw: 12
+  rotationLerp: 0.25
+  rollLerp: 0.08
+  currentVelocity: {x: 0, y: 0, z: 0}
   movementDirection: {x: 0, y: 0, z: 0}
   stopInput: 0
   aimTarget: {fileID: 4174455376115141654}
