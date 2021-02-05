@@ -56,6 +56,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private MoveDirection moveDirection;
 
+    [SerializeField]
+    private bool isRotating = true;  // Is the Enemy rotating with the movements?
+
+    [SerializeField]
+    private bool lockedOntoPlayer = false;  // Is the Enemy facing the Player?
+
     private bool atPosMax;
 
     private float pitch;
@@ -157,6 +163,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Move(float x, float y)
     {
+        RotateShip(0, 0, 0);
 
         if(time > 0)
         {
@@ -179,6 +186,8 @@ public class EnemyMovement : MonoBehaviour
 
     void FlyAway()
     {
+        isRotating = true;
+
         switch(leaveDirection)
         {
             //pitch yaw roll
@@ -203,7 +212,10 @@ public class EnemyMovement : MonoBehaviour
 
     void RotateShip(float x, float y, float z)
     {
-        shipModel.localEulerAngles = new Vector3(x, y, z);
+        if (isRotating)
+            shipModel.localEulerAngles = new Vector3(x, y, z);
+        else if (lockedOntoPlayer)
+            shipModel.LookAt(PlayerInfo.singleton.transform.position);
     }
 
     void checkHeight(float currentHeight)
