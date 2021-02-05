@@ -105,14 +105,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4515822242291738092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 406ecffbe2f45ff48a79f3817d6e9d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  radius: 2
-  explosionPower: 50
+  distance: 0
 --- !u!198 &4515822242291738085
 ParticleSystem:
   m_ObjectHideFlags: 0
