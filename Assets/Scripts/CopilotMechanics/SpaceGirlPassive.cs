@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class SpaceGirlPassive : CopilotPassiveMechanic
 {
-    
-    public float healthPercent = 25.0f;
+
+    public float healthPercent = 25f;
     public int increasedDamage;
-    public GameObject bullets;
 
     private int normalDamage;
 
     private void Start()
     {
-        normalDamage = bullets.GetComponent<Bullet>().damage;
+        normalDamage = PlayerInfo.singleton.bulletDamage;
     }
 
     private void Update()
     {
 
-        if (PlayerHealth.singleton.health / PlayerHealth.singleton.maxHealth <= healthPercent / 100)
-            bullets.GetComponent<Bullet>().damage = increasedDamage;
-            else
-            bullets.GetComponent<Bullet>().damage = normalDamage;
+        if (((float)PlayerInfo.singleton.health / (float)PlayerInfo.singleton.maxHealth) <= (healthPercent / 100f))//Checks if player is at or below health threshold
+        {
+            PlayerInfo.singleton.bulletDamage = increasedDamage;
+        }
+        else
+        {
+            PlayerInfo.singleton.bulletDamage = normalDamage;
+        }
+
     }
 
     public override void CopyInfo(CopilotMechanic copilotMechanic)
     {
         base.CopyInfo(copilotMechanic);
+        healthPercent = ((SpaceGirlPassive)copilotMechanic).healthPercent;
+        increasedDamage = ((SpaceGirlPassive)copilotMechanic).increasedDamage;
     }
 }
