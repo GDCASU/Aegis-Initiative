@@ -110,4 +110,4 @@ MonoBehaviour:
   description: Low health increases damage power
   icon: {fileID: 0}
   healthPercent: 25
-  increasedDamage: 5
+  damageIncrease: 1
