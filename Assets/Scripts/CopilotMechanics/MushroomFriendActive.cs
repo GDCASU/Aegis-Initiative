@@ -22,7 +22,6 @@ public class MushroomFriendActive : CopilotActiveMechanic
         //if Player can heal, activate Player active ability and show healing bubble
         if (healPlayer)
         {
-            print("calling it");
             if (InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
             {
                 if (healingBubble == null)
@@ -54,5 +53,6 @@ public class MushroomFriendActive : CopilotActiveMechanic
         base.CopyInfo(copilotMechanic);
         heal = ((MushroomFriendActive)copilotMechanic).heal;
         healTime = ((MushroomFriendActive)copilotMechanic).healTime;
+        HealingBubblePrefab = ((MushroomFriendActive)copilotMechanic).HealingBubblePrefab;
     }
 }
