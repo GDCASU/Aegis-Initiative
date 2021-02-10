@@ -62,4 +62,5 @@ public enum Copilots
     DaddyLongLegs = -1,
     Feebee = 0,
     Frederick = 1,
+    MushroomFriend = 2,
 };
