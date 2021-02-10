@@ -6,9 +6,10 @@ public class MushroomFriendActive : CopilotActiveMechanic
 {
     public GameObject HealingBubblePrefab;
     private HealingBubble healingBubbleScript;
-    private GameObject healingBubble;
+    private GameObject healingBubble;   //Spawned bubble
     public int heal; //amount to heal player
     public float healTime; //time to restore health
+    public float minHealthPercentage = 0.25f;   //Percernt of max health needed to activate bubble
     public bool healPlayer; //check that Player is allowed to heal
 
 
@@ -35,14 +36,14 @@ public class MushroomFriendActive : CopilotActiveMechanic
                     healingBubbleScript.SetSporeTimer(healTime);
                 }
             }
-            if (healingBubbleScript != null && !healingBubbleScript.GetHealPlayer())
+            if (healingBubbleScript != null)
             {
-                healPlayer = false;
+                healPlayer = healingBubbleScript.GetHealPlayer();
             }
         }
 
         //if Player health is 25% or lower, allow Player to heal
-        if (!healPlayer && PlayerInfo.singleton.health <= PlayerInfo.singleton.maxHealth * 0.25f)
+        if (!healPlayer && PlayerInfo.singleton.health <= PlayerInfo.singleton.maxHealth * minHealthPercentage)
         {
             healPlayer = true;
         }

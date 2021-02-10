@@ -7,11 +7,12 @@ public class HealingBubble : MonoBehaviour
     //variables for spore particle system
     public float sporeTimer;
     private bool sporeStart;
-    private ParticleSystem spores;
+    private ParticleSystem spreParticles;
 
     //variables for healing bubble
     private MeshRenderer bubbleMesh;
-    private Vector3 bubbleScale;
+    public Vector3 bubbleScale = new Vector3(0.01f, 0.01f, 0.01f);
+    public float bubbleMaxXScale = 0.7f;    //Max x value that the bubble scales too when inflating
     private bool bubbleInflated;
 
     //variables for healing player
@@ -21,13 +22,11 @@ public class HealingBubble : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.localPosition = Vector3.zero;
         sporeStart = false;
-        spores = GetComponent<ParticleSystem>();
-        spores.Stop();
+        spreParticles = GetComponent<ParticleSystem>();
+        spreParticles.Stop();
         bubbleMesh = transform.GetComponent<MeshRenderer>();
         bubbleInflated = false;
-        bubbleScale = new Vector3(0.01f, 0.01f, 0.01f);
         healPlayer = false;
     }
 
@@ -40,8 +39,8 @@ public class HealingBubble : MonoBehaviour
             sporeTimer = healTime;
             healPlayer = true;
 
-            spores.Simulate(0.0f, true, true); //reset particle system sporeTimer
-            spores.Play();
+            spreParticles.Simulate(0.0f, true, true); //reset particle system sporeTimer
+            spreParticles.Play();
             sporeStart = false;
         }
 
@@ -54,7 +53,7 @@ public class HealingBubble : MonoBehaviour
         if (sporeTimer < 0)
         {
             PlayerInfo.singleton.health = PlayerInfo.singleton.maxHealth;
-            spores.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            spreParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             healPlayer = false;
             sporeTimer = 0;
             bubbleMesh.transform.localScale = bubbleScale;
@@ -65,7 +64,7 @@ public class HealingBubble : MonoBehaviour
         //if healing bubble was activated, scale bubble up
         if (!bubbleInflated && bubbleMesh.enabled)
         {
-            if (bubbleMesh.transform.localScale.x >= 0.7f)
+            if (bubbleMesh.transform.localScale.x >= bubbleMaxXScale)
             {
                 sporeStart = true;
                 bubbleInflated = true;

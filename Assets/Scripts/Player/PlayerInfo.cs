@@ -186,7 +186,7 @@ public class PlayerInfo : MonoBehaviour
         while (stack.stackTimers.Count > 0)
         {
             stack = stackEffects[effect];
-            stack.timer -= Time.deltaTime;
+            stack.timer -= Time.fixedDeltaTime;
             if (stack.timer <= 0)
             {
                 stack.stackTimers.RemoveAt(0);
