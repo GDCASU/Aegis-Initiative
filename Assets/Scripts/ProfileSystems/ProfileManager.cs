@@ -95,6 +95,7 @@ public class ProfileManager : MonoBehaviour
         profiles[0].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
         profiles[0].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
         profiles[0].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
+        profiles[0].AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
         SaveCurrentProfile();
         SaveProfile(0);
     }
