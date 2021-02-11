@@ -19,14 +19,13 @@ public class Bullet : MonoBehaviour
     public float bulletDespawnTime;
     public float timer;
 
-    [System.NonSerialized]
     public int damage;
     public BulletSource bulletSource;
 
     private void Start()
     {
         timer = bulletDespawnTime;
-        damage = PlayerInfo.singleton.bulletDamage;
+        if (bulletSource == BulletSource.Player) damage = PlayerInfo.singleton.bulletDamage;
     }
     private void Update()
     {
