@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseGame : MonoBehaviour
 {
     public bool isPaused = false;
+    public bool Esc = false;
 
     // Update is called once per frame
     void Update()
@@ -14,6 +15,7 @@ public class PauseGame : MonoBehaviour
             isPaused = !isPaused;
             Pause();
         }
+        Esc = InputManager.GetButton(PlayerInput.PlayerButton.Pause);
     }
 
     void Pause()
