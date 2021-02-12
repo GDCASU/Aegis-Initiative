@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class SpaceGirlActive : CopilotActiveMechanic
 {
-    public float healthPercent = 25f;
+    public float healthPercent = 0.25f;
     public bool activeUsed;
- 
+
+    private float healthThreshold;
+
     private void Start()
     {
         activeUsed = false;
+        healthThreshold = healthPercent * PlayerInfo.singleton.maxHealth;
     }
     
     private void Update()
     {
-        if (((float)PlayerInfo.singleton.health / (float)PlayerInfo.singleton.maxHealth) <= (healthPercent / 100f))//Checks if player is at or below health threshold
+        if ((float)PlayerInfo.singleton.health <= healthThreshold)//Checks if player is at or below health threshold
         {
-            if (activeUsed == false && InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
+            if (!activeUsed && InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
             {
                 //Heals player to full and deactivates active ability
                 PlayerInfo.singleton.Heal(PlayerInfo.singleton.maxHealth);

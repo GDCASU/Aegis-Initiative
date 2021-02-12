@@ -5,46 +5,31 @@ using UnityEngine;
 public class SpaceGirlPassive : CopilotPassiveMechanic
 {
 
-    public float healthPercent = 25f;//Percent Health threshold
+    public float healthPercent = 0.25f;//Percent Health threshold
     public int damageIncrease;//Amount of damage added to base damage
+    public float passiveTimer;//Passive duration in seconds
 
-    private bool damageNormalized;
+    private float healthThreshold;
 
     private void Start()
     {
-        damageNormalized = true;
+        healthThreshold = healthPercent * PlayerInfo.singleton.maxHealth;
+        PlayerInfo.singleton.damageEvent += CheckPassiveActivation;
     }
 
-    private void Update()
+    public void CheckPassiveActivation()
     {
-
-        if (((float)PlayerInfo.singleton.health / (float)PlayerInfo.singleton.maxHealth) <= (healthPercent / 100f))//Checks if player is at or below health threshold
+        if ((float)PlayerInfo.singleton.health <= healthThreshold)
         {
-            //Below health threshold
-            if (damageNormalized)
-            {
-                //if damage is normal, adds the set damage increase to PlayerInfo's bulletDamage
-                damageNormalized = false;
-                PlayerInfo.singleton.bulletDamage += damageIncrease;
-            }
+            PlayerInfo.singleton.AddStatusEffect(StatusEffects.FOCUS, damageIncrease, passiveTimer, false);
         }
-        else
-        {
-            //Above health threshold
-            if (!damageNormalized)
-            {
-                //if damage is not currently normal, subtracts the set damage increase from PlayerInfo's bulletDamage
-                damageNormalized = true;
-                PlayerInfo.singleton.bulletDamage -= damageIncrease;
-            }
-        }
-
     }
-
+ 
     public override void CopyInfo(CopilotMechanic copilotMechanic)
     {
         base.CopyInfo(copilotMechanic);
         healthPercent = ((SpaceGirlPassive)copilotMechanic).healthPercent;
+        passiveTimer = ((SpaceGirlPassive)copilotMechanic).passiveTimer;
         damageIncrease = ((SpaceGirlPassive)copilotMechanic).damageIncrease;
     }
 }

@@ -110,4 +110,5 @@ MonoBehaviour:
   description: Low health increases damage power
   icon: {fileID: 0}
   healthPercent: 25
-  damageIncrease: 1
+  damageIncrease: 2
+  passiveTimer: 10
