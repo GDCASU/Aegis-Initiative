@@ -15,21 +15,34 @@ public class SpaceGirlPassive : CopilotPassiveMechanic
     {
         healthThreshold = healthPercent * PlayerInfo.singleton.maxHealth;
         PlayerInfo.singleton.damageEvent += CheckPassiveActivation;
+        PlayerInfo.singleton.damageEvent += CheckPassiveDeactivation;
     }
 
     public void CheckPassiveActivation()
     {
         if ((float)PlayerInfo.singleton.health <= healthThreshold)
         {
-            PlayerInfo.singleton.AddStatusEffect(StatusEffects.FOCUS, damageIncrease, passiveTimer, false);
+            PlayerInfo.singleton.AffectPlayer(StatusEffects.FOCUS, damageIncrease, false);
         }
     }
- 
+    public void CheckPassiveDeactivation()
+    {
+        if ((float)PlayerInfo.singleton.health > healthThreshold)
+        {
+            PlayerInfo.singleton.AffectPlayer(StatusEffects.FOCUS, damageIncrease, true);
+        }
+    }
+
     public override void CopyInfo(CopilotMechanic copilotMechanic)
     {
         base.CopyInfo(copilotMechanic);
         healthPercent = ((SpaceGirlPassive)copilotMechanic).healthPercent;
         passiveTimer = ((SpaceGirlPassive)copilotMechanic).passiveTimer;
         damageIncrease = ((SpaceGirlPassive)copilotMechanic).damageIncrease;
+    }
+    public void OnDestroy()
+    {
+        PlayerInfo.singleton.damageEvent -= CheckPassiveActivation;
+        PlayerInfo.singleton.damageEvent -= CheckPassiveDeactivation;
     }
 }
