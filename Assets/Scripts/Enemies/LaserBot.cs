@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class LaserBot : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class LaserBot : MonoBehaviour
 
     [Tooltip("Speed of bullet.")]
     [SerializeField]
-    private float bulletSpeed = 10f;
+    private float bulletSpeed = 10;
 
     [Tooltip("Gameobject of bullet.")]
     [SerializeField]
@@ -49,6 +50,11 @@ public class LaserBot : MonoBehaviour
 
     private Transform host;  // Transform of parent gameobject
     private Transform player;  // Transform of the Player
+    private ShipMovement playerMovement;
+
+    private float spread = 0.5f;
+    public CinemachineSmoothPath path;
+    public CinemachineDollyCart playerCart;
 
     /// <summary>
     /// Assigns the host and Player transforms, then rotates the Bot in the direction opposite to the direction the Player is facing.
@@ -60,6 +66,7 @@ public class LaserBot : MonoBehaviour
         {
             player = PlayerInfo.singleton.GetComponent<Transform>();
             transform.Rotate(0, player.localEulerAngles.y + 180, 0);
+            playerMovement = PlayerInfo.singleton.GetComponent<ShipMovement>();
         }
     }
 
@@ -101,7 +108,7 @@ public class LaserBot : MonoBehaviour
         RaycastHit hit;
         if (!playerDetected && Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            if(hit.transform.name.Equals("Player"))
+            if (hit.transform.name.Equals("Player"))
             {
                 playerDetected = true;
                 host.GetComponent<EnemyMovement>().enabled = true;
@@ -115,6 +122,7 @@ public class LaserBot : MonoBehaviour
     private IEnumerator ShootBurst()
     {
         isShooting = true;
+		Rigidbody dispensedBullet;
 
         for (int i = 0; i < bulletsInBurst; i++)
         {
@@ -122,11 +130,91 @@ public class LaserBot : MonoBehaviour
             if (gameObject == null)
                 yield break;
 
-            GameObject dispensedBullet = Instantiate(bullet, bulletSpawnpoint.position, transform.rotation);
-            dispensedBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed, ForceMode.VelocityChange);
+            //Vector3 bulletVelocity;
+            //BulletVectorPrediction.PredictiveAim(bulletSpawnpoint.position, bulletSpeed, player.position, playerMovement.currentVelocity, 0, out bulletVelocity);
+
+            Vector3 bulletVelocity = PredictBulletVelocityToPlayer();
+
+            dispensedBullet = Instantiate(bullet, bulletSpawnpoint.position, transform.rotation).GetComponent<Rigidbody>();
+            dispensedBullet.velocity = bulletVelocity;
+
             yield return new WaitForSeconds(betweenShotTime);
         }
 
         isShooting = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Enemy")
+        {
+            playerDetected = true;
+        }
+    }
+
+    private Vector3 PredictBulletVelocityToPlayer()
+    {
+        Vector3 initialBulletPosition = bulletSpawnpoint.position;
+        Vector3 initialPlayerPosition = player.position;
+        Vector3 playerVelocity = playerMovement.currentVelocity;
+        Vector3 playerToBulletSpawnpoint = initialPlayerPosition - initialBulletPosition;
+
+        float playerDistanceSquared = (playerToBulletSpawnpoint).sqrMagnitude;
+        
+        float bulletSpeedSquared = Mathf.Pow(bulletSpeed, 2);
+
+        float playerSpeedSquared = playerVelocity.sqrMagnitude;
+
+        float timeTillImpact;
+
+        if(playerSpeedSquared >= bulletSpeedSquared)
+        {
+            timeTillImpact = Mathf.Sqrt(playerDistanceSquared / 0.001f);
+        }
+        else
+        {
+            timeTillImpact = Mathf.Sqrt(playerDistanceSquared / (bulletSpeedSquared - playerSpeedSquared));
+        }
+
+        /*
+        //The players position at the given time
+        Vector3 targetPosition = path.EvaluatePositionAtUnit(
+            playerCart.m_Position + playerCart.m_Speed * timeTillImpact,
+            playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeTillImpact)
+        );
+
+        //Normalized tangent vector where the player will be at a given time
+        Vector3 targetTangent = Vector3.Normalize(
+            path.EvaluateTangentAtUnit(
+                playerCart.m_Position + playerCart.m_Speed * timeTillImpact,
+                playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeTillImpact)
+            )
+        );
+        */
+
+        /**
+         * Randomly chooses to go left or right of the player
+         */
+        /*
+        if (Random.value < 0.5f)
+        {
+            targetTangent.x *= -1;
+        }
+        else
+        {
+            targetTangent.z *= -1;
+        }
+
+        targetTangent.y = 0;
+        //Gives random length to the left/right modifier
+        targetTangent *= Random.Range(-spread, spread);
+
+        Vector3 interceptPoint = targetPosition + targetTangent;
+        Vector3 velocityVector = (interceptPoint - initialPosition) / timeTillImpact;
+        */
+
+        Vector3 velocityVector = playerVelocity + (playerToBulletSpawnpoint / timeTillImpact);
+
+        return velocityVector;
     }
 }
