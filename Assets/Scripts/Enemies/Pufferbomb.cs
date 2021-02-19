@@ -6,6 +6,7 @@ public class Pufferbomb : MonoBehaviour
 {
     public int damage; //damage dealt to Player
     public float distance; //distance between Pufferbomb and Player for Pufferbomb to explode
+    public float explosionTime; //time it takes for explosion sequence to finish before destroying the gameObject
 
     private ParticleSystem explosion;
     private MeshRenderer mesh;
@@ -16,18 +17,17 @@ public class Pufferbomb : MonoBehaviour
     {
         explosion = transform.GetComponent<ParticleSystem>();
         mesh = transform.GetComponent<MeshRenderer>();
+        //Set distance value to the sphere collider that has trigger enabled
+        foreach (SphereCollider collider in transform.GetComponents<SphereCollider>())
+        {
+            if (collider.isTrigger)
+            {
+                collider.radius = distance;
+            }
+        }
 
         isExploding = false;
         isShot = false;
-    }
-
-    void Update()
-    {
-        if (!isExploding && !isShot && Vector3.Distance(PlayerInfo.singleton.transform.position, transform.position) <= distance)
-        {
-            StartCoroutine(Explode()); //start explode coroutine 
-            PlayerInfo.singleton.TakeDamage(damage); //damage Player
-        }
     }
 
     //Play explosion particle system effect
@@ -36,17 +36,30 @@ public class Pufferbomb : MonoBehaviour
         isExploding = true;
         mesh.enabled = false;
         explosion.Play(); //start Particle System explosion effect
-        yield return new WaitForSeconds(1.2f); //wait for explosion to finish before destroying Pufferbomb
+        yield return new WaitForSeconds(explosionTime); //wait for explosion to finish before destroying Pufferbomb
         Destroy(gameObject);
     }
 
     //If Player shoots Pufferbomb, destroy Pufferbomb
     private void OnCollisionEnter(Collision collision)
     {
-        if (!isExploding && collision.gameObject.CompareTag("Bullet"))
+        if (mesh != null && explosion != null)
         {
-            isShot = true;
-            StartCoroutine(Explode()); //start explode coroutine  
+            if (!isExploding && collision.gameObject.CompareTag("Bullet"))
+            {
+                isShot = true;
+                StartCoroutine(Explode()); //start explode coroutine  
+            }
+        }
+    }
+
+    //If Player collides with sphere collider trigger, then explode Pufferbomb and deal damage to Player
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isExploding && !isShot && other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Explode()); //start explode coroutine 
+            PlayerInfo.singleton.TakeDamage(damage); //damage Player
         }
     }
 }
