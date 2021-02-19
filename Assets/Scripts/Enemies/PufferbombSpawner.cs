@@ -17,7 +17,7 @@ public class PufferbombSpawner : MonoBehaviour
         {
             if (child.GetComponent<Pufferbomb>() != null)
             {
-                child.GetComponent<Pufferbomb>().enabled = true;
+                child.GetComponent<Pufferbomb>().enabled = false;
             }
         }
 
