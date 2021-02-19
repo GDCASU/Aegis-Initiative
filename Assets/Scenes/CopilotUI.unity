@@ -1175,7 +1175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &792952944
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1275,6 +1275,10 @@ MonoBehaviour:
   daddyLongLegs: {fileID: 2375490512028081142, guid: 0be8805bb244f1b40a80f7a3b1928761,
     type: 3}
   frederickPrefab: {fileID: 3027878373083091316, guid: b364235e515dabe488e0a0050fdb2367,
+    type: 3}
+  mushroomFriendPrefab: {fileID: 1845149114513795889, guid: 69b09d21d15e94448bf97294aa7096ab,
+    type: 3}
+  spaceGirlPrefab: {fileID: 5530163736713283340, guid: 14443145e202ffa4f96f47bc0c0708c3,
     type: 3}
 --- !u!1 &829376293
 GameObject:
@@ -1388,7 +1392,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3729,7 +3733,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000030517578, y: -0.000030517578}
-  m_SizeDelta: {x: -809.79565, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1830714726
 MonoBehaviour:
