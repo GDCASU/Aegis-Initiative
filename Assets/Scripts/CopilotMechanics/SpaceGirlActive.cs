@@ -17,9 +17,9 @@ public class SpaceGirlActive : CopilotActiveMechanic
     
     private void Update()
     {
-        if ((float)PlayerInfo.singleton.health <= healthThreshold)//Checks if player is at or below health threshold
+        if (!activeUsed && InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
         {
-            if (!activeUsed && InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
+            if (PlayerInfo.singleton.health <= healthThreshold)//Checks if player is at or below health threshold 
             {
                 //Heals player to full and deactivates active ability
                 PlayerInfo.singleton.Heal(PlayerInfo.singleton.maxHealth);

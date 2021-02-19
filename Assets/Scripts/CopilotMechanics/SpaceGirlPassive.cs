@@ -7,7 +7,6 @@ public class SpaceGirlPassive : CopilotPassiveMechanic
 
     public float healthPercent = 0.25f;//Percent Health threshold
     public int damageIncrease;//Amount of damage added to base damage
-    public float passiveTimer;//Passive duration in seconds
 
     private float healthThreshold;
 
@@ -37,7 +36,6 @@ public class SpaceGirlPassive : CopilotPassiveMechanic
     {
         base.CopyInfo(copilotMechanic);
         healthPercent = ((SpaceGirlPassive)copilotMechanic).healthPercent;
-        passiveTimer = ((SpaceGirlPassive)copilotMechanic).passiveTimer;
         damageIncrease = ((SpaceGirlPassive)copilotMechanic).damageIncrease;
     }
     public void OnDestroy()
