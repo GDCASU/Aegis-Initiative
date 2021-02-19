@@ -5,10 +5,10 @@ using UnityEngine;
 public class PufferbombSpawner : MonoBehaviour
 {
     public float height; //how far up to float Pufferbombs from initial y position
-    public float speed; //speed to float Pufferbombs
+    public float liftTimer; //time to float Pufferbombs
 
     private bool floatUp;
-    private float finalHeight;
+    private Vector3 finalHeight;
 
     void Start()
     {
@@ -22,31 +22,41 @@ public class PufferbombSpawner : MonoBehaviour
         }
 
         floatUp = false;
-        finalHeight = transform.position.y + height;
+        finalHeight = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
     }
 
-    void Update()
+    //Move the Pufferbombs up at the given height and time
+    private IEnumerator FloatUp(float timer)
     {
-        //Move the Pufferbombs up at the given speed
-        if (floatUp && (transform.position.y < finalHeight))
+        Vector3 startPos = transform.position;
+        Vector3 finalPos = finalHeight;
+        float liftTime = 0;
+
+        while (liftTime < timer)
         {
-            transform.position += Vector3.up * speed * Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, finalPos, (liftTime / timer));
+            liftTime += Time.deltaTime;
+            yield return null;
         }
     }
 
     //When the player collides with the PufferbombSpawner, then enable the Pufferbomb Script of all the Pufferbombs
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (!floatUp)
         {
-            foreach (Transform child in transform)
+            if (other.gameObject.CompareTag("Player"))
             {
-                if (child.GetComponent<Pufferbomb>() != null)
+                StartCoroutine(FloatUp(liftTimer));
+                floatUp = true;
+                foreach (Transform child in transform)
                 {
-                    child.GetComponent<Pufferbomb>().enabled = true;
+                    if (child.GetComponent<Pufferbomb>() != null)
+                    {
+                        child.GetComponent<Pufferbomb>().enabled = true;
+                    }
                 }
             }
-            floatUp = true;
         }
     }
 }
