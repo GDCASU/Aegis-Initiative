@@ -26,6 +26,14 @@ public class Merfolk : EnemyHealth
     private int direction = 1;
     private Vector3 moveCenter;
 
+    public enum figureEight
+    {
+        vertical,
+        horizontal
+    };
+
+    public figureEight figureEightDirection;
+
     void Start()
     {
         //set the speed according to whether it's above or below water
@@ -33,11 +41,17 @@ public class Merfolk : EnemyHealth
         belowSpeed = speed / waterMultiplier;
         speed = (aboveWater) ? aboveSpeed : belowSpeed;
 
-        //set the moving center
-        moveCenter = new Vector3(0, 0, figure8Radius * 2);
-
-        //set the starting center
-        center = transform.position - new Vector3(0, 0, figure8Radius);
+        //set the moving and starting centers
+        if (figureEightDirection == figureEight.horizontal)
+        {
+            moveCenter = new Vector3(0, 0, figure8Radius * 2);
+            center = transform.position - new Vector3(0, 0, figure8Radius);
+        }
+        else
+        {
+            moveCenter = new Vector3(0, figure8Radius * 2, 0);
+            center = transform.position - new Vector3(0, figure8Radius, 0);
+        }
 
         //start shooting
         InvokeRepeating("Shoot", startShooting, 5f);
@@ -66,7 +80,13 @@ public class Merfolk : EnemyHealth
 
         //circular motion
         angle += speed * Time.deltaTime;
-        var offset = new Vector3(Mathf.Sin(angle * direction), 0, Mathf.Cos(angle * direction)) * figure8Radius * direction;
+
+        Vector3 offset;
+        if (figureEightDirection == figureEight.horizontal)
+            offset = new Vector3(Mathf.Sin(angle * direction), 0, Mathf.Cos(angle * direction)) * figure8Radius * direction;
+        else
+            offset = new Vector3(Mathf.Sin(angle * direction), Mathf.Cos(angle * direction), 0) * figure8Radius * direction;
+
         transform.position = center + offset;
     }
 }
