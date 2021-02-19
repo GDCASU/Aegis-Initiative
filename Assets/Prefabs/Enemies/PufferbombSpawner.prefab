@@ -58,4 +58,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   height: 3
-  speed: 2
+  liftTimer: 1
