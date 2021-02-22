@@ -51,7 +51,9 @@ public class PlayerInfo : MonoBehaviour
     private float damageMultiplier = 1f;  // amount to multiply incoming damage by
 
     public delegate void DamageDelegate();
+    public delegate void HealingDelegate();
     public event DamageDelegate damageEvent;
+    public event HealingDelegate healEvent;
 
     private Dictionary<StatusEffects, IEnumerator> statuses = new Dictionary<StatusEffects, IEnumerator>(); // a list of status effects and their respective coroutines
                                                                                                             // that shall deactive them once a certain time is reached
@@ -94,6 +96,7 @@ public class PlayerInfo : MonoBehaviour
     {
         if (health + heal > maxHealth) health = maxHealth;
         else health += heal;
+        if (healEvent != null) healEvent();
     }
 
     /// <summary>
@@ -233,7 +236,6 @@ public class PlayerInfo : MonoBehaviour
                 break;
         }
     }
-
     /// <summary>
     /// Alters Player attributes based on the status effect. If the status effect is new (has not ended), then modify the specified attribute value(s) by effect value;
     /// otherwise, restore the original attribute value(s).
@@ -241,7 +243,7 @@ public class PlayerInfo : MonoBehaviour
     /// <param name="effect"> a status effect </param>
     /// <param name="effectValue"> value that shall alter a certain attribute </param>
     /// <param name="hasEnded"> Has the status effect ended? </param>
-    private void AffectPlayer(StatusEffects effect, float effectValue, bool hasEnded)
+    public void AffectPlayer(StatusEffects effect, float effectValue, bool hasEnded)
     {
         switch (effect)
         {
