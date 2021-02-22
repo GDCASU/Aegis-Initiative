@@ -806,14 +806,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4174455377501832923}
+  - component: {fileID: 4597591846386312941}
   - component: {fileID: 4174455377501832920}
   - component: {fileID: 5464987159832585486}
   - component: {fileID: 1077621587703858222}
   - component: {fileID: 4858473898675966920}
   - component: {fileID: 601629049475976116}
-  - component: {fileID: 410760391349712135}
   - component: {fileID: 2886750413520253739}
   - component: {fileID: 6821422713900445973}
+  - component: {fileID: 4931640489998877274}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -836,6 +837,23 @@ Transform:
   m_Father: {fileID: 4174455377587358406}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4597591846386312941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174455377501832922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a98872ba3a578747bbcb6b55aca4bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 60
+  health: 50
+  defense: 0
+  fireRate: 0.2
+  bulletDamage: 0
 --- !u!114 &4174455377501832920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,10 +868,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: 1
   xySpeed: 2
+  xyAcceleration: 0.06
   forwardSpeed: 6
   roll: 15
-  pitch: 15
-  yaw: 20
+  pitch: 8
+  yaw: 12
+  rotationLerp: 0.25
+  rollLerp: 0.08
+  currentVelocity: {x: 0, y: 0, z: 0}
+  movementDirection: {x: 0, y: 0, z: 0}
+  stopInput: 0
   aimTarget: {fileID: 4174455376115141654}
   dolly: {fileID: 4174455377587358401}
   cameraParent: {fileID: 0}
@@ -869,7 +893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0957298378642f459eda138141ed49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.2
   speed: 25
   magSize: 100
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
@@ -920,7 +943,7 @@ MonoBehaviour:
   isPermanent: 1
   displacementTime: 5
   transitionDuration: 1
-  cameraDistance: 0
+  cameraToPlayerDistance: 0
   shakeIntensity: 1
   shakeMagnitudeRatio: {x: 0.5, y: 0.5}
   shakeFrequency: 10
@@ -929,20 +952,6 @@ MonoBehaviour:
   shipCamera: {fileID: 4174455376411874717}
   cameraScript: {fileID: 4174455376411874690}
   originalX_YPosition: {x: 0, y: 0}
---- !u!114 &410760391349712135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4174455377501832922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69457918251c05748b7b171df8211972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  maxHealth: 60
 --- !u!135 &2886750413520253739
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -970,8 +979,22 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 3
+--- !u!114 &4931640489998877274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174455377501832922}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51560f3e3292f5844bb726502d955c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passive: {fileID: 0}
+  active: {fileID: 0}
 --- !u!1 &4174455377587358400
 GameObject:
   m_ObjectHideFlags: 0

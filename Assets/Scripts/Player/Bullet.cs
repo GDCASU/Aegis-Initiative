@@ -1,16 +1,31 @@
-﻿using System.Collections;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 22 Jan. 2021
+ * 
+ * Modification: Class obtains bullet damage from PlayerInfo script upon prefab creation.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BulletSource 
+{
+    Player,
+    Enemy
+};
 public class Bullet : MonoBehaviour
 {
     public float bulletDespawnTime;
     public float timer;
+
     public int damage;
+    public BulletSource bulletSource;
 
     private void Start()
     {
         timer = bulletDespawnTime;
+        if (bulletSource == BulletSource.Player) damage = PlayerInfo.singleton.bulletDamage;
     }
     private void Update()
     {
@@ -19,7 +34,19 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
-        if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnvironmentHealth>().TakeDamage(damage);
+        if (bulletSource == BulletSource.Player)
+        {
+            if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
+            if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnvironmentHealth>().TakeDamage(damage);
+        }
+        else
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.GetComponent<PlayerInfo>().TakeDamage(damage);
+                collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
+        Destroy(transform.gameObject);
     }
 }

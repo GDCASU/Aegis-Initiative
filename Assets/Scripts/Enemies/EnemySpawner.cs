@@ -23,8 +23,11 @@ public class EnemySpawner : MonoBehaviour
         public spawnLocation SpawnLocation;
         public GameObject enemy; //enemy in the scene
         [Tooltip("-1 is the middle of the screen and 1 is the edge")]
-        [Range(-1.0f, 1.0f)]
-        public float adjustPlaneLocation; //spawn ships closer or farther from player on 2D plane
+        [Range(-25f, 25f)]
+        public float adjustWidth;
+        [Tooltip("-1 is the middle of the screen and 1 is the edge")]
+        [Range(-25f, 25f)]
+        public float adjustHeight;
         [Tooltip("1 is on the reticle, 5 is furthest")]
         [Range(1.0f, 5.0f)]
         public float adjustDepth;
@@ -55,8 +58,8 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int x = 0; x < _enemies.Length; x++) //loop through enemies to spawn
             {
-                xSpawnAdjustment += xSpawnAdditive * _enemies[x].adjustPlaneLocation * playerScale.x;
-                ySpawnAdjustment += ySpawnAdditive * _enemies[x].adjustPlaneLocation * playerScale.y;
+                xSpawnAdjustment += xSpawnAdditive * _enemies[x].adjustWidth * playerScale.x;
+                ySpawnAdjustment += ySpawnAdditive * _enemies[x].adjustHeight * playerScale.y;
                 zSpawnAdjustment = _enemies[x].adjustDepth * playerScale.z;
                 switch (_enemies[x].SpawnLocation) //chance x and/or y adjustment based on selected location
                 {
@@ -90,6 +93,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnAdjustment = new Vector3(xSpawnAdjustment, ySpawnAdjustment, zSpawnAdjustment); //spawn adjustment vector to add to other.gameObject.transform.position
                 _enemies[x].enemy.transform.parent = other.gameObject.transform.parent;
                 _enemies[x].enemy.transform.localPosition = spawnAdjustment;
+                _enemies[x].enemy.transform.localRotation = Quaternion.identity;
                 _enemies[x].enemy.SetActive(true);
             }
         }

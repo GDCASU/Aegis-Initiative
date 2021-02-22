@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 22 Jan. 2021
+ * 
+ * Modificiation: This class' fire rate variable is replaced with the fire rate variable from PlayerInfo script.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicPlayerShooting : MonoBehaviour
 {
-    public float fireRate;
     public float speed;
     public int magSize;
     public GameObject bulletPrefab;
@@ -18,7 +24,7 @@ public class BasicPlayerShooting : MonoBehaviour
 
     private void Start()
     {
-        timerOne = fireRate;
+        timerOne = PlayerInfo.singleton.fireRate;
     }
     private void Update()
     {
@@ -30,14 +36,14 @@ public class BasicPlayerShooting : MonoBehaviour
                 {
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity =  spawnR.forward.normalized * speed;
-                    timerOne = fireRate;
-                    timerTwo = fireRate / 2f;
+                    timerOne = PlayerInfo.singleton.fireRate;
+                    timerTwo = PlayerInfo.singleton.fireRate / 2f;
                 }
                 if (timerTwo < 0)
                 {
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
-                    timerTwo = fireRate;
+                    timerTwo = PlayerInfo.singleton.fireRate;
                 }
                 timerTwo -= Time.deltaTime;
             }
@@ -49,7 +55,7 @@ public class BasicPlayerShooting : MonoBehaviour
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
-                    timerOne = fireRate;
+                    timerOne = PlayerInfo.singleton.fireRate;
                 }
             }          
         }

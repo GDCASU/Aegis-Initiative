@@ -33,7 +33,7 @@ public class SpaceSlug : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerCart = PlayerHealth.singleton.GetComponentInParent<CinemachineDollyCart>();
+        playerCart = PlayerInfo.singleton.GetComponentInParent<CinemachineDollyCart>();
         rng = new System.Random();
         start = new Vector3();
         middle = new Vector3();
@@ -73,9 +73,8 @@ public class SpaceSlug : MonoBehaviour
         speed = path.PathLength / timeAhead - 3;
         if (attack)
         {
-            float y = middle.y;
             Vector3 direction = start - new Vector3(middle.x, end.y, middle.z);
-            middle +=new Vector3(direction.x*.25f,y, direction.z/2f * .25f);
+            middle +=new Vector3(direction.x*.25f,0, direction.z/2f * .25f);
             //Vector3 depthAdjustment= playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead+2, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)+2);
             //start += new Vector3(depthAdjustment.x, 0, depthAdjustment.z) * .25f;
         }
@@ -97,10 +96,10 @@ public class SpaceSlug : MonoBehaviour
     //If player collides with SpaceSlug, Player takes damage
     void OnCollision(GameObject other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
             //call Player's TakeDamage() method
-            other.GetComponent<PlayerHealth>().TakeDamage(damage);
+            other.GetComponent<PlayerInfo>().TakeDamage(damage);
         }
     }
 }
