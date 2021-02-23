@@ -9,7 +9,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class LaserBot : MonoBehaviour
 {
@@ -29,6 +28,14 @@ public class LaserBot : MonoBehaviour
     [Tooltip("Speed of bullet.")]
     [SerializeField]
     private float bulletSpeed = 10;
+
+    [Tooltip("Damage a bullet deals.")]
+    [SerializeField]
+    private float bulletDamage;
+
+    [Tooltip("The maximum distance a bullet's trajectory can deviate from a predetermined, future Player position.")]
+    [SerializeField]
+    private float maxSpreadDistance = 5.5f;
 
     [Tooltip("Gameobject of bullet.")]
     [SerializeField]
@@ -50,14 +57,11 @@ public class LaserBot : MonoBehaviour
 
     private Transform host;  // Transform of parent gameobject
     private Transform player;  // Transform of the Player
-    private ShipMovement playerMovement;
-
-    private float spread = 0.5f;
-    public CinemachineSmoothPath path;
-    public CinemachineDollyCart playerCart;
+    private Transform dollyCart;  // Transform of PlayerDollyCart
+    private ShipMovement playerMovement;  // movement script of Player
 
     /// <summary>
-    /// Assigns the host and Player transforms, then rotates the Bot in the direction opposite to the direction the Player is facing.
+    /// Assigns the host, Player and Dolly Cart transforms, then rotates the Bot in the direction opposite to the direction the Player is facing.
     /// </summary>
     private void Start()
     {
@@ -65,6 +69,7 @@ public class LaserBot : MonoBehaviour
         if (PlayerInfo.singleton != null)
         {
             player = PlayerInfo.singleton.GetComponent<Transform>();
+            dollyCart = player.parent;
             transform.Rotate(0, player.localEulerAngles.y + 180, 0);
             playerMovement = PlayerInfo.singleton.GetComponent<ShipMovement>();
         }
@@ -117,11 +122,14 @@ public class LaserBot : MonoBehaviour
     }
 
     /// <summary>
-    /// Shoots bullets in a burst. isShooting = true whilst the burst is running.
+    /// Shoots bullets in a burst at a predicted player position. isShooting = true whilst the burst is running.
     /// </summary>
     private IEnumerator ShootBurst()
     {
         isShooting = true;
+
+        Vector3 initialBulletPosition, initialPlayerPosition, playerVelocity, futurePlayerPosition, bulletVelocity, positionInCamera, bulletToFuturePlayerPosition, spread;
+        Quaternion bulletRotation;
 		Rigidbody dispensedBullet;
 
         for (int i = 0; i < bulletsInBurst; i++)
@@ -130,13 +138,31 @@ public class LaserBot : MonoBehaviour
             if (gameObject == null)
                 yield break;
 
-            //Vector3 bulletVelocity;
-            //BulletVectorPrediction.PredictiveAim(bulletSpawnpoint.position, bulletSpeed, player.position, playerMovement.currentVelocity, 0, out bulletVelocity);
+            // Determine bullet velocity to predicted player position.
+            initialBulletPosition = dollyCart.InverseTransformPoint(bulletSpawnpoint.position);
+            initialPlayerPosition = player.localPosition;
+            playerVelocity = playerMovement.currentVelocity;
+            bulletVelocity = DollyCartAimPrediction.GetBulletVelocityToTarget(initialBulletPosition, bulletSpeed, initialPlayerPosition, playerVelocity, dollyCart, out futurePlayerPosition, out _);
 
-            Vector3 bulletVelocity = PredictBulletVelocityToPlayer();
+            // Constrain the prediced player position to the main camera viewpoint.
+            futurePlayerPosition = dollyCart.TransformPoint(futurePlayerPosition);
+            positionInCamera = Camera.main.WorldToViewportPoint(futurePlayerPosition);
+            positionInCamera.x = Mathf.Clamp01(positionInCamera.x);
+            positionInCamera.y = Mathf.Clamp01(positionInCamera.y);
+            futurePlayerPosition = Camera.main.ViewportToWorldPoint(positionInCamera);
 
-            dispensedBullet = Instantiate(bullet, bulletSpawnpoint.position, transform.rotation).GetComponent<Rigidbody>();
-            dispensedBullet.velocity = bulletVelocity;
+            // Project the bullet velocity onto the vector from bullet spawnpoint to predicted player position.
+            bulletToFuturePlayerPosition = futurePlayerPosition - bulletSpawnpoint.position;
+            bulletVelocity = Vector3.Project(bulletVelocity, bulletToFuturePlayerPosition);
+
+            // Introduce spread.
+            spread = Random.insideUnitSphere * maxSpreadDistance;
+            bulletRotation = Quaternion.LookRotation(bulletVelocity, Vector3.up);
+            bulletRotation = Quaternion.Euler(bulletRotation.eulerAngles += spread);
+
+            // Launch the bullet.
+            dispensedBullet = Instantiate(bullet, bulletSpawnpoint.position, bulletRotation, dollyCart).GetComponent<Rigidbody>();
+            dispensedBullet.velocity = dispensedBullet.transform.forward * bulletSpeed;
 
             yield return new WaitForSeconds(betweenShotTime);
         }
@@ -144,77 +170,13 @@ public class LaserBot : MonoBehaviour
         isShooting = false;
     }
 
+    /// <summary>
+    /// Stops Laser Bot movement if a collision with an Enemy is detected.
+    /// </summary>
+    /// <param name="collision"> collision info </param>
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.tag == "Enemy")
-        {
             playerDetected = true;
-        }
-    }
-
-    private Vector3 PredictBulletVelocityToPlayer()
-    {
-        Vector3 initialBulletPosition = bulletSpawnpoint.position;
-        Vector3 initialPlayerPosition = player.position;
-        Vector3 playerVelocity = playerMovement.currentVelocity;
-        Vector3 playerToBulletSpawnpoint = initialPlayerPosition - initialBulletPosition;
-
-        float playerDistanceSquared = (playerToBulletSpawnpoint).sqrMagnitude;
-        
-        float bulletSpeedSquared = Mathf.Pow(bulletSpeed, 2);
-
-        float playerSpeedSquared = playerVelocity.sqrMagnitude;
-
-        float timeTillImpact;
-
-        if(playerSpeedSquared >= bulletSpeedSquared)
-        {
-            timeTillImpact = Mathf.Sqrt(playerDistanceSquared / 0.001f);
-        }
-        else
-        {
-            timeTillImpact = Mathf.Sqrt(playerDistanceSquared / (bulletSpeedSquared - playerSpeedSquared));
-        }
-
-        /*
-        //The players position at the given time
-        Vector3 targetPosition = path.EvaluatePositionAtUnit(
-            playerCart.m_Position + playerCart.m_Speed * timeTillImpact,
-            playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeTillImpact)
-        );
-
-        //Normalized tangent vector where the player will be at a given time
-        Vector3 targetTangent = Vector3.Normalize(
-            path.EvaluateTangentAtUnit(
-                playerCart.m_Position + playerCart.m_Speed * timeTillImpact,
-                playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeTillImpact)
-            )
-        );
-        */
-
-        /**
-         * Randomly chooses to go left or right of the player
-         */
-        /*
-        if (Random.value < 0.5f)
-        {
-            targetTangent.x *= -1;
-        }
-        else
-        {
-            targetTangent.z *= -1;
-        }
-
-        targetTangent.y = 0;
-        //Gives random length to the left/right modifier
-        targetTangent *= Random.Range(-spread, spread);
-
-        Vector3 interceptPoint = targetPosition + targetTangent;
-        Vector3 velocityVector = (interceptPoint - initialPosition) / timeTillImpact;
-        */
-
-        Vector3 velocityVector = playerVelocity + (playerToBulletSpawnpoint / timeTillImpact);
-
-        return velocityVector;
     }
 }
