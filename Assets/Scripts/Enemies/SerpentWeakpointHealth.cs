@@ -39,4 +39,12 @@ public class SerpentWeakpointHealth : EnemyHealth
                 serpent.CancelWaterCannon();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (weakpoint == WeakpointType.Head && other.tag.Equals("Player"))
+        {
+            other.GetComponent<PlayerInfo>().TakeDamage(serpent.lungeDamage);
+        }
+    }
 }

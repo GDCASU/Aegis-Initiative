@@ -22,7 +22,7 @@ public class SeaSerpent : MonoBehaviour
     public Transform waterBulletSpawnpoint;
     public GameObject waterBullet;
     public int barrageBullets = 5;
-    public float waterBulletSpeed = 10f;
+    public float waterBulletSpeed = 8f;
     public int bulletDamage = 10;
     public float timeBetweenBarrageBullets = 0.5f;
 
@@ -35,6 +35,11 @@ public class SeaSerpent : MonoBehaviour
     public int bashCancelDamage = 100;
     public int lunges = 3;
     public int lungeDamage = 20;
+    public float lungeDistance = 2f;
+    public float followSpeed = 1f;
+    public float lungeTime = 0.3f;
+    public float retractTime = 0.6f;
+    public float timeBetweenLunges = 0.5f;
 
     [Header("Water Cannon")]
     public Transform mouthWeakpoint;
@@ -62,14 +67,22 @@ public class SeaSerpent : MonoBehaviour
     public bool waterCannonDisrupted = false;
 
     private Transform player;
+    private Transform dollyCart;
     private ShipMovement playerMovement;
+
+    Vector3 originalPosition;
+    private Vector2 hostPosition_XY;
+    private Vector2 playerPosition_XY;
+    private Vector3 newHostPosition_XY;
 
     private void Start()
     {
         host = transform.parent;
         waterLaser = mouthWeakpoint.GetChild(0);
         player = PlayerInfo.singleton.transform;
+        dollyCart = player.parent;
         playerMovement = player.GetComponent<ShipMovement>();
+        originalPosition = host.localPosition;
         StartCoroutine(WaitToBeginBattle());
     }
 
@@ -90,7 +103,7 @@ public class SeaSerpent : MonoBehaviour
                 isAttacking = true;
                 timeSinceAttack = 0;
 
-                StartCoroutine(StartWaterBarrage());
+                StartCoroutine(StartHeadBash());
 
                 /*
                 randomNum = Random.value;
@@ -116,7 +129,10 @@ public class SeaSerpent : MonoBehaviour
     {
         if (isHeadBashing)
         {
-            //transform.LookAt()
+            hostPosition_XY = new Vector2(host.localPosition.x, host.localPosition.y);
+            playerPosition_XY = new Vector2(player.localPosition.x, player.localPosition.y);
+            newHostPosition_XY = Vector2.MoveTowards(hostPosition_XY, playerPosition_XY, followSpeed * Time.deltaTime);
+            host.localPosition = new Vector3(newHostPosition_XY.x, newHostPosition_XY.y, host.localPosition.z);
         }
         else if(isCannoning)
         {
@@ -124,77 +140,163 @@ public class SeaSerpent : MonoBehaviour
             Vector3 currentDirection = Vector3.RotateTowards(mouthWeakpoint.forward, playerDirection, laserFollowSpeed * Time.deltaTime, 0f);
             mouthWeakpoint.rotation = Quaternion.LookRotation(currentDirection);
         }
+        else if(isHeadBashing)
+        {
+            //transform.localPosition = new Vector3()
+        }
     }
 
     private IEnumerator StartWaterBarrage()
     {
-        Rigidbody dispensedBullet;
-        Vector3 bulletVelocity;
-        Vector3 bulletSpawnpointPositionInTrack;
+        Vector3 initialBulletPosition, initialPlayerPosition, playerVelocity, futurePlayerPosition, bulletVelocity, positionInCamera, bulletToFuturePlayerPosition, spread;
+        Quaternion bulletRotation;
+		Rigidbody dispensedBullet;
+
         for (int i = 0; i < barrageBullets; i++)
         {
-            bulletSpawnpointPositionInTrack = transform.parent.parent.InverseTransformPoint(waterBulletSpawnpoint.position);
-            AimPrediction.PredictiveAim(bulletSpawnpointPositionInTrack, waterBulletSpeed, player.localPosition, playerMovement.currentVelocity , 0, out bulletVelocity);
-            dispensedBullet = Instantiate(waterBullet, waterBulletSpawnpoint.position, waterBulletSpawnpoint.rotation, transform.parent.parent).GetComponent<Rigidbody>();
-            dispensedBullet.velocity = bulletVelocity;
+            // Do not shoot bullet if the Bot has been destroyed.
+            if (gameObject == null)
+                yield break;
+
+            // Determine bullet velocity to predicted player position.
+            initialBulletPosition = dollyCart.InverseTransformPoint(waterBulletSpawnpoint.position);
+            initialPlayerPosition = player.localPosition;
+            playerVelocity = playerMovement.currentVelocity;
+            bulletVelocity = DollyCartAimPrediction.GetBulletVelocityToTarget(initialBulletPosition, waterBulletSpeed, initialPlayerPosition, playerVelocity, dollyCart, out futurePlayerPosition, out _);
+
+            // Constrain the prediced player position to the main camera viewpoint.
+            futurePlayerPosition = dollyCart.TransformPoint(futurePlayerPosition);
+            positionInCamera = Camera.main.WorldToViewportPoint(futurePlayerPosition);
+            positionInCamera.x = Mathf.Clamp01(positionInCamera.x);
+            positionInCamera.y = Mathf.Clamp01(positionInCamera.y);
+            futurePlayerPosition = Camera.main.ViewportToWorldPoint(positionInCamera);
+
+            // Project the bullet velocity onto the vector from bullet spawnpoint to predicted player position.
+            bulletToFuturePlayerPosition = futurePlayerPosition - waterBulletSpawnpoint.position;
+            bulletVelocity = Vector3.Project(bulletVelocity, bulletToFuturePlayerPosition);
+
+            // Introduce spread. [NOT FUNCTIONAL]
+            //spread = Random.insideUnitSphere * maxSpreadDistance;
+            bulletRotation = Quaternion.LookRotation(bulletVelocity, Vector3.up);
+            //bulletRotation = Quaternion.Euler(bulletRotation.eulerAngles += spread);
+
+            // Launch the bullet.
+            dispensedBullet = Instantiate(waterBullet, waterBulletSpawnpoint.position, bulletRotation, dollyCart).GetComponent<Rigidbody>();
+            dispensedBullet.velocity = dispensedBullet.transform.forward * waterBulletSpeed;
 
             yield return new WaitForSeconds(timeBetweenBarrageBullets);
         }
+
         isAttacking = false;
     }
 
     private IEnumerator StartHeadBash()
     {
-        float timeElapsed = 0f;
-        float initialZPosition = headWeakpoint.localPosition.z;
-        float finalZPosition = headWeakpoint.localPosition.z + headWeakpointProtrusion;
-        float currentZPosition;
+        isHeadBashing = true;
+        
 
-        Vector3 playerDirection = player.position - headWeakpoint.position;
-        float rotateSpeed = Vector3.Angle(headWeakpoint.position, playerDirection) / headProtrustionTime;
+        float timeElapsed = 0f;
+        float initialYPosition = headWeakpoint.localPosition.y;
+        float finalYPosition = headWeakpoint.localPosition.y + headWeakpointProtrusion;
+        float currentYPosition;
+
+        float initialXAngles = transform.localRotation.x;
+        float finalXAngles = 90f;
+        float currentXAngles;
+        float rotateSpeed = 90f / headProtrustionTime;
 
         // Display head weakpoint and rotate Serpent.
+        headWeakpoint.gameObject.SetActive(true);
         while (timeElapsed < headProtrustionTime)
         {
-            currentZPosition = Mathf.Lerp(initialZPosition, finalZPosition, timeElapsed / headProtrustionTime);
-            headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, headWeakpoint.localPosition.y, currentZPosition);
+            currentYPosition = Mathf.Lerp(initialYPosition, finalYPosition, timeElapsed / headProtrustionTime);
+            headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, currentYPosition, headWeakpoint.localPosition.z);
 
-            playerDirection = player.position - headWeakpoint.position;
-            Vector3 currentDirection = Vector3.RotateTowards(transform.up, playerDirection, rotateSpeed, 0f);
-            transform.rotation = Quaternion.LookRotation(currentDirection);
+            currentXAngles = Mathf.Lerp(initialXAngles, finalXAngles, timeElapsed / headProtrustionTime);
+            transform.localEulerAngles = new Vector3(currentXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, headWeakpoint.localPosition.y, finalZPosition);
+        headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, finalYPosition, headWeakpoint.localPosition.z);
+        transform.localEulerAngles = new Vector3(finalXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
         // Charge up head bash attack whilst checking if head weakpoint sustained too much damage.
         timeElapsed = 0;
         while (timeElapsed < bashChargeTime)
         {
             if (headBashDisrupted)
-                yield break;
+                timeElapsed = bashChargeTime;
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-
 
         if (!headBashDisrupted)
         {
+            host.GetComponent<EnemyMovement>().enabled = false;
+            headWeakpoint.GetComponent<Collider>().isTrigger = true;
 
+            float initialZPosition = host.localPosition.z;
+            float finalZPosition = host.localPosition.z - lungeDistance;
+            float currentZPosition;
+
+            for(int i = 0; i < lunges; i++)
+            {
+                isHeadBashing = false;
+                timeElapsed = 0;
+                while(timeElapsed < lungeTime)
+                {
+                    currentZPosition = Mathf.Lerp(initialZPosition, finalZPosition, timeElapsed / lungeTime);
+                    host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, currentZPosition);
+
+                    timeElapsed += Time.deltaTime;
+                    yield return null;
+                }
+                host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, finalZPosition);
+
+                timeElapsed = 0;
+                while(timeElapsed < retractTime)
+                {
+                    currentZPosition = Mathf.Lerp(finalZPosition, initialZPosition, timeElapsed / retractTime);
+                    host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, currentZPosition);
+
+                    timeElapsed += Time.deltaTime;
+                    yield return null;
+                }
+                host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, initialZPosition);
+
+                isHeadBashing = true;
+                yield return new WaitForSeconds(timeBetweenLunges);
+            }
         }
 
+        Vector3 currentHostPosition = host.localPosition;
+
+        // Return to normal pos
+        timeElapsed = 0;
         while (timeElapsed < headRetractionTime)
         {
-            currentZPosition = Mathf.Lerp(finalZPosition, initialZPosition, timeElapsed / headProtrustionTime);
-            headWeakpoint.position = new Vector3(headWeakpoint.position.x, headWeakpoint.position.y, currentZPosition);
+            currentYPosition = Mathf.Lerp(finalYPosition, initialYPosition, timeElapsed / headRetractionTime);
+            headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, currentYPosition, headWeakpoint.localPosition.z);
+
+            currentXAngles = Mathf.Lerp(finalXAngles, initialXAngles, timeElapsed / headRetractionTime);
+            transform.localEulerAngles = new Vector3(currentXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
+
+            host.localPosition = Vector3.Lerp(currentHostPosition, originalPosition, timeElapsed / headRetractionTime);
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        headWeakpoint.position = new Vector3(headWeakpoint.position.x, headWeakpoint.position.y, initialZPosition);
+        headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, initialYPosition, headWeakpoint.localPosition.z);
+        transform.localEulerAngles = new Vector3(initialXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
+        host.localPosition = originalPosition;
+
+        host.GetComponent<EnemyMovement>().enabled = true;
+        headWeakpoint.GetComponent<Collider>().isTrigger = false;
+        headWeakpoint.gameObject.SetActive(false);
         headBashDisrupted = false;
+        isAttacking = false;
     }
 
     public void CancelHeadBash() => headBashDisrupted = true;
@@ -253,6 +355,7 @@ public class SeaSerpent : MonoBehaviour
             yield return null;
         }
         mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, initialZPosition);
+
         mouthWeakpoint.GetComponent<Collider>().isTrigger = false;
         mouthWeakpoint.gameObject.SetActive(false);
         waterCannonDisrupted = false;

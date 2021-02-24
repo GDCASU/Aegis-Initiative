@@ -230,17 +230,22 @@ MonoBehaviour:
   waterBullet: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   barrageBullets: 5
-  waterBulletSpeed: 10
+  waterBulletSpeed: 8
   bulletDamage: 10
   timeBetweenBarrageBullets: 0.5
   headWeakpoint: {fileID: 8197544042790984857}
-  headWeakpointProtrusion: 0.1
+  headWeakpointProtrusion: 1
   headProtrustionTime: 1
   headRetractionTime: 0.5
-  bashChargeTime: 6
+  bashChargeTime: 2
   bashCancelDamage: 100
   lunges: 3
   lungeDamage: 20
+  lungeDistance: 4
+  followSpeed: 1.5
+  lungeTime: 0.3
+  retractTime: 0.6
+  timeBetweenLunges: 0.5
   mouthWeakpoint: {fileID: 8197544043340013231}
   mouthWeakpointProtrusion: 1
   mouthProtrustionTime: 1
@@ -514,13 +519,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8197544043369914331}
+  - component: {fileID: 776059221}
   m_Layer: 0
   m_Name: SeaSerpentHost 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8197544043369914331
 Transform:
   m_ObjectHideFlags: 0
@@ -536,3 +542,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776059221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197544043369914328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveMovement: 2
+  maxWavePeak: 1.2
+  minWaveDip: 0
+  waveFrequency: 0.5
+  maxAngle: 10
+  shipSpeed: 0
+  hover: 1
+  hoverTimer: 10
+  leaveDirection: 0
+  moveDirection: 1
