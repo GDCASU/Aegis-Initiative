@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1418954563417724079}
   - component: {fileID: 1418954563417724078}
   - component: {fileID: 1418954563417724077}
-  - component: {fileID: 1418954563417724051}
   - component: {fileID: 1418954563417724050}
+  - component: {fileID: 8865959857591628045}
   m_Layer: 0
   m_Name: Bounce Mushroom
   m_TagString: Untagged
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1418954563417724051
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418954563417724049}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.03578891
-  m_Center: {x: 0, y: 0.000000011175874, z: -0.0038212882}
 --- !u!114 &1418954563417724050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +99,17 @@ MonoBehaviour:
   pushDistance: 0.5
   pushDuration: 0.2
   directionInUnitCircleAngles: 0
+--- !u!64 &8865959857591628045
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418954563417724049}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5596485599947641857, guid: d33d6f5fc7083f84e92ea5c261e109bd, type: 3}
