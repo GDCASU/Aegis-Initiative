@@ -63,4 +63,5 @@ public enum Copilots
     Feebee = 0,
     Frederick = 1,
     MushroomFriend = 2,
+    SpaceGirl = 3,
 };
