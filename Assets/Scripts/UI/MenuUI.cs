@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class MenuUI : MonoBehaviour
     #region Load Saves
     public GameObject scrollViewContent;
     public GameObject saveButtonPrefab;
+    public InputField nameInputField;
     #endregion
 
     private void Start()
@@ -49,7 +51,7 @@ public class MenuUI : MonoBehaviour
             }
         }
     }
-    void SwitchPanels(int panelToDeactivate, int panelToActivate)
+    public void SwitchPanels(int panelToDeactivate, int panelToActivate)
     {
         panels[panelToDeactivate].SetActive(false);
         panels[panelToActivate].SetActive(true);
@@ -73,15 +75,53 @@ public class MenuUI : MonoBehaviour
     }
     public void LoadSaves()
     {
-        for(int x =0; x<10;x++)
+        for(int x = 0; x < ProfileManager.instance.profileCount; x++)
         {
-            GameObject tempButton = Instantiate(saveButtonPrefab);
-            tempButton.transform.SetParent(scrollViewContent.transform);
-            tempButton.transform.localScale = Vector3.one;
+            GameObject newButton = Instantiate(saveButtonPrefab, scrollViewContent.transform);
+
+            newButton.GetComponent<SaveButtonUI>().Initialize(this, x);
         }
     }
     public void SelecSave()
     {
         SwitchPanels(currentPanel, 2);
+
+        //Updates each save button in case they become unsynced to their associated profiles
+        SaveButtonUI[] saveUIList = scrollViewContent.GetComponentsInChildren<SaveButtonUI>();
+        foreach (SaveButtonUI saveButton in saveUIList) saveButton.UpdateUI();
+    }
+
+    /// <summary>
+    /// Method called by UI to exit the save select panel
+    /// </summary>
+    public void ExitSelectSave() => SwitchPanels(currentPanel, 1);
+
+    /// <summary>
+    /// Method called by UI in the Create Profile Panel when the
+    /// player tries to create a new profile
+    /// </summary>
+    public void CreateProfile()
+    {
+        if (!string.IsNullOrEmpty(nameInputField.text))
+        {
+            ProfileManager.instance.CurrentProfile.profileID = ProfileManager.instance.currentProfileIndex;
+            ProfileManager.instance.CurrentProfile.name = nameInputField.text;
+            ProfileManager.instance.SaveCurrentProfile();
+
+            //TEST CODE. LATER THIS SHOULD SWAP SCENES BUT FOR NOW I'M SWAPPING PANELS TO HELP TEST
+            SwitchPanels(currentPanel, 1);
+        }
+        
+    }
+    
+    /// <summary>
+    /// Method called by UI in the Create Profile Panel when the player cancels creating
+    /// a new profile
+    /// </summary>
+    public void CancelCreateProfile()
+    {
+        SwitchPanels(currentPanel, 2);
+        ProfileManager.instance.currentProfileIndex = -1;
+        nameInputField.text = "";
     }
 }
