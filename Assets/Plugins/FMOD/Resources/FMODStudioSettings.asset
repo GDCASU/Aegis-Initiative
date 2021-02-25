@@ -18,8 +18,8 @@ MonoBehaviour:
   sourceProjectPath: FireFoxFmod/FireFoxFmod.fspro
   sourceBankPath: FireFoxFmod\Build
   SourceBankPathUnformatted: 
-  AutomaticEventLoading: 0
-  BankLoadType: 1
+  AutomaticEventLoading: 1
+  BankLoadType: 0
   AutomaticSampleLoading: 0
   EncryptionKey: 
   ImportType: 0
@@ -80,7 +80,5 @@ MonoBehaviour:
   - Master
   Banks:
   - Mushroom Stage
-  BanksToLoad:
-  - Master.bank
-  - Master.strings.bank
+  BanksToLoad: []
   LiveUpdatePort: 9264
