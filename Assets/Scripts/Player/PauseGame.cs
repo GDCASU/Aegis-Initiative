@@ -9,7 +9,7 @@ public class PauseGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputManager.GetButton(PlayerInput.PlayerButton.Pause))
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Pause))
         {
             isPaused = !isPaused;
             Pause();
