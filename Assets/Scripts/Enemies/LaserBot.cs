@@ -134,10 +134,6 @@ public class LaserBot : MonoBehaviour
 
         for (int i = 0; i < bulletsInBurst; i++)
         {
-            // Do not shoot bullet if the Bot has been destroyed.
-            if (gameObject == null)
-                yield break;
-
             // Determine bullet velocity to predicted player position.
             initialBulletPosition = dollyCart.InverseTransformPoint(bulletSpawnpoint.position);
             initialPlayerPosition = player.localPosition;
