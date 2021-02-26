@@ -45,12 +45,12 @@ public class Merfolk : EnemyHealth
         if (figureEightDirection == figureEight.horizontal)
         {
             moveCenter = new Vector3(0, 0, figure8Radius * 2);
-            center = transform.position - new Vector3(0, 0, figure8Radius);
+            center = transform.localPosition - new Vector3(0, 0, figure8Radius);
         }
         else
         {
             moveCenter = new Vector3(0, figure8Radius * 2, 0);
-            center = transform.position - new Vector3(0, figure8Radius, 0);
+            center = transform.localPosition - new Vector3(0, figure8Radius, 0);
         }
 
         //start shooting
@@ -87,6 +87,6 @@ public class Merfolk : EnemyHealth
         else
             offset = new Vector3(Mathf.Sin(angle * direction), Mathf.Cos(angle * direction), 0) * figure8Radius * direction;
 
-        transform.position = center + offset;
+        transform.localPosition = center + offset;
     }
 }
