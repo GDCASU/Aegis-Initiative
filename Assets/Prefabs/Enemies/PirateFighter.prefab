@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2770087626843450852
+--- !u!1 &4705760943267773886
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,76 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3259063144827664222}
-  - component: {fileID: 1915541932080773371}
-  - component: {fileID: 4427505129483848753}
-  - component: {fileID: 3076026529728371861}
-  - component: {fileID: 3076026529728371860}
+  - component: {fileID: 4705760943267773885}
+  - component: {fileID: 4705760943267773880}
+  - component: {fileID: 4705760943267773881}
+  - component: {fileID: 4705760943267773882}
+  - component: {fileID: 4705760943267773883}
+  - component: {fileID: 4705760943267773884}
   m_Layer: 0
-  m_Name: PirateFighter
+  m_Name: Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3259063144827664222
+--- !u!4 &4705760943267773885
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2770087626843450852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: -0.75, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100.000015}
+  m_GameObject: {fileID: 4705760943267773886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4705760943325353809}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1915541932080773371
-MeshFilter:
+--- !u!111 &4705760943267773880
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2770087626843450852}
-  m_Mesh: {fileID: -1156291662648908198, guid: 4da0bc65aadc13e4cb33028621a8e635, type: 3}
---- !u!23 &4427505129483848753
+  m_GameObject: {fileID: 4705760943267773886}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
+  - {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &4705760943267773881
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705760943267773886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96183e8cdd9ae054b8c0e04124f7ea0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!23 &4705760943267773882
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2770087626843450852}
+  m_GameObject: {fileID: 4705760943267773886}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,8 +90,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fe299c05f6c390249bda1800f6eb2751, type: 2}
-  - {fileID: 2100000, guid: c3b19c3eafb1ffc4db77ace0a998a383, type: 2}
+  - {fileID: -4317479684869818752, guid: 4da0bc65aadc13e4cb33028621a8e635, type: 3}
+  - {fileID: -6171271602878565929, guid: 4da0bc65aadc13e4cb33028621a8e635, type: 3}
   - {fileID: 2100000, guid: ae79a3dd1bc2dde41b51b09763f33281, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -85,27 +114,67 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3076026529728371861
-MonoBehaviour:
+--- !u!33 &4705760943267773883
+MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2770087626843450852}
+  m_GameObject: {fileID: 4705760943267773886}
+  m_Mesh: {fileID: -1156291662648908198, guid: 4da0bc65aadc13e4cb33028621a8e635, type: 3}
+--- !u!65 &4705760943267773884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705760943267773886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  collisionDamage: 0
---- !u!114 &3076026529728371860
+  serializedVersion: 2
+  m_Size: {x: 0.08923337, y: 0.05984737, z: 0.03274542}
+  m_Center: {x: 0, y: 0.011311137, z: 0.0030442318}
+--- !u!1 &4705760943325353810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4705760943325353809}
+  - component: {fileID: 4705760943325353823}
+  - component: {fileID: 4705760943325353808}
+  m_Layer: 0
+  m_Name: PirateFighter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4705760943325353809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705760943325353810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4705760943267773885}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4705760943325353823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2770087626843450852}
+  m_GameObject: {fileID: 4705760943325353810}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feef8098b4c464e4080199f17965a290, type: 3}
@@ -113,9 +182,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 0
+  lifeTime: 20
+  lifeTimer: 10
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
-  animations: {fileID: 0}
+  animations: {fileID: 4705760943267773880}
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+--- !u!114 &4705760943325353808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705760943325353810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  collisionDamage: 0
+  lifeTime: 20
+  lifeTimer: 10
