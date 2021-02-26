@@ -43,31 +43,31 @@ public class MenuUI : MonoBehaviour
                     ShowExitPrompt();       
                     break;
                 case 2:
-                    SwitchPanels(currentPanel, 1);
+                    SwitchPanels(1);
                     break;
                 case 3:
-                    SwitchPanels(currentPanel, 1);
+                    SwitchPanels(1);
                     break;
             }
         }
     }
-    public void SwitchPanels(int panelToDeactivate, int panelToActivate)
+    public void SwitchPanels(int panelToActivate)
     {
-        panels[panelToDeactivate].SetActive(false);
+        panels[currentPanel].SetActive(false);
         panels[panelToActivate].SetActive(true);
         currentPanel = panelToActivate;
     }
     public void CancelExitPrompt()
     {
-        SwitchPanels(currentPanel, 1);  //1 is the regular Tittle Menu UI
+        SwitchPanels(1);  //1 is the regular Tittle Menu UI
     }
     public void ShowExitPrompt()
     {
-        SwitchPanels(currentPanel, 0);  //0 Is the "are you sure?" prompt
+        SwitchPanels(0);  //0 Is the "are you sure?" prompt
     }
     public void Settings()
     {
-        SwitchPanels(currentPanel, 3);  //3 is the Settings panel
+        SwitchPanels(3);  //3 is the Settings panel
     }
     public void ExitGame()
     {
@@ -84,7 +84,7 @@ public class MenuUI : MonoBehaviour
     }
     public void SelecSave()
     {
-        SwitchPanels(currentPanel, 2);
+        SwitchPanels(2);
 
         //Updates each save button in case they become unsynced to their associated profiles
         SaveButtonUI[] saveUIList = scrollViewContent.GetComponentsInChildren<SaveButtonUI>();
@@ -94,7 +94,7 @@ public class MenuUI : MonoBehaviour
     /// <summary>
     /// Method called by UI to exit the save select panel
     /// </summary>
-    public void ExitSelectSave() => SwitchPanels(currentPanel, 1);
+    public void ExitSelectSave() => SwitchPanels(1);
 
     /// <summary>
     /// Method called by UI in the Create Profile Panel when the
@@ -109,9 +109,8 @@ public class MenuUI : MonoBehaviour
             ProfileManager.instance.SaveCurrentProfile();
 
             //TEST CODE. LATER THIS SHOULD SWAP SCENES BUT FOR NOW I'M SWAPPING PANELS TO HELP TEST
-            SwitchPanels(currentPanel, 1);
-        }
-        
+            SwitchPanels(1);
+        }    
     }
     
     /// <summary>
