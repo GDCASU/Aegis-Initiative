@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 8197544042086189010}
   - component: {fileID: 8197544042086189011}
   - component: {fileID: 8197544042086189008}
+  - component: {fileID: 6383907522697171910}
   - component: {fileID: 8197544042086189009}
   m_Layer: 0
   m_Name: SeaSerpent
@@ -209,6 +210,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6383907522697171910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197544042086189015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  collisionDamage: 0
 --- !u!114 &8197544042086189009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,20 +242,19 @@ MonoBehaviour:
   headBashFrequency: 0.35
   waterCannonFrequency: 0.15
   waterBulletSpawnpoint: {fileID: 8197544042133564211}
-  waterBullet: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
+  waterBullet: {fileID: 7812825711875549723, guid: 30b6f09d328e5fa42b5836bcdc20e5b1,
     type: 3}
   barrageBullets: 5
   waterBulletSpeed: 8
   bulletDamage: 10
   timeBetweenBarrageBullets: 0.5
+  maxSpreadDistance: 0
   headWeakpoint: {fileID: 8197544042790984857}
   headWeakpointProtrusion: 1
   headProtrustionTime: 1
   headRetractionTime: 0.5
   bashChargeTime: 2
-  bashCancelDamage: 100
   lunges: 3
-  lungeDamage: 20
   lungeDistance: 4
   followSpeed: 1.5
   lungeTime: 0.3
@@ -252,7 +266,6 @@ MonoBehaviour:
   mouthRetractionTime: 0.5
   waterLaser: {fileID: 1045814163}
   cannonChargeTime: 4
-  cannonCancelDamage: 100
   laserDuration: 5
   laserFollowSpeed: 0.1
   headBashDisrupted: 0
@@ -521,7 +534,7 @@ GameObject:
   - component: {fileID: 8197544043369914331}
   - component: {fileID: 776059221}
   m_Layer: 0
-  m_Name: SeaSerpentHost 1
+  m_Name: SeaSerpentHost_CDominguez
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,7 +562,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8197544043369914328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
@@ -560,7 +573,7 @@ MonoBehaviour:
   waveFrequency: 0.5
   maxAngle: 10
   shipSpeed: 0
-  hover: 1
+  hover: 0
   hoverTimer: 10
   leaveDirection: 0
   moveDirection: 1

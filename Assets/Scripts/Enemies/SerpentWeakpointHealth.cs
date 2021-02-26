@@ -15,11 +15,16 @@ public class SerpentWeakpointHealth : EnemyHealth
 
     private int maxHealth;
     private SeaSerpent serpent;
+    private EnemyHealth serpentHealth;
 
     private void Awake()
     {
         serpent = transform.GetComponentInParent<SeaSerpent>();
-        maxHealth = serpent.bashCancelDamage;
+        serpentHealth = transform.GetComponentInParent<EnemyHealth>();
+        if (weakpoint == WeakpointType.Head)
+            maxHealth = serpent.BashCancelDamage;
+        else if (weakpoint == WeakpointType.Mouth)
+            maxHealth = serpent.CannonCancelDamage;
     }
 
     private void OnEnable()
@@ -30,6 +35,7 @@ public class SerpentWeakpointHealth : EnemyHealth
     public override void TakeDamage(int damage)
     {
         health -= damage;
+        serpentHealth.TakeDamage(damage);
 
         if(health <= 0)
         {
@@ -44,7 +50,7 @@ public class SerpentWeakpointHealth : EnemyHealth
     {
         if (weakpoint == WeakpointType.Head && other.tag.Equals("Player"))
         {
-            other.GetComponent<PlayerInfo>().TakeDamage(serpent.lungeDamage);
+            other.GetComponent<PlayerInfo>().TakeDamage(serpent.LungeDamage);
         }
     }
 }
