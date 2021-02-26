@@ -201,6 +201,9 @@ public class SeaSerpent : MonoBehaviour
 
                 randonNumber = Random.value;
 
+                StartCoroutine(StartHeadBash());
+
+                /*
                 // Choose the attack pattern by determining which interval randomNumber is in.
                 if (randonNumber <= waterCannonFrequency)
                 {
@@ -214,6 +217,7 @@ public class SeaSerpent : MonoBehaviour
                 {
                     StartCoroutine(StartWaterBarrage());
                 }
+                */
             }
         }
     }
@@ -285,6 +289,7 @@ public class SeaSerpent : MonoBehaviour
 
     private IEnumerator StartHeadBash()
     {
+        host.GetComponent<EnemyMovement>().enabled = false;
         isHeadBashing = true;
         
         float timeElapsed = 0f;
@@ -326,7 +331,6 @@ public class SeaSerpent : MonoBehaviour
 
         if (!headBashDisrupted)
         {
-            //host.GetComponent<EnemyMovement>().enabled = false;
             headWeakpoint.GetComponent<Collider>().isTrigger = true;
 
             float initialZPosition = host.localPosition.z;
@@ -385,7 +389,7 @@ public class SeaSerpent : MonoBehaviour
         transform.localEulerAngles = new Vector3(initialXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
         host.localPosition = originalHostPosition;
 
-        //host.GetComponent<EnemyMovement>().enabled = true;
+        host.GetComponent<EnemyMovement>().enabled = true;
         headWeakpoint.GetComponent<Collider>().isTrigger = false;
         headWeakpoint.gameObject.SetActive(false);
         headBashDisrupted = false;

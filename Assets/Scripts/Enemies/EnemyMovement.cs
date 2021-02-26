@@ -47,10 +47,12 @@ public class EnemyMovement : MonoBehaviour
     [Range(0.0f, 5.0f)]
     private float shipSpeed = 2;
     [SerializeField]
-    private bool hover = true; //does ship stay near player
+    private bool hoverPermanently = false;  // Does the Ship stay near the Player permanently?
+    [SerializeField]
+    private bool hoverTemporarily = true;  // Does the Ship stay near the Player temporarily
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float hoverTimer = 3.0f; //how long ship stays
+    private float hoverTimer = 3.0f;  // how long the ship hovers if temporary
     [SerializeField]
     private LeaveDirection leaveDirection;
     [SerializeField]
@@ -58,9 +60,10 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField]
     private bool isRotating = true;  // Is the Enemy rotating with the movements?
-
     [SerializeField]
     private bool lockedOntoPlayer = false;  // Is the Enemy facing the Player?
+    [SerializeField]
+    private bool isFacingPlayer = false;  // Is the Enemy facing towards the Player?
 
     private bool atPosMax;
 
@@ -174,7 +177,11 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if(hoverTimer > 0 && hover)
+            if(hoverPermanently)
+            {
+                transform.Translate(new Vector3(x, y, 0) * Time.deltaTime); //ship will hover
+            }
+            else if(hoverTimer > 0 && hoverTemporarily)
             {
                 transform.Translate(new Vector3(x, y, 0) * Time.deltaTime); //ship will hover
                 hoverTimer -= Time.deltaTime;
@@ -218,6 +225,8 @@ public class EnemyMovement : MonoBehaviour
             shipModel.localEulerAngles = new Vector3(x, y, z);
         else if (lockedOntoPlayer)
             shipModel.LookAt(PlayerInfo.singleton.transform.position);
+        else if (isFacingPlayer)
+            shipModel.localEulerAngles = new Vector3(x, 180, z);
     }
 
     void checkBounds(float currentValue)

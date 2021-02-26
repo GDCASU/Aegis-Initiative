@@ -222,8 +222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 1000
   collisionDamage: 0
+  lifeTime: 1000
+  lifeTimer: 0
 --- !u!114 &8197544042086189009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,31 +243,34 @@ MonoBehaviour:
   waterBarrageFrequency: 0.5
   headBashFrequency: 0.35
   waterCannonFrequency: 0.15
-  waterBulletSpawnpoint: {fileID: 8197544042133564211}
   waterBullet: {fileID: 7812825711875549723, guid: 30b6f09d328e5fa42b5836bcdc20e5b1,
     type: 3}
-  barrageBullets: 5
+  waterBulletSpawnpoint: {fileID: 8197544042133564211}
+  waterBulletsInBarrage: 5
+  timeBetweenWaterBullets: 0.5
   waterBulletSpeed: 8
-  bulletDamage: 10
-  timeBetweenBarrageBullets: 0.5
+  waterBulletDamage: 10
   maxSpreadDistance: 0
   headWeakpoint: {fileID: 8197544042790984857}
-  headWeakpointProtrusion: 1
+  headProtrusionDistance: 1
   headProtrustionTime: 1
   headRetractionTime: 0.5
   bashChargeTime: 2
-  lunges: 3
+  <BashCancelDamage>k__BackingField: 0
+  totalLunges: 3
+  <LungeDamage>k__BackingField: 0
   lungeDistance: 4
-  followSpeed: 1.5
   lungeTime: 0.3
   retractTime: 0.6
   timeBetweenLunges: 0.5
+  followSpeed: 1.5
   mouthWeakpoint: {fileID: 8197544043340013231}
   mouthWeakpointProtrusion: 1
   mouthProtrustionTime: 1
   mouthRetractionTime: 0.5
   waterLaser: {fileID: 1045814163}
   cannonChargeTime: 4
+  <CannonCancelDamage>k__BackingField: 0
   laserDuration: 5
   laserFollowSpeed: 0.1
   headBashDisrupted: 0
@@ -410,6 +415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   collisionDamage: 0
+  lifeTime: 20
+  lifeTimer: 0
   weakpoint: 0
 --- !u!1 &8197544043340013228
 GameObject:
@@ -522,6 +529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   collisionDamage: 0
+  lifeTime: 20
+  lifeTimer: 0
   weakpoint: 1
 --- !u!1 &8197544043369914328
 GameObject:
@@ -539,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8197544043369914331
 Transform:
   m_ObjectHideFlags: 0
@@ -562,7 +571,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8197544043369914328}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
@@ -573,7 +582,11 @@ MonoBehaviour:
   waveFrequency: 0.5
   maxAngle: 10
   shipSpeed: 0
-  hover: 0
+  hoverPermanently: 1
+  hoverTemporarily: 0
   hoverTimer: 10
   leaveDirection: 0
   moveDirection: 1
+  isRotating: 0
+  lockedOntoPlayer: 0
+  isFacingPlayer: 1
