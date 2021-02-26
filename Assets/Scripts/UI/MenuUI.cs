@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
@@ -15,10 +16,10 @@ public class MenuUI : MonoBehaviour
 
     [Header("Main Menu")]
     #region Main Menu
-    public GameObject startGame;
+    public string creditsScene;
     #endregion
 
-    [Header("Load Sves")]
+    [Header("Load Saves")]
     #region Load Saves
     public GameObject scrollViewContent;
     public GameObject saveButtonPrefab;
@@ -119,8 +120,12 @@ public class MenuUI : MonoBehaviour
     /// </summary>
     public void CancelCreateProfile()
     {
-        SwitchPanels(currentPanel, 2);
+        SwitchPanels(2);
         ProfileManager.instance.currentProfileIndex = -1;
         nameInputField.text = "";
+    }
+    public void Credits()
+    {
+        SceneManager.LoadScene(creditsScene, LoadSceneMode.Single);
     }
 }

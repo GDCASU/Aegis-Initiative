@@ -56,7 +56,7 @@ public class SaveButtonUI : MonoBehaviour
         if (ProfileManager.instance.CurrentProfile.profileID == -1)
         {
             menuUI.nameInputField.text = "";
-            menuUI.SwitchPanels(menuUI.currentPanel, 4);
+            menuUI.SwitchPanels(4);
         }
         else print("Profile: " + ProfileManager.instance.CurrentProfile.name + " selected");
     }
