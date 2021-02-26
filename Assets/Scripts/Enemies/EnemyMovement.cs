@@ -67,6 +67,7 @@ public class EnemyMovement : MonoBehaviour
     private float flyAwayRoll;
 
     private float startY; //local start Y position
+    private float startX; //local start X position
 
     Transform shipModel;
     float time = 3;
@@ -80,12 +81,13 @@ public class EnemyMovement : MonoBehaviour
         yaw = 0;
         roll = 0;
 
-        flyAwayPitch = -60;
-        flyAwayYaw = -60;
-        flyAwayRoll = 60;
+        flyAwayPitch = 60;
+        flyAwayYaw = 60;
+        flyAwayRoll = -60;
 
         shipModel = transform.GetChild(0);
         startY = transform.localPosition.y;
+        startX = transform.localPosition.x;
     }
 
     // Update is called once per frame
@@ -109,7 +111,7 @@ public class EnemyMovement : MonoBehaviour
 
     void UpDownWave()
     {
-        checkHeight(transform.localPosition.y); //check if at peak or dip of wave
+        checkBounds(transform.localPosition.y); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
         {
             if (pitch < maxAngle)
@@ -131,7 +133,7 @@ public class EnemyMovement : MonoBehaviour
 
     void LeftRight()
     {
-        checkHeight(transform.localPosition.x); //check if at peak or dip of wave
+        checkBounds(transform.localPosition.x); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
         {
             if (roll < maxAngle)
@@ -206,16 +208,18 @@ public class EnemyMovement : MonoBehaviour
         shipModel.localEulerAngles = new Vector3(x, y, z);
     }
 
-    void checkHeight(float currentHeight)
+    void checkBounds(float currentValue)
     {
-        if(currentHeight >= (startY + maxWavePeak))
+        if (waveMovement == WaveMovement.UpDown)
         {
-            atPosMax = true;
+            if (currentValue >= (startY + maxWavePeak)) atPosMax = true;
+            if (currentValue <= (startY + minWaveDip)) atPosMax = false;
         }
-        
-        if(currentHeight <= (startY + minWaveDip))
+        else if (waveMovement == WaveMovement.LeftRight)
         {
-            atPosMax = false;
+            if (currentValue >= (startX + maxWavePeak)) atPosMax = true;
+            if (currentValue <= (startX + minWaveDip)) atPosMax = false;
         }
+
     }
 }
