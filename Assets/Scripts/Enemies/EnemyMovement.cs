@@ -81,9 +81,9 @@ public class EnemyMovement : MonoBehaviour
         yaw = 0;
         roll = 0;
 
-        flyAwayPitch = 60;
-        flyAwayYaw = 60;
-        flyAwayRoll = -60;
+        flyAwayPitch = -60;
+        flyAwayYaw = -60;
+        flyAwayRoll = 60;
 
         shipModel = transform.GetChild(0);
         startY = transform.localPosition.y;
@@ -200,7 +200,7 @@ public class EnemyMovement : MonoBehaviour
                 RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, -flyAwayRoll * 1.5f, 1f)); //0/-yaw/-roll
                 break;
         }
-        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * (int)moveDirection * 3);
+        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * 3);
     }
 
     void RotateShip(float x, float y, float z)
