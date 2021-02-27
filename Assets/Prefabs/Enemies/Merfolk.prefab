@@ -176,9 +176,9 @@ MonoBehaviour:
     type: 3}
   bulletSpawn: {fileID: 8026028355616783783}
   shootSpeed: 100
-  rotateSpeed: 5
+  speed: 5
   figure8Radius: 5
   startShooting: 2
   waterMultiplier: 0.8
   aboveWater: 0
-  speed: 5
+  figureEightDirection: 0
