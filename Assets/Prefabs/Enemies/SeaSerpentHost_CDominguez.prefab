@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ac0242ec676994abc01aaec46a4788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerFrame: 0
+  damage: 10
+  damageCooldown: 1
 --- !u!1 &8197544042086189015
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,8 +225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   collisionDamage: 0
-  lifeTime: 1000
+  lifeTime: 0
   lifeTimer: 0
+  isPermanent: 1
 --- !u!114 &8197544042086189009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,8 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48baa5da3c0a3f42a69f20e6c4362ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowedAttack: 0
   beginAttackingTime: 2
-  attackCooldown: 2
+  attackCooldown: 3
   waterBarrageFrequency: 0.5
   headBashFrequency: 0.35
   waterCannonFrequency: 0.15
@@ -255,26 +258,22 @@ MonoBehaviour:
   headProtrusionDistance: 1
   headProtrustionTime: 1
   headRetractionTime: 0.5
-  bashChargeTime: 2
-  <BashCancelDamage>k__BackingField: 0
+  bashChargeTime: 3
+  serpentFollowSpeed: 2.5
   totalLunges: 3
-  <LungeDamage>k__BackingField: 0
+  <LungeDamage>k__BackingField: 25
   lungeDistance: 4
   lungeTime: 0.3
-  retractTime: 0.6
-  timeBetweenLunges: 0.5
-  followSpeed: 1.5
+  backupTime: 0.2
+  timeBetweenLunges: 0.7
   mouthWeakpoint: {fileID: 8197544043340013231}
-  mouthWeakpointProtrusion: 1
+  mouthProtrustionDistance: 1
   mouthProtrustionTime: 1
   mouthRetractionTime: 0.5
   waterLaser: {fileID: 1045814163}
-  cannonChargeTime: 4
-  <CannonCancelDamage>k__BackingField: 0
-  laserDuration: 5
-  laserFollowSpeed: 0.1
-  headBashDisrupted: 0
-  waterCannonDisrupted: 0
+  cannonChargeTime: 3
+  laserDuration: 4
+  laserFollowSpeed: 0.3
 --- !u!1 &8197544042133564208
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,11 +412,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a3dd6d88ead84b80dfe03a1fc5316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   collisionDamage: 0
-  lifeTime: 20
+  lifeTime: 0
   lifeTimer: 0
+  isPermanent: 1
   weakpoint: 0
+  maxHealth: 100
 --- !u!1 &8197544043340013228
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,11 +528,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a3dd6d88ead84b80dfe03a1fc5316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   collisionDamage: 0
-  lifeTime: 20
+  lifeTime: 0
   lifeTimer: 0
+  isPermanent: 1
   weakpoint: 1
+  maxHealth: 100
 --- !u!1 &8197544043369914328
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8197544043369914331
 Transform:
   m_ObjectHideFlags: 0
@@ -577,16 +580,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveMovement: 2
+  rotation: 1
   maxWavePeak: 1.2
   minWaveDip: 0
   waveFrequency: 0.5
   maxAngle: 10
   shipSpeed: 0
-  hoverPermanently: 1
-  hoverTemporarily: 0
+  hoverLength: 1
   hoverTimer: 10
   leaveDirection: 0
   moveDirection: 1
-  isRotating: 0
-  lockedOntoPlayer: 0
-  isFacingPlayer: 1

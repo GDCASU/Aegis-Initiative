@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 28 Feb. 2021
+ * 
+ * Modifcation: Added RotationType to specify how a gameobject should rotate HoverInterval to specify if a gameobject should hover temporarily or permanently.
+ */
+using System.Collections;
 using System.Collections.Generic;
 using Unity.MPE;
 using UnityEngine;
@@ -28,8 +34,23 @@ public class EnemyMovement : MonoBehaviour
         Away = 1
     }
 
+    public enum RotationType
+    {
+        AwayFromPlayer,  // look away from Player's general position whilst swaying
+        TowardsPlayer,  // look towards the Player's general position whilst swaying
+        LockedOntoPlayer  // look at the Player without swaying
+    }
+
+    public enum HoverInterval
+    {
+        Temporary,  // hover until hoverTimer reaches 0
+        Permanent  // hover permanently
+    }
+
     [SerializeField]
     private WaveMovement waveMovement;
+    [SerializeField]
+    private RotationType rotation = RotationType.AwayFromPlayer;
     [SerializeField]
     [Range(0.0f, 5.0f)]
     private float maxWavePeak = 1.2f; //wave height
@@ -47,9 +68,7 @@ public class EnemyMovement : MonoBehaviour
     [Range(0.0f, 5.0f)]
     private float shipSpeed = 2;
     [SerializeField]
-    private bool hoverPermanently = false;  // Does the Ship stay near the Player permanently?
-    [SerializeField]
-    private bool hoverTemporarily = true;  // Does the Ship stay near the Player temporarily
+    private HoverInterval hoverLength = HoverInterval.Temporary;
     [SerializeField]
     [Range(0.0f, 10.0f)]
     private float hoverTimer = 3.0f;  // how long the ship hovers if temporary
@@ -57,13 +76,6 @@ public class EnemyMovement : MonoBehaviour
     private LeaveDirection leaveDirection;
     [SerializeField]
     private MoveDirection moveDirection;
-
-    [SerializeField]
-    private bool isRotating = true;  // Is the Enemy rotating with the movements?
-    [SerializeField]
-    private bool lockedOntoPlayer = false;  // Is the Enemy facing the Player?
-    [SerializeField]
-    private bool isFacingPlayer = false;  // Is the Enemy facing towards the Player?
 
     private bool atPosMax;
 
@@ -177,11 +189,11 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if(hoverPermanently)
+            if(hoverLength == HoverInterval.Permanent)
             {
                 transform.Translate(new Vector3(x, y, 0) * Time.deltaTime); //ship will hover
             }
-            else if(hoverTimer > 0 && hoverTemporarily)
+            else if(hoverTimer > 0 && hoverLength == HoverInterval.Temporary)
             {
                 transform.Translate(new Vector3(x, y, 0) * Time.deltaTime); //ship will hover
                 hoverTimer -= Time.deltaTime;
@@ -195,7 +207,7 @@ public class EnemyMovement : MonoBehaviour
 
     void FlyAway()
     {
-        isRotating = true;
+        rotation = RotationType.AwayFromPlayer;
 
         switch(leaveDirection)
         {
@@ -221,12 +233,12 @@ public class EnemyMovement : MonoBehaviour
 
     void RotateShip(float x, float y, float z)
     {
-        if (isRotating)
+        if (rotation == RotationType.AwayFromPlayer)
             shipModel.localEulerAngles = new Vector3(x, y, z);
-        else if (lockedOntoPlayer)
+        else if (rotation == RotationType.TowardsPlayer)
+            shipModel.localEulerAngles = new Vector3(x, y + 180, z);
+        else if (rotation == RotationType.LockedOntoPlayer)
             shipModel.LookAt(PlayerInfo.singleton.transform.position);
-        else if (isFacingPlayer)
-            shipModel.localEulerAngles = new Vector3(x, 180, z);
     }
 
     void checkBounds(float currentValue)

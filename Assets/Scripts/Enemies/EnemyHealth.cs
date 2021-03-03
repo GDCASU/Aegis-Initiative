@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 1 March 2021
+ * 
+ * Modfications: Added the isPermanent variable to allow some Enemies to ignore the life time.
+ * 
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +16,8 @@ public class EnemyHealth : MonoBehaviour
     public int collisionDamage;
     public float lifeTime = 20;
     public float lifeTimer;
+    [Tooltip("Shall the Enemy ignore their life time?")]
+    public bool isPermanent = false;
 
     private void Start()
     {
@@ -21,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
     private void Update()
     {
         lifeTimer -= Time.deltaTime;
-        if (lifeTimer <= 0) DestroyEnemy();
+        if (!isPermanent && lifeTimer <= 0) DestroyEnemy();
     }
     public void DestroyEnemy()
     {
