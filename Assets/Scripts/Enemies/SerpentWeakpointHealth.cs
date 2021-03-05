@@ -22,7 +22,7 @@ public class SerpentWeakpointHealth : EnemyHealth
     private WeakpointType weakpoint;  // the type of weakpoint the script is attached to
     [SerializeField]
     [Tooltip("Health required to cancel the attack associated with this weakpoint")]
-    private int maxHealth;
+    private int cancelHealth = 100;
 
     private SeaSerpent serpent;
     private EnemyHealth serpentHealth;
@@ -39,7 +39,7 @@ public class SerpentWeakpointHealth : EnemyHealth
     /// <summary>
     /// Resets health everytime the weakpoint is enabled.
     /// </summary>
-    private void OnEnable() => health = maxHealth;
+    private void OnEnable() => health = cancelHealth;
 
     /// <summary>
     /// Decreases health of weakpoint and Sea Serpent. If the health of the weakpoint is diminished, the attack pattern associated with the weakpoint is cancelled.
