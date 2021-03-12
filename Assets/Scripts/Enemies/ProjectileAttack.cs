@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlugRockThrower : MonoBehaviour
+public class ProjectileAttack : MonoBehaviour
 {
     public GameObject rockPrefab;
     public CinemachineSmoothPath path;
