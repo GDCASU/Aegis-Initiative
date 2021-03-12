@@ -61,4 +61,8 @@ public class FlyQueen : MonoBehaviour
             yield return new WaitForSeconds(succeedingLarvaeDropRate);
         }
     }
+    public void SpawnLarvae()
+    {
+        Instantiate(flyLarvae, larvaeSpawnpoints[0].transform.position, transform.rotation);
+    }
 }
