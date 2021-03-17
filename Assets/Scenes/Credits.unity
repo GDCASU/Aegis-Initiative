@@ -573,7 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: []
   SpawnSpeed: 1
-  NameMoveSpeed: 0.1
+  NameMoveSpeed: 0.2
   Position: 0
   Names:
   - Harrison Geesey
