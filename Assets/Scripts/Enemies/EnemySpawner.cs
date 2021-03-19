@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
         [Range(-25f, 25f)]
         public float adjustHeight;
         [Tooltip("1 is on the reticle, 5 is furthest")]
-        [Range(1.0f, 5.0f)]
+        [Range(-25f, 25f)]
         public float adjustDepth;
     }
 
@@ -93,6 +93,7 @@ public class EnemySpawner : MonoBehaviour
                 spawnAdjustment = new Vector3(xSpawnAdjustment, ySpawnAdjustment, zSpawnAdjustment); //spawn adjustment vector to add to other.gameObject.transform.position
                 _enemies[x].enemy.transform.parent = other.gameObject.transform.parent;
                 _enemies[x].enemy.transform.localPosition = spawnAdjustment;
+                _enemies[x].enemy.transform.localRotation = Quaternion.identity;
                 _enemies[x].enemy.SetActive(true);
             }
         }

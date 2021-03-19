@@ -12,10 +12,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // A list of possible status effects.
-public enum StatusEffects
-{
-    VULNERABILITY
-}
 
 public class StatusMechanics : MonoBehaviour
 {
