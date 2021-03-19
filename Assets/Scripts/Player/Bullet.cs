@@ -1,8 +1,11 @@
 ﻿/*
  * Revision Author: Cristion Dominguez
  * Revision Date: 22 Jan. 2021
- * 
  * Modification: Class obtains bullet damage from PlayerInfo script upon prefab creation.
+ * 
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 15 March 2021
+ * Modification: Bullet ignores collisions with gameobjects from the PassThrough layer.
  */
 
 using System.Collections;
@@ -26,6 +29,8 @@ public class Bullet : MonoBehaviour
     {
         timer = bulletDespawnTime;
         if (bulletSource == BulletSource.Player) damage = PlayerInfo.singleton.bulletDamage;
+
+        Physics.IgnoreLayerCollision(9, 12);
     }
     private void Update()
     {
@@ -47,6 +52,7 @@ public class Bullet : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
+
         Destroy(transform.gameObject);
     }
 }
