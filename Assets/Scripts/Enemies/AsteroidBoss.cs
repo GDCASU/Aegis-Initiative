@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidBoss : MonoBehaviour
+public class AsteroidBoss : EnemyHealth
 {
     public GameObject laserBot;
     public Transform[] formation1;
@@ -40,6 +40,10 @@ public class AsteroidBoss : MonoBehaviour
     {
 
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet") TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);
+    }
 
     IEnumerator Event1()
     {
@@ -71,6 +75,7 @@ public class AsteroidBoss : MonoBehaviour
                 }
                 GameObject asteroidObj = Instantiate(asteroids[asteroidIndex], vacuum, Quaternion.identity, transform);
                 asteroidObj.GetComponent<Asteroid>().enabled = false;
+                asteroidObj.AddComponent<AsteroidBossDespawn>();
                 asteroidObj.transform.localScale *= 0.25f;
                 asteroidObj.GetComponent<Rigidbody>().AddForce((player - asteroidObj.transform.position) * 20f);
                 yield return new WaitForSeconds(0.5f/6);
