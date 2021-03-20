@@ -20,7 +20,7 @@ public class Asteroid : EnvironmentHealth
     }
     void Start()
     {
-        returnForceRange = new Vector2(0,2);
+        returnForceRange = new Vector2(0,1);
         rb = GetComponent<Rigidbody>();
         bc = transform.parent.GetComponent<BoxCollider>();
         velocityRange = transform.parent.GetComponent<AsteroidHandler>().velocityRange;
@@ -30,11 +30,13 @@ public class Asteroid : EnvironmentHealth
     }
     private void Update()
     {
-        if (Mathf.Abs(transform.position.x - transform.parent.position.x) > bc.size.x * bc.gameObject.transform.localScale.x
-            || Mathf.Abs(transform.position.y - transform.parent.position.y) > bc.size.y * bc.gameObject.transform.localScale.y
-            || Mathf.Abs(transform.position.z - transform.parent.position.z) > bc.size.z * bc.gameObject.transform.localScale.z)
+        if (Input.GetKeyDown(KeyCode.Space)) Time.timeScale = Time.timeScale==1?0: 1;
+
+        if (Mathf.Abs(transform.localPosition.x) > bc.size.x * .5f 
+            || Mathf.Abs(transform.localPosition.y) > bc.size.y * .5f 
+            || Mathf.Abs(transform.localPosition.z) > bc.size.z * .5f)
         {
-            rb.AddForce((transform.parent.position - transform.position)*Random.Range(returnForceRange.x,returnForceRange.y), ForceMode.Acceleration);
+            rb.AddForce((transform.parent.position + bc.center - transform.position)*Random.Range(returnForceRange.x,returnForceRange.y), ForceMode.Acceleration);
         }
     }
 }

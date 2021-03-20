@@ -6,25 +6,34 @@ public class EnemyHealth : MonoBehaviour
 {
     public int health;
     public int collisionDamage;
+    public bool doNotDespawn;
     public float lifeTime = 20;
-    public float lifeTimer;
+    private float lifeTimer;
 
-    private void Start()
+    public virtual void Start()
     {
-        lifeTimer = lifeTime;
+        if (!doNotDespawn)
+        {
+            lifeTimer = lifeTime;
+            StartCoroutine(waitToDespawn());
+        }
     }
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0) DestroyEnemy();
     }
-    private void Update()
-    {
-        lifeTimer -= Time.deltaTime;
-        if (lifeTimer <= 0) DestroyEnemy();
-    }
     public void DestroyEnemy()
     {
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
+    }
+    IEnumerator waitToDespawn()
+    {
+        while (lifeTimer > 0)
+        {
+            lifeTimer -= Time.deltaTime;
+            yield return null;
+        }
+        DestroyEnemy();
     }
 }

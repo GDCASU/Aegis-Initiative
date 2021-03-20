@@ -3,12 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlugRockThrower : MonoBehaviour
+public class ProjectileAttack : MonoBehaviour
 {
-    public GameObject rockPrefab;
-    public CinemachineSmoothPath path;
-    public CinemachineDollyCart playerCart;
-
     /// <summary>
     /// Method that shoots rocks out in a square area around the player. Not all rocks are guaranteed
     /// to be able to collide with the player
@@ -17,22 +13,24 @@ public class SlugRockThrower : MonoBehaviour
     /// <param name="spread">Modifies the square area the rocks can go around the player</param>
     /// <param name="rotationModifier">Modifies the random rock rotation</param>
     /// <param name="startingPosition">Desired location to spawn the rock</param>
-    public void ShootRocksAroundPlayer(float timeTillImpact, float spread, float rotationModifier, Vector3 startingPosition)
+    public static void ShootProjectileAroundPlayer(CinemachineDollyCart cart, CinemachineSmoothPath path, GameObject projectilePrefab, Vector3 startingPosition, float timeTillImpact = 3, float minSpread = 1.5f, float maxSpread = 7, float rotationModifier = 50)
     {
         //Random point within a square to throw the rock
+        int x= Random.Range(0, 2);
+        int z= Random.Range(0, 2);
         Vector3 randomTargetPosition = new Vector3(
-            Random.Range(-spread, spread),
+            Random.Range(minSpread, maxSpread) * (x==0? -1:1) ,
             0,
-            Random.Range(-spread, spread)
+            Random.Range(minSpread, maxSpread) * (z==0 ? -1 : 1)
         );
 
         //The players position at the given time
         Vector3 targetPosition = path.EvaluatePositionAtUnit(
-            playerCart.m_Position + playerCart.m_Speed * timeTillImpact,
-            playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeTillImpact)
+            cart.m_Position + cart.m_Speed * timeTillImpact,
+            cart.m_PositionUnits + (int)(cart.m_Speed * timeTillImpact)
         ) + randomTargetPosition;
 
-        SpawnRock(timeTillImpact, rotationModifier, startingPosition, targetPosition);
+        SpawnRock(timeTillImpact, rotationModifier, startingPosition, targetPosition, projectilePrefab);
     }
 
     /// <summary>
@@ -42,19 +40,19 @@ public class SlugRockThrower : MonoBehaviour
     /// <param name="spread">Modifies how far to the right and left the rock will be thrown to the player</param>
     /// <param name="rotationModifier">Modifies the random rock rotation</param>
     /// <param name="startingPosition">Desired location to spawn the rock</param>
-    public void ShootRockAtPlayer(float timeTillImpact, float spread, float rotationModifier, Vector3 startingPosition)
+    public static void ShootProjectileAtPlayer(CinemachineDollyCart cart, CinemachineSmoothPath path, GameObject projectilePrefab, Vector3 startingPosition, float timeTillImpact = 3, float spread = 3, float rotationModifier = 50)
     {
         //The players position at the given time
         Vector3 targetPosition = path.EvaluatePositionAtUnit(
-            playerCart.m_Position + playerCart.m_Speed * timeTillImpact,
-            playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeTillImpact)
+            cart.m_Position + cart.m_Speed * timeTillImpact,
+            cart.m_PositionUnits + (int)(cart.m_Speed * timeTillImpact)
         );
 
         //Normalized tangent vector where the player will be at a given time
         Vector3 targetTangent = Vector3.Normalize(
             path.EvaluateTangentAtUnit(
-                playerCart.m_Position + playerCart.m_Speed * timeTillImpact,
-                playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeTillImpact)
+                cart.m_Position + cart.m_Speed * timeTillImpact,
+                cart.m_PositionUnits + (int)(cart.m_Speed * timeTillImpact)
             )
         );
 
@@ -74,7 +72,8 @@ public class SlugRockThrower : MonoBehaviour
         //Gives random length to the left/right modifier
         targetTangent *= Random.Range(-spread, spread);
 
-        SpawnRock(timeTillImpact, rotationModifier, startingPosition, targetPosition + targetTangent);
+
+        SpawnRock(timeTillImpact, rotationModifier, startingPosition, targetPosition + targetTangent, projectilePrefab);
     }
 
     /// <summary>
@@ -84,9 +83,9 @@ public class SlugRockThrower : MonoBehaviour
     /// <param name="rotationModifier">Modifies the random rock rotation</param>
     /// <param name="startingPosition">Desired location to spawn the rock</param>
     /// <param name="targetPosition">The final position of the rock after the given time</param>
-    public void SpawnRock(float timeTillImpact, float rotationModifier, Vector3 startingPosition, Vector3 targetPosition)
+    public static void SpawnRock(float timeTillImpact, float rotationModifier, Vector3 startingPosition, Vector3 targetPosition, GameObject projectilePrefab)
     {
-        Rigidbody rockRb = Instantiate(rockPrefab, startingPosition, Random.rotation).GetComponent<Rigidbody>();
+        Rigidbody rockRb = Instantiate(projectilePrefab, startingPosition, Random.rotation).GetComponent<Rigidbody>();
 
         /**
          * This sets up the initial vector and is based on the physics distance equation
