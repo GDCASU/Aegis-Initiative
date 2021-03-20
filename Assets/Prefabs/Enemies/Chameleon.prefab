@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6649738597210480558}
   - component: {fileID: 477320136354746885}
   - component: {fileID: 806371675698356771}
-  - component: {fileID: 6304395357343780418}
   - component: {fileID: 4524406805477720354}
   m_Layer: 0
   m_Name: Chameleon
@@ -97,22 +96,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6304395357343780418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3059444457015977636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  collisionDamage: 25
-  lifeTime: 20
-  lifeTimer: 0
 --- !u!114 &4524406805477720354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cee756a2512fbd418d3a4f576b3c558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 20
+  collisionDamage: 25
+  doNotDespawn: 0
+  lifeTime: 20
   defaultOpacity: 0
   maxOpacity: 1
   maxDetectionDistance: 30

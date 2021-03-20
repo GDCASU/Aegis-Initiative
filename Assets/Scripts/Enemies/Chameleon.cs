@@ -11,7 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chameleon : MonoBehaviour
+public class Chameleon : EnemyHealth
 {
     [SerializeField]
     [Range(0f, 1f)]
