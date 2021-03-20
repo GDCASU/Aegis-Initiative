@@ -48,8 +48,9 @@ public class SwarmBehavior : EnemyHealth
     /// <summary>
     /// If swarm population >= 1, assigns unit values and instantiates unit prefabs in units list. Otherwise, destroys Swarm game object's parent.
     /// </summary>
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         if (swarmPopulation >= 1)
         {
             // Assign health and damage values for each unit.

@@ -18,8 +18,9 @@ public class EnemyGrunt : EnemyHealth
     private bool flyOff = false;
     System.Random rng = new System.Random();
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         animations.Play(flyIn.name);
         animationWaitTime = flyIn.length;
         shootingWaitTime = 5.0f;
