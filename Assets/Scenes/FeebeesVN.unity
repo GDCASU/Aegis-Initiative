@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 376420903}
   - component: {fileID: 376420902}
   - component: {fileID: 376420901}
+  - component: {fileID: 376420904}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1379,7 +1380,7 @@ MonoBehaviour:
   itemId: 35
   blockName: Feebee3
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 376420904}
   commandList:
   - {fileID: 376420890}
   - {fileID: 376420916}
@@ -2650,6 +2651,21 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &376420904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376420824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 376420861}
+  suppressBlockAutoSelect: 0
+  waitForFrames: 1
 --- !u!114 &376420905
 MonoBehaviour:
   m_ObjectHideFlags: 0
