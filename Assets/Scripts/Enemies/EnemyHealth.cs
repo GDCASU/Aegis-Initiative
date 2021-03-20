@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public float lifeTime = 20;
     private float lifeTimer;
 
-    private void Start()
+    public virtual void Start()
     {
         if (!doNotDespawn)
         {
