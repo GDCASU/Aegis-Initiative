@@ -37,12 +37,13 @@ public class Chameleon : EnemyHealth
 
     private MeshRenderer renderer;
     private Color opacity;
-    
+
     /// <summary>
     /// Assigns values to variables.
     /// </summary>
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         player = PlayerInfo.singleton.transform;
         renderer = transform.GetComponent<MeshRenderer>();
 
