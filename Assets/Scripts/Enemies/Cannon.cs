@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Cannon : EnemyHealth
 {
-
     public float fireRate;
     private float timer;
     private float numSelected;
