@@ -215,7 +215,7 @@ public class EnemyMovement : MonoBehaviour
     void RotateShip(float x, float y, float z)
     {
         if (isRotating)
-            shipModel.localEulerAngles = new Vector3(x, y, z);
+            shipModel.eulerAngles = new Vector3(x, y, z); 
         else if (lockedOntoPlayer)
             shipModel.LookAt(PlayerInfo.singleton.transform.position);
     }
