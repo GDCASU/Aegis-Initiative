@@ -9,8 +9,9 @@ public class FallingRocks : EnemyHealth
     private bool collided = false; //check if rock collided with Player
     private Rigidbody rigidbody;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         rigidbody = GetComponent<Rigidbody>();
         StartCoroutine(StartFall(timeToFall));
     }
