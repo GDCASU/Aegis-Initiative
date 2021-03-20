@@ -56,6 +56,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private MoveDirection moveDirection;
 
+    [SerializeField]
+    private bool isRotating = true;  // Is the Enemy rotating with the movements?
+
+    [SerializeField]
+    private bool lockedOntoPlayer = false;  // Is the Enemy facing the Player?
+
     private bool atPosMax;
 
     private float pitch;
@@ -67,6 +73,7 @@ public class EnemyMovement : MonoBehaviour
     private float flyAwayRoll;
 
     private float startY; //local start Y position
+    private float startX; //local start X position
 
     Transform shipModel;
     float time = 3;
@@ -86,6 +93,7 @@ public class EnemyMovement : MonoBehaviour
 
         shipModel = transform.GetChild(0);
         startY = transform.localPosition.y;
+        startX = transform.localPosition.x;
     }
 
     // Update is called once per frame
@@ -109,7 +117,7 @@ public class EnemyMovement : MonoBehaviour
 
     void UpDownWave()
     {
-        checkHeight(transform.localPosition.y); //check if at peak or dip of wave
+        checkBounds(transform.localPosition.y); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
         {
             if (pitch < maxAngle)
@@ -131,7 +139,7 @@ public class EnemyMovement : MonoBehaviour
 
     void LeftRight()
     {
-        checkHeight(transform.localPosition.x); //check if at peak or dip of wave
+        checkBounds(transform.localPosition.x); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
         {
             if (roll < maxAngle)
@@ -157,6 +165,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Move(float x, float y)
     {
+        RotateShip(0, 0, 0);
 
         if(time > 0)
         {
@@ -179,6 +188,8 @@ public class EnemyMovement : MonoBehaviour
 
     void FlyAway()
     {
+        isRotating = true;
+
         switch(leaveDirection)
         {
             //pitch yaw roll
@@ -198,24 +209,29 @@ public class EnemyMovement : MonoBehaviour
                 RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, -flyAwayRoll * 1.5f, 1f)); //0/-yaw/-roll
                 break;
         }
-        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * (int)moveDirection * 3);
+        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * 3);
     }
 
     void RotateShip(float x, float y, float z)
     {
-        shipModel.localEulerAngles = new Vector3(x, y, z);
+        if (isRotating)
+            shipModel.localEulerAngles = new Vector3(x, y, z);
+        else if (lockedOntoPlayer)
+            shipModel.LookAt(PlayerInfo.singleton.transform.position);
     }
 
-    void checkHeight(float currentHeight)
+    void checkBounds(float currentValue)
     {
-        if(currentHeight >= (startY + maxWavePeak))
+        if (waveMovement == WaveMovement.UpDown)
         {
-            atPosMax = true;
+            if (currentValue >= (startY + maxWavePeak)) atPosMax = true;
+            if (currentValue <= (startY + minWaveDip)) atPosMax = false;
         }
-        
-        if(currentHeight <= (startY + minWaveDip))
+        else if (waveMovement == WaveMovement.LeftRight)
         {
-            atPosMax = false;
+            if (currentValue >= (startX + maxWavePeak)) atPosMax = true;
+            if (currentValue <= (startX + minWaveDip)) atPosMax = false;
         }
+
     }
 }

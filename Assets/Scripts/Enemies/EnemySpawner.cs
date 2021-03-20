@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
         [Range(-25f, 25f)]
         public float adjustHeight;
         [Tooltip("1 is on the reticle, 5 is furthest")]
-        [Range(1.0f, 5.0f)]
+        [Range(-25f, 25f)]
         public float adjustDepth;
     }
 
