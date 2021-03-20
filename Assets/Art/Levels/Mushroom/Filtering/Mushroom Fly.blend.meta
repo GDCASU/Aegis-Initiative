@@ -1,80 +1,11 @@
 fileFormatVersion: 2
-guid: ac262e490e33f3a42bc880f6567840ef
+guid: 1f9a985b219064049935d9a269180e18
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -7597983235715544647
-    second: Armature|Armature.001Action.001
-  - first:
-      74: 9128885920207887336
-    second: Armature|Armature.002Action
-  - first:
-      74: 4781951162920444690
-    second: Armature|ArmatureAction
-  - first:
-      74: 8514156331642480226
-    second: Armature|Fly BoneAction
-  - first:
-      74: -2543929372543786794
-    second: Armature|Gun BoneAction
-  - first:
-      74: 5038578616295429184
-    second: Armature|Plane.003Action
-  - first:
-      74: 4463448902822268671
-    second: Plane.003|Armature.001Action.001
-  - first:
-      74: -1490251418364451136
-    second: Plane.003|Armature.002Action
-  - first:
-      74: -860048598713726324
-    second: Plane.003|ArmatureAction
-  - first:
-      74: -4352107080187005535
-    second: Plane.003|Fly BoneAction
-  - first:
-      74: 1083046954355555775
-    second: Plane.003|Gun BoneAction
-  - first:
-      74: -3246142060146108349
-    second: Plane.003|Plane.003Action
-  - first:
-      74: -5784005261616917065
-    second: Armature.001|Armature.001Action.001
-  - first:
-      74: -1153017888000365145
-    second: Armature.001|Armature.002Action
-  - first:
-      74: -960898424075949690
-    second: Armature.001|ArmatureAction
-  - first:
-      74: 1129993802936508682
-    second: Armature.001|Fly BoneAction
-  - first:
-      74: 8291597714297084857
-    second: Armature.001|Gun BoneAction
-  - first:
-      74: 997250425210634293
-    second: Armature.001|Plane.003Action
-  - first:
-      74: 4264612480362930771
-    second: Armature.002|Armature.001Action.001
-  - first:
-      74: 5138602965388526686
-    second: Armature.002|Armature.002Action
-  - first:
-      74: -3997514183246978980
-    second: Armature.002|ArmatureAction
-  - first:
-      74: 2187882212833230764
-    second: Armature.002|Fly BoneAction
-  - first:
-      74: 4352879601534634942
-    second: Armature.002|Gun BoneAction
-  - first:
-      74: 2929657814503191605
-    second: Armature.002|Plane.003Action
+      74: -623603649343465320
+    second: Scene
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -102,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Scene
+      takeName: Scene
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -160,11 +120,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   avatarSetup: 0
   additionalBone: 0
