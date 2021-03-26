@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 28 Feb. 2021
+ * 
+ * Modifcation: Added RotationType to specify how a gameobject should rotate HoverInterval to specify if a gameobject should hover temporarily or permanently.
+ */
+using System.Collections;
 using System.Collections.Generic;
 using Unity.MPE;
 using UnityEngine;
@@ -28,8 +34,23 @@ public class EnemyMovement : MonoBehaviour
         Away = 1
     }
 
+    public enum RotationType
+    {
+        AwayFromPlayer,  // look away from Player's general position whilst swaying
+        TowardsPlayer,  // look towards the Player's general position whilst swaying
+        LockedOntoPlayer  // look at the Player without swaying
+    }
+
+    public enum HoverInterval
+    {
+        Temporary,  // hover until hoverTimer reaches 0
+        Permanent  // hover permanently
+    }
+
     [SerializeField]
     private WaveMovement waveMovement;
+    [SerializeField]
+    private RotationType rotation = RotationType.AwayFromPlayer;
     [SerializeField]
     [Range(0.0f, 5.0f)]
     private float maxWavePeak = 1.2f; //wave height
@@ -47,10 +68,10 @@ public class EnemyMovement : MonoBehaviour
     [Range(0.0f, 5.0f)]
     private float shipSpeed = 2;
     [SerializeField]
-    private bool hover = true; //does ship stay near player
+    private HoverInterval hoverLength = HoverInterval.Temporary;
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float hoverTimer = 3.0f; //how long ship stays
+    private float hoverTimer = 3.0f;  // how long the ship hovers if temporary
     [SerializeField]
     private LeaveDirection leaveDirection;
     [SerializeField]
@@ -67,6 +88,7 @@ public class EnemyMovement : MonoBehaviour
     private float flyAwayRoll;
 
     private float startY; //local start Y position
+    private float startX; //local start X position
 
     Transform shipModel;
     float time = 3;
@@ -86,6 +108,7 @@ public class EnemyMovement : MonoBehaviour
 
         shipModel = transform.GetChild(0);
         startY = transform.localPosition.y;
+        startX = transform.localPosition.x;
     }
 
     // Update is called once per frame
@@ -109,7 +132,7 @@ public class EnemyMovement : MonoBehaviour
 
     void UpDownWave()
     {
-        checkHeight(transform.localPosition.y); //check if at peak or dip of wave
+        checkBounds(transform.localPosition.y); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
         {
             if (pitch < maxAngle)
@@ -131,7 +154,7 @@ public class EnemyMovement : MonoBehaviour
 
     void LeftRight()
     {
-        checkHeight(transform.localPosition.x); //check if at peak or dip of wave
+        checkBounds(transform.localPosition.x); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
         {
             if (roll < maxAngle)
@@ -157,6 +180,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Move(float x, float y)
     {
+        RotateShip(0, 0, 0);
 
         if(time > 0)
         {
@@ -165,7 +189,11 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if(hoverTimer > 0 && hover)
+            if(hoverLength == HoverInterval.Permanent)
+            {
+                transform.Translate(new Vector3(x, y, 0) * Time.deltaTime); //ship will hover
+            }
+            else if(hoverTimer > 0 && hoverLength == HoverInterval.Temporary)
             {
                 transform.Translate(new Vector3(x, y, 0) * Time.deltaTime); //ship will hover
                 hoverTimer -= Time.deltaTime;
@@ -179,6 +207,8 @@ public class EnemyMovement : MonoBehaviour
 
     void FlyAway()
     {
+        rotation = RotationType.AwayFromPlayer;
+
         switch(leaveDirection)
         {
             //pitch yaw roll
@@ -198,24 +228,31 @@ public class EnemyMovement : MonoBehaviour
                 RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, 1f), Mathf.LerpAngle(0, -flyAwayRoll * 1.5f, 1f)); //0/-yaw/-roll
                 break;
         }
-        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * (int)moveDirection * 3);
+        transform.Translate(shipModel.forward * Time.deltaTime * shipSpeed * 3);
     }
 
     void RotateShip(float x, float y, float z)
     {
-        shipModel.localEulerAngles = new Vector3(x, y, z);
+        if (rotation == RotationType.AwayFromPlayer)
+            shipModel.localEulerAngles = new Vector3(x, y, z);
+        else if (rotation == RotationType.TowardsPlayer)
+            shipModel.localEulerAngles = new Vector3(x, y + 180, z);
+        else if (rotation == RotationType.LockedOntoPlayer)
+            shipModel.LookAt(PlayerInfo.singleton.transform.position);
     }
 
-    void checkHeight(float currentHeight)
+    void checkBounds(float currentValue)
     {
-        if(currentHeight >= (startY + maxWavePeak))
+        if (waveMovement == WaveMovement.UpDown)
         {
-            atPosMax = true;
+            if (currentValue >= (startY + maxWavePeak)) atPosMax = true;
+            if (currentValue <= (startY + minWaveDip)) atPosMax = false;
         }
-        
-        if(currentHeight <= (startY + minWaveDip))
+        else if (waveMovement == WaveMovement.LeftRight)
         {
-            atPosMax = false;
+            if (currentValue >= (startX + maxWavePeak)) atPosMax = true;
+            if (currentValue <= (startX + minWaveDip)) atPosMax = false;
         }
+
     }
 }
