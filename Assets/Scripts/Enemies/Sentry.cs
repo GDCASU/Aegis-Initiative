@@ -9,8 +9,9 @@ public class Sentry : EnemyHealth
     private GameObject player;
     private float bulletSpeed = 0.25f;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         StartCoroutine("Shoot");
     }
 

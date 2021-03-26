@@ -20,10 +20,11 @@ public class AsteroidHandler : MonoBehaviour
     public GameObject asteroidPrefab4;
     private GameObject temp;
     private GameObject prefab;
+    private BoxCollider col;
     private int rng;
     private void Start()
     {
-        
+        col = GetComponent<BoxCollider>();
         for (int x = 0; x < numberOfSmall; x++)
         {
             MakeAsteroid(0);
@@ -57,9 +58,9 @@ public class AsteroidHandler : MonoBehaviour
                 prefab = asteroidPrefab4;
                 break;
         }
-        Vector3 position = new Vector3(Random.Range(-(transform.localScale.x * GetComponent<BoxCollider>().size.x) / 2, (transform.localScale.x * GetComponent<BoxCollider>().size.x) / 2),
-            Random.Range(-(transform.localScale.y * GetComponent<BoxCollider>().size.y) / 2, (transform.localScale.y * GetComponent<BoxCollider>().size.y) / 2),
-            Random.Range(-(transform.localScale.z * GetComponent<BoxCollider>().size.z) / 2, (transform.localScale.z * GetComponent<BoxCollider>().size.z) / 2));
+        Vector3 position = new Vector3(Random.Range(-(col.size.x) * .5f, (col.size.x) * .5f),
+            Random.Range(-(col.size.y) * .5f, (col.size.y) * .5f),
+            Random.Range(-(col.size.z) * .5f, (col.size.z) * .5f));
         temp = Instantiate(prefab,transform);
         temp.transform.localPosition = position;
         switch (size)
