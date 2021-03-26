@@ -39,6 +39,7 @@ public class EnvironmentHealth : MonoBehaviour
     public virtual void OnPlayerCollision()
     {
         PlayerInfo.singleton.TakeDamage(collisionDamage);
+        PlayerInfo.singleton.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         TakeDamage(health);
     }
