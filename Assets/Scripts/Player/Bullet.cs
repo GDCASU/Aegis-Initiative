@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BulletSource 
+public enum BulletSource
 {
     Player,
     Enemy
