@@ -11,7 +11,7 @@ public class CreditsManager : MonoBehaviour
     [Range(0, 1)]
     public float Position = 0;
 
-    public string[] Names;
+    public CreditsNameModel.Names[] Names;
     public GameObject CreditsNameParent;
 
     public int LinePoints = 10;
@@ -19,7 +19,7 @@ public class CreditsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Names = CreditsNameModel.GetNames();
     }
 
     // Update is called once per frame
@@ -55,16 +55,16 @@ public class CreditsManager : MonoBehaviour
     {
         for (int i=0; i<Names.Length; i++)
         {
-            CreateName(Names[i]);
+            CreateName(Names[i].name, Names[i].title);
             yield return new WaitForSeconds(SpawnSpeed);
         }
     }
 
-    public void CreateName(string name)
+    public void CreateName(string name, string title)
     {
         CreditsNameMovement nameObject = Instantiate(CreditsNameParent, Path[0].position, Path[0].rotation).GetComponentInChildren<CreditsNameMovement>();
         nameObject.creditsManager = this;
         nameObject.Speed = NameMoveSpeed;
-        nameObject.UpdateName(name);
+        nameObject.UpdateName(name, title);
     }
 }

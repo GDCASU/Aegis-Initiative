@@ -7,6 +7,8 @@ public class CreditsNameMovement : MonoBehaviour
     public bool CanMove = true;
     public float Speed = 1f;
     public CreditsManager creditsManager;
+    public TextMesh TitleText;
+    public TextMesh NameText;
 
     private float position = 0;
 
@@ -22,9 +24,10 @@ public class CreditsNameMovement : MonoBehaviour
         if (CanMove) Move();
     }
 
-    public void UpdateName(string name)
+    public void UpdateName(string name, string title)
     {
-        GetComponent<TextMesh>().text = name;
+        NameText.text = name;
+        TitleText.text = title;
     }
 
     public void Move()

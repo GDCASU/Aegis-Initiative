@@ -455,7 +455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935904120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -161.9, y: 7.6, z: 241.7}
+  m_LocalPosition: {x: -276.3, y: -152, z: 241.7}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1305421690}
@@ -573,15 +573,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: []
-  SpawnSpeed: 1
-  NameMoveSpeed: 0.2
+  SpawnSpeed: 2.5
+  NameMoveSpeed: 0.1
   Position: 0
-  Names:
-  - Harrison Geesey
-  - Carrison Peesey
-  - Marrison Veesey
-  - Tarrison Teesey
-  - Jarrison Keesey
+  Names: []
   CreditsNameParent: {fileID: 7837260692217179264, guid: 4bba27d1001c10545b847a79fae20e1d,
     type: 3}
   LinePoints: 10
