@@ -2567,6 +2567,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Test_Level_Remark
       objectReference: {fileID: 0}
+    - target: {fileID: 5904269060799201157, guid: 50043580e70103a439bf70f5004c64d8,
+        type: 3}
+      propertyPath: pilotEmotion
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5904269061862421973, guid: 50043580e70103a439bf70f5004c64d8,
         type: 3}
       propertyPath: m_LocalPosition.x
