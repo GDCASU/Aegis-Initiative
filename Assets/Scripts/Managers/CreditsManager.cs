@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreditsManager : MonoBehaviour
 {
-    public Transform[] Path;
+    public List<Transform> Path = new List<Transform>();
     public float SpawnSpeed = 1;
     public float NameMoveSpeed = 0.1f;
 
@@ -14,22 +14,17 @@ public class CreditsManager : MonoBehaviour
     public string[] Names;
     public GameObject CreditsNameParent;
 
-    [SerializeField]
-    private int LinePoints = 10;
-    private LineRenderer pathLine;
+    public int LinePoints = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        Path = GetComponentsInChildren<Transform>();
-        pathLine = GetComponent<LineRenderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateLineRender();
-
         // Used to manually spawn names, if you are reading this in the master branch then I am dumb. Remove it please <3
         if (Input.GetKeyDown(KeyCode.Space)) StartCoroutine(SpawnNames());
     }
@@ -37,24 +32,23 @@ public class CreditsManager : MonoBehaviour
 
     public Vector3 LerpPosition(float time)
     {
-        Vector3[] lerps = new Vector3[Path.Length];
+        Vector3[] lerps = new Vector3[Path.Count];
 
-        for (int i = 1; i < Path.Length; i++)
+        for (int i = 0; i < Path.Count - 1; i++)
         {
-            if (i < Path.Length - 1)
-            {
-                lerps[i] = Vector3.Lerp(Path[i].position, Path[i + 1].position, time);
-            }
+            lerps[i] = Vector3.Lerp(Path[i].position, Path[i + 1].position, time);
         }
 
-        lerps[lerps.Length - 1] = lerps[0];
+        lerps[lerps.Length - 1] = Path[Path.Count - 1].position;
 
-        for (int i = 0; i < lerps.Length; i++)
+        Vector3 position = Path[0].position;
+
+        for (int i = 0; i < lerps.Length - 1; i++)
         {
-            if (i < lerps.Length - 1) lerps[lerps.Length - 1] = Vector3.Lerp(lerps[lerps.Length - 1], lerps[i + 1], time);
+            position = Vector3.Lerp(position, lerps[i + 1], time);
         }
 
-        return lerps[lerps.Length - 1];
+        return position;
     }
 
     public IEnumerator SpawnNames()
@@ -68,22 +62,9 @@ public class CreditsManager : MonoBehaviour
 
     public void CreateName(string name)
     {
-        CreditsNameMovement nameObject = Instantiate(CreditsNameParent).GetComponentInChildren<CreditsNameMovement>();
+        CreditsNameMovement nameObject = Instantiate(CreditsNameParent, Path[0].position, Path[0].rotation).GetComponentInChildren<CreditsNameMovement>();
         nameObject.creditsManager = this;
         nameObject.Speed = NameMoveSpeed;
         nameObject.UpdateName(name);
-    }
-
-    private void UpdateLineRender()
-    {
-        pathLine.positionCount = LinePoints;
-        Vector3[] pointPositions = new Vector3[LinePoints];
-
-        for (int i = 0; i < LinePoints; i++)
-        {
-            pointPositions[i] = LerpPosition((float)i / (LinePoints - 1));
-        }
-
-        pathLine.SetPositions(pointPositions);
     }
 }
