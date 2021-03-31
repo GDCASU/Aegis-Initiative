@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3abd1497cbb764bb5ad6062d4f4d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: CopilotUI
   panels:
   - {fileID: 1567802491}
   - {fileID: 438130848}
@@ -8225,6 +8226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: saveTestProfiles
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 671830635916209258, guid: 6776146dc4c34a447ad7adb930972111,
+        type: 3}
+      propertyPath: profileCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 671830635916209259, guid: 6776146dc4c34a447ad7adb930972111,
         type: 3}
