@@ -8,6 +8,7 @@ public class CopilotInfo : MonoBehaviour
 {
     public Character character;
     public CopilotData copilotData;
+    public Sprite[] portraits;
     public Sprite portrait;
     public Sprite fullBody;
 
