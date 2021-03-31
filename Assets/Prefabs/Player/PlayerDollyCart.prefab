@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_UpdateMethod: 0
   m_PositionUnits: 1
   m_Speed: 12
-  m_Position: 300
+  m_Position: 0
 --- !u!1 &5464987158666677753
 GameObject:
   m_ObjectHideFlags: 0
