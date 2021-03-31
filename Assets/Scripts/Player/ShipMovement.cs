@@ -75,6 +75,7 @@ private Transform playerModel;
         pos.x = Mathf.Clamp01(pos.x);
         pos.y = Mathf.Clamp01(pos.y);
         transform.position = Camera.main.ViewportToWorldPoint(pos);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
     }
     // Angles the ship towards a target location as it moves along the 2d gameplay plane
     void RotationLook(Transform target, float h, float v)

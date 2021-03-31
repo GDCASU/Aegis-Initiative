@@ -15,8 +15,11 @@ public class DialogueTriggers : MonoBehaviour
     //add more emotions later
     public enum Emotion
     {
-        Default,
-        Worried,
+        Neu,
+        Hap,
+        Sad,
+        Angy,
+        Unique,
         etc
     };
 

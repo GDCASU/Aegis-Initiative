@@ -1259,10 +1259,10 @@ GameObject:
   - component: {fileID: 3970730198296087900}
   - component: {fileID: 8827725186702629562}
   - component: {fileID: 3582560052397540038}
-  - component: {fileID: 4349902652722150517}
   - component: {fileID: 1288426661404834393}
   - component: {fileID: 7441119613635164263}
   - component: {fileID: 9051691996563524392}
+  - component: {fileID: 1267470251}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1299,15 +1299,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: 1
   xySpeed: 2
+  xyAcceleration: 1
   forwardSpeed: 6
   roll: 15
   pitch: 15
   yaw: 20
+  rotationLerp: 0.1
+  rollLerp: 0.05
+  currentVelocity: {x: 0, y: 0, z: 0}
   movementDirection: {x: 0, y: 0, z: 0}
   stopInput: 0
   aimTarget: {fileID: 422266212}
   dolly: {fileID: 1324024755}
   cameraParent: {fileID: 1297650284}
+--- !u!114 &1267470251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267470248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a98872ba3a578747bbcb6b55aca4bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 60
+  health: 50
+  defense: 0
+  fireRate: 0.2
+  bulletDamage: 0
 --- !u!1 &1297650280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1222312400}
+  selectedFlowchart: {fileID: 6572918113728831403, guid: 7505f15c5fb58854f9dad75322c77e79,
+    type: 3}
 --- !u!4 &1649699271
 Transform:
   m_ObjectHideFlags: 1
@@ -2232,7 +2254,7 @@ PrefabInstance:
     - target: {fileID: 2897822804207688361, guid: d582486f6c4bf8c4191d4e5d15323690,
         type: 3}
       propertyPath: selectedBlocks.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2897822804207688361, guid: d582486f6c4bf8c4191d4e5d15323690,
         type: 3}
@@ -2459,21 +2481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb015fa1dcf7274ab2ca6f60b8167cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4349902652722150517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267470248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69457918251c05748b7b171df8211972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  maxHealth: 60
-  defense: 0
 --- !u!1001 &5043432308903488088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2559,6 +2566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Test_Level_Remark
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904269060799201157, guid: 50043580e70103a439bf70f5004c64d8,
+        type: 3}
+      propertyPath: pilotEmotion
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5904269061862421973, guid: 50043580e70103a439bf70f5004c64d8,
         type: 3}
