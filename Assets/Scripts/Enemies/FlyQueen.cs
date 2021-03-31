@@ -25,23 +25,31 @@ public class FlyQueen : MonoBehaviour
     [SerializeField]
     private List<GameObject> larvaeSpawnpoints;  // spawnpoints for the Fly Larvae
 
-    private float elapsedTime = 0;  // time since the latest larvae drop from the first spawnpoint
+    public Animator animator;
+    int spawnIndex = 0;
+
+    public float elapsedTime = 0;  // time since the latest larvae drop from the first spawnpoint
+
+    public EnemyMovement enemyMovement;
 
     /// <summary>
     /// Initiates a barrage of larvae at the first larvae drop rate.
     /// </summary>
     private void Update()
     {
-        // If the elapsed time reaches the firstLarvaeDropRate, call the DropLarvae coroutine and reset the elapsed time.
         if (elapsedTime >= firstLarvaeDropRate)
         {
             StartCoroutine(DropLarvae());
 
             elapsedTime = 0;
         }
+        if (!enemyMovement.flyingIn) elapsedTime -= Time.deltaTime;
+    }
 
-        // Increment the elapsed time.
-        elapsedTime += Time.deltaTime;
+    public void SpawnBullet()
+    {
+        Instantiate(flyLarvae, larvaeSpawnpoints[spawnIndex].transform.position, transform.rotation);
+        spawnIndex = (++spawnIndex % 2);
     }
 
     /// <summary>
@@ -49,20 +57,9 @@ public class FlyQueen : MonoBehaviour
     /// </summary>
     private IEnumerator DropLarvae()
     {
-        for (int i = 0; i < larvaeSpawnpoints.Count; i++)
-        {
-            // If the Fly Queen has been destroyed, stop dropping larvae.
-            if (gameObject == null)
-            {
-                yield break;
-            }
+        animator.SetBool("Shooting", true);
+        yield return new WaitForSeconds(12 /24f);
+        animator.SetBool("Shooting", false);
 
-            Instantiate(flyLarvae, larvaeSpawnpoints[i].transform.position, transform.rotation);
-            yield return new WaitForSeconds(succeedingLarvaeDropRate);
-        }
-    }
-    public void SpawnLarvae()
-    {
-        Instantiate(flyLarvae, larvaeSpawnpoints[0].transform.position, transform.rotation);
     }
 }

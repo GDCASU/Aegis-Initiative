@@ -70,6 +70,9 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Towards or Away from the player when flying in")]
     [SerializeField]
     private FlyingInDirection flyingInDirection = FlyingInDirection.Towards;
+    [Tooltip("Is the enemy flying in")]
+    [SerializeField]
+    public bool flyingIn = true;
 
     [Header("Hover Variables")]
     [Tooltip("Does ship follow the player after flying in")]
@@ -78,7 +81,7 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Duration that the enemy will follow the player for")]
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float hoverTimer = 3.0f; //how long ship stays
+    public float hoverTimer = 3.0f; //how long ship stays
 
     [Header("Leave Variables")]
     [Tooltip("Direction the enemy will leave based on the players perspective")]
@@ -200,6 +203,7 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.Translate(new Vector3(x, y, flyingInSpeed * (int)flyingInDirection) * Time.deltaTime); //ship movement wave or no wave
             flyingInTime -= Time.deltaTime;
+            if (flyingInTime <= 0) flyingIn = false;
         }
         else
         {
