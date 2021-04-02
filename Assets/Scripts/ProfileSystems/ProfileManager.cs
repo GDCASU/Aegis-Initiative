@@ -5,14 +5,27 @@ using UnityEngine;
 /// <summary>
 /// Class that manages all the profiles within the game. This includes having
 /// references to them as well as saving and loading them
+/// 
+/// I don't think I remember the actual problem but because of it all ProfileData
+/// objects within the profiles array is given an object to prevent them from being
+/// null. ProfileData's with an id of -1 are considered to be invalid/empty profiles
 /// </summary>
 public class ProfileManager : MonoBehaviour
 {
     public static ProfileManager instance;
 
     public ProfileData[] profiles;
-    public int currentProfileIndex = 0;
+    public int currentProfileIndex = -1;
     public int profileCount = 3;
+    public ProfileData CurrentProfile
+    {
+        get
+        {
+            if (currentProfileIndex >= 0 && currentProfileIndex < profileCount) return profiles[currentProfileIndex];
+
+            return null;
+        }
+    }
 
     [SerializeField]
     private bool saveTestProfiles;
@@ -69,7 +82,15 @@ public class ProfileManager : MonoBehaviour
         for (int x = 0; x < profiles.Length; x++)
         {
             profiles[x] = SaveManager.LoadContent(string.Format(ProfileData.profileFilepathTemplate, x)) as ProfileData;
+
+            if (profiles[x] == null) profiles[x] = new ProfileData(-1, "");
         }
+    }
+
+    public void DeleteProfile(int id)
+    {
+        profiles[id] = new ProfileData(-1, "");
+        SaveProfile(id);
     }
 
     public List<CopilotData> GetCurrentCopilotList()

@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7769aa9236f13a4da348823d957d560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: SampleScene
+  sceneToLoad: brad_mid_stage_remarks
   activeDescription: {fileID: 1027113079}
   activeName: {fileID: 2109380690}
   activeButton: {fileID: 1849472856}
@@ -3158,7 +3158,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 903120263}
   m_HandleRect: {fileID: 903120262}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

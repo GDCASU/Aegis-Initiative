@@ -1,4 +1,12 @@
-﻿using Fungus;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: 15 March 2021
+ * 
+ * Modification: Added another constant in enum spawnLocation called "AtCurrentPosition" which notifies the EnemySpawner to just spawn/activate the associated
+ * enemy gameobject in its current position under its current parent.
+ */
+
+using Fungus;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +22,8 @@ public class EnemySpawner : MonoBehaviour
         MiddleLeft,
         MiddleRight,
         BottomLeft,
-        BottomRight
+        BottomRight,
+        AtCurrentPosition
     }
 
     [Serializable]
@@ -29,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         [Range(-25f, 25f)]
         public float adjustHeight;
         [Tooltip("1 is on the reticle, 5 is furthest")]
-        [Range(1.0f, 5.0f)]
+        [Range(-25f, 25f)]
         public float adjustDepth;
     }
 
@@ -58,42 +67,47 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int x = 0; x < _enemies.Length; x++) //loop through enemies to spawn
             {
-                xSpawnAdjustment += xSpawnAdditive * _enemies[x].adjustWidth * playerScale.x;
-                ySpawnAdjustment += ySpawnAdditive * _enemies[x].adjustHeight * playerScale.y;
-                zSpawnAdjustment = _enemies[x].adjustDepth * playerScale.z;
-                switch (_enemies[x].SpawnLocation) //chance x and/or y adjustment based on selected location
+                if (_enemies[x].SpawnLocation != spawnLocation.AtCurrentPosition)
                 {
-                    case spawnLocation.TopLeft:
-                        xSpawnAdjustment += -xSpawnAdditive;
-                        ySpawnAdjustment += ySpawnAdditive;
-                        break;
-                    case spawnLocation.TopMiddle:
-                        xSpawnAdjustment = 0.0f;
-                        ySpawnAdjustment += ySpawnAdditive;
-                        break;
-                    case spawnLocation.MiddleLeft:
-                        xSpawnAdjustment += -xSpawnAdditive;
-                        ySpawnAdjustment = 0.0f;
-                        break;
-                    case spawnLocation.MiddleRight:
-                        xSpawnAdjustment += xSpawnAdditive;
-                        ySpawnAdjustment = 0.0f;
-                        break;
-                    case spawnLocation.BottomLeft:
-                        xSpawnAdjustment += -xSpawnAdditive;
-                        ySpawnAdjustment += -ySpawnAdditive;
-                        break;
-                    case spawnLocation.BottomRight:
-                        xSpawnAdjustment += xSpawnAdditive;
-                        ySpawnAdjustment += -ySpawnAdditive;
-                        break;
-                    default:
-                        break;
+                    xSpawnAdjustment += xSpawnAdditive * _enemies[x].adjustWidth * playerScale.x;
+                    ySpawnAdjustment += ySpawnAdditive * _enemies[x].adjustHeight * playerScale.y;
+                    zSpawnAdjustment = _enemies[x].adjustDepth * playerScale.z;
+                    switch (_enemies[x].SpawnLocation) //chance x and/or y adjustment based on selected location
+                    {
+                        case spawnLocation.TopLeft:
+                            xSpawnAdjustment += -xSpawnAdditive;
+                            ySpawnAdjustment += ySpawnAdditive;
+                            break;
+                        case spawnLocation.TopMiddle:
+                            xSpawnAdjustment = 0.0f;
+                            ySpawnAdjustment += ySpawnAdditive;
+                            break;
+                        case spawnLocation.MiddleLeft:
+                            xSpawnAdjustment += -xSpawnAdditive;
+                            ySpawnAdjustment = 0.0f;
+                            break;
+                        case spawnLocation.MiddleRight:
+                            xSpawnAdjustment += xSpawnAdditive;
+                            ySpawnAdjustment = 0.0f;
+                            break;
+                        case spawnLocation.BottomLeft:
+                            xSpawnAdjustment += -xSpawnAdditive;
+                            ySpawnAdjustment += -ySpawnAdditive;
+                            break;
+                        case spawnLocation.BottomRight:
+                            xSpawnAdjustment += xSpawnAdditive;
+                            ySpawnAdjustment += -ySpawnAdditive;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    spawnAdjustment = new Vector3(xSpawnAdjustment, ySpawnAdjustment, zSpawnAdjustment); //spawn adjustment vector to add to other.gameObject.transform.position
+                    _enemies[x].enemy.transform.parent = other.gameObject.transform.parent;
+                    _enemies[x].enemy.transform.localPosition = spawnAdjustment;
+                    _enemies[x].enemy.transform.localRotation = Quaternion.identity;
                 }
-                spawnAdjustment = new Vector3(xSpawnAdjustment, ySpawnAdjustment, zSpawnAdjustment); //spawn adjustment vector to add to other.gameObject.transform.position
-                _enemies[x].enemy.transform.parent = other.gameObject.transform.parent;
-                _enemies[x].enemy.transform.localPosition = spawnAdjustment;
-                _enemies[x].enemy.transform.localRotation = Quaternion.identity;
+
                 _enemies[x].enemy.SetActive(true);
             }
         }

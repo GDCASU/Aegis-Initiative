@@ -37,11 +37,6 @@ public class RemarkManager : MonoBehaviour
     //Random float landed in proper range
     private bool DialogueSuccessful()
     {
-        //THIS IS HARD CODED
-        //CHANGE LATER
-        //HARDCODED
-        //WEE WOO WEE WOO
-        //CHANGE LATER AWAY FROM FIND AAAAAAAHHHHHHHHH!!!!!!!!!!!!!!!
         passiveChart = GameManager.singleton.passiveCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
         activeChart = GameManager.singleton.activeCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
 
@@ -56,7 +51,7 @@ public class RemarkManager : MonoBehaviour
         return result;
     }
     //choose passive or active pilot
-    public void ActivatePilotDialogue(string _input)
+    public void ActivatePilotRemark(string _input)
     {
         //make sure old dialogue does not effect new dialogue
         if(lastBlock != null)
@@ -93,17 +88,7 @@ public class RemarkManager : MonoBehaviour
     /// <param name="_input"></param>
     /// <param name="_pilot"></param>
 
-    public void ActivateHiddenDialogue(string _input, GameObject _pilot)
-    {
-        ExecuteDialogue(_input, _pilot);
-    }
-
-    public void ActivateStoryDialogue(string _input, GameObject _pilot)
-    {
-        ExecuteDialogue(_input, _pilot);
-    }
-
-    private void ExecuteDialogue(string _input, GameObject _pilot)
+    public void ExecuteDialogue(string _input, GameObject _pilot, DialogueTriggers.Emotion _pilotEmotion)
     {
         //make sure old dialogue does not effect new dialogue
         if (lastBlock != null)
@@ -122,7 +107,8 @@ public class RemarkManager : MonoBehaviour
             {
                 case Say info:
                     info._Character = _pilot.GetComponent<Character>(); //choose character
-                    info.Portrait = _pilot.GetComponent<CopilotInfo>().fullBody; //CHANGE TO DESIRED PORTRAIT WHEN MORE ARE MADE
+                    info.Portrait = Resources.Load<Sprite>(@"Sprites\" + _pilot.GetComponent<Character>().NameText + "_" + _pilotEmotion.ToString());
+                    //info.Portrait = _pilot.GetComponent<CopilotInfo>().fullBody; //CHANGE TO DESIRED PORTRAIT WHEN MORE ARE MADE
                     break;
                 default:
                     break;
@@ -140,7 +126,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue("Entering Stage");
+            ActivatePilotRemark("Entering Stage");
         }
     }
 
@@ -148,7 +134,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue("Exiting Stage");
+            ActivatePilotRemark("Exiting Stage");
         }
     }
 
@@ -156,7 +142,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue("Taking Damage");
+            ActivatePilotRemark("Taking Damage");
         }
     }
 
@@ -164,7 +150,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue("Collecting Pick-Ups");
+            ActivatePilotRemark("Collecting Pick-Ups");
         }
     }
 
@@ -172,7 +158,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue("Defeating Enemies");
+            ActivatePilotRemark("Defeating Enemies");
         }
     }
 
@@ -180,7 +166,7 @@ public class RemarkManager : MonoBehaviour
     {
         if (DialogueSuccessful())
         {
-            ActivatePilotDialogue("Lose Stage");
+            ActivatePilotRemark("Lose Stage");
         }
     }
 }

@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
+  - enabled: 1
+    path: Assets/Scenes/CopilotUI.unity
+    guid: 312cb4f34b90af64cbe0af8ee0ca9569
+  - enabled: 1
+    path: Assets/Scenes/brad_mid_stage_remarks.unity
+    guid: ea18078b8bc326c47a8ac9f71d0ab089
   m_configObjects: {}

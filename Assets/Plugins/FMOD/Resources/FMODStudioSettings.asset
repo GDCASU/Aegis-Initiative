@@ -78,7 +78,8 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Mushroom Stage
   BanksToLoad:
   - Master.bank
   - Master.strings.bank
