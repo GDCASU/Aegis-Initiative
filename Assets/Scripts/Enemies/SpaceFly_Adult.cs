@@ -22,8 +22,9 @@ public class SpaceFly_Adult : EnemyHealth
 
     private int shots;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         shootTimer = Random.Range(shootTimerMin, shootTimerMax); //timer within a range
         realRateOfFire = new WaitForSeconds(1.0f/rateOfFire); //for Shoot();
 
