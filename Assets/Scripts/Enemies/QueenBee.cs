@@ -18,8 +18,9 @@ public class QueenBee : EnemyHealth
     private bool flyOff = false;
     System.Random rng = new System.Random();
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         animations.Play(flyIn.name);
         animationWaitTime = flyIn.length;
         shootingWaitTime = 5.0f;
@@ -43,7 +44,7 @@ public class QueenBee : EnemyHealth
         if (shootingWaitTime <= 0 && shoot)
         {
             Quaternion OriginalRot = transform.rotation;
-            transform.LookAt(gameObject.transform.parent.GetChild(1).transform.position);
+            transform.LookAt(PlayerInfo.singleton.transform);
             Quaternion NewRot = transform.rotation;
             transform.rotation = OriginalRot;
             transform.rotation = Quaternion.Lerp(transform.rotation, NewRot, 5f * Time.deltaTime);

@@ -336,6 +336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   collisionDamage: 0
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!114 &34306048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,17 +347,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 34306046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba8bca6f93fd843a3a66217056ba69, type: 3}
+  m_Script: {fileID: 11500000, guid: feef8098b4c464e4080199f17965a290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 0
   collisionDamage: 0
-  bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
-    type: 3}
-  animations: {fileID: 810482228}
-  flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
-  flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
-  bulletCount: 900
+  doNotDespawn: 0
+  lifeTime: 20
+  bulletPrefab: {fileID: 0}
+  animations: {fileID: 0}
+  flying: {fileID: 0}
+  flyIn: {fileID: 0}
+  bulletCount: 0
 --- !u!1001 &54199565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -525,6 +528,11 @@ PrefabInstance:
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931640489998877274, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -745,6 +753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -765,6 +775,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1 &277148898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0f09edcb4e3fc94f8dcdb6a5f3eaefe,
@@ -785,6 +797,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -805,6 +819,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1 &284908189 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3e768543cea5b54ca4c0a826e8d0453,
@@ -825,6 +841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -845,6 +863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &297940190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1172,6 +1192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!114 &372304900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,6 +1208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -1326,6 +1350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!114 &447976603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,6 +1366,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -1366,6 +1394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -1386,6 +1416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &580378733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1574,6 +1606,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -1594,6 +1628,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &637891560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1698,6 +1734,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!114 &637891563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,6 +1750,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -1738,6 +1778,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -1758,6 +1800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &759916954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2491,6 +2535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -2511,6 +2557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1 &872541581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2821,6 +2869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -2841,6 +2891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &982010705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3197,6 +3249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -3217,6 +3271,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &1238846029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3405,6 +3461,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -3425,6 +3483,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &1260129500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3723,6 +3783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -3743,6 +3805,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &1326801283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3809,6 +3873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyGrunt
+      objectReference: {fileID: 0}
+    - target: {fileID: 7983703137698454370, guid: 4a99a12e30d8b33459090d1920e5fba0,
+        type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a99a12e30d8b33459090d1920e5fba0, type: 3}
@@ -4178,6 +4247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4198,6 +4269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &1540477004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4470,6 +4543,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4490,6 +4565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1 &1639840046 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f5891cdcf87c764c9aff290ca9f8f0d,
@@ -4510,6 +4587,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 4
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4530,6 +4609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1 &1653696534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3e768543cea5b54ca4c0a826e8d0453,
@@ -4550,6 +4631,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4570,6 +4653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1 &1678875606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3e768543cea5b54ca4c0a826e8d0453,
@@ -4590,6 +4675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4610,6 +4697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   collisionDamage: 2
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &1695658680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4714,6 +4803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!114 &1730372013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4728,6 +4819,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4838,6 +4931,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!114 &1783409918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4852,6 +4947,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4878,6 +4975,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
   animations: {fileID: 810482228}
@@ -4898,6 +4997,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   collisionDamage: 1
+  doNotDespawn: 0
+  lifeTime: 20
 --- !u!1001 &1798957949
 PrefabInstance:
   m_ObjectHideFlags: 0
