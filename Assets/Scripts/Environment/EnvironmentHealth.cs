@@ -38,7 +38,7 @@ public class EnvironmentHealth : MonoBehaviour
 
     public virtual void OnPlayerCollision()
     {
-        PlayerHealth.singleton.TakeDamage(collisionDamage);
+        PlayerInfo.singleton.TakeDamage(collisionDamage);
 
         TakeDamage(health);
     }

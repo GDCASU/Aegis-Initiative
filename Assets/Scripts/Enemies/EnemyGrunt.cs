@@ -18,8 +18,9 @@ public class EnemyGrunt : EnemyHealth
     private bool flyOff = false;
     System.Random rng = new System.Random();
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         animations.Play(flyIn.name);
         animationWaitTime = flyIn.length;
         shootingWaitTime = 5.0f;
@@ -61,7 +62,7 @@ public class EnemyGrunt : EnemyHealth
             transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, -1), 5f * Time.deltaTime);
 
             if (!transform.GetChild(0).GetComponent<Renderer>().isVisible)
-                Destroy(gameObject);
+                DestroyEnemy();
         }
     }
     IEnumerator Shoot()

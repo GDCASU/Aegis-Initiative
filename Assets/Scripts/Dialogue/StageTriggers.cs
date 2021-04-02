@@ -38,20 +38,52 @@ public class StageTriggers : MonoBehaviour
     {
         if (other.gameObject.name=="Start Trigger")
         {
-            flow.ExecuteBlock("start");
+            //flow.ExecuteBlock("start");
             start = false;
         }
         if(other.gameObject.name == "End Trigger")
         {
-            flow.ExecuteBlock("finish");
+            //flow.ExecuteBlock("finish");
             //store final cart speed and execute end of level
             endSpeed = playerShip.GetComponent<ShipMovement>().forwardSpeed;
             endDirection = new Vector3(0, 0, endSpeed * Time.deltaTime);
             levelFinished = true;
         }
-        if(other.gameObject.tag == "Dialogue_Trigger")
+        if(other.gameObject.CompareTag("Dialogue_Trigger"))
         {
-            flow.ExecuteBlock(other.gameObject.name);
+            GameObject passivePilot = GameManager.singleton.passiveCopilot;
+            GameObject activePilot = GameManager.singleton.activeCopilot;
+            DialogueTriggers.Emotion selectedEmotion = other.gameObject.GetComponent<DialogueTriggers>().pilotEmotion;
+            string specialName = other.gameObject.GetComponent<DialogueTriggers>().hiddenPilot.ToString();
+            //check if it is hidden dialogue or not
+            if(specialName.CompareTo("Any") != 0)
+            {
+                //does the player have the hidden pilot selected
+                if(passivePilot.name.CompareTo(specialName) == 0)
+                {
+                    //activate HIDDEN dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, passivePilot, selectedEmotion);
+                }
+                else if(activePilot.name.CompareTo(specialName) == 0)
+                {
+                    //activate HIDDEN dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, activePilot, selectedEmotion);
+                }
+            }
+            else //it is not hidden dialogue
+            {
+                //check chosen pilot on dialogue trigger
+                if(other.gameObject.GetComponent<DialogueTriggers>().chosenPilot == DialogueTriggers.DialoguePilot.passive)
+                {
+                    //activate STORY dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, passivePilot, selectedEmotion);
+                }
+                else
+                {
+                    //activate STORY dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, activePilot, selectedEmotion);
+                }
+            }
         }
     }
 

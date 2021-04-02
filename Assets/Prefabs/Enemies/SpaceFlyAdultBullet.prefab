@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2212795844107242256}
   - component: {fileID: -8764998775437326773}
   m_Layer: 0
-  m_Name: SalivaBullet
+  m_Name: SpaceFlyAdultBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,4 +111,5 @@ MonoBehaviour:
   bulletDespawnTime: 2
   timer: 0
   damage: 10
+  bulletSource: 1
   bulletSpeed: 0.07
