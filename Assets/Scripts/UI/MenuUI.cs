@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
-    public List<GameObject> panels;
 
-    public int currentPanel = 1;
 
     [Header("General Menu")]
     #region General Menu
+    public string sceneToLoad;
+    public List<GameObject> panels;
+    public int currentPanel = 1;
     #endregion
 
     [Header("Main Menu")]
@@ -108,9 +109,12 @@ public class MenuUI : MonoBehaviour
             ProfileManager.instance.CurrentProfile.profileID = ProfileManager.instance.currentProfileIndex;
             ProfileManager.instance.CurrentProfile.name = nameInputField.text;
             ProfileManager.instance.SaveCurrentProfile();
+            ProfileManager.instance.TestSaveProfiles();
 
             //TEST CODE. LATER THIS SHOULD SWAP SCENES BUT FOR NOW I'M SWAPPING PANELS TO HELP TEST
-            SwitchPanels(1);
+
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+
         }    
     }
     
