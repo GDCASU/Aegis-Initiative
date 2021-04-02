@@ -7,6 +7,8 @@ public class CreditsManager : MonoBehaviour
     public List<Transform> Path = new List<Transform>();
     public float SpawnSpeed = 1;
     public float NameMoveSpeed = 0.1f;
+    public float FaceCameraDistance;
+    public Transform Camera;
 
     [Range(0, 1)]
     public float Position = 0;
@@ -26,7 +28,7 @@ public class CreditsManager : MonoBehaviour
     void Update()
     {
         // Used to manually spawn names, if you are reading this in the master branch then I am dumb. Remove it please <3
-        if (Input.GetKeyDown(KeyCode.Space)) StartCoroutine(SpawnNames());
+        if (Input.GetKeyDown(KeyCode.N)) StartCoroutine(SpawnNames());
     }
 
 

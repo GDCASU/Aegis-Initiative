@@ -10,12 +10,14 @@ public class CreditsNameMovement : MonoBehaviour
     public TextMesh TitleText;
     public TextMesh NameText;
 
+    private Vector3 previousPoint = Vector3.zero;
     private float position = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        TitleText.gameObject.AddComponent<BoxCollider>();
+        NameText.gameObject.AddComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -33,8 +35,36 @@ public class CreditsNameMovement : MonoBehaviour
     public void Move()
     {
         position += Time.deltaTime * Speed;
-        transform.position = creditsManager.LerpPosition(position);
+        Vector3 newPosition = creditsManager.LerpPosition(position);
+
+        if (Vector3.Distance(creditsManager.Camera.position, transform.position) > creditsManager.FaceCameraDistance)
+        {
+            FaceInDirection(newPosition);
+        }
+        else
+        {
+            FaceInDirection(creditsManager.Camera.position);
+        }
+
+        transform.position = newPosition;
 
         if (position > 1) Destroy(gameObject);
+    }
+
+    public void FaceInDirection(Vector3 direction)
+    {
+        //transform.LookAt(direction);
+        var targetRotation = Quaternion.LookRotation(direction - transform.position);
+
+        // Smoothly rotate towards the target point.
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+    }
+
+    public void Shot()
+    {
+        NameText.color = Color.red;
+        TitleText.color = Color.red;
+        NameText.GetComponent<BoxCollider>().enabled = false;
+        TitleText.GetComponent<BoxCollider>().enabled = false;
     }
 }

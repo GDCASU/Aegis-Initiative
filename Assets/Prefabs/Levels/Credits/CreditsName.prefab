@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2805980374606935606}
   - component: {fileID: 2805980374606935605}
   - component: {fileID: 2805980374606935604}
-  - component: {fileID: 2805980374606935611}
+  - component: {fileID: 4730172297909486009}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2805980374606935610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 4.75, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 7837260692217179276}
   m_RootOrder: 0
@@ -96,19 +96,22 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!65 &2805980374606935611
-BoxCollider:
+--- !u!54 &4730172297909486009
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2805980374606935610}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 192, y: 51.840004, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7183137657106485288
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +123,7 @@ GameObject:
   - component: {fileID: 1463011573800850401}
   - component: {fileID: 3122954563908966513}
   - component: {fileID: 6082702263950938231}
-  - component: {fileID: 6430442628737087430}
+  - component: {fileID: 5297240162317770595}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -137,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 7183137657106485288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: -0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 7837260692217179276}
   m_RootOrder: 1
@@ -205,19 +208,22 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!65 &6430442628737087430
-BoxCollider:
+--- !u!54 &5297240162317770595
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7183137657106485288}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 192, y: 51.840004, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7837260692217179264
 GameObject:
   m_ObjectHideFlags: 0
