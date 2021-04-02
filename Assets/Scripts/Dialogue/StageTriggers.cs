@@ -49,10 +49,11 @@ public class StageTriggers : MonoBehaviour
             endDirection = new Vector3(0, 0, endSpeed * Time.deltaTime);
             levelFinished = true;
         }
-        if(other.gameObject.tag == "Dialogue_Trigger")
+        if(other.gameObject.CompareTag("Dialogue_Trigger"))
         {
             GameObject passivePilot = GameManager.singleton.passiveCopilot;
             GameObject activePilot = GameManager.singleton.activeCopilot;
+            DialogueTriggers.Emotion selectedEmotion = other.gameObject.GetComponent<DialogueTriggers>().pilotEmotion;
             string specialName = other.gameObject.GetComponent<DialogueTriggers>().hiddenPilot.ToString();
             //check if it is hidden dialogue or not
             if(specialName.CompareTo("Any") != 0)
@@ -60,11 +61,13 @@ public class StageTriggers : MonoBehaviour
                 //does the player have the hidden pilot selected
                 if(passivePilot.name.CompareTo(specialName) == 0)
                 {
-                    RemarkManager.singleton.ActivateHiddenDialogue(other.gameObject.name, passivePilot);
+                    //activate HIDDEN dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, passivePilot, selectedEmotion);
                 }
                 else if(activePilot.name.CompareTo(specialName) == 0)
                 {
-                    RemarkManager.singleton.ActivateHiddenDialogue(other.gameObject.name, activePilot);
+                    //activate HIDDEN dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, activePilot, selectedEmotion);
                 }
             }
             else //it is not hidden dialogue
@@ -72,11 +75,13 @@ public class StageTriggers : MonoBehaviour
                 //check chosen pilot on dialogue trigger
                 if(other.gameObject.GetComponent<DialogueTriggers>().chosenPilot == DialogueTriggers.DialoguePilot.passive)
                 {
-                    RemarkManager.singleton.ActivateStoryDialogue(other.gameObject.name, passivePilot);
+                    //activate STORY dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, passivePilot, selectedEmotion);
                 }
                 else
                 {
-                    RemarkManager.singleton.ActivateStoryDialogue(other.gameObject.name, activePilot);
+                    //activate STORY dialogue
+                    RemarkManager.singleton.ExecuteDialogue(other.gameObject.name, activePilot, selectedEmotion);
                 }
             }
         }
