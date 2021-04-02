@@ -110,7 +110,7 @@ public class ProfileManager : MonoBehaviour
     /// Method that creates some test profiles. This should not actually be used
     /// throughout the game
     /// </summary>
-    private void TestSaveProfiles()
+    public void TestSaveProfiles()
     {
         CreateProfile(0, "UITest");
         profiles[0].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
