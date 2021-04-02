@@ -29,10 +29,6 @@ public class EnemyMovement : MonoBehaviour
     }
 
     [Header("Basic Variables")]
-    [Tooltip("How fast the enemy ship moves when flying in")]
-    [SerializeField]
-    [Range(0.0f, 5.0f)]
-    private float flyingInSpeed = 2;
     [Tooltip("Does the enemy rotate based on its movement")]
     [SerializeField]
     private bool rotateWithMovement = true;
@@ -63,6 +59,10 @@ public class EnemyMovement : MonoBehaviour
     private float maxAngle = 10.0f; //max angle of ship
 
     [Header("Flying In Variables")]
+    [Tooltip("How fast the enemy ship moves when flying in")]
+    [SerializeField]
+    [Range(0.0f, 5.0f)]
+    private float flyingInSpeed = 2;
     [SerializeField]
     [Tooltip("Duration of the enemy flying in sequence")]
     [Range(0.0f, 25.0f)]
@@ -106,7 +106,7 @@ public class EnemyMovement : MonoBehaviour
     private float startY; //local start Y position
     private float startX; //local start X position
 
-    private bool isFlyingAway;
+    public bool isFlyingAway;
 
     Transform shipModel;
 

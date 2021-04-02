@@ -28,22 +28,26 @@ public class FlyQueen : MonoBehaviour
     public Animator animator;
     int spawnIndex = 0;
 
-    public float elapsedTime = 0;  // time since the latest larvae drop from the first spawnpoint
+    public float timer = 0.1f;  // time since the latest larvae drop from the first spawnpoint
 
     public EnemyMovement enemyMovement;
 
+
+    private void Start()
+    {
+        enemyMovement = GetComponentInParent<EnemyMovement>();
+    }
     /// <summary>
     /// Initiates a barrage of larvae at the first larvae drop rate.
     /// </summary>
     private void Update()
     {
-        if (elapsedTime >= firstLarvaeDropRate)
+        if (timer <=  0)
         {
+            timer = firstLarvaeDropRate;
             StartCoroutine(DropLarvae());
-
-            elapsedTime = 0;
         }
-        if (!enemyMovement.flyingIn) elapsedTime -= Time.deltaTime;
+        if (!enemyMovement.flyingIn && !enemyMovement.isFlyingAway) timer -= Time.deltaTime;
     }
 
     public void SpawnBullet()

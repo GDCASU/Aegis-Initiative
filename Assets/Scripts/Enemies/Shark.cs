@@ -57,6 +57,8 @@ public class Shark : MonoBehaviour
 
     private bool playerDetected = false;  // Has the Player been detected by the Shark?
 
+    public Animator animator;
+
     /// <summary>
     /// Sets the host for the Shark to revolve around, collision damage dealt to Player, the Player transform, and starts Shark revolutions around its host.
     /// </summary>
@@ -148,6 +150,7 @@ public class Shark : MonoBehaviour
     /// </summary>
     private IEnumerator Charge()
     {
+        animator.SetBool("Attacking", true);
         float elapsedTime = 0;
         host.GetComponent<EnemyMovement>().enabled = false;
 
@@ -160,7 +163,7 @@ public class Shark : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
+        animator.SetBool("Attacking", true);
         Destroy(host);
     }
     #endregion
