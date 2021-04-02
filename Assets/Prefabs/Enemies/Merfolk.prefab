@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 4898008107597874008}
   - component: {fileID: 4001984529928783816}
   - component: {fileID: 8445368726361319393}
-  - component: {fileID: 808732626233313633}
   m_Layer: 0
   m_Name: Asset Placeholder
   m_TagString: Untagged
@@ -112,19 +111,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &808732626233313633
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6874492428576294052}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7227814901522774991
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +120,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8275480534796620148}
-  - component: {fileID: 4167835950865855298}
+  - component: {fileID: 7031370310409124943}
+  - component: {fileID: 833643906765841607}
   m_Layer: 0
   m_Name: Merfolk
   m_TagString: Untagged
@@ -158,7 +145,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4167835950865855298
+--- !u!65 &7031370310409124943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227814901522774991}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &833643906765841607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,15 +170,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004be37264a59f445b5d255cc2434621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 25
   collisionDamage: 0
+  doNotDespawn: 0
+  lifeTime: 20
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   bulletSpawn: {fileID: 8026028355616783783}
   shootSpeed: 100
-  speed: 5
+  speed: 2
   figure8Radius: 5
-  startShooting: 2
+  startShooting: 5
   waterMultiplier: 0.8
   aboveWater: 0
   figureEightDirection: 0

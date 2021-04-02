@@ -225,9 +225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   collisionDamage: 0
+  doNotDespawn: 1
   lifeTime: 0
-  lifeTimer: 0
-  isPermanent: 1
 --- !u!114 &8197544042086189009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,9 +413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   collisionDamage: 0
+  doNotDespawn: 0
   lifeTime: 0
-  lifeTimer: 0
-  isPermanent: 1
   weakpoint: 0
   cancelHealth: 100
 --- !u!1 &8197544043340013228
@@ -530,9 +528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   collisionDamage: 0
+  doNotDespawn: 0
   lifeTime: 0
-  lifeTimer: 0
-  isPermanent: 1
   weakpoint: 1
   cancelHealth: 100
 --- !u!1 &8197544043369914328
@@ -579,14 +576,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flyingInSpeed: 2
+  rotateWithMovement: 1
+  lockedOntoPlayer: 0
   waveMovement: 2
-  rotation: 1
   maxWavePeak: 1.2
   minWaveDip: 0
   waveFrequency: 0.5
   maxAngle: 10
-  shipSpeed: 0
-  hoverLength: 1
+  flyingInTime: 3
+  flyingInDirection: -1
+  hover: 1
   hoverTimer: 10
   leaveDirection: 0
-  moveDirection: 1
+  leaveSpeed: 5
