@@ -6,7 +6,27 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crown
+    second: {fileID: 2100000, guid: 03ad10dba62241c40bc96d1a123256e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fly Body
+    second: {fileID: 2100000, guid: a799db790c2a8774d987304852276fce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fly Body 2
+    second: {fileID: 2100000, guid: fde38d10ed1fb6542b746def770815c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fly Eyes
+    second: {fileID: 2100000, guid: ba68e40812434334e912dc480789806f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
