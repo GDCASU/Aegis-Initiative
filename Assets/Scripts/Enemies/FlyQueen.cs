@@ -32,6 +32,8 @@ public class FlyQueen : MonoBehaviour
 
     public EnemyMovement enemyMovement;
 
+    public float framesOfAnimation;
+
 
     private void Start()
     {
@@ -62,7 +64,7 @@ public class FlyQueen : MonoBehaviour
     private IEnumerator DropLarvae()
     {
         animator.SetBool("Shooting", true);
-        yield return new WaitForSeconds(12 /24f);
+        yield return new WaitForSeconds(framesOfAnimation /24f);
         animator.SetBool("Shooting", false);
 
     }

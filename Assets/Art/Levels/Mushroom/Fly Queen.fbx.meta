@@ -1,14 +1,47 @@
 fileFormatVersion: 2
-guid: 1f9a985b219064049935d9a269180e18
+guid: d87588e46dd90a240955090735da398f
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -623603649343465320
-    second: Shoot
+      74: -3391150421102363881
+    second: Fly Body|Fly BodyAction
   - first:
-      74: 1529519329446190647
-    second: Hover
+      74: 2036760649248413361
+    second: Fly Body|Shotgun Bone 1Action
+  - first:
+      74: 1812522803861189395
+    second: Fly Body|Shotgun Bone 2Action
+  - first:
+      74: -5560577427149301767
+    second: Fly Body|Shotgun Slide 1Action
+  - first:
+      74: 5920336457993461972
+    second: Fly Body|Shotgun Slide 2Action
+  - first:
+      74: 1874293281109154617
+    second: Shotgun Bone 1|Shotgun Bone 1Action
+  - first:
+      74: -4505883688979509775
+    second: Shotgun Bone 1|Shotgun Bone 2Action
+  - first:
+      74: 8743199147929258583
+    second: Shotgun Bone 1|Shotgun Slide 1Action
+  - first:
+      74: 9106697291967769553
+    second: Shotgun Bone 1|Shotgun Slide 2Action
+  - first:
+      74: -461869702905981869
+    second: Shotgun Bone 2|Shotgun Bone 1Action
+  - first:
+      74: -6397212373438456935
+    second: Shotgun Bone 2|Shotgun Bone 2Action
+  - first:
+      74: 8012643611405141381
+    second: Shotgun Bone 2|Shotgun Slide 1Action
+  - first:
+      74: 8737071655672123537
+    second: Shotgun Bone 2|Shotgun Slide 2Action
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -36,65 +69,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Shoot
-      takeName: Scene
-      internalID: 0
-      firstFrame: 1
-      lastFrame: 80
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
-    - serializedVersion: 16
-      name: Hover
-      takeName: Scene
-      internalID: 0
-      firstFrame: 80
-      lastFrame: 100
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
