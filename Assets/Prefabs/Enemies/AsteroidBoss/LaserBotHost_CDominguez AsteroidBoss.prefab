@@ -7,10 +7,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: approachSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: boss
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894621415332, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5718617894621415332, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
@@ -36,6 +46,21 @@ PrefabInstance:
         type: 3}
       propertyPath: shipSpeed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718617894621415332, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: flyingInDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718617894621415332, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: flyingInSpeed
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718617894621415332, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: flyingInTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5718617894621415333, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}

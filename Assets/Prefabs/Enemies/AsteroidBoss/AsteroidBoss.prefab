@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4317884631668656975}
   - component: {fileID: 6796629688428296855}
-  - component: {fileID: 5299052401048174748}
+  - component: {fileID: 5289014550129624855}
   m_Layer: 0
   m_Name: AsteroidBoss
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   collisionDamage: 0
+  doNotDespawn: 0
   lifeTime: 1e+12
-  lifeTimer: 0
   laserBot: {fileID: 8081589177011574464, guid: f40ee2f1bd4caf24d926571a881b1c01,
     type: 3}
   formation1:
@@ -107,16 +107,16 @@ MonoBehaviour:
   vacuum1: {fileID: 6077816918186791379}
   vacuum2: {fileID: 5953718753695744493}
   asteroids:
-  - {fileID: 8299096602537148577, guid: 70545e60bbc560846b2e220d3440193f, type: 3}
-  - {fileID: 8872751114067391931, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
-  - {fileID: 5191091008356267035, guid: ce2a34da6d9ac1246a0496657891a84d, type: 3}
-  - {fileID: 5987238900573238461, guid: 19660514c8e817e4197759a49caf517f, type: 3}
+  - {fileID: 5434023097973353371, guid: 5cf9e576acba8814caa93d320374fa37, type: 3}
+  - {fileID: 8091318772250550867, guid: dc9d8174986ba4d4184bb75dfd25346e, type: 3}
+  - {fileID: 986470550368322418, guid: 5e32eb8e3901de8468c1865c94391a58, type: 3}
+  - {fileID: 3035830246156897768, guid: 50f914f0707c6fb4fae7503e0482c461, type: 3}
   laser: {fileID: 8441180386156787226, guid: 1e9f7a4b3b35809438cbbc3c5329ff31, type: 3}
   bigLaser: {fileID: 3593335563392812796}
   head: {fileID: 9211355081573709126}
   bigLaserRotationSpeed: 5
   bossAnimation: {fileID: 6643731152661791877}
---- !u!54 &5299052401048174748
+--- !u!54 &5289014550129624855
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
