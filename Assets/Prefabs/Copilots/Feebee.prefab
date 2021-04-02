@@ -79,6 +79,12 @@ MonoBehaviour:
     level: 0
     experience: 0
     isUnlocked: 1
+  portraits:
+  - {fileID: 21300000, guid: f8f8fb7d88ca4e34b839a9f897271d39, type: 3}
+  - {fileID: 21300000, guid: f847266a0c259e14aa0fcadef75064c8, type: 3}
+  - {fileID: 21300000, guid: 493a88df977e456428c669e911179cd6, type: 3}
+  - {fileID: 21300000, guid: b5098869a8d16c44497dc7d5d022e5b3, type: 3}
+  - {fileID: 21300000, guid: 322a860e98940a447b6e4d988ce190d6, type: 3}
   portrait: {fileID: 21300000, guid: 9ce6cf540ce2ece4dacce467ace3bca4, type: 3}
   fullBody: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
   copilotActive: {fileID: 365653576477132568}
