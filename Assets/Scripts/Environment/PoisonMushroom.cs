@@ -12,37 +12,14 @@ public class PoisonMushroom : EnvironmentHealth
 
     //Generating clouds using Particle System
     private ParticleSystem cloud;
-    public float timeGenerate; //duration for generating the clouds
+    public bool once;
 
     void Start()
     {
         collider = GetComponent<BoxCollider>();
         mesh = GetComponent<MeshRenderer>();
         cloud = GetComponent<ParticleSystem>();
-        generateTimer = timeGenerate;
-    }
-
-    void Update()
-    {
-        if (generateTimer > 0)
-        {
-            generateTimer -= Time.deltaTime;
-        }
-        else if (generateTimer == 0)
-        {
-            cloud.Stop();
-            cloud.Clear();
-        }
-        else if (generateTimer < 0)
-        {
-            GeneratePoisonCloud();
-            generateTimer = timeGenerate;
-        }
-
-        if (lifeTimer < 0)
-        {
-            Destroy(gameObject);
-        }
+        StartCoroutine(PlayParticle());
     }
 
     public void GeneratePoisonCloud()
@@ -69,7 +46,11 @@ public class PoisonMushroom : EnvironmentHealth
 
         Debug.Log("Deactivate Player's Active Abilities");
     }
-
+    IEnumerator PlayParticle()
+    {
+        yield return new WaitForSeconds(Random.Range(0, 5));
+        cloud.Play();
+    }
     //Destroy mushroom when player collides or shoots it, then call GeneratePoisonCloud
     public void DestroyMushroom()
     {

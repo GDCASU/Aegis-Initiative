@@ -29,10 +29,6 @@ public class EnemyMovement : MonoBehaviour
     }
 
     [Header("Basic Variables")]
-    [Tooltip("How fast the enemy ship moves when flying in")]
-    [SerializeField]
-    [Range(0.0f, 5.0f)]
-    private float flyingInSpeed = 2;
     [Tooltip("Does the enemy rotate based on its movement")]
     [SerializeField]
     private bool rotateWithMovement = true;
@@ -63,6 +59,10 @@ public class EnemyMovement : MonoBehaviour
     private float maxAngle = 10.0f; //max angle of ship
 
     [Header("Flying In Variables")]
+    [Tooltip("How fast the enemy ship moves when flying in")]
+    [SerializeField]
+    [Range(0.0f, 5.0f)]
+    private float flyingInSpeed = 2;
     [SerializeField]
     [Tooltip("Duration of the enemy flying in sequence")]
     [Range(0.0f, 25.0f)]
@@ -70,6 +70,9 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Towards or Away from the player when flying in")]
     [SerializeField]
     private FlyingInDirection flyingInDirection = FlyingInDirection.Towards;
+    [Tooltip("Is the enemy flying in")]
+    [SerializeField]
+    public bool flyingIn = true;
 
     [Header("Hover Variables")]
     [Tooltip("Does ship follow the player after flying in")]
@@ -78,9 +81,12 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Duration that the enemy will follow the player for")]
     [SerializeField]
     [Range(0.0f, 10.0f)]
-    private float hoverTimer = 3.0f; //how long ship stays
+    public float hoverTimer = 3.0f; //how long ship stays
 
     [Header("Leave Variables")]
+    [Tooltip("Determines the leave rotation")]
+    [SerializeField]
+    private bool isModelFacingPlayer = false;
     [Tooltip("Direction the enemy will leave based on the players perspective")]
     [SerializeField]
     private LeaveDirection leaveDirection;
@@ -96,6 +102,8 @@ public class EnemyMovement : MonoBehaviour
     private float roll;
     private float t;
 
+    private float i, j, k;
+
     private float flyAwayPitch;
     private float flyAwayYaw;
     private float flyAwayRoll;
@@ -103,7 +111,7 @@ public class EnemyMovement : MonoBehaviour
     private float startY; //local start Y position
     private float startX; //local start X position
 
-    private bool isFlyingAway;
+    public bool isFlyingAway;
 
     Transform shipModel;
 
@@ -126,7 +134,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (waveMovement)
         {
@@ -161,7 +169,7 @@ public class EnemyMovement : MonoBehaviour
                 pitch -= waveFrequency;
             }
         }
-        RotateShip(Mathf.LerpAngle(0, -pitch, t += Time.deltaTime), 0, 0); //up down tilting
+        RotateShip(Mathf.LerpAngle(0, -pitch, t += Time.fixedDeltaTime), 0, 0); //up down tilting
 
         Move(0, pitch * waveFrequency); //move up/down
     }
@@ -186,7 +194,7 @@ public class EnemyMovement : MonoBehaviour
 
         if(hoverTimer > 0)
         {
-            RotateShip(0,0 , Mathf.LerpAngle(0, -roll, t += Time.deltaTime)); //left right tilting
+            RotateShip(0,0 , Mathf.LerpAngle(0, -roll, t += Time.fixedDeltaTime)); //left right tilting
         }
         
         Move(roll * waveFrequency, 0); //move left/right
@@ -198,15 +206,16 @@ public class EnemyMovement : MonoBehaviour
 
         if(flyingInTime > 0)
         {
-            transform.Translate(new Vector3(x, y, flyingInSpeed * (int)flyingInDirection) * Time.deltaTime); //ship movement wave or no wave
-            flyingInTime -= Time.deltaTime;
+            transform.Translate(new Vector3(x, y, flyingInSpeed * (int)flyingInDirection) * Time.fixedDeltaTime); //ship movement wave or no wave
+            flyingInTime -= Time.fixedDeltaTime;
+            if (flyingInTime <= 0) flyingIn = false;
         }
         else
         {
             if(hoverTimer > 0 && hover)
             {
-                transform.Translate(new Vector3(x, y, 0) * Time.deltaTime); //ship will hover
-                hoverTimer -= Time.deltaTime;
+                transform.Translate(new Vector3(x, y, 0) * Time.fixedDeltaTime); //ship will hover
+                hoverTimer -= Time.fixedDeltaTime;
             }
             else
             {
@@ -214,6 +223,9 @@ public class EnemyMovement : MonoBehaviour
                 {
                     t = 0;
                     isFlyingAway = true;
+                    i = shipModel.transform.localEulerAngles.x;
+                    j = shipModel.transform.localEulerAngles.y;
+                    k = shipModel.transform.localEulerAngles.z;
                 }
                 FlyAway();
             }
@@ -223,29 +235,28 @@ public class EnemyMovement : MonoBehaviour
     void FlyAway()
     {
         rotateWithMovement = true;
-        t += Time.deltaTime;
+        t += Time.fixedDeltaTime;
         switch (leaveDirection)
         {
             //pitch yaw roll
             case (LeaveDirection.UpLeft):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, flyAwayYaw, t), Mathf.LerpAngle(0, flyAwayRoll, t)); //pitch/yaw/roll
+                RotateShip(i + Mathf.LerpAngle(0, flyAwayPitch, t), j + Mathf.LerpAngle(0, flyAwayYaw * (isModelFacingPlayer ? -1 : 1), t), k + Mathf.LerpAngle(0, flyAwayRoll, t)); //pitch/yaw/roll
                 break;
             case (LeaveDirection.Up):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), 0, 0); //pitch
+                RotateShip(i + Mathf.LerpAngle(0, flyAwayPitch, t), j, k); //pitch
                 break;
             case (LeaveDirection.UpRight):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, -flyAwayYaw, t), Mathf.LerpAngle(0, -flyAwayRoll, t)); //pitch/-yaw/-roll
+                RotateShip(i + Mathf.LerpAngle(0, flyAwayPitch, t), j + Mathf.LerpAngle(0, -flyAwayYaw * (isModelFacingPlayer ? -1 : 1), t), k + Mathf.LerpAngle(0, -flyAwayRoll, t)); //pitch/-yaw/-roll
                 break;
             case (LeaveDirection.Left):
-                RotateShip(0, Mathf.LerpAngle(0, flyAwayYaw * 1.5f, t), 0); //0/yaw/roll
+                RotateShip(i, j + Mathf.LerpAngle(0, flyAwayYaw * (isModelFacingPlayer?-1:1 ) * 1.5f, t), k); //0/yaw/roll
                 break;
             case (LeaveDirection.Right):
-                RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, t), 0); //0/-yaw/-roll
+                RotateShip(i, j + Mathf.LerpAngle(0, -flyAwayYaw * (isModelFacingPlayer ? -1 : 1) * 1.5f, t), k); //0/-yaw/-roll
                 break;
         }
-        transform.Translate(shipModel.forward * Time.deltaTime * leaveSpeed, Space.World);
+        transform.Translate(shipModel.forward * Time.fixedDeltaTime * leaveSpeed, Space.World);
     }
-
     void RotateShip(float x, float y, float z)
     {
         if (rotateWithMovement)
