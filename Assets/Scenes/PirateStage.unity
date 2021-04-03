@@ -1672,7 +1672,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 56845373396437263, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
 --- !u!1001 &490452986
 PrefabInstance:
@@ -2146,7 +2147,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 56845373396437263, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
 --- !u!4 &707643627 stripped
 Transform:
@@ -3166,7 +3168,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5001769186911743260, guid: 70545e60bbc560846b2e220d3440193f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70545e60bbc560846b2e220d3440193f, type: 3}
 --- !u!1001 &1207099636
 PrefabInstance:
@@ -3266,7 +3269,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 56845373396437263, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
 --- !u!1001 &1214268719
 PrefabInstance:
@@ -4037,7 +4041,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7187926615537687613, guid: 9def5d943483c954ca2e3c8a3aa4736a,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8214873703329169550, guid: 19660514c8e817e4197759a49caf517f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 19660514c8e817e4197759a49caf517f, type: 3}
 --- !u!1001 &1361146070
 PrefabInstance:
@@ -4415,7 +4420,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1620720899582172215, guid: ce2a34da6d9ac1246a0496657891a84d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce2a34da6d9ac1246a0496657891a84d, type: 3}
 --- !u!1001 &1531600941
 PrefabInstance:
