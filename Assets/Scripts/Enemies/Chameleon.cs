@@ -92,7 +92,13 @@ public class Chameleon : EnemyHealth
             
             int damage = transform.GetComponent<EnemyHealth>().collisionDamage;
             player.GetComponent<PlayerInfo>().TakeDamage(damage);
-            transform.GetComponent<EnemyHealth>().DestroyEnemy();
+            DestroyEnemy();
         }
+    }
+
+    public override void DestroyEnemy()
+    {
+        GetComponent<EnemySpawner>().SpawnEnemy();
+        base.DestroyEnemy();
     }
 }
