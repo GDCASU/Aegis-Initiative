@@ -80,6 +80,9 @@ public class EnemyMovement : MonoBehaviour
     private float hoverTimer = 3.0f; //how long ship stays
 
     [Header("Leave Variables")]
+    [Tooltip("Fix if the model moves backwards while leaving")]
+    [SerializeField]
+    private bool MoonwalkCompensation = false;
     [Tooltip("Direction the enemy will leave based on the players perspective")]
     [SerializeField]
     private LeaveDirection leaveDirection;
@@ -107,7 +110,7 @@ public class EnemyMovement : MonoBehaviour
     Transform shipModel;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         atPosMax = false;
 
@@ -125,7 +128,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         switch (waveMovement)
         {
@@ -143,7 +146,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void UpDownWave()
+    private void UpDownWave()
     {
         CheckBounds(transform.localPosition.y); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
@@ -165,7 +168,7 @@ public class EnemyMovement : MonoBehaviour
         Move(0, pitch * waveFrequency); //move up/down
     }
 
-    void LeftRight()
+    private void LeftRight()
     {
         CheckBounds(transform.localPosition.x); //check if at peak or dip of wave
         if (!atPosMax) //at top of wave
@@ -191,7 +194,7 @@ public class EnemyMovement : MonoBehaviour
         Move(roll * waveFrequency, 0); //move left/right
     }
 
-    void Move(float x, float y)
+    private void Move(float x, float y)
     {
         if(!rotateWithMovement)RotateShip(0, 0, 0);
 
@@ -219,7 +222,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void FlyAway()
+    private void FlyAway()
     {
         rotateWithMovement = true;
         t += Time.deltaTime;
@@ -227,35 +230,59 @@ public class EnemyMovement : MonoBehaviour
         {
             //pitch yaw roll
             case (LeaveDirection.UpLeft):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, flyAwayYaw, t), Mathf.LerpAngle(0, flyAwayRoll, t)); //pitch/yaw/roll
+                FlyAwayRotation(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, flyAwayYaw, t), Mathf.LerpAngle(0, flyAwayRoll, t)); //pitch/yaw/roll
                 break;
             case (LeaveDirection.Up):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), 0, 0); //pitch
+                FlyAwayRotation(Mathf.LerpAngle(0, flyAwayPitch, t), 0, 0); //pitch
                 break;
             case (LeaveDirection.UpRight):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, -flyAwayYaw, t), Mathf.LerpAngle(0, -flyAwayRoll, t)); //pitch/-yaw/-roll
+                FlyAwayRotation(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, -flyAwayYaw, t), Mathf.LerpAngle(0, -flyAwayRoll, t)); //pitch/-yaw/-roll
                 break;
             case (LeaveDirection.Left):
-                RotateShip(0, Mathf.LerpAngle(0, flyAwayYaw * 1.5f, t), 0); //0/yaw/roll
+                FlyAwayRotation(0, Mathf.LerpAngle(0, flyAwayYaw * 1.5f, t), 0); //0/yaw/roll
                 break;
             case (LeaveDirection.Right):
-                RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, t), 0); //0/-yaw/-roll
+                FlyAwayRotation(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, t), 0); //0/-yaw/-roll
                 break;
         }
-        transform.Translate(shipModel.forward * Time.deltaTime * leaveSpeed, Space.World);
+        transform.Translate(transform.forward * Time.deltaTime * leaveSpeed, Space.World);
     }
 
-    void RotateShip(float x, float y, float z)
+    private void FlyAwayRotation(float x, float y, float z)
     {
+        //turn enemy HOST
+        Vector3 temp = new Vector3(x, y, z);
+        transform.localEulerAngles = temp;
+
+        if (lockedOntoPlayer)
+        {
+            shipModel.LookAt(PlayerInfo.singleton.transform.position);
+        }
+        else
+        {
+            //set model back straight
+            shipModel.localEulerAngles = Vector3.zero;
+
+            //flip it 180 so it's not longer backwards?
+            if (MoonwalkCompensation)
+                shipModel.localEulerAngles = new Vector3(0, 180, 0);
+        }
+    }
+
+    private void RotateShip(float x, float y, float z)
+    {
+        Vector3 temp = new Vector3(x, y, z);
         if (rotateWithMovement)
-            shipModel.localEulerAngles = new Vector3(x, y, z);
+        {
+            shipModel.localEulerAngles = temp;
+        } 
         else if (lockedOntoPlayer)
         {
             shipModel.LookAt(PlayerInfo.singleton.transform.position);
         }
     }
 
-    void CheckBounds(float currentValue)
+    private void CheckBounds(float currentValue)
     {
         if (waveMovement == WaveMovement.UpDown)
         {
