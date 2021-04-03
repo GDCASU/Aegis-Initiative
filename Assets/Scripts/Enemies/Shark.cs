@@ -47,7 +47,7 @@ public class Shark : MonoBehaviour
     [SerializeField]
     private float followIntensity = 0.3f;
 
-
+    public bool spinAround = false;
 
     private Transform player;
 
@@ -60,6 +60,8 @@ public class Shark : MonoBehaviour
     private bool isCharging = false;  // Is the Shark charging?
 
     private bool playerDetected = false;  // Has the Player been detected by the Shark?
+
+    public float animationDelayer;
 
     public Animator animator;
 
@@ -77,7 +79,8 @@ public class Shark : MonoBehaviour
             player = PlayerInfo.singleton.transform;
         }
 
-        StartCoroutine(MoveToCenter());
+        if (animationDelayer != 0) StartCoroutine(Delay());
+        else StartCoroutine(MoveToCenter());
     }
 
     /// <summary>
@@ -85,10 +88,14 @@ public class Shark : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        transform.RotateAround(host.transform.position, host.transform.forward, revolveSpeed * Time.deltaTime);
+        if(spinAround)transform.RotateAround(host.transform.position, host.transform.forward, revolveSpeed * Time.deltaTime);
         transform.eulerAngles = sharkAngles;
     }
-
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(animationDelayer);
+        StartCoroutine(MoveToCenter());
+    }
     #region MovementCoroutines
     /// <summary>
     /// Moves Shark towards the center (host) at a calculated speed for revolveTime. At some point, rotates the Shark to the Player. Once revolveTime
@@ -109,7 +116,6 @@ public class Shark : MonoBehaviour
                 StartCoroutine(RotateToPlayer());
                 isRotatingToPlayer = true;
             }
-            
             yield return null;
         }
 
@@ -153,7 +159,7 @@ public class Shark : MonoBehaviour
     /// </summary>
     private IEnumerator Charge()
     {
-        animator.SetBool("Attacking", true);
+        if(animator)animator.SetBool("Attacking", true);
         float elapsedTime = 0;
         host.GetComponent<EnemyMovement>().enabled = false;
         while (chargeDelay > 0)
@@ -172,7 +178,7 @@ public class Shark : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        animator.SetBool("Attacking", true);
+        if (animator) animator.SetBool("Attacking", true);
         Destroy(host);
     }
     #endregion
