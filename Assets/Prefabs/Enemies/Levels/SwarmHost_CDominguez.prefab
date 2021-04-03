@@ -144,7 +144,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5316088586541445482}
-  - component: {fileID: 5316088586541445481}
   - component: {fileID: 5316088586541445480}
   m_Layer: 0
   m_Name: Recommended Spawner Values
@@ -167,19 +166,6 @@ Transform:
   m_Father: {fileID: 8732340240652980501}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &5316088586541445481
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5316088586541445479}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7, y: 5, z: 0.19180298}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5316088586541445480
 MonoBehaviour:
   m_ObjectHideFlags: 0

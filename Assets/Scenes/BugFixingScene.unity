@@ -323,7 +323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &903707290
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ Transform:
   m_Children:
   - {fileID: 351292613260614253}
   m_Father: {fileID: 1366485691}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &903707291
 MonoBehaviour:
@@ -1693,6 +1693,75 @@ Transform:
   m_Father: {fileID: 543450653568034287}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2241366256406165156
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1366485691}
+    m_Modifications:
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2885135157591468495, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8781798778084259135, guid: 5558b1214a189574ca8fd21910dcbbc3,
+        type: 3}
+      propertyPath: m_Name
+      value: brad_SpaceFlyAdult
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5558b1214a189574ca8fd21910dcbbc3, type: 3}
 --- !u!1 &2372318107353817026
 GameObject:
   m_ObjectHideFlags: 0
