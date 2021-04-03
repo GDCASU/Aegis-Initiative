@@ -20,9 +20,6 @@ public class FlyQueen : MonoBehaviour
     private float firstLarvaeDropRate = 3f;  // the rate at which larvae shall drop from the first spawnpoint
 
     [SerializeField]
-    private float succeedingLarvaeDropRate = 0.3f;  // the rate at which the second and succeeding spawnpoints shall spawn larvae after one another
-
-    [SerializeField]
     private List<GameObject> larvaeSpawnpoints;  // spawnpoints for the Fly Larvae
 
     public Animator animator;
@@ -34,6 +31,8 @@ public class FlyQueen : MonoBehaviour
 
     public float framesOfAnimation;
 
+    private bool shooting;
+
 
     private void Start()
     {
@@ -44,9 +43,8 @@ public class FlyQueen : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (timer <=  0)
+        if (timer <=  0 && !shooting)
         {
-            timer = firstLarvaeDropRate;
             StartCoroutine(DropLarvae());
         }
         if (!enemyMovement.flyingIn && !enemyMovement.isFlyingAway) timer -= Time.deltaTime;
@@ -63,9 +61,12 @@ public class FlyQueen : MonoBehaviour
     /// </summary>
     private IEnumerator DropLarvae()
     {
-        animator.SetBool("Shooting", true);
+        shooting = true;
+        animator.SetBool("Shooting", shooting);       
         yield return new WaitForSeconds(framesOfAnimation /24f);
-        animator.SetBool("Shooting", false);
+        shooting = false;
+        animator.SetBool("Shooting", shooting);
+        timer = firstLarvaeDropRate;
 
     }
 }

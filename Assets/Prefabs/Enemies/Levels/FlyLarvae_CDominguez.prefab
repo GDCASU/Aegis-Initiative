@@ -129,4 +129,4 @@ MonoBehaviour:
   vulnerabilityDamageMultiplier: 1.25
   vulnerabilityActiveTime: 5
   lifeTime: 3
-  forwardSpeed: 0
+  forwardSpeed: 10
