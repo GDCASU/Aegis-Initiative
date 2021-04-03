@@ -125,12 +125,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e9344d4b4c46f41af000f825e62679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  collisionDamage: 0
+  doNotDespawn: 0
+  lifeTime: 20
   totalHealth: 100
   totalDamage: 20
   unitPrefab: {fileID: 8556706018873613575, guid: ba9c7cbfa3ddb984e8496caa9ddf75e5,
     type: 3}
   swarmPopulation: 100
   disperseTime: 1.5
+--- !u!1 &5316088586541445479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5316088586541445482}
+  - component: {fileID: 5316088586541445480}
+  m_Layer: 0
+  m_Name: Recommended Spawner Values
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5316088586541445482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5316088586541445479}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -8.095003, y: 3.304, z: 4.6334996}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 8732340240652980501}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &5316088586541445480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5316088586541445479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6186d4995681be14e9c5b22c16c8e4ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemies:
+  - SpawnLocation: 4
+    enemy: {fileID: 8732340240652980503}
+    adjustWidth: 0
+    adjustHeight: 0.732
+    adjustDepth: 7.8
+  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
 --- !u!1 &8732340240652980503
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8732340240652980501
 Transform:
   m_ObjectHideFlags: 0
@@ -160,6 +214,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5064829362590917150}
+  - {fileID: 5316088586541445482}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,12 +230,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveMovement: 0
+  rotateWithMovement: 1
+  lockedOntoPlayer: 0
+  waveMovement: 2
   maxWavePeak: 1.2
   minWaveDip: 0
   waveFrequency: 0.5
   maxAngle: 10
-  shipSpeed: 2
+  flyingInSpeed: 2
+  flyingInTime: 2.56
+  flyingInDirection: -1
+  flyingIn: 1
   hover: 1
-  hoverTimer: 3
-  leaveDirection: 0
+  hoverTimer: 8.81
+  leaveDirection: 4
+  leaveSpeed: 11.84
+  isFlyingAway: 0

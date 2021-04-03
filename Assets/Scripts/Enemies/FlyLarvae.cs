@@ -87,7 +87,7 @@ public class FlyLarvae : MonoBehaviour
 
             PlayerInfo.TakeDamage(damage);
             PlayerInfo.AddStatusEffect(StatusEffects.VULNERABILITY, vulnerabilityDamageMultiplier, vulnerabilityActiveTime);
-
+            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             Destroy(this.gameObject);
         }
     }

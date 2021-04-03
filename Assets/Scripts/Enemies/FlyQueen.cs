@@ -20,28 +20,40 @@ public class FlyQueen : MonoBehaviour
     private float firstLarvaeDropRate = 3f;  // the rate at which larvae shall drop from the first spawnpoint
 
     [SerializeField]
-    private float succeedingLarvaeDropRate = 0.3f;  // the rate at which the second and succeeding spawnpoints shall spawn larvae after one another
-
-    [SerializeField]
     private List<GameObject> larvaeSpawnpoints;  // spawnpoints for the Fly Larvae
 
-    private float elapsedTime = 0;  // time since the latest larvae drop from the first spawnpoint
+    public Animator animator;
+    int spawnIndex = 0;
 
+    public float timer = 0.1f;  // time since the latest larvae drop from the first spawnpoint
+
+    public EnemyMovement enemyMovement;
+
+    public float framesOfAnimation;
+
+    private bool shooting;
+
+
+    private void Start()
+    {
+        enemyMovement = GetComponentInParent<EnemyMovement>();
+    }
     /// <summary>
     /// Initiates a barrage of larvae at the first larvae drop rate.
     /// </summary>
     private void Update()
     {
-        // If the elapsed time reaches the firstLarvaeDropRate, call the DropLarvae coroutine and reset the elapsed time.
-        if (elapsedTime >= firstLarvaeDropRate)
+        if (timer <=  0 && !shooting)
         {
             StartCoroutine(DropLarvae());
-
-            elapsedTime = 0;
         }
+        if (!enemyMovement.flyingIn && !enemyMovement.isFlyingAway) timer -= Time.deltaTime;
+    }
 
-        // Increment the elapsed time.
-        elapsedTime += Time.deltaTime;
+    public void SpawnBullet()
+    {
+        Instantiate(flyLarvae, larvaeSpawnpoints[spawnIndex].transform.position, transform.rotation);
+        spawnIndex = (++spawnIndex % 2);
     }
 
     /// <summary>
@@ -49,16 +61,12 @@ public class FlyQueen : MonoBehaviour
     /// </summary>
     private IEnumerator DropLarvae()
     {
-        for (int i = 0; i < larvaeSpawnpoints.Count; i++)
-        {
-            // If the Fly Queen has been destroyed, stop dropping larvae.
-            if (gameObject == null)
-            {
-                yield break;
-            }
+        shooting = true;
+        animator.SetBool("Shooting", shooting);       
+        yield return new WaitForSeconds(framesOfAnimation /24f);
+        shooting = false;
+        animator.SetBool("Shooting", shooting);
+        timer = firstLarvaeDropRate;
 
-            Instantiate(flyLarvae, larvaeSpawnpoints[i].transform.position, transform.rotation);
-            yield return new WaitForSeconds(succeedingLarvaeDropRate);
-        }
     }
 }

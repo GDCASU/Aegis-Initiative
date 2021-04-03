@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
         TopMiddle,
         TopRight,
         MiddleLeft,
+        Middle,
         MiddleRight,
         BottomLeft,
         BottomRight,
@@ -98,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
                             xSpawnAdjustment += xSpawnAdditive;
                             ySpawnAdjustment += -ySpawnAdditive;
                             break;
-                        default:
+                        case spawnLocation.Middle:
                             break;
                     }
 
