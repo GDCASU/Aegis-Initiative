@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateWithMovement: 1
+  rotateWithMovement: 0
   lockedOntoPlayer: 0
   waveMovement: 2
   maxWavePeak: 1.2
@@ -860,6 +860,7 @@ MonoBehaviour:
   flyingIn: 1
   hover: 1
   hoverTimer: 10
+  isModelFacingPlayer: 1
   leaveDirection: 4
   leaveSpeed: 5
   isFlyingAway: 0

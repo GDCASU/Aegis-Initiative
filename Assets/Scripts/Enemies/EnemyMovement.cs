@@ -84,6 +84,9 @@ public class EnemyMovement : MonoBehaviour
     public float hoverTimer = 3.0f; //how long ship stays
 
     [Header("Leave Variables")]
+    [Tooltip("Determines the leave rotation")]
+    [SerializeField]
+    private bool isModelFacingPlayer = false;
     [Tooltip("Direction the enemy will leave based on the players perspective")]
     [SerializeField]
     private LeaveDirection leaveDirection;
@@ -98,6 +101,8 @@ public class EnemyMovement : MonoBehaviour
     private float yaw;
     private float roll;
     private float t;
+
+    private float i, j, k;
 
     private float flyAwayPitch;
     private float flyAwayYaw;
@@ -218,6 +223,9 @@ public class EnemyMovement : MonoBehaviour
                 {
                     t = 0;
                     isFlyingAway = true;
+                    i = shipModel.transform.localEulerAngles.x;
+                    j = shipModel.transform.localEulerAngles.y;
+                    k = shipModel.transform.localEulerAngles.z;
                 }
                 FlyAway();
             }
@@ -232,24 +240,23 @@ public class EnemyMovement : MonoBehaviour
         {
             //pitch yaw roll
             case (LeaveDirection.UpLeft):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, flyAwayYaw, t), Mathf.LerpAngle(0, flyAwayRoll, t)); //pitch/yaw/roll
+                RotateShip(i + Mathf.LerpAngle(0, flyAwayPitch, t), j + Mathf.LerpAngle(0, flyAwayYaw * (isModelFacingPlayer ? -1 : 1), t), k + Mathf.LerpAngle(0, flyAwayRoll, t)); //pitch/yaw/roll
                 break;
             case (LeaveDirection.Up):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), 0, 0); //pitch
+                RotateShip(i + Mathf.LerpAngle(0, flyAwayPitch, t), j, k); //pitch
                 break;
             case (LeaveDirection.UpRight):
-                RotateShip(Mathf.LerpAngle(0, flyAwayPitch, t), Mathf.LerpAngle(0, -flyAwayYaw, t), Mathf.LerpAngle(0, -flyAwayRoll, t)); //pitch/-yaw/-roll
+                RotateShip(i + Mathf.LerpAngle(0, flyAwayPitch, t), j + Mathf.LerpAngle(0, -flyAwayYaw * (isModelFacingPlayer ? -1 : 1), t), k + Mathf.LerpAngle(0, -flyAwayRoll, t)); //pitch/-yaw/-roll
                 break;
             case (LeaveDirection.Left):
-                RotateShip(0, Mathf.LerpAngle(0, flyAwayYaw * 1.5f, t), 0); //0/yaw/roll
+                RotateShip(i, j + Mathf.LerpAngle(0, flyAwayYaw * (isModelFacingPlayer?-1:1 ) * 1.5f, t), k); //0/yaw/roll
                 break;
             case (LeaveDirection.Right):
-                RotateShip(0, Mathf.LerpAngle(0, -flyAwayYaw * 1.5f, t), 0); //0/-yaw/-roll
+                RotateShip(i, j + Mathf.LerpAngle(0, -flyAwayYaw * (isModelFacingPlayer ? -1 : 1) * 1.5f, t), k); //0/-yaw/-roll
                 break;
         }
         transform.Translate(shipModel.forward * Time.fixedDeltaTime * leaveSpeed, Space.World);
     }
-
     void RotateShip(float x, float y, float z)
     {
         if (rotateWithMovement)

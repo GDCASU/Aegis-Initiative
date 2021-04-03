@@ -36,7 +36,9 @@ public class Shark : MonoBehaviour
     [Tooltip("Speed at which Shark charges ahead")]
     [SerializeField]
     private float chargeSpeed = 10f;
-
+    [Tooltip("Delay before the shark starts chargig to let the player realise whats happening")]
+    [SerializeField]
+    private float chargeDelay = 1;
     [Tooltip("Time Shark should charge until being destroyed")]
     [SerializeField]
     private float chargeTime = 2f;
@@ -45,13 +47,15 @@ public class Shark : MonoBehaviour
     [SerializeField]
     private float followIntensity = 0.3f;
 
+
+
     private Transform player;
 
     private int collisionDamage;  // damage dealt to Player upon collision
 
     private GameObject host;  // parent gameobject the Shark shall revolve around
 
-    private Vector3 sharkAngles = new Vector3(0, 0, 0);  // angles of the Shark in World Space
+    private Vector3 sharkAngles;  // angles of the Shark in World Space
 
     private bool isCharging = false;  // Is the Shark charging?
 
@@ -66,6 +70,7 @@ public class Shark : MonoBehaviour
     {
         host = transform.parent.gameObject;
         collisionDamage = GetComponent<EnemyHealth>().collisionDamage;
+        sharkAngles = transform.eulerAngles;
 
         if (PlayerInfo.singleton != null)
         {
@@ -94,8 +99,7 @@ public class Shark : MonoBehaviour
         float elapsedTime = 0;
         float toCenterSpeed = transform.localPosition.magnitude / revolveTime;  // speed at which Shark shall move towards host
         bool isRotatingToPlayer = false;  // Is the Shark rotating to the Player?
-
-        while (elapsedTime < revolveTime)
+        while (elapsedTime < revolveTime )
         {
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, toCenterSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
@@ -138,7 +142,6 @@ public class Shark : MonoBehaviour
                 }
                 else
                     transform.LookAt(player);
-
                 yield return null;
             }
         }
@@ -153,7 +156,13 @@ public class Shark : MonoBehaviour
         animator.SetBool("Attacking", true);
         float elapsedTime = 0;
         host.GetComponent<EnemyMovement>().enabled = false;
-
+        while (chargeDelay > 0)
+        {
+            transform.LookAt(player);
+            chargeDelay -= Time.deltaTime;
+            yield return null;
+        }
+        transform.LookAt(player);
         while (elapsedTime < chargeTime)
         {
             sharkAngles = RotateToObject(player, followIntensity);
