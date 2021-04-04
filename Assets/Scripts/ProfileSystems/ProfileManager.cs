@@ -34,14 +34,8 @@ public class ProfileManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-
         DontDestroyOnLoad(this);
-    }
-
-    private void Start()
-    {
         LoadAllProfiles();
-
         if (saveTestProfiles) TestSaveProfiles();
     }
 

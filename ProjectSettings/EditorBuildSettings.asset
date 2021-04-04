@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MushroomStage.unity
     guid: 1986efd67b4219946850df4c71630f4f
+  - enabled: 1
+    path: Assets/Scenes/PirateStage.unity
+    guid: 9773df4fb250fc045980e7b6d96a51a8
   - enabled: 0
     path: Assets/Scenes/brad_mid_stage_remarks.unity
     guid: ea18078b8bc326c47a8ac9f71d0ab089
