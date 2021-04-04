@@ -55,13 +55,8 @@ public class ProfileManager : MonoBehaviour
     {
         if (profileIndex < 0 || profileIndex >= profiles.Length) return false;
 
-        if (profiles[profileIndex] == null)
-        {
-            profiles[profileIndex] = new ProfileData(profileIndex, profileName);
-            return true;
-        }
-
-        return false;
+        profiles[profileIndex] = new ProfileData(profileIndex, profileName);
+        return true;
     }
 
     public void SaveProfile(int profileIndex)
@@ -112,13 +107,19 @@ public class ProfileManager : MonoBehaviour
     /// </summary>
     public void TestSaveProfiles()
     {
-        CreateProfile(0, "UITest");
-        profiles[0].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
+        CreateProfile(0, "UITest1");
         profiles[0].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
         profiles[0].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
-        profiles[0].AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
-        profiles[0].AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
-        SaveCurrentProfile();
+        profiles[0].currentStage = 0;
         SaveProfile(0);
+        CreateProfile(1, "UITest2");
+        profiles[1].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
+        profiles[1].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
+        profiles[1].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
+        profiles[1].AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
+        profiles[1].AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
+        profiles[1].currentStage = 1;
+        SaveProfile(1);
+
     }
 }

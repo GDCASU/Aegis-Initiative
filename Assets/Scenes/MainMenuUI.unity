@@ -8230,7 +8230,7 @@ PrefabInstance:
     - target: {fileID: 671830635916209258, guid: 6776146dc4c34a447ad7adb930972111,
         type: 3}
       propertyPath: profileCount
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 671830635916209259, guid: 6776146dc4c34a447ad7adb930972111,
         type: 3}
