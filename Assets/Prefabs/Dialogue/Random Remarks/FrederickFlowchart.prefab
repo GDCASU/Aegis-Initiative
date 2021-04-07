@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: -7262017242784070085}
   - component: {fileID: -8256019299168350383}
   m_Layer: 0
-  m_Name: FeebeeFlowchart
+  m_Name: FrederickFlowchart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: -7243541577956726307}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: -5558105810119734954}
   variables: []
   description: 
   stepPause: 0
@@ -156,9 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 0
-  storyText: '[~Watch it!|Woah!|Careful, idiot!|Are you trying to kill us?|Don''t
-    scratch the paint!|I''m not paying for that...|Hey, I just got the last dent
-    out of this!]'
+  storyText: '[~Ouch!|Oof!|Not my nice paint job!|Ow- I mean, didn''t hurt a bit!|Brush
+    it off, brush it off.|That''s going to leave a mark.|Aw man, I needed the ship
+    to look good for my date tonight...]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -395,10 +396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 39
   indentLevel: 0
-  storyText: '[~Alright, let''s do this!|Hold on, looks like we''re in for a bumpy
-    ride... especially with {i}you{/i} at the helm.|Hurry up or we''ll miss all the
-    action!|Took you long enough, buckle up and let''s go!|Come on, hit it! My grandma
-    flies faster than you.|We''re going to absolutely destroy this mission!]'
+  storyText: '[~Let''s roll out!|Time to rocket and roll!|Oh, this is going to be
+    fun.|Freddy''s ready!|We got this!|Hit it, kid!]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -578,8 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 45
   indentLevel: 0
-  storyText: '[~What a surprise, we made it out alive.|We sure showed them what Tiberius
-    Station''s all about!|Huh... nice flying out there.|Take that!|WOOHOO!!]'
+  storyText: '[~Nice moves!|Can''t wait to tell this story in the canteen tonight!|Awesome!||Woooo!]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -759,7 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 51
   indentLevel: 0
-  storyText: '[~Good, we needed that.|Sweet!|Rad!]'
+  storyText: '[~Yum!|Cool!|Gotta top up!]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -939,8 +937,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 57
   indentLevel: 0
-  storyText: '[~Got ''em!|Woah! Nice shot...|Take that!|Bye bye!|They should''ve
-    never messed with us.|Don''t mess with Tiberius Station!]'
+  storyText: '[~Got ''em!|Woah! Nice shot!|Adios!|Too cool for you!|Don''t mess with
+    Tiberius Station!|Don''t mess with us!]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -1120,8 +1118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 63
   indentLevel: 0
-  storyText: '[~Crap, now I gotta fly myself home...|We''re losing control of the
-    ship!|We''re going down! Hold on!]'
+  storyText: '[~We''re going down!|We''re losing control of the ship!|We''re going
+    down! Hold on!]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
