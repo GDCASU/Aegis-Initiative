@@ -1182,7 +1182,6 @@ GameObject:
   - component: {fileID: 1864836716}
   - component: {fileID: 1864836715}
   - component: {fileID: 1864836714}
-  - component: {fileID: 1864836740}
   - component: {fileID: 1864836741}
   - component: {fileID: 1864836742}
   - component: {fileID: 1864836743}
@@ -1207,7 +1206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 614.5, y: 146.5}
+  scrollPos: {x: 363.18298, y: 138.04709}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 403
@@ -1285,7 +1284,7 @@ MonoBehaviour:
   itemId: 0
   blockName: Mushii0
   description: 
-  eventHandler: {fileID: 1864836740}
+  eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1864836652}
   - {fileID: 1864836651}
@@ -4540,24 +4539,9 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
---- !u!114 &1864836740
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864836623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 1864836626}
-  suppressBlockAutoSelect: 0
-  waitForFrames: 1
 --- !u!114 &1864836741
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4587,7 +4571,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1864836742
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4617,7 +4601,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1864836743
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4647,7 +4631,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1864836744
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
