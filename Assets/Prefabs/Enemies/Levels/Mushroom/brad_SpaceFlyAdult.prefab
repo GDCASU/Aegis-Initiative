@@ -755,7 +755,7 @@ Transform:
   m_GameObject: {fileID: 2984532603848997522}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.050000004, y: 0.05, z: 0.050000004}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4421550738999333686}
   - {fileID: 1090661728182088321}
@@ -1852,6 +1852,7 @@ MonoBehaviour:
   flyingIn: 1
   hover: 1
   hoverTimer: 10
+  isModelFacingPlayer: 0
   leaveDirection: 2
   leaveSpeed: 5
   isFlyingAway: 0

@@ -16,7 +16,7 @@ public class Pufferbomb : MonoBehaviour
     void Start()
     {
         explosion = transform.GetComponent<ParticleSystem>();
-        mesh = transform.GetComponent<MeshRenderer>();
+        mesh = transform.GetComponentInChildren<MeshRenderer>();
         //Set distance value to the sphere collider that has trigger enabled
         foreach (SphereCollider collider in transform.GetComponents<SphereCollider>())
         {
