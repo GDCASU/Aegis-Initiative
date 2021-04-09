@@ -73,6 +73,9 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int x = 0; x < _enemies.Length; x++) //loop through enemies to spawn
         {
+            xSpawnAdjustment = 0;
+            ySpawnAdjustment = 0;
+            zSpawnAdjustment = 0;
             if (_enemies[x].SpawnLocation != spawnLocation.AtCurrentPosition)
             {
                 xSpawnAdjustment += xSpawnAdditive * _enemies[x].adjustWidth * playerScale.x;
