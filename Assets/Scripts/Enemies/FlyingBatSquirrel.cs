@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingBatSquirrel : MonoBehaviour
+public class FlyingBatSquirrel : EnemyHealth
 {
     [SerializeField]
     [Tooltip("Speed at which Squirrel shall approach the Player.")]
@@ -91,4 +91,10 @@ public class FlyingBatSquirrel : MonoBehaviour
     /// Notifies Host to stop following the Player.
     /// </summary>
     public void StopFollowingPlayer() => isFollowingPlayer = false;
+
+    public override void DestroyEnemy()
+    {
+        GetComponent<EnemySpawner>().SpawnEnemy();
+        base.DestroyEnemy();
+    }
 }

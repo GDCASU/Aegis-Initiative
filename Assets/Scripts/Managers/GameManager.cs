@@ -10,12 +10,17 @@ public class GameManager : MonoBehaviour
     public GameObject activeCopilot;
     public GameObject passiveCopilot;
 
+    public Dictionary<int, string> levels;
+
     private void Awake()
     {
         if (singleton == null)
             singleton = this;
         else
             Destroy(gameObject);
+        levels = new Dictionary<int, string>();
+        levels.Add(0,"MushroomStage");
+        levels.Add(1,"PirateStage");
     }
     public void ChangeActive(System.Type type, CopilotMechanic info)
     {
