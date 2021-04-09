@@ -92,9 +92,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_AC8DA5E6: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
-    - Color_BAED503F: {r: 1, g: 1, b: 1, a: 1}
-    - Color_C31FA31D: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+    - Color_AC8DA5E6: {r: 0.07058824, g: 0.59607846, b: 1.4980392, a: 1}
+    - Color_BAED503F: {r: 0.084905624, g: 0.79368395, b: 2, a: 1}
+    - Color_C31FA31D: {r: 0.03355288, g: 0.09236131, b: 0.5471698, a: 1}
     - Color_D022FE9D: {r: 0, g: 0, b: 0, a: 0}
     - Color_F7F37CE1: {r: 0.28235295, g: 0.49019608, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
