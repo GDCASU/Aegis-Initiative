@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
         health -= damage;
         if (health <= 0) DestroyEnemy();
     }
-    public void DestroyEnemy()
+    public virtual void DestroyEnemy()
     {
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }
