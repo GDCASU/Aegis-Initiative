@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -460.43, y: -1000}
+  m_AnchoredPosition: {x: -460.43, y: -1049}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &10817135
@@ -212,12 +212,9 @@ GameObject:
   - component: {fileID: 376420829}
   - component: {fileID: 376420834}
   - component: {fileID: 376420833}
-  - component: {fileID: 376420832}
   - component: {fileID: 376420831}
   - component: {fileID: 376420830}
   - component: {fileID: 376420838}
-  - component: {fileID: 376420837}
-  - component: {fileID: 376420836}
   - component: {fileID: 376420835}
   - component: {fileID: 376420839}
   - component: {fileID: 376420825}
@@ -319,7 +316,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 49.299988
     y: -133
-    width: 98
+    width: 99.6
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -359,7 +356,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 4
     y: -171
-    width: 100
+    width: 101.2
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -372,9 +369,6 @@ MonoBehaviour:
   - {fileID: 376420833}
   - {fileID: 376420838}
   - {fileID: 376420834}
-  - {fileID: 376420837}
-  - {fileID: 376420832}
-  - {fileID: 376420836}
   - {fileID: 376420831}
   - {fileID: 376420835}
   - {fileID: 376420830}
@@ -399,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 263.59998, y: 298.3}
+  scrollPos: {x: 238.59998, y: 315.3}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -410,10 +404,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 376420826}
-  selectedCommands:
-  - {fileID: 376420829}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -512,34 +504,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 6
   indentLevel: 0
-  storyText: '"team unity" and "truting in others" and all that mushy stuff.'
-  description: 
-  character: {fileID: 975775587}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &376420832
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376420824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 5
-  indentLevel: 0
-  storyText: The professors, they're always talking about
+  storyText: The professors, they're always talking about "team unity" and "truting
+    in others" and all that mushy stuff.
   description: 
   character: {fileID: 975775587}
   portrait: {fileID: 0}
@@ -637,66 +603,6 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
---- !u!114 &376420836
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376420824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 10
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 0}
-  character: {fileID: 975775587}
-  replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 322a860e98940a447b6e4d988ce190d6, type: 3}
-  offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 2064761717}
-  facing: 0
-  useDefaultSettings: 0
-  fadeDuration: 0
-  moveDuration: 1
-  shiftOffset: {x: 0, y: 0}
-  move: 0
-  shiftIntoPlace: 0
-  waitUntilFinished: 0
---- !u!114 &376420837
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376420824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 9
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 0}
-  character: {fileID: 975775587}
-  replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: f8f8fb7d88ca4e34b839a9f897271d39, type: 3}
-  offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 2064761717}
-  facing: 0
-  useDefaultSettings: 0
-  fadeDuration: 0
-  moveDuration: 1
-  shiftOffset: {x: 0, y: 0}
-  move: 0
-  shiftIntoPlace: 0
-  waitUntilFinished: 0
 --- !u!114 &376420838
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -715,7 +621,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 975775587}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: b5098869a8d16c44497dc7d5d022e5b3, type: 3}
+  portrait: {fileID: 21300000, guid: 322a860e98940a447b6e4d988ce190d6, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 2064761717}
@@ -745,7 +651,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 975775587}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: b5098869a8d16c44497dc7d5d022e5b3, type: 3}
+  portrait: {fileID: 21300000, guid: 322a860e98940a447b6e4d988ce190d6, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -1373,7 +1279,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 141.80002
     y: -58
-    width: 100
+    width: 101.2
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1426,7 +1332,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 98.80002
     y: -96
-    width: 99
+    width: 100.4
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2986,7 +2892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 1300, y: -1000}
+  m_AnchoredPosition: {x: 1300, y: -1049}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &423905001
@@ -3474,10 +3380,10 @@ MonoBehaviour:
   soundEffect: {fileID: 0}
   portraits:
   - {fileID: 21300000, guid: b5098869a8d16c44497dc7d5d022e5b3, type: 3}
-  - {fileID: 21300000, guid: 322a860e98940a447b6e4d988ce190d6, type: 3}
   - {fileID: 21300000, guid: f847266a0c259e14aa0fcadef75064c8, type: 3}
   - {fileID: 21300000, guid: f8f8fb7d88ca4e34b839a9f897271d39, type: 3}
   - {fileID: 21300000, guid: 493a88df977e456428c669e911179cd6, type: 3}
+  - {fileID: 21300000, guid: 322a860e98940a447b6e4d988ce190d6, type: 3}
   portraitsFace: 0
   setSayDialog: {fileID: 0}
   description: 
@@ -3529,7 +3435,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 460.43, y: -1000}
+  m_AnchoredPosition: {x: 460.43, y: -1049}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1352634893
@@ -3604,7 +3510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1300, y: -1000}
+  m_AnchoredPosition: {x: -1300, y: -1049}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1428409382
@@ -3771,7 +3677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1000}
+  m_AnchoredPosition: {x: 0, y: -1130}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2064761718

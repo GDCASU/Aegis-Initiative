@@ -45,6 +45,8 @@ public class LaserBot : MonoBehaviour
     [SerializeField]
     private Transform bulletSpawnpoint;
 
+    private bool boss;
+
     [Header("Approaching Player")]
     [Tooltip("Speed the Bot shall approach the Player before detecting the Player.")]
     [SerializeField]
@@ -73,6 +75,8 @@ public class LaserBot : MonoBehaviour
             transform.Rotate(0, player.localEulerAngles.y + 180, 0);
             playerMovement = PlayerInfo.singleton.GetComponent<ShipMovement>();
         }
+
+        boss = host.name.Contains("AsteroidBoss") ? true : false;
     }
 
     /// <summary>
@@ -92,7 +96,7 @@ public class LaserBot : MonoBehaviour
 
         // If the Player has been detected, shoot at Player if the time elapsed after the previous burst is >= burstRecoveryTime and then set elapsedTime to 0. Only
         // increase elapsedTime if the Bot is not shooting.
-        if (playerDetected)
+        if (playerDetected || boss)
         {
             if (elapsedTime >= burstRecoveryTime)
             {

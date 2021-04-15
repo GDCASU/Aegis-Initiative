@@ -147,7 +147,7 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        SceneManager.LoadScene(sceneToLoad,LoadSceneMode.Single);
+        SceneManager.LoadScene(GameManager.singleton.levels[ProfileManager.instance.CurrentProfile.currentStage],LoadSceneMode.Single);
     }
     /// <summary>
     /// Method used to pop up the "Are you sure?" prompt before returning to the Hub UI.  Called  by a Unity UI button
@@ -174,6 +174,7 @@ public class CopilotUI : MonoBehaviour
         selected = null;
         copilotUI.SetActive(false);
         goBackPrompt.SetActive(false);
+        SceneManager.LoadScene("MainMenuUI", LoadSceneMode.Single);
     }
     /// <summary>
     /// Method used to ge back to the CopilotUI and turn off the "Are you sure?" prompt.  Called  by a Unity UI button
