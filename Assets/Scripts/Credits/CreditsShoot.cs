@@ -29,6 +29,8 @@ public class CreditsShoot : MonoBehaviour
 
     private void MoveReticle()
     {
+        Reticle.Rotate(Vector3.forward, Time.deltaTime * 10);
+
         if (ControlWithMouse)
         {
             Reticle.position = Input.mousePosition;
@@ -62,6 +64,7 @@ public class CreditsShoot : MonoBehaviour
 
     private void Shoot()
     {
+        StartCoroutine(ShootAnim(20));
         ray = Camera.main.ScreenPointToRay(Reticle.position);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 300))
@@ -72,5 +75,18 @@ public class CreditsShoot : MonoBehaviour
 
         //GameObject test = Instantiate(LaserParent, ray.origin, Quaternion.identity);
         //test.transform.LookAt(ray.direction * 300);
+    }
+
+    private IEnumerator ShootAnim(int steps)
+    {
+        RectTransform reticleRectTransform = Reticle.GetComponent<RectTransform>();
+
+        for (int i=0; i<steps; i++)
+        {
+            if (i < steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 2, (float)i/10);
+            if (i >= steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one * 2, Vector3.one, (float)(i - 10)/10);
+            yield return new WaitForSeconds(.01f);
+        }
+
     }
 }
