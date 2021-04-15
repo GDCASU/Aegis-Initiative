@@ -7,12 +7,15 @@ public class CreditsShoot : MonoBehaviour
     public bool ControlWithMouse = true;
     public bool ReticleMovesBack = false;
     public Transform Reticle;
+    public Transform LaserSpawn1;
+    public Transform LaserSpawn2;
     public GameObject LaserParent;
     public float MoveSpeed = 30f;
     public float MoveBackSpeed = 10f;
     public Canvas canvas;
 
     private Ray ray;
+    private bool isShooting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,7 @@ public class CreditsShoot : MonoBehaviour
     void Update()
     {
         MoveReticle();
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) Shoot();
+        if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) && !isShooting) Shoot();
     }
 
     private void MoveReticle()
@@ -65,28 +68,43 @@ public class CreditsShoot : MonoBehaviour
     private void Shoot()
     {
         StartCoroutine(ShootAnim(20));
+        
         ray = Camera.main.ScreenPointToRay(Reticle.position);
+        Vector3 direction = ray.direction * 300;
 
         if (Physics.Raycast(ray, out RaycastHit hit, 300))
         {
+            direction = hit.point;
             hit.transform.GetComponentInParent<CreditsNameMovement>()?.Shot();
         }
-        //Debug.DrawRay(ray.origin, ray.direction * 300, Color.red, 3);
 
-        //GameObject test = Instantiate(LaserParent, ray.origin, Quaternion.identity);
-        //test.transform.LookAt(ray.direction * 300);
+        ShootLaserPrefabs(direction);
+    }
+
+    private void ShootLaserPrefabs(Vector3 position)
+    {
+        GameObject laser = Instantiate(LaserParent, LaserSpawn1.position, LaserSpawn1.rotation);
+        laser.GetComponent<CreditsLaser>().Direction = position;
+        laser = Instantiate(LaserParent, LaserSpawn2.position, LaserSpawn2.rotation);
+        laser.GetComponent<CreditsLaser>().Direction = position;
     }
 
     private IEnumerator ShootAnim(int steps)
     {
-        RectTransform reticleRectTransform = Reticle.GetComponent<RectTransform>();
-
-        for (int i=0; i<steps; i++)
+        if (!isShooting)
         {
-            if (i < steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 2, (float)i/10);
-            if (i >= steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one * 2, Vector3.one, (float)(i - 10)/10);
-            yield return new WaitForSeconds(.01f);
-        }
+            isShooting = true;
+            RectTransform reticleRectTransform = Reticle.GetComponent<RectTransform>();
+            reticleRectTransform.localScale = Vector3.one;
 
+            for (int i = 0; i < steps; i++)
+            {
+                if (i < steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 2, (float)i / 10);
+                if (i >= steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one * 2, Vector3.one, (float)(i - 10) / 10);
+                yield return new WaitForSeconds(.01f);
+            }
+
+            isShooting = false;
+        }
     }
 }

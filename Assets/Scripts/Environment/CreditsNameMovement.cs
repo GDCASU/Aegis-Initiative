@@ -16,8 +16,8 @@ public class CreditsNameMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TitleText.gameObject.AddComponent<BoxCollider>();
-        NameText.gameObject.AddComponent<BoxCollider>();
+        TitleText.gameObject.AddComponent<BoxCollider>().size += new Vector3(0, 0, 20f);
+        NameText.gameObject.AddComponent<BoxCollider>().size += new Vector3(0, 0, 20f);
     }
 
     // Update is called once per frame
