@@ -608,9 +608,10 @@ MonoBehaviour:
   ControlWithMouse: 0
   ReticleMovesBack: 0
   Reticle: {fileID: 1046957425}
-  LaserSpawn1: {fileID: 0}
-  LaserSpawn2: {fileID: 0}
-  LaserParent: {fileID: 0}
+  LaserSpawn1: {fileID: 1952429951}
+  LaserSpawn2: {fileID: 69578402}
+  LaserParent: {fileID: 9108299280502422428, guid: 3f499bf9d82b0d4498e755b8e2f9e318,
+    type: 3}
   MoveSpeed: 700
   MoveBackSpeed: 700
   canvas: {fileID: 1424024025}
