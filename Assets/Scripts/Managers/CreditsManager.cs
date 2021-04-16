@@ -27,13 +27,7 @@ public class CreditsManager : MonoBehaviour
     void Start()
     {
         Names = CreditsNameModel.GetNames();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Used to manually spawn names, if you are reading this in the master branch then I am dumb. Remove it please <3
-        if (Input.GetKeyDown(KeyCode.N)) StartCoroutine(SpawnNames());
+        StartCoroutine(SpawnNames());
     }
 
 
@@ -60,6 +54,7 @@ public class CreditsManager : MonoBehaviour
 
     public IEnumerator SpawnNames()
     {
+        yield return new WaitForSeconds(CreditsDelay);
         for (int i=0; i<Names.Length; i++)
         {
             CreateName(Names[i].name, Names[i].title);
@@ -82,13 +77,13 @@ public class CreditsManager : MonoBehaviour
     public IEnumerator EndCreditsPanel()
     {
         yield return new WaitForSeconds(CreditsDelay);
-        float timer = 0;
 
-        while(timer < EndCreditsTime)
+        Vector2 originalPosition = CreditsPanel.anchoredPosition;
+        float height = 1800;
+
+        for (float i=0; i< EndCreditsTime; i += Time.deltaTime)
         {
-            timer += Time.deltaTime;
-
-            CreditsPanel.anchoredPosition += Vector2.up * Time.deltaTime * EndCreditsScrollSpeed;
+            CreditsPanel.anchoredPosition = Vector2.Lerp(originalPosition, originalPosition + Vector2.up * height, i / EndCreditsTime);
 
             yield return null;
         }

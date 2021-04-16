@@ -2726,13 +2726,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: []
-  SpawnSpeed: 0.1
+  SpawnSpeed: 2.5
   NameMoveSpeed: 0.1
   FaceCameraDistance: 150
   Camera: {fileID: 1770852817}
   CreditsDelay: 2
   EndCreditsScrollSpeed: 10
-  EndCreditsTime: 30
+  EndCreditsTime: 5
   CreditsPanel: {fileID: 1550866352}
   Position: 0
   Names:
@@ -7471,8 +7471,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -868.58374}
-  m_SizeDelta: {x: 0, y: 844.4612}
+  m_AnchoredPosition: {x: 0, y: -873.1766}
+  m_SizeDelta: {x: 0, y: 853.64685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550866353
 MonoBehaviour:
