@@ -107,7 +107,7 @@ public class RemarkManager : MonoBehaviour
             {
                 case Say info:
                     info._Character = _pilot.GetComponent<Character>(); //choose character
-                    info.Portrait = Resources.Load<Sprite>(@"Sprites\" + _pilot.GetComponent<Character>().NameText + "_" + _pilotEmotion.ToString());
+                    info.Portrait = Resources.Load<Sprite>(@"Sprites\Icons\" + _pilot.GetComponent<Character>().NameText + "_" + _pilotEmotion.ToString() + "_i");
                     //info.Portrait = _pilot.GetComponent<CopilotInfo>().fullBody; //CHANGE TO DESIRED PORTRAIT WHEN MORE ARE MADE
                     break;
                 default:
