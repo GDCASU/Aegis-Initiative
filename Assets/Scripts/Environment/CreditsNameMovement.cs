@@ -34,7 +34,7 @@ public class CreditsNameMovement : MonoBehaviour
 
     public void Move()
     {
-        position += Time.deltaTime * Speed * creditsManager._spedUpOriginal;
+        position += Time.deltaTime * Speed * creditsManager.IsSpeedingUp;
 
         Vector3 newPosition = creditsManager.LerpPosition(position);
 

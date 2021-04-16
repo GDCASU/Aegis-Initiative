@@ -10,7 +10,7 @@ public class CreditsManager : MonoBehaviour
     public float FaceCameraDistance;
     public Transform Camera;
 
-    public float SpedUp = 3;
+    public float SpedUpOriginalValue = 3;
     public float CreditsDelay = 2;
     public float EndCreditsTime = 30;
     public RectTransform CreditsPanel;
@@ -23,7 +23,7 @@ public class CreditsManager : MonoBehaviour
 
     public int LinePoints = 10;
 
-    public float _spedUpOriginal = 3;
+    public float IsSpeedingUp = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +34,8 @@ public class CreditsManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift)) _spedUpOriginal = SpedUp;
-        else _spedUpOriginal = 1;
+        if (Input.GetKey(KeyCode.LeftShift)) IsSpeedingUp = SpedUpOriginalValue;
+        else IsSpeedingUp = 1;
     }
 
     public Vector3 LerpPosition(float time)
@@ -65,7 +65,7 @@ public class CreditsManager : MonoBehaviour
         for (int i=0; i<Names.Length; i++)
         {
             CreateName(Names[i].name, Names[i].title);
-            yield return new WaitForSeconds(SpawnSpeed / _spedUpOriginal);
+            yield return new WaitForSeconds(SpawnSpeed / IsSpeedingUp);
         }
 
         // Waits 2 seconds before starting the end credits
@@ -88,7 +88,7 @@ public class CreditsManager : MonoBehaviour
         Vector2 originalPosition = CreditsPanel.anchoredPosition;
         float height = 1800;
 
-        for (float i=0; i< EndCreditsTime; i += Time.deltaTime * _spedUpOriginal)
+        for (float i=0; i< EndCreditsTime; i += Time.deltaTime * IsSpeedingUp)
         {
             CreditsPanel.anchoredPosition = Vector2.Lerp(originalPosition, originalPosition + Vector2.up * height, i / EndCreditsTime);
 
