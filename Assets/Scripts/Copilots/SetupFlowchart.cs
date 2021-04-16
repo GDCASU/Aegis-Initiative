@@ -58,6 +58,7 @@ public class SetupFlowchart : MonoBehaviour
                                 info.Portrait = gameObject.GetComponent<CopilotInfo>().portraits[2];
                                 break;
                             default:
+                                info.Portrait = gameObject.GetComponent<CopilotInfo>().portraits[0];
                                 break;
                         }
                         //info.Portrait = gameObject.GetComponent<CopilotInfo>().fullBody; //CHANGE TO DESIRED PORTRAIT WHEN MORE ARE MADE

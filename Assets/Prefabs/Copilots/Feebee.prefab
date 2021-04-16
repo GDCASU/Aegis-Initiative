@@ -80,12 +80,12 @@ MonoBehaviour:
     experience: 0
     isUnlocked: 1
   portraits:
-  - {fileID: 21300000, guid: f8f8fb7d88ca4e34b839a9f897271d39, type: 3}
-  - {fileID: 21300000, guid: f847266a0c259e14aa0fcadef75064c8, type: 3}
-  - {fileID: 21300000, guid: 493a88df977e456428c669e911179cd6, type: 3}
-  - {fileID: 21300000, guid: b5098869a8d16c44497dc7d5d022e5b3, type: 3}
-  - {fileID: 21300000, guid: 322a860e98940a447b6e4d988ce190d6, type: 3}
-  portrait: {fileID: 21300000, guid: 9ce6cf540ce2ece4dacce467ace3bca4, type: 3}
+  - {fileID: 21300000, guid: de4df24648e433948bed0d6c1d7d1347, type: 3}
+  - {fileID: 21300000, guid: dcc9ca63ef61a404bbae02406d7408d3, type: 3}
+  - {fileID: 21300000, guid: 3a8e66815546d0c40a046d2590531b59, type: 3}
+  - {fileID: 21300000, guid: 1b9d7834235c1814a85d41235f9b6179, type: 3}
+  - {fileID: 21300000, guid: 7151dbac2421d0947b00aae1f0c7ef79, type: 3}
+  portrait: {fileID: 21300000, guid: de4df24648e433948bed0d6c1d7d1347, type: 3}
   fullBody: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
   copilotActive: {fileID: 365653576477132568}
   copilotPassive: {fileID: 6305573297492744777}
