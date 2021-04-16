@@ -65,7 +65,7 @@ public class CreditsManager : MonoBehaviour
         for (int i=0; i<Names.Length; i++)
         {
             CreateName(Names[i].name, Names[i].title);
-            yield return new WaitForSeconds(SpawnSpeed);
+            yield return new WaitForSeconds(SpawnSpeed / _spedUpOriginal);
         }
 
         // Waits 2 seconds before starting the end credits
