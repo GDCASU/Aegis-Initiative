@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daaa34efe2a29bc448022601f2f6b0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LazerSpeed: 400
+  LazerSpeed: 600
   Direction: {x: 0, y: 0, z: 0}
 --- !u!54 &-8020729798308249475
 Rigidbody:

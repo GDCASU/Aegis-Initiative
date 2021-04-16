@@ -97,11 +97,14 @@ public class CreditsShoot : MonoBehaviour
             RectTransform reticleRectTransform = Reticle.GetComponent<RectTransform>();
             reticleRectTransform.localScale = Vector3.one;
 
-            for (int i = 0; i < steps; i++)
+            for (int j = 0; j < 2; j++)
             {
-                if (i < steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 2, (float)i / 10);
-                if (i >= steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one * 2, Vector3.one, (float)(i - 10) / 10);
-                yield return new WaitForSeconds(.01f);
+                for (int i = 0; i < steps; i++)
+                {
+                    if (i < steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 2, (float)i / 10);
+                    if (i >= steps / 2) reticleRectTransform.localScale = Vector3.Lerp(Vector3.one * 2, Vector3.one, (float)(i - 10) / 10);
+                    yield return new WaitForSeconds(.005f);
+                }
             }
 
             isShooting = false;
