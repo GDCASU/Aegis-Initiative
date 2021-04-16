@@ -34,10 +34,11 @@ public class CreditsNameMovement : MonoBehaviour
 
     public void Move()
     {
-        position += Time.deltaTime * Speed;
+        position += Time.deltaTime * Speed * creditsManager._spedUpOriginal;
+
         Vector3 newPosition = creditsManager.LerpPosition(position);
 
-        if (Vector3.Distance(creditsManager.Camera.position, transform.position) > creditsManager.FaceCameraDistance || Vector3.Distance(creditsManager.Camera.position, transform.position) < 30)
+        if (Vector3.Distance(creditsManager.Camera.position, transform.position) > creditsManager.FaceCameraDistance || Vector3.Distance(creditsManager.Camera.position, transform.position) < 60)
         {
             FaceInDirection(newPosition);
         }
@@ -57,7 +58,7 @@ public class CreditsNameMovement : MonoBehaviour
         var targetRotation = Quaternion.LookRotation(direction - transform.position);
 
         // Smoothly rotate towards the target point.
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10);
     }
 
     public void Shot()

@@ -2730,9 +2730,9 @@ MonoBehaviour:
   NameMoveSpeed: 0.1
   FaceCameraDistance: 150
   Camera: {fileID: 1770852817}
+  SpedUp: 5
   CreditsDelay: 2
-  EndCreditsScrollSpeed: 10
-  EndCreditsTime: 5
+  EndCreditsTime: 30
   CreditsPanel: {fileID: 1550866352}
   Position: 0
   Names:
@@ -2809,6 +2809,7 @@ MonoBehaviour:
   CreditsNameParent: {fileID: 7837260692217179264, guid: 4bba27d1001c10545b847a79fae20e1d,
     type: 3}
   LinePoints: 10
+  _spedUpOriginal: 1
 --- !u!4 &590366348
 Transform:
   m_ObjectHideFlags: 0
