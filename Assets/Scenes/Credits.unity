@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 1602109435389572556, guid: b3ef702e5e27a904faabd8f81798284f,
         type: 3}
       propertyPath: m_Text
-      value: Artists
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1602109435389572559, guid: b3ef702e5e27a904faabd8f81798284f,
         type: 3}
@@ -2730,7 +2730,7 @@ MonoBehaviour:
   NameMoveSpeed: 0.1
   FaceCameraDistance: 150
   Camera: {fileID: 1770852817}
-  SpedUp: 5
+  SpedUpOriginalValue: 3
   CreditsDelay: 2
   EndCreditsTime: 30
   CreditsPanel: {fileID: 1550866352}
@@ -2809,7 +2809,7 @@ MonoBehaviour:
   CreditsNameParent: {fileID: 7837260692217179264, guid: 4bba27d1001c10545b847a79fae20e1d,
     type: 3}
   LinePoints: 10
-  _spedUpOriginal: 1
+  IsSpeedingUp: 3
 --- !u!4 &590366348
 Transform:
   m_ObjectHideFlags: 0
@@ -4419,7 +4419,7 @@ PrefabInstance:
     - target: {fileID: 1602109435389572556, guid: b3ef702e5e27a904faabd8f81798284f,
         type: 3}
       propertyPath: m_Text
-      value: Artists
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1602109435389572559, guid: b3ef702e5e27a904faabd8f81798284f,
         type: 3}
