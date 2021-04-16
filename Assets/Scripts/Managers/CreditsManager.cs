@@ -94,5 +94,8 @@ public class CreditsManager : MonoBehaviour
 
             yield return null;
         }
+
+        // INSERT SCENE CHANGE HERE
+
     }
 }
