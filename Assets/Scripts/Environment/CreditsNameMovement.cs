@@ -37,7 +37,7 @@ public class CreditsNameMovement : MonoBehaviour
         position += Time.deltaTime * Speed;
         Vector3 newPosition = creditsManager.LerpPosition(position);
 
-        if (Vector3.Distance(creditsManager.Camera.position, transform.position) > creditsManager.FaceCameraDistance)
+        if (Vector3.Distance(creditsManager.Camera.position, transform.position) > creditsManager.FaceCameraDistance || Vector3.Distance(creditsManager.Camera.position, transform.position) < 30)
         {
             FaceInDirection(newPosition);
         }
