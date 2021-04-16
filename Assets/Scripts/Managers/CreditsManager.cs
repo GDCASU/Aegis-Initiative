@@ -10,6 +10,11 @@ public class CreditsManager : MonoBehaviour
     public float FaceCameraDistance;
     public Transform Camera;
 
+    public float CreditsDelay = 2;
+    public float EndCreditsScrollSpeed = 1;
+    public float EndCreditsTime = 30;
+    public RectTransform CreditsPanel;
+
     [Range(0, 1)]
     public float Position = 0;
 
@@ -60,6 +65,10 @@ public class CreditsManager : MonoBehaviour
             CreateName(Names[i].name, Names[i].title);
             yield return new WaitForSeconds(SpawnSpeed);
         }
+
+        // Waits 2 seconds before starting the end credits
+        yield return new WaitUntil(() => GameObject.Find("CreditsName(Clone)") == null);
+        StartCoroutine(EndCreditsPanel());
     }
 
     public void CreateName(string name, string title)
@@ -68,5 +77,20 @@ public class CreditsManager : MonoBehaviour
         nameObject.creditsManager = this;
         nameObject.Speed = NameMoveSpeed;
         nameObject.UpdateName(name, title);
+    }
+
+    public IEnumerator EndCreditsPanel()
+    {
+        yield return new WaitForSeconds(CreditsDelay);
+        float timer = 0;
+
+        while(timer < EndCreditsTime)
+        {
+            timer += Time.deltaTime;
+
+            CreditsPanel.anchoredPosition += Vector2.up * Time.deltaTime * EndCreditsScrollSpeed;
+
+            yield return null;
+        }
     }
 }
