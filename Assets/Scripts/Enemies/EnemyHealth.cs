@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public int collisionDamage;
     public bool doNotDespawn;
     public float lifeTime = 20;
+    public GameObject deathEffect;
     private float lifeTimer;
 
     public virtual void Start()
@@ -18,10 +19,19 @@ public class EnemyHealth : MonoBehaviour
             StartCoroutine(waitToDespawn());
         }
     }
+
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0) DestroyEnemy();
+        if (health <= 0)
+        {
+            if (deathEffect != null)
+            {
+                GameObject temp = Instantiate(deathEffect, transform.position, Quaternion.identity);
+                temp.transform.localScale = transform.localScale;
+            }
+            DestroyEnemy();
+        }
     }
     public virtual void DestroyEnemy()
     {
