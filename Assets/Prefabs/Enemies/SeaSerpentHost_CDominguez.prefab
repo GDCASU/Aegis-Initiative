@@ -1387,6 +1387,7 @@ MonoBehaviour:
   collisionDamage: 0
   doNotDespawn: 1
   lifeTime: 20
+  deathEffect: {fileID: 0}
 --- !u!114 &7212486881963750468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,7 +1400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48baa5da3c0a3f42a69f20e6c4362ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedAttack: 3
+  allowedAttack: 1
   beginAttackingTime: 2
   attackCooldown: 3
   waterBarrageFrequency: 0.5
@@ -1419,7 +1420,7 @@ MonoBehaviour:
   headProtrusionDistance: 0.0027
   headProtrusionTime: 1
   headRetractionTime: 0.5
-  bashChargeTime: 3
+  bashChargeTime: 4
   serpentFollowSpeed: 2.5
   totalLunges: 3
   <LungeDamage>k__BackingField: 25
@@ -1432,7 +1433,7 @@ MonoBehaviour:
   mouthProtrusionTime: 1
   mouthRetractionTime: 0.5
   waterLaser: {fileID: 1045814163}
-  cannonChargeTime: 3
+  cannonChargeTime: 4
   laserDuration: 4
   laserFollowSpeed: 0.055
 --- !u!1 &6199188331632796962
@@ -1992,6 +1993,7 @@ MonoBehaviour:
   collisionDamage: 0
   doNotDespawn: 1
   lifeTime: 20
+  deathEffect: {fileID: 0}
   weakpoint: 0
   cancelHealth: 100
 --- !u!1 &8197544043340013228
@@ -2107,6 +2109,7 @@ MonoBehaviour:
   collisionDamage: 0
   doNotDespawn: 1
   lifeTime: 20
+  deathEffect: {fileID: 0}
   weakpoint: 1
   cancelHealth: 100
 --- !u!1 &8197544043369914328
@@ -2149,26 +2152,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8197544043369914328}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingInSpeed: 2
-  rotateWithMovement: 1
+  rotateWithMovement: 0
   lockedOntoPlayer: 0
-  waveMovement: 0
+  waveMovement: 2
   maxWavePeak: 1.2
   minWaveDip: 0
   waveFrequency: 0.5
   maxAngle: 10
-  flyingInTime: 3
+  flyingInSpeed: 2
+  flyingInTime: 0
   flyingInDirection: -1
+  flyingIn: 1
   hover: 1
   hoverTimer: 10
-  isPermanent: 1
+  isHoverPermanent: 1
+  isModelFacingPlayer: 0
   leaveDirection: 0
   leaveSpeed: 5
+  isFlyingAway: 0
 --- !u!114 &2080381331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2185,7 +2191,7 @@ MonoBehaviour:
   minWaveDip: -0.4
   waveFrequency: 0.5
   maxAngle: 10
-  offset: 0.2
+  slitherOffset: 0.3
   segmentTransforms:
   - {fileID: 2828493386348885657}
   - {fileID: 5195245731685877693}

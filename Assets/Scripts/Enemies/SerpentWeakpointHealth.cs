@@ -58,16 +58,4 @@ public class SerpentWeakpointHealth : EnemyHealth
                 serpent.CancelWaterCannon();
         }
     }
-
-    /*
-    /// <summary>
-    /// Deals damage to Player if the Head Weakpoint collides with Player.
-    /// </summary>
-    /// <param name="other"> info on collision </param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if (weakpoint == WeakpointType.Head && other.tag.Equals("Player"))
-            other.GetComponent<PlayerInfo>().TakeDamage(serpent.LungeDamage);
-    }
-    */
 }

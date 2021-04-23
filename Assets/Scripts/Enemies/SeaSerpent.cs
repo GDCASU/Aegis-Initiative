@@ -42,7 +42,7 @@ public class SeaSerpent : MonoBehaviour
     [Tooltip("Frequency of the Water Cannon attack (MUST BE SMALLEST VALUE)")]
     private float waterCannonFrequency = 0.15f;
     [SerializeField]
-    [Tooltip("")]
+    [Tooltip("Speed Serpent's gaze shall follow the Player")]
     private float gazeFollowSpeed = 1f;
     #endregion
 
@@ -145,14 +145,14 @@ public class SeaSerpent : MonoBehaviour
     #region Hidden Variables
     private Transform host;  // host of Serpent controlling movement
     private Collider headCollider;  // Collider of Serpent's head
-    private Vector3 beforeBattleHeadAngles;  //
+    private Vector3 beforeBattleHeadAngles;  // angles of Serpent head upon creation
+    private EnemyMovement serpentMovement;
 
     private bool isReadyForBattle = false;  // Is the Serpent ready for battle?
     private bool isLookingAtPlayer = true;  // Is the Serpent staring the Player down?
     private bool isAttacking = false;  // Is the Serpent performing an attack pattern?
     private bool isFollowingPlayer = false;  // Is the Serpent following the Player on the XY plane?
     private bool isCannoning = false;  // Is the Serpent performing the Water Cannon attack?
-    private bool canDealHeadDamage = false;  // Can the Serpent deal damage with his head?
 
     private float randonNumber;  // random number between 0 and 1 utilized to determine the next attack
     private float headBashInterval;  // interval for invoking the Head Bash attack; if randomNumber is in the interval, Head Bash shall be performed
@@ -178,7 +178,7 @@ public class SeaSerpent : MonoBehaviour
 
     #region Before Battle Functions
     /// <summary>
-    /// Assigns variables and starts the Serpent's countdown to battle.
+    /// Assigns variables, disables the Serpent's Head collider, and starts the Serpent's countdown to battle.
     /// </summary>
     private void Start()
     {
@@ -188,11 +188,13 @@ public class SeaSerpent : MonoBehaviour
         waterLaser = mouthWeakpoint.GetChild(0);
         headBashInterval = waterCannonFrequency + headBashFrequency;
         beforeBattleHeadAngles = this.transform.localEulerAngles;
+        serpentMovement = host.GetComponent<EnemyMovement>();
 
         player = PlayerInfo.singleton.transform;
         dollyCart = player.parent;
         playerMovement = player.GetComponent<ShipMovement>();
-        
+
+        headCollider.enabled = false;
         StartCoroutine(WaitToBeginBattle());
     }
 
@@ -270,7 +272,8 @@ public class SeaSerpent : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if the Serpent is following the Player or Water Cannoning.
+    /// Checks if the Serpent is looking at the Player, and if it is following the Player or Water Cannoning.
+    /// If the Serpent is looking at the Player, its Head rotates towards the Player at gazeFollowSpeed.
     /// If the Serpent is following the Player, the Serpent moves towards the Player's XY coordinates.
     /// If the Serpent is Water Cannoning, the Serpent rotates its Mouth Weakpoint holding the laser towards Player.
     /// </summary>
@@ -354,14 +357,14 @@ public class SeaSerpent : MonoBehaviour
 
     #region Head Bash Functions
     /// <summary>
-    /// Displays the Head Weakpoint and rotates the Serpent towards Player for headProtrusionTime to then charge up the Head Bash attack for bashChargeTime. If the Head Weakpoint sustains too
+    /// Displays the Head Weakpoint and rotates the Serpent' Head down for headProtrusionTime to then charge up the Head Bash attack for bashChargeTime. If the Head Weakpoint sustains too
     /// much damage, the Head Weakpoint retracts back into the Serpent and the Serpent rotates upright again. Otherwise, the Serpent follows the Player on the XY plane and lunges. Afterwards,
     /// the Serpent and Head Weakpoint return to their original positions and rotations.
     /// </summary>
     private IEnumerator StartHeadBash()
     {
         // Disable the Host's movement and follow the Player.
-        host.GetComponent<EnemyMovement>().enabled = false;
+        serpentMovement.enabled = false;
         isLookingAtPlayer = false;
         isFollowingPlayer = true;
         
@@ -401,7 +404,8 @@ public class SeaSerpent : MonoBehaviour
             yield return null;
         }
 
-        // If Head Weakpoint has not sustained too much damage, then disable the weakpoint's ability to receive damage and lunge Host at Player.
+        // If Head Weakpoint has not sustained too much damage, then enable the Head collider and disable the weakpoint's ability to receive damage and lunge Host at Player.
+        headCollider.enabled = true;
         if (!headBashDisrupted)
         {
             headWeakpoint.GetComponent<Collider>().isTrigger = true;
@@ -467,7 +471,8 @@ public class SeaSerpent : MonoBehaviour
         host.localPosition = originalHostPosition;
 
         // Restore variables.
-        //host.GetComponent<EnemyMovement>().enabled = true;
+        headCollider.enabled = false;
+        serpentMovement.enabled = true;
         headWeakpoint.GetComponent<Collider>().isTrigger = false;
         headWeakpoint.gameObject.SetActive(false);
         headBashDisrupted = false;
@@ -485,8 +490,9 @@ public class SeaSerpent : MonoBehaviour
     /// <param name="collision"> info on collided gameobject </param>
     private void OnCollisionEnter(Collision collision)
     {
-        if(canDealHeadDamage && collision.transform.tag.Equals("Player"))
+        if(collision.transform.tag.Equals("Player"))
         {
+            print("HI");
             collision.transform.GetComponent<PlayerInfo>().TakeDamage(LungeDamage);
         }
     }
@@ -501,7 +507,7 @@ public class SeaSerpent : MonoBehaviour
     private IEnumerator StartWaterCannon()
     {
         // Disable the Host's movement.
-        host.GetComponent<EnemyMovement>().enabled = false;
+        serpentMovement.enabled = false;
         isLookingAtPlayer = false;
 
         // Mouth Weakpoint position variables
@@ -574,7 +580,7 @@ public class SeaSerpent : MonoBehaviour
         host.localPosition = originalHostPosition;
 
         // Restore variables.
-        //host.GetComponent<EnemyMovement>().enabled = true;
+        serpentMovement.enabled = true;
         mouthWeakpoint.GetComponent<Collider>().isTrigger = false;
         mouthWeakpoint.gameObject.SetActive(false);
         waterCannonDisrupted = false;
