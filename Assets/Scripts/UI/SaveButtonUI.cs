@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 /// <summary>
 /// Script with the Save Button UI to handle profile selection,
 /// creation, and deletion
@@ -58,7 +58,7 @@ public class SaveButtonUI : MonoBehaviour
             menuUI.nameInputField.text = "";
             menuUI.SwitchPanels(4);
         }
-        else print("Profile: " + ProfileManager.instance.CurrentProfile.name + " selected");
+        SceneManager.LoadScene("CopilotUI", LoadSceneMode.Single);
     }
 
     /// <summary>

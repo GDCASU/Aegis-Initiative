@@ -20,44 +20,59 @@ public class SpaceFly_Adult : EnemyHealth
     Vector3 playerPos;
     private WaitForSeconds realRateOfFire; //for Shoot();
 
-    private int shots;
+    public Transform bulletSpawn; 
+
+    public Animator animator;
+
+    public float framesOfAnimation;
+
+    private bool shooting;
+
 
     public override void Start()
     {
         base.Start();
         shootTimer = Random.Range(shootTimerMin, shootTimerMax); //timer within a range
         realRateOfFire = new WaitForSeconds(1.0f/rateOfFire); //for Shoot();
-
-        shots = 0;
     }
 
     private void FixedUpdate()
     {
         if(shootTimer <= 0)
         {
-            playerPos = PlayerInfo.singleton.transform.localPosition;
-            shootTimer = Random.Range(shootTimerMin, shootTimerMax);
-            shots = 0;
+            playerPos = PlayerInfo.singleton.transform.localPosition;           
             StartCoroutine(Shoot());
         }
         else
         {
-            shootTimer -= Time.deltaTime;
+            shootTimer -= Time.fixedDeltaTime;
         }
     }
 
     IEnumerator Shoot()
     {
-        while(shots < numBullets) //shoot set number of bullets
-        {
-            GameObject temp = Instantiate(bullet, transform.position, Quaternion.identity, GameObject.Find("PlayerDollyCart").transform);
-            temp.GetComponent<SalivaBullet>().SetTarget(playerPos);
-            shots++;
+        //while(shots < numBullets) //shoot set number of bullets
+        //{
+        //    GameObject temp = Instantiate(bullet, transform.position, Quaternion.identity, GameObject.Find("PlayerDollyCart").transform);
+        //    temp.GetComponent<SalivaBullet>().SetTarget(playerPos);
+        //    shots++;
 
-            yield return realRateOfFire;
-        }
+        //    yield return realRateOfFire;
+        //}
 
-        yield return null;
+        shooting = true;
+        animator.SetBool("Shooting", shooting);
+        yield return new WaitForSeconds(framesOfAnimation / (24f * 2f));
+        shooting = false;
+        animator.SetBool("Shooting", shooting);
+        shootTimer = Random.Range(shootTimerMin, shootTimerMax);
+    }
+
+    public void SpawnBullet()
+    {
+        GameObject temp = Instantiate(bullet, bulletSpawn.position, Quaternion.identity, PlayerInfo.singleton.transform.parent);
+        temp.GetComponent<SalivaBullet>().SetTarget(playerPos);
+
     }
 
 }
