@@ -41,6 +41,9 @@ public class SeaSerpent : MonoBehaviour
     [SerializeField]
     [Tooltip("Frequency of the Water Cannon attack (MUST BE SMALLEST VALUE)")]
     private float waterCannonFrequency = 0.15f;
+    [SerializeField]
+    [Tooltip("")]
+    private float gazeFollowSpeed = 1f;
     #endregion
 
     #region Water Barrage Variables
@@ -74,11 +77,14 @@ public class SeaSerpent : MonoBehaviour
     [Tooltip("Transform of Head Weakpoint")]
     private Transform headWeakpoint;
     [SerializeField]
+    [Tooltip("Angles the Serpent should tilt its head down")]
+    private float headDownTiltAngles = 30f;
+    [SerializeField]
     [Tooltip("Distance Head Weakpoint should protude out of Serpent")]
     private float headProtrusionDistance = 1f;
     [SerializeField]
     [Tooltip("Time Head Weakpoint should protude out of Serpent")]
-    private float headProtrustionTime = 1f;
+    private float headProtrusionTime = 1f;
     [SerializeField]
     [Tooltip("Time Head Weakpoint should retract into Serpent")]
     private float headRetractionTime = 0.5f;
@@ -115,10 +121,10 @@ public class SeaSerpent : MonoBehaviour
     private Transform mouthWeakpoint;
     [SerializeField]
     [Tooltip("Distance Mouth Weakpoint should protude out of Serpent")]
-    private float mouthProtrustionDistance = 1f;
+    private float mouthProtrusionDistance = 1f;
     [SerializeField]
     [Tooltip("Time Mouth Weakpoint should protude out of serpent")]
-    private float mouthProtrustionTime = 1f;
+    private float mouthProtrusionTime = 1f;
     [SerializeField]
     [Tooltip("Time Mouth Weakpoint should retract into serpent")]
     private float mouthRetractionTime = 0.5f;
@@ -138,11 +144,15 @@ public class SeaSerpent : MonoBehaviour
 
     #region Hidden Variables
     private Transform host;  // host of Serpent controlling movement
+    private Collider headCollider;  // Collider of Serpent's head
+    private Vector3 beforeBattleHeadAngles;  //
 
     private bool isReadyForBattle = false;  // Is the Serpent ready for battle?
+    private bool isLookingAtPlayer = true;  // Is the Serpent staring the Player down?
     private bool isAttacking = false;  // Is the Serpent performing an attack pattern?
     private bool isFollowingPlayer = false;  // Is the Serpent following the Player on the XY plane?
     private bool isCannoning = false;  // Is the Serpent performing the Water Cannon attack?
+    private bool canDealHeadDamage = false;  // Can the Serpent deal damage with his head?
 
     private float randonNumber;  // random number between 0 and 1 utilized to determine the next attack
     private float headBashInterval;  // interval for invoking the Head Bash attack; if randomNumber is in the interval, Head Bash shall be performed
@@ -159,6 +169,11 @@ public class SeaSerpent : MonoBehaviour
     private Vector2 currentHostPosition_XY;  // current position of Host on the X,Y plane
     private Vector3 newHostPosition_XY;  // new position of Host on the X,Y plane
     private Vector2 playerPosition_XY;  // position of the Player on the X,Y plane
+
+    private Vector3 currentHeadDirection;
+    private Vector3 headToPlayerDirection;
+    private Vector3 currentMouthDirection;
+    private Vector3 mouthToPlayerDirection;
     #endregion
 
     #region Before Battle Functions
@@ -167,10 +182,12 @@ public class SeaSerpent : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        host = transform.parent;
+        host = transform.parent.parent;
+        headCollider = transform.GetComponent<Collider>();
         originalHostPosition = host.localPosition;
         waterLaser = mouthWeakpoint.GetChild(0);
         headBashInterval = waterCannonFrequency + headBashFrequency;
+        beforeBattleHeadAngles = this.transform.localEulerAngles;
 
         player = PlayerInfo.singleton.transform;
         dollyCart = player.parent;
@@ -259,6 +276,13 @@ public class SeaSerpent : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        if (isLookingAtPlayer)
+        {
+            headToPlayerDirection = player.position - mouthWeakpoint.position;
+            currentHeadDirection = Vector3.RotateTowards(transform.forward, headToPlayerDirection, gazeFollowSpeed * Time.deltaTime, 0f);
+            transform.rotation = Quaternion.LookRotation(currentHeadDirection, dollyCart.up);
+        }
+
         if (isFollowingPlayer)
         {
             currentHostPosition_XY = new Vector2(host.localPosition.x, host.localPosition.y);
@@ -268,9 +292,9 @@ public class SeaSerpent : MonoBehaviour
         }
         else if(isCannoning)
         {
-            Vector3 playerDirection = player.position - mouthWeakpoint.position;
-            Vector3 currentDirection = Vector3.RotateTowards(mouthWeakpoint.forward, playerDirection, laserFollowSpeed * Time.deltaTime, 0f);
-            mouthWeakpoint.rotation = Quaternion.LookRotation(currentDirection);
+            mouthToPlayerDirection = player.position - mouthWeakpoint.position;
+            currentMouthDirection = Vector3.RotateTowards(transform.forward, mouthToPlayerDirection, laserFollowSpeed * Time.deltaTime, 0f);
+            transform.rotation = Quaternion.LookRotation(currentMouthDirection, dollyCart.up);
         }
     }
     #endregion
@@ -314,8 +338,9 @@ public class SeaSerpent : MonoBehaviour
             bulletRotation = Quaternion.LookRotation(bulletVelocity, Vector3.up);
             bulletRotation = Quaternion.Euler(bulletRotation.eulerAngles += spread);
 
-            // Launch the bullet and assigned dmg.
+            // Launch the bullet, ignore collision with Head, and assign dmg.
             dispensedBullet = Instantiate(waterBullet, waterBulletSpawnpoint.position, bulletRotation, dollyCart).GetComponent<Rigidbody>();
+            Physics.IgnoreCollision(dispensedBullet.GetComponent<Collider>(), headCollider);
             dispensedBullet.GetComponent<Bullet>().damage = waterBulletDamage;
             dispensedBullet.velocity = dispensedBullet.transform.forward * waterBulletSpeed;
 
@@ -329,7 +354,7 @@ public class SeaSerpent : MonoBehaviour
 
     #region Head Bash Functions
     /// <summary>
-    /// Displays the Head Weakpoint and rotates the Serpent towards Player for headProtrustionTime to then charge up the Head Bash attack for bashChargeTime. If the Head Weakpoint sustains too
+    /// Displays the Head Weakpoint and rotates the Serpent towards Player for headProtrusionTime to then charge up the Head Bash attack for bashChargeTime. If the Head Weakpoint sustains too
     /// much damage, the Head Weakpoint retracts back into the Serpent and the Serpent rotates upright again. Otherwise, the Serpent follows the Player on the XY plane and lunges. Afterwards,
     /// the Serpent and Head Weakpoint return to their original positions and rotations.
     /// </summary>
@@ -337,35 +362,33 @@ public class SeaSerpent : MonoBehaviour
     {
         // Disable the Host's movement and follow the Player.
         host.GetComponent<EnemyMovement>().enabled = false;
+        isLookingAtPlayer = false;
         isFollowingPlayer = true;
         
         // Head Weakpoint position variables
         float timeElapsed = 0f;
-        float initialYPosition = headWeakpoint.localPosition.y;
-        float finalYPosition = headWeakpoint.localPosition.y + headProtrusionDistance;
-        float currentYPosition;
+        float initialWeakYPosition = headWeakpoint.localPosition.y;
+        float finalWeakYPosition = headWeakpoint.localPosition.y + headProtrusionDistance;
+        float currentWeakYPosition;
 
-        // Serpent rotation variables
-        float initialXAngles = transform.localRotation.x;
-        float finalXAngles = 90f;
-        float currentXAngles;
-        float rotateSpeed = 90f / headProtrustionTime;
+        // Serpent Head rotation variables
+        Quaternion initialRotation = transform.localRotation;
+        Quaternion finalRotation = Quaternion.Euler(headDownTiltAngles, beforeBattleHeadAngles.y, beforeBattleHeadAngles.z);
 
         // Display head weakpoint and rotate Serpent.
         headWeakpoint.gameObject.SetActive(true);
-        while (timeElapsed < headProtrustionTime)
+        while (timeElapsed < headProtrusionTime)
         {
-            currentYPosition = Mathf.Lerp(initialYPosition, finalYPosition, timeElapsed / headProtrustionTime);
-            headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, currentYPosition, headWeakpoint.localPosition.z);
+            currentWeakYPosition = Mathf.Lerp(initialWeakYPosition, finalWeakYPosition, timeElapsed / headProtrusionTime);
+            headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, currentWeakYPosition, headWeakpoint.localPosition.z);
 
-            currentXAngles = Mathf.Lerp(initialXAngles, finalXAngles, timeElapsed / headProtrustionTime);
-            transform.localEulerAngles = new Vector3(currentXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
+            transform.localRotation = Quaternion.Lerp(initialRotation, finalRotation, timeElapsed / headProtrusionTime);
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, finalYPosition, headWeakpoint.localPosition.z);
-        transform.localEulerAngles = new Vector3(finalXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
+        headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, finalWeakYPosition, headWeakpoint.localPosition.z);
+        transform.localRotation = finalRotation;
 
         // Charge up head bash attack whilst checking if Head Weakpoint sustained too much damage.
         timeElapsed = 0;
@@ -383,9 +406,9 @@ public class SeaSerpent : MonoBehaviour
         {
             headWeakpoint.GetComponent<Collider>().isTrigger = true;
 
-            float initialZPosition = host.localPosition.z;
-            float finalZPosition = host.localPosition.z - lungeDistance;
-            float currentZPosition;
+            float initialHeadZPosition = host.localPosition.z;
+            float finalHeadZPosition = host.localPosition.z - lungeDistance;
+            float currentHeadZPosition;
 
             for(int i = 0; i < totalLunges; i++)
             {
@@ -394,25 +417,25 @@ public class SeaSerpent : MonoBehaviour
                 timeElapsed = 0;
                 while(timeElapsed < lungeTime)
                 {
-                    currentZPosition = Mathf.Lerp(initialZPosition, finalZPosition, timeElapsed / lungeTime);
-                    host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, currentZPosition);
+                    currentHeadZPosition = Mathf.Lerp(initialHeadZPosition, finalHeadZPosition, timeElapsed / lungeTime);
+                    host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, currentHeadZPosition);
 
                     timeElapsed += Time.deltaTime;
                     yield return null;
                 }
-                host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, finalZPosition);
+                host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, finalHeadZPosition);
 
                 // Return from lunge.
                 timeElapsed = 0;
                 while(timeElapsed < backupTime)
                 {
-                    currentZPosition = Mathf.Lerp(finalZPosition, initialZPosition, timeElapsed / backupTime);
-                    host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, currentZPosition);
+                    currentHeadZPosition = Mathf.Lerp(finalHeadZPosition, initialHeadZPosition, timeElapsed / backupTime);
+                    host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, currentHeadZPosition);
 
                     timeElapsed += Time.deltaTime;
                     yield return null;
                 }
-                host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, initialZPosition);
+                host.localPosition = new Vector3(host.localPosition.x, host.localPosition.y, initialHeadZPosition);
 
                 // Follow Player and wait for timeBetweenLunges before lunging again.
                 isFollowingPlayer = true;
@@ -422,29 +445,29 @@ public class SeaSerpent : MonoBehaviour
 
         // Stop following the Player and record the Host's current position.
         isFollowingPlayer = false;
+        isLookingAtPlayer = true;
         Vector3 currentHostPosition = host.localPosition;
 
         // Retract the Head Weakpoint back into the Serpent, rotate the Serpent upright, and return the Host to its original position.
         timeElapsed = 0;
         while (timeElapsed < headRetractionTime)
         {
-            currentYPosition = Mathf.Lerp(finalYPosition, initialYPosition, timeElapsed / headRetractionTime);
-            headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, currentYPosition, headWeakpoint.localPosition.z);
+            currentWeakYPosition = Mathf.Lerp(finalWeakYPosition, initialWeakYPosition, timeElapsed / headRetractionTime);
+            headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, currentWeakYPosition, headWeakpoint.localPosition.z);
 
-            currentXAngles = Mathf.Lerp(finalXAngles, initialXAngles, timeElapsed / headRetractionTime);
-            transform.localEulerAngles = new Vector3(currentXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
+            transform.localRotation = Quaternion.Lerp(finalRotation, initialRotation, timeElapsed / headRetractionTime);
 
             host.localPosition = Vector3.Lerp(currentHostPosition, originalHostPosition, timeElapsed / headRetractionTime);
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, initialYPosition, headWeakpoint.localPosition.z);
-        transform.localEulerAngles = new Vector3(initialXAngles, transform.localEulerAngles.y, transform.localEulerAngles.z);
+        headWeakpoint.localPosition = new Vector3(headWeakpoint.localPosition.x, initialWeakYPosition, headWeakpoint.localPosition.z);
+        transform.localRotation = initialRotation;
         host.localPosition = originalHostPosition;
 
         // Restore variables.
-        host.GetComponent<EnemyMovement>().enabled = true;
+        //host.GetComponent<EnemyMovement>().enabled = true;
         headWeakpoint.GetComponent<Collider>().isTrigger = false;
         headWeakpoint.gameObject.SetActive(false);
         headBashDisrupted = false;
@@ -455,38 +478,51 @@ public class SeaSerpent : MonoBehaviour
     /// Cancel the Head Bash attack.
     /// </summary>
     public void CancelHeadBash() => headBashDisrupted = true;
+
+    /// <summary>
+    /// Deals lunge damage to Player if Serpent's head can deal damage and collides with Player.
+    /// </summary>
+    /// <param name="collision"> info on collided gameobject </param>
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(canDealHeadDamage && collision.transform.tag.Equals("Player"))
+        {
+            collision.transform.GetComponent<PlayerInfo>().TakeDamage(LungeDamage);
+        }
+    }
     #endregion
 
     #region Water Cannon Functions
     /// <summary>
-    /// Displays the Mouth Weakpoint and mouthProtrustionTime and freezes Host's movement to then charge up the Water Cannon attack for cannonChargeTime. If the Mouth Weakpoint
+    /// Displays the Mouth Weakpoint and mouthProtrusionTime and freezes Host's movement to then charge up the Water Cannon attack for cannonChargeTime. If the Mouth Weakpoint
     /// sustains too much damage, the Mouth Weakpoint retracts back into the Serpent. Otherwise, the water laser attached to the weakpoint is enabled and the weakpoint rotates
     /// towards the Player. Afterwards, the Serpent and Mouth Weakpoint return to their original positions.
     /// </summary>
     private IEnumerator StartWaterCannon()
     {
-        // Disable the Host's movement and follow the Player.
+        // Disable the Host's movement.
         host.GetComponent<EnemyMovement>().enabled = false;
+        isLookingAtPlayer = false;
 
         // Mouth Weakpoint position variables
         float timeElapsed = 0f;
-        float initialZPosition = mouthWeakpoint.localPosition.z;
-        float finalZPosition = mouthWeakpoint.localPosition.z + mouthProtrustionDistance;
-        float currentZPosition;
+        float initialWeakZPosition = mouthWeakpoint.localPosition.z;
+        float finalWeakZPosition = mouthWeakpoint.localPosition.z + mouthProtrusionDistance;
+        float currentWeakZPosition;
 
         // Display mouth weakpoint.
         mouthWeakpoint.gameObject.SetActive(true);
-        while (timeElapsed < mouthProtrustionDistance)
+        while (timeElapsed < mouthProtrusionDistance)
         {
-            currentZPosition = Mathf.Lerp(initialZPosition, finalZPosition, timeElapsed / mouthProtrustionTime);
-            mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, currentZPosition);
+            currentWeakZPosition = Mathf.Lerp(initialWeakZPosition, finalWeakZPosition, timeElapsed / mouthProtrusionTime);
+            mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, currentWeakZPosition);
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, finalZPosition);
+        mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, finalWeakZPosition);
 
-        
+
         // Call for mouth weakpoint to rotate towards Player.
         isCannoning = true;
 
@@ -511,25 +547,34 @@ public class SeaSerpent : MonoBehaviour
 
         // Disable the water laser.
         waterLaser.gameObject.SetActive(false);
+        isCannoning = false;
 
         // Retract the Mouth Weakpoint back into the Serpent and return the Host to its original position.
         Vector3 currentHostPosition = host.localPosition;
+
+        Vector3 playerDirection = player.position - mouthWeakpoint.position;
+        float angles = Vector3.Angle(playerDirection, transform.forward);
+        float angularSpeed = angles / mouthRetractionTime;
+
+        isCannoning = false;
+        isLookingAtPlayer = true;
+
         timeElapsed = 0;
         while (timeElapsed < mouthRetractionTime)
         {
-            currentZPosition = Mathf.Lerp(finalZPosition, initialZPosition, timeElapsed / mouthRetractionTime);
-            mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, currentZPosition);
+            currentWeakZPosition = Mathf.Lerp(finalWeakZPosition, initialWeakZPosition, timeElapsed / mouthRetractionTime);
+            mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, currentWeakZPosition);
 
             host.localPosition = Vector3.Lerp(currentHostPosition, originalHostPosition, timeElapsed / headRetractionTime);
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, initialZPosition);
+        mouthWeakpoint.localPosition = new Vector3(mouthWeakpoint.localPosition.x, mouthWeakpoint.localPosition.y, initialWeakZPosition);
         host.localPosition = originalHostPosition;
 
         // Restore variables.
-        host.GetComponent<EnemyMovement>().enabled = true;
+        //host.GetComponent<EnemyMovement>().enabled = true;
         mouthWeakpoint.GetComponent<Collider>().isTrigger = false;
         mouthWeakpoint.gameObject.SetActive(false);
         waterCannonDisrupted = false;

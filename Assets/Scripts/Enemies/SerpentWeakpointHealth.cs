@@ -59,6 +59,7 @@ public class SerpentWeakpointHealth : EnemyHealth
         }
     }
 
+    /*
     /// <summary>
     /// Deals damage to Player if the Head Weakpoint collides with Player.
     /// </summary>
@@ -68,4 +69,5 @@ public class SerpentWeakpointHealth : EnemyHealth
         if (weakpoint == WeakpointType.Head && other.tag.Equals("Player"))
             other.GetComponent<PlayerInfo>().TakeDamage(serpent.LungeDamage);
     }
+    */
 }
