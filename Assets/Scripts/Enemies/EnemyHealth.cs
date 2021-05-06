@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public bool doNotDespawn;
     public float lifeTime = 20;
     public GameObject deathEffect;
-    private float lifeTimer;
+    public float lifeTimer;
 
     public virtual void Start()
     {
@@ -35,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public virtual void DestroyEnemy()
     {
+        //print(UnityEngine.StackTraceUtility.ExtractStackTrace());
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }
     IEnumerator waitToDespawn()
