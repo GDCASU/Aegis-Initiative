@@ -1,6 +1,11 @@
-﻿using System.Collections;
+﻿/*
+ * Revision Author: Cristion Dominguez
+ * Revision Date: April 23, 2021
+ * Modification: Hover can now be permanent.
+ */
+
+using System.Collections;
 using System.Collections.Generic;
-using Unity.MPE;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -82,6 +87,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     [Range(0.0f, 10.0f)]
     public float hoverTimer = 3.0f; //how long ship stays
+    [SerializeField]
+    private bool isHoverPermanent = false;
 
     [Header("Leave Variables")]
     [Tooltip("Determines the leave rotation")]
@@ -212,7 +219,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            if(hoverTimer > 0 && hover)
+            if(isHoverPermanent || (hoverTimer > 0 && hover))
             {
                 transform.Translate(new Vector3(x, y, 0) * Time.fixedDeltaTime); //ship will hover
                 hoverTimer -= Time.fixedDeltaTime;

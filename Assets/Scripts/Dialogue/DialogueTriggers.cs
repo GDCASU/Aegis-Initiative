@@ -15,10 +15,10 @@ public class DialogueTriggers : MonoBehaviour
     //add more emotions later
     public enum Emotion
     {
-        Neu,
-        Hap,
+        Neutral,
+        Happy,
         Sad,
-        Angy,
+        Angry,
         Unique,
         etc
     };
@@ -27,8 +27,11 @@ public class DialogueTriggers : MonoBehaviour
     public enum HiddenPilot
     {
         Any,
+        Celeste,
         DaddyLongLegs,
         Feebee,
+        Frederick,
+        Mushii,
         TestNonExistantPilot
     };
 

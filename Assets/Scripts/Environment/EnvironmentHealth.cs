@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,15 +31,17 @@ public class EnvironmentHealth : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player")) OnPlayerCollision();
     }
 
     public virtual void OnPlayerCollision()
-    {
+    {        
         PlayerInfo.singleton.TakeDamage(collisionDamage);
+        PlayerInfo.singleton.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         TakeDamage(health);
+        
     }
 }

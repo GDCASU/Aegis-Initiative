@@ -65,13 +65,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe15a552c635134580ba4fcafc83169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  character: {fileID: 1845149114513795890}
   copilotData:
     name: 2
     level: 0
     experience: 0
     isUnlocked: 1
-  portrait: {fileID: 0}
+  portraits:
+  - {fileID: 21300000, guid: b30c6bc3b7256da408b709a67f7dc709, type: 3}
+  - {fileID: 21300000, guid: abb2e644773e1474baac88ad239863fe, type: 3}
+  - {fileID: 21300000, guid: 59d982105080aa045b340716922cb176, type: 3}
+  - {fileID: 21300000, guid: 7b665c6e2b414a1469656a64dec2485e, type: 3}
+  - {fileID: 21300000, guid: 052a5215ae9bb574c9fef6af1a008b68, type: 3}
+  portrait: {fileID: 21300000, guid: b30c6bc3b7256da408b709a67f7dc709, type: 3}
   fullBody: {fileID: 0}
   copilotActive: {fileID: 1845149114513795916}
   copilotPassive: {fileID: 1845149114513795912}
@@ -95,6 +101,7 @@ MonoBehaviour:
     type: 3}
   heal: 5
   healTime: 5
+  minHealthPercentage: 0.25
   healPlayer: 0
 --- !u!114 &1845149114513795912
 MonoBehaviour:
@@ -114,3 +121,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 946c61cb65f78df4394947a1ff1fce91, type: 3}
   defenseIncrease: 0.05
   sporeTimer: 5
+  healthLostPercent: 0
