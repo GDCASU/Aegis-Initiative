@@ -61,7 +61,7 @@ public class EnemyGrunt : EnemyHealth
             // TODO: some animation here instead of MoveTowards
             transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, -1), 5f * Time.deltaTime);
 
-            if (!transform.GetChild(0).GetComponent<Renderer>().isVisible)
+            if (!GetComponentInChildren<Renderer>().isVisible)
                 DestroyEnemy();
         }
     }
