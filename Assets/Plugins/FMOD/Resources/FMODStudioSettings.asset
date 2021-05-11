@@ -81,6 +81,7 @@ MonoBehaviour:
   Banks:
   - Mushroom Stage
   - Pirate Stage
+  - Water Stage
   BanksToLoad:
   - Master.bank
   - Master.strings.bank
