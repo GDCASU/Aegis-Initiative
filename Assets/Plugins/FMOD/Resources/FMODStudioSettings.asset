@@ -80,6 +80,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Mushroom Stage
+  - Pirate Stage
   BanksToLoad:
   - Master.bank
   - Master.strings.bank
