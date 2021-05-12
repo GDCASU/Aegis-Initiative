@@ -5,7 +5,7 @@
 			<value>Mushii</value>
 		</property>
 		<relationship name="folder">
-			<destination>{0bc0a5f6-65dc-406e-bf81-e0098741be38}</destination>
+			<destination>{61ce5505-b986-4582-b082-a3493e6a6014}</destination>
 		</relationship>
 	</object>
 </objects>
