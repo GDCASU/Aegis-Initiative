@@ -16,7 +16,7 @@ namespace FMODUnity
     {
         [EventRef]
         public string Event = "";
-        private FMOD.Studio.EventInstance music;
+        public static FMOD.Studio.EventInstance music;
 
         private float originalVolume;
         private float currentVolume;
