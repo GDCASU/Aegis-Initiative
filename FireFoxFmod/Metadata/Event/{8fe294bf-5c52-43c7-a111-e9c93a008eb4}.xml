@@ -155,9 +155,6 @@
 		</relationship>
 	</object>
 	<object class="SFXReverbEffect" id="{ce434a8c-79ec-4af0-8563-bcd7979a7b86}">
-		<property name="bypass">
-			<value>true</value>
-		</property>
 		<property name="decayTime">
 			<value>4100</value>
 		</property>
