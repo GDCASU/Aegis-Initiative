@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class Underwater : MonoBehaviour
 {
-    [Range(0,1)]
-    public float reverb;
-    private float lastReverb;
+    float aboveWater = 0f;
+    float underwater = 1f;
 
-    [Range(0, 3)]
-    public int level;
-
-    private void Update()
-    {
-        if (reverb != lastReverb)
-        {
-            var rev = FMODUnity.FMODStartMusic.music.getReverbLevel(level, out float yarp);
-            var test = FMODUnity.FMODStartMusic.music.setReverbLevel(level, reverb);
-            lastReverb = reverb;
-        }
-    }
-
+    //enters the water
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            FMODUnity.FMODStartMusic.music.setParameterByName("IsUnderwater", 1f);
+            FMODUnity.FMODStartMusic.music.setParameterByName("IsUnderwater", underwater);
         }
     }
 
+    //exits the water
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            FMODUnity.FMODStartMusic.music.setParameterByName("IsUnderwater", 0f);
+            FMODUnity.FMODStartMusic.music.setParameterByName("IsUnderwater", aboveWater);
         }
     }
 }
