@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: -7262017242784070085}
   - component: {fileID: -8256019299168350383}
   m_Layer: 0
-  m_Name: FeebeeFlowchart
+  m_Name: CelesteFlowchart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,19 +86,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -410.30673, y: 203.80832}
+  scrollPos: {x: 23.26516, y: 280.69998}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 424
-  zoom: 0.9100001
+  zoom: 0.43300143
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: -7243541577956726307}
+  selectedCommands:
+  - {fileID: -5558105810119734954}
   variables: []
   description: 
   stepPause: 0
@@ -124,9 +126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 54.82834
-    y: 320.54883
-    width: 137.91208
+    x: 52.51888
+    y: 321.9168
+    width: 140.06898
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -155,9 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 0
-  storyText: '[~Watch it!|Woah!|Careful, idiot!|Are you trying to kill us?|Don''t
-    scratch the paint!|I''m not paying for that...|Hey, I just got the last dent
-    out of this!]'
+  storyText: '[~Steady! Watch yourself!|Whoa, Whoa!|Getting hit portside.. I mean
+    left!|Dial back on the attack, we need to stabilize.|You sure you got this? I
+    can take over!|Whoa! You okay?|Easy now!]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -306,13 +308,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 56.82834
-    y: 144.54884
-    width: 132.63736
+    x: 54.711018
+    y: 144.43152
+    width: 130.83115
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 9
+  itemId: 66
   blockName: Entering Stage
   description: Random remarks for entering stage
   eventHandler: {fileID: -6711581719989021757}
@@ -394,10 +396,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 39
   indentLevel: 0
-  storyText: '[~Alright, let''s do this!|Hold on, looks like we''re in for a bumpy
-    ride... especially with {i}you{/i} at the helm.|Hurry up or we''ll miss all the
-    action!|Took you long enough, buckle up and let''s go!|Come on, hit it! My grandma
-    flies faster than you.|We''re going to absolutely destroy this mission!]'
+  storyText: "[~Take a deep breath and stretch, you got this!|Let\u2019s go!! Can\u2019t
+    wait to see what you can do.|Celeste checkin\u2019 in!|Make this fun! I'm graduating
+    soon|Remember, easy on the throttle, you got this!|Just like the sims!]"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -489,13 +490,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 218.82834
+    x: 217.46034
     y: 144.54884
-    width: 122.96703
+    width: 122.74803
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 9
+  itemId: 67
   blockName: Exiting Stage
   description: Random remarks for exiting stage
   eventHandler: {fileID: -8286094397942143075}
@@ -577,8 +578,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 45
   indentLevel: 0
-  storyText: '[~What a surprise, we made it out alive.|We sure showed them what Tiberius
-    Station''s all about!|Huh... nice flying out there.|Take that!|WOOHOO!!]'
+  storyText: '[~Look at you! Nice work!|Woo-hoo! Nice flying!|Great work, just watch
+    your left more next time.|Proud of you!!|Gonna be talkin about your skills at
+    the station! Incredible work.|Little close there at the end, but the Station
+    would be proud!|Watch the throttle next time, and the draft, and- nevermind good
+    job!]'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -671,12 +675,12 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 230.82834
-    y: 323.54883
-    width: 161.64835
+    y: 324.88217
+    width: 164.31833
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 9
+  itemId: 68
   blockName: Collecting Pick-Ups
   description: Random remarks for collecting pick-ups
   eventHandler: {fileID: 2277531252563573356}
@@ -758,7 +762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 51
   indentLevel: 0
-  storyText: '[~Good, we needed that.|Sweet!|Rad!]'
+  storyText: "[~Feeling and Lookin\u2019 good now!|Ahhh feeling good!|Ready for anything
+    now!|Good save, we needed that now watch out!]"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -851,12 +856,12 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 437.82834
-    y: 323.54883
-    width: 154.61539
+    y: 325.85828
+    width: 155.08047
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 9
+  itemId: 69
   blockName: Defeating Enemies
   description: Random remarks for defeating enemies
   eventHandler: {fileID: 3992477306142819581}
@@ -938,8 +943,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 57
   indentLevel: 0
-  storyText: '[~Got ''em!|Woah! Nice shot...|Take that!|Bye bye!|They should''ve
-    never messed with us.|Don''t mess with Tiberius Station!]'
+  storyText: "[~Making it look easy huh?|Ha ha!! Look at you!|Gonna be my record
+    at this point!|OOOO THEY NEVER SAW THAT COMIN!|Glad I\u2019m on your side!! You\u2019re
+    amazing!|Should I just sit back? You\u2019re doing all the work!|I should\u2019ve
+    brought a snack! This is EASY!]"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -1033,11 +1040,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 649.82837
     y: 327.54883
-    width: 113.2967
+    width: 112.35545
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 9
+  itemId: 70
   blockName: Lose Stage
   description: Random remarks for lose stage
   eventHandler: {fileID: -8256019299168350383}
@@ -1119,8 +1126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 63
   indentLevel: 0
-  storyText: '[~Crap, now I gotta fly myself home...|We''re losing control of the
-    ship!|We''re going down! Hold on!]'
+  storyText: "[~I\u2019ll take over, just hang on!|Hold your head we\u2019re going
+    down!|Got in over your head!|Hold on!|No! Not again!]"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
