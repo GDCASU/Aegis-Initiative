@@ -786,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 1078879281001968219, guid: aeca5824c9773ae418d1dc0194843d72,
         type: 3}
       propertyPath: Event
-      value: event:/Music/Pirate Stage/Pirate Stage Music
+      value: event:/Music/Stages/Pirate Stage/Pirate Stage Music
       objectReference: {fileID: 0}
     - target: {fileID: 1078879281001968231, guid: aeca5824c9773ae418d1dc0194843d72,
         type: 3}
