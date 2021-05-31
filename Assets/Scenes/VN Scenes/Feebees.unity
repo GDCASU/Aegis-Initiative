@@ -297,6 +297,10 @@ GameObject:
   - component: {fileID: 376420904}
   - component: {fileID: 376420837}
   - component: {fileID: 376420836}
+  - component: {fileID: 376420906}
+  - component: {fileID: 376420919}
+  - component: {fileID: 376420918}
+  - component: {fileID: 376420917}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -344,6 +348,7 @@ MonoBehaviour:
   - {fileID: 376420847}
   - {fileID: 376420846}
   - {fileID: 376420904}
+  - {fileID: 376420919}
   suppressAllAutoSelections: 0
 --- !u!114 &376420826
 MonoBehaviour:
@@ -385,6 +390,7 @@ MonoBehaviour:
   - {fileID: 376420842}
   - {fileID: 376420841}
   - {fileID: 376420832}
+  - {fileID: 376420906}
   suppressAllAutoSelections: 0
 --- !u!114 &376420827
 MonoBehaviour:
@@ -412,7 +418,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 376420826}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 376420906}
   variables: []
   description: 
   stepPause: 0
@@ -1413,6 +1420,7 @@ MonoBehaviour:
   - {fileID: 376420891}
   - {fileID: 376420901}
   - {fileID: 376420836}
+  - {fileID: 376420917}
   suppressAllAutoSelections: 0
 --- !u!114 &376420862
 MonoBehaviour:
@@ -1466,6 +1474,7 @@ MonoBehaviour:
   - {fileID: 376420864}
   - {fileID: 376420863}
   - {fileID: 376420837}
+  - {fileID: 376420918}
   suppressAllAutoSelections: 0
 --- !u!114 &376420863
 MonoBehaviour:
@@ -2713,6 +2722,23 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &376420906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376420824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 101
+  indentLevel: 0
+  targetObject: {fileID: 1346111342}
+  methodName: EndVNScene
+  delay: 0
 --- !u!114 &376420907
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2987,6 +3013,57 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &376420917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376420824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 104
+  indentLevel: 0
+  targetObject: {fileID: 1346111342}
+  methodName: EndVNScene
+  delay: 0
+--- !u!114 &376420918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376420824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 103
+  indentLevel: 0
+  targetObject: {fileID: 1346111342}
+  methodName: EndVNScene
+  delay: 0
+--- !u!114 &376420919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376420824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 102
+  indentLevel: 0
+  targetObject: {fileID: 1346111342}
+  methodName: EndVNScene
+  delay: 0
 --- !u!1 &423904999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,6 +3689,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1346111342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4741623027170373525, guid: ca0bf80552c7328478b152012626f085,
+    type: 3}
+  m_PrefabInstance: {fileID: 4741623026367424763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1352634891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3929,3 +4012,72 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &4741623026367424763
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373525, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_Name
+      value: VNSceneManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca0bf80552c7328478b152012626f085, type: 3}

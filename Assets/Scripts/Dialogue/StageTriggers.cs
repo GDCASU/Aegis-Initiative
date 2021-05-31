@@ -96,6 +96,6 @@ public class StageTriggers : MonoBehaviour
         playerShip.transform.Translate(endDirection);
         //if(ProfileManager.instance.CurrentProfile.copilotVNsComplete.ContainsKey(GameManager.singleton.activeCopilot.name))
         
-        SceneManager.LoadScene(GameManager.singleton.activeCopilot.name + "VN");
+        SceneManager.LoadScene(GameManager.singleton.activeCopilot.name);
     }
 }
