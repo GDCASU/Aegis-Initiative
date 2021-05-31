@@ -40,6 +40,7 @@ public class ProfileData
     }
     private List<CopilotData> _copilotList;
     public Dictionary<int, int> stageScores;
+    public Dictionary<string, int> copilotVNsComplete;
     public int currentStage;
     public int newGamePlusCount;
 
@@ -52,6 +53,7 @@ public class ProfileData
         this.name = name;
         this._copilotList = new List<CopilotData>();
         this.stageScores = new Dictionary<int, int>();
+        this.copilotVNsComplete = new Dictionary<string, int>();
         this.currentStage = 0;
         this.newGamePlusCount = 0;
 
@@ -63,12 +65,13 @@ public class ProfileData
     /// Constructor to make a new profile using more
     /// pre-defined variabes
     /// </summary>
-    public ProfileData(int id, string name, List<CopilotData> copilotList, Dictionary<int, int> stageScores, int currentStage, int newGamePlusCount)
+    public ProfileData(int id, string name, List<CopilotData> copilotList, Dictionary<int, int> stageScores, Dictionary<string, int> copilotVNsComplete, int currentStage, int newGamePlusCount)
     {
         this.profileID = id;
         this.name = name;
         this._copilotList = copilotList;
         this.stageScores = stageScores;
+        this.copilotVNsComplete = copilotVNsComplete;
         this.currentStage = currentStage;
         this.newGamePlusCount = newGamePlusCount;
     }
