@@ -7,6 +7,7 @@ public class VNSceneManager : MonoBehaviour
 {
     GameObject flowchart;
     string copilotName;
+    ProfileManager profileManager = ProfileManager.instance;
 
     private void Awake()
     {
@@ -15,21 +16,25 @@ public class VNSceneManager : MonoBehaviour
         copilotName = SceneManager.GetActiveScene().name;
 
         //check if copilot exists in dictionary
-        if(ProfileManager.instance.CurrentProfile.copilotVNsComplete.ContainsKey(copilotName))
+        if(profileManager.CurrentProfile.copilotVNsComplete.ContainsKey(copilotName))
         {
-            if(flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + ProfileManager.instance.CurrentProfile.copilotVNsComplete[copilotName]))
+            //if dialogue box exists, execute it
+            if(flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + profileManager.CurrentProfile.copilotVNsComplete[copilotName]))
             {
                 //execute block with copilotname and current level of copilot
                 flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.ExecuteBlock(
-                    copilotName + ProfileManager.instance.CurrentProfile.copilotVNsComplete[copilotName]);
+                    copilotName + profileManager.CurrentProfile.copilotVNsComplete[copilotName]);
             }
             else
             {
                 //TO DO !!!!!!!!!!!
                 //continue to next scene because all pilot dialogue is complete
                 //SceneManager.LoadScene();
+
+                //this might work? idfk
+                profileManager.SaveCurrentProfile();
+                SceneManager.LoadScene(profileManager.CurrentProfile.currentStage);
             }
-            
         }
         else
         {
@@ -42,11 +47,16 @@ public class VNSceneManager : MonoBehaviour
     //Load next scene after VN
     public void EndVNScene()
     {
-        ProfileManager.instance.CurrentProfile.copilotVNsComplete[copilotName] = 
-            ProfileManager.instance.CurrentProfile.copilotVNsComplete[copilotName] + 1;
+        //update this pilots completed VNscenes by 1
+        profileManager.CurrentProfile.copilotVNsComplete[copilotName] =
+            profileManager.CurrentProfile.copilotVNsComplete[copilotName] + 1;
+
+        profileManager.SaveCurrentProfile();
 
         //TO DO !!!!!!!!!!!!!!!!!!!!!
         //find a way to load next scen that the player needs to complete
         //SceneManager.LoadScene()
+        //this might work? idfk
+        SceneManager.LoadScene(profileManager.CurrentProfile.currentStage);
     }
 }

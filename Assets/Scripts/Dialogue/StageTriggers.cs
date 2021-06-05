@@ -94,8 +94,12 @@ public class StageTriggers : MonoBehaviour
     {
         //fly ship away from camera at cart speed (can adjust later)
         playerShip.transform.Translate(endDirection);
-        //if(ProfileManager.instance.CurrentProfile.copilotVNsComplete.ContainsKey(GameManager.singleton.activeCopilot.name))
-        
+
+        //update currenStage and save profile
+        ProfileManager.instance.CurrentProfile.currentStage += 1;
+        ProfileManager.instance.SaveCurrentProfile();
+
+        //load active pilot VN scene
         SceneManager.LoadScene(GameManager.singleton.activeCopilot.name);
     }
 }
