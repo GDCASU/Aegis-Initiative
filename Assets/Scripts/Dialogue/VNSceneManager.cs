@@ -18,22 +18,19 @@ public class VNSceneManager : MonoBehaviour
         //check if copilot exists in dictionary
         if(profileManager.CurrentProfile.copilotVNsComplete.ContainsKey(copilotName))
         {
+            int vnNumber = profileManager.CurrentProfile.copilotVNsComplete[copilotName];
             //if dialogue box exists, execute it
-            if(flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + profileManager.CurrentProfile.copilotVNsComplete[copilotName]))
+            if (flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + vnNumber))
             {
                 //execute block with copilotname and current level of copilot
-                flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.ExecuteBlock(
-                    copilotName + profileManager.CurrentProfile.copilotVNsComplete[copilotName]);
+                flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.ExecuteBlock(copilotName + vnNumber);
             }
             else
             {
-                //TO DO !!!!!!!!!!!
-                //continue to next scene because all pilot dialogue is complete
-                //SceneManager.LoadScene();
-
-                //this might work? idfk
+                //player has no VN scenes left
+                //This should save the profile then load the next gameplay scene
                 profileManager.SaveCurrentProfile();
-                SceneManager.LoadScene(profileManager.CurrentProfile.currentStage);
+                SceneManager.LoadScene(GameManager.singleton.levels[profileManager.CurrentProfile.currentStage]);
             }
         }
         else
@@ -48,15 +45,11 @@ public class VNSceneManager : MonoBehaviour
     public void EndVNScene()
     {
         //update this pilots completed VNscenes by 1
-        profileManager.CurrentProfile.copilotVNsComplete[copilotName] =
-            profileManager.CurrentProfile.copilotVNsComplete[copilotName] + 1;
+        profileManager.CurrentProfile.copilotVNsComplete[copilotName] += 1;
 
         profileManager.SaveCurrentProfile();
 
-        //TO DO !!!!!!!!!!!!!!!!!!!!!
-        //find a way to load next scen that the player needs to complete
-        //SceneManager.LoadScene()
-        //this might work? idfk
-        SceneManager.LoadScene(profileManager.CurrentProfile.currentStage);
+        //This should load the next gameplay level
+        SceneManager.LoadScene(GameManager.singleton.levels[profileManager.CurrentProfile.currentStage]);
     }
 }
