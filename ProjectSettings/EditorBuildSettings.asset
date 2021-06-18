@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PirateStage.unity
     guid: 9773df4fb250fc045980e7b6d96a51a8
+  - enabled: 1
+    path: Assets/Scenes/VolcanoStage.unity
+    guid: d03306a38d6dee840bc2482e9f9a82ad
+  - enabled: 1
+    path: Assets/Scenes/AsteroidStage.unity
+    guid: ed3077663cfff91439024a8770e340e1
   - enabled: 0
     path: Assets/Scenes/brad_mid_stage_remarks.unity
     guid: ea18078b8bc326c47a8ac9f71d0ab089

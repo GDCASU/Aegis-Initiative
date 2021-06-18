@@ -101,19 +101,38 @@ public class ProfileManager : MonoBehaviour
     /// </summary>
     public void TestSaveProfiles()
     {
-        CreateProfile(0, "UITest1");
-        profiles[0].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
+        CreateProfile(0, "MushRoom");
+        profiles[0].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
+        profiles[0].AddCopilot(new CopilotData(Copilots.Feebee, 0, 0, true));
         profiles[0].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
+        profiles[0].AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
+        profiles[0].AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
         profiles[0].currentStage = 0;
         SaveProfile(0);
-        CreateProfile(1, "UITest2");
+        CreateProfile(1, "Pirate");
         profiles[1].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
         profiles[1].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
         profiles[1].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
         profiles[1].AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
         profiles[1].AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
         profiles[1].currentStage = 1;
-        SaveProfile(1);
+        SaveProfile(1);   
+        CreateProfile(2, "Volcano");
+        profiles[2].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
+        profiles[2].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
+        profiles[2].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
+        profiles[2].AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
+        profiles[2].AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
+        profiles[2].currentStage = 2;
+        SaveProfile(2);
+        CreateProfile(3, "Asteroid");
+        profiles[3].AddCopilot(new CopilotData(Copilots.DaddyLongLegs, 4, 3, true));
+        profiles[3].AddCopilot(new CopilotData(Copilots.Feebee,0,0,true));
+        profiles[3].AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
+        profiles[3].AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
+        profiles[3].AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
+        profiles[3].currentStage = 3;
+        SaveProfile(3);
 
     }
 }

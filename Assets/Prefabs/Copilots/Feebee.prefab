@@ -86,7 +86,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1b9d7834235c1814a85d41235f9b6179, type: 3}
   - {fileID: 21300000, guid: 7151dbac2421d0947b00aae1f0c7ef79, type: 3}
   portrait: {fileID: 21300000, guid: de4df24648e433948bed0d6c1d7d1347, type: 3}
-  fullBody: {fileID: 21300000, guid: d7f46213837bb0e40baf8037917b4741, type: 3}
+  fullBody: {fileID: 21300000, guid: f8f8fb7d88ca4e34b839a9f897271d39, type: 3}
   copilotActive: {fileID: 365653576477132568}
   copilotPassive: {fileID: 6305573297492744777}
 --- !u!114 &365653576477132568
