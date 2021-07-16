@@ -104,7 +104,7 @@ public class PlayerInfo : MonoBehaviour
     /// </summary>
     public void KillPlayer()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
     #endregion
 
