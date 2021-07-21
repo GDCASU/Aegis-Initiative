@@ -16,6 +16,8 @@ public class VNSceneManager : MonoBehaviour
         copilotName = SceneManager.GetActiveScene().name;
 
         int vnNumber = GameManager.singleton.activeCopilot.GetComponent<CopilotInfo>().copilotData.vnScenesCompleted;
+        print(flowchart.GetComponent<SetupFlowchart>());
+        bool nulll = flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + vnNumber);
         //if dialogue box exists, execute it
         if (flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + vnNumber))
         {

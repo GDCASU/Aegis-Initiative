@@ -8,12 +8,18 @@ using UnityEngine;
 /// 
 /// Some components taken from BreakableWall.cs by Matt Corey
 /// </summary>
+/// 
 public class EnvironmentHealth : MonoBehaviour
 {
     public int health;
     public int collisionDamage;
     public GameObject[] destroyReplacements;
     public bool destroyOnContact = true;
+
+    private void Start()
+    {
+        StartCoroutine(despawn());
+    }
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
@@ -43,5 +49,15 @@ public class EnvironmentHealth : MonoBehaviour
 
         TakeDamage(health);
         
+    }
+
+    IEnumerator despawn()
+    {
+        float despawnTime = 15;
+        while (despawnTime < 0)
+        {
+            despawnTime -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

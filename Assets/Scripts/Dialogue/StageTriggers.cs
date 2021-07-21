@@ -90,10 +90,17 @@ public class StageTriggers : MonoBehaviour
     }
 
     //prob will need to use a coroutine later
-    private void EndLevel()
+    public void EndLevel()
     {
         //fly ship away from camera at cart speed (can adjust later)
         playerShip.transform.Translate(endDirection);
+        StartCoroutine(FinishLevel());
+    }
+
+    private IEnumerator FinishLevel()
+    {
+
+        yield return new WaitForSeconds(5);
 
         //update currenStage and save profile
         ProfileManager.instance.CurrentProfile.currentStage += 1;

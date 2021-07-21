@@ -14,41 +14,7 @@ public class SelectedCopilots : MonoBehaviour
         passive = GetComponent<CopilotPassiveMechanic>();
         active.CopyInfo(GameManager.singleton.active);
         passive.CopyInfo(GameManager.singleton.passive);
-        GameManager.singleton.activeCopilot=Instantiate(GameManager.singleton.activeCopilot);
-        GameManager.singleton.passiveCopilot = Instantiate(GameManager.singleton.passiveCopilot);
-        //switch (GameManager.singleton.passive.typeOfMechanic)
-        //{
-        //    case GameManager.TypeOfMechanic.Action:
-        //        break;
-        //    case GameManager.TypeOfMechanic.AOE:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Buff:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Create:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Event:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Transformative:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Vision:
-        //        break;
-        //}
-        //switch (GameManager.singleton.active.typeOfMechanic)
-        //{
-        //    case GameManager.TypeOfMechanic.Action:
-        //        break;
-        //    case GameManager.TypeOfMechanic.AOE:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Buff:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Create:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Event:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Transformative:
-        //        break;
-        //    case GameManager.TypeOfMechanic.Vision:
-        //        break;
-        //}
+        Instantiate(GameManager.singleton.activeCopilot).name = GameManager.singleton.activeCopilot.name;
+        Instantiate(GameManager.singleton.passiveCopilot).name = GameManager.singleton.passiveCopilot.name;
     }
 }

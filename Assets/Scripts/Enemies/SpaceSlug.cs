@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class SpaceSlug : MonoBehaviour
+public class SpaceSlug : EnemyHealth
 {
-    public int damage; //damage dealt to Player health
-
     public CinemachineSmoothPath path = default;
     public CinemachineSmoothPath playerPath;
     CinemachineDollyCart playerCart;
@@ -28,32 +26,43 @@ public class SpaceSlug : MonoBehaviour
     public float chancesOfAttack;
     public float speedAdjustmentMultiplier;
     public bool attack;
-    private float timer;
+    public float timer;
+    public bool endReached;
+    bool rockThrown;
+    public GameObject projectilePrefab;
+    private float numSelected;
+    public int precision;
+    public GameObject slugHead;
+    private GameObject rock;
 
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         playerCart = PlayerInfo.singleton.GetComponentInParent<CinemachineDollyCart>();
         rng = new System.Random();
         start = new Vector3();
         middle = new Vector3();
         end = new Vector3();
         timer = maxTime;
-        SpawnSlug();
+        rockThrown = true;
+        //SpawnSlug();
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if (slugCart.transform.position == end)timerReset = true;
-        if (timerReset) timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            timer = maxTime;
-            timerReset = false;
-            attack = (rng.Next(100) >= chancesOfAttack) ? false : true;
-            SpawnSlug();
-        } 
+        //if (slugCart.transform.position == end)timerReset = true;
+        //if (timerReset) timer -= Time.deltaTime;
+        //if (timer <= 0)
+        //{
+        //    timer = maxTime;
+        //    timerReset = false;
+        //    attack = (rng.Next(100) >= chancesOfAttack) ? false : true;
+        //    SpawnSlug();
+        //}
+        //if (!rockThrown && GetComponentInChildren<Renderer>().isVisible) StartCoroutine(ThrowRock());
+            
     }
 
     private void SpawnSlug()
@@ -79,6 +88,14 @@ public class SpaceSlug : MonoBehaviour
             //start += new Vector3(depthAdjustment.x, 0, depthAdjustment.z) * .25f;
         }
 
+        if (endReached)
+        {
+            start += PlayerInfo.singleton.transform.forward.normalized * 45;
+            middle += PlayerInfo.singleton.transform.forward.normalized * 45;
+            end += PlayerInfo.singleton.transform.forward.normalized * 45;
+            rockThrown = false;
+        }
+
         path.m_Waypoints[0].position = start;
         path.m_Waypoints[1].position = middle;
         path.m_Waypoints[2].position = end;
@@ -93,13 +110,32 @@ public class SpaceSlug : MonoBehaviour
         slugCart.m_Speed = speed;
     }
 
+    public IEnumerator ThrowRock()
+    {
+        float dealy = 3;
+        rockThrown = true;
+        while (dealy > 0)
+        {
+            dealy -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        numSelected = rng.Next(100);
+        if (precision < numSelected) ProjectileAttack.ShootProjectileAroundPlayer(playerCart, (CinemachineSmoothPath)playerCart.m_Path, projectilePrefab, slugHead.transform.position);
+        else ProjectileAttack.ShootProjectileAtPlayer(playerCart, (CinemachineSmoothPath)playerCart.m_Path, projectilePrefab, slugHead.transform.position);
+    }
+
     //If player collides with SpaceSlug, Player takes damage
     void OnCollision(GameObject other)
     {
         if (other.tag == "Player")
         {
             //call Player's TakeDamage() method
-            other.GetComponent<PlayerInfo>().TakeDamage(damage);
+            other.GetComponent<PlayerInfo>().TakeDamage(collisionDamage);
         }
+    }
+    public override void DestroyEnemy()
+    {
+        PlayerInfo.singleton.GetComponent<StageTriggers>().EndLevel();
+        base.DestroyEnemy();
     }
 }
