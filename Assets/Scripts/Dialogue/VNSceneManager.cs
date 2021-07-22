@@ -1,28 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 using UnityEngine.SceneManagement;
 
 public class VNSceneManager : MonoBehaviour
 {
-    GameObject flowchart;
+    Flowchart flowchart ;
     string copilotName;
     ProfileManager profileManager = ProfileManager.instance;
 
     private void Awake()
     {
-        flowchart = GameObject.Find("Flowchart").gameObject;
+        flowchart = GameObject.Find("Flowchart").GetComponent<Flowchart>();
 
         copilotName = SceneManager.GetActiveScene().name;
 
         int vnNumber = GameManager.singleton.activeCopilot.GetComponent<CopilotInfo>().copilotData.vnScenesCompleted;
-        print(flowchart.GetComponent<SetupFlowchart>());
-        bool nulll = flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + vnNumber);
+        //print(flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + vnNumber));
         //if dialogue box exists, execute it
-        if (flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.FindBlock(copilotName + vnNumber))
+        if (flowchart.FindBlock(copilotName + vnNumber))
         {
             //execute block with copilotname and current level of copilot
-            flowchart.GetComponent<SetupFlowchart>().sceneFlowchart.ExecuteBlock(copilotName + vnNumber);
+            flowchart.ExecuteBlock(copilotName + vnNumber);
         }
         else
         {
@@ -38,12 +38,12 @@ public class VNSceneManager : MonoBehaviour
     public void EndVNScene()
     {
         //update this pilots completed VNscenes by 1
-        GameManager.singleton.active.GetComponent<CopilotInfo>().copilotData.vnScenesCompleted += 1;
+        GameManager.singleton.activeCopilot.GetComponent<CopilotInfo>().copilotData.vnScenesCompleted += 1;
 
         GameManager.singleton.SaveProgress();
         profileManager.SaveCurrentProfile();
 
         //This should load the next gameplay level
-        SceneManager.LoadScene(GameManager.singleton.levels[profileManager.CurrentProfile.currentStage]);
+        SceneManager.LoadScene("CopilotUI");
     }
 }

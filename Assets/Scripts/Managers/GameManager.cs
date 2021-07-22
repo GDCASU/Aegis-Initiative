@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
     public void SaveProgress()
     {
         List<CopilotData> copilotList = ProfileManager.instance.CurrentProfile.CopilotList;
-        CopilotData activeData = active.GetComponent<CopilotInfo>().copilotData;
-        CopilotData passiveData = passive.GetComponent<CopilotInfo>().copilotData;
+        CopilotData activeData = activeCopilot.GetComponent<CopilotInfo>().copilotData;
+        CopilotData passiveData = passiveCopilot.GetComponent<CopilotInfo>().copilotData;
 
         for (int x = 0; x < copilotList.Count; x++)
         {

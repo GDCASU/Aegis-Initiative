@@ -29,4 +29,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/brad_mid_stage_remarks.unity
     guid: ea18078b8bc326c47a8ac9f71d0ab089
+  - enabled: 1
+    path: Assets/Scenes/VN Scenes/Celeste.unity
+    guid: 4935931e1ede945f09cc9c63a5b9b40e
+  - enabled: 1
+    path: Assets/Scenes/VN Scenes/Feebee.unity
+    guid: f3bceaf8ecc4fee4e93125118fbad2ea
+  - enabled: 1
+    path: Assets/Scenes/VN Scenes/Frederick.unity
+    guid: de4839fd61050f446ac7018ab8785bb2
+  - enabled: 0
+    path: Assets/Scenes/VN Scenes/Intro.unity
+    guid: e6fa93af6bf7cc04484b8a5f2733c65c
+  - enabled: 1
+    path: Assets/Scenes/VN Scenes/Mushii.unity
+    guid: 13f6b102c383b0546820b1531b509077
   m_configObjects: {}
