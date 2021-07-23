@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 608068949763136508}
   m_Layer: 0
   m_Name: Pufferbomb
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406ecffbe2f45ff48a79f3817d6e9d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  health: 10
+  collisionDamage: 5
+  doNotDespawn: 1
+  lifeTime: 20
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
   distance: 3
   explosionTime: 1.2
 --- !u!198 &608068949763136509

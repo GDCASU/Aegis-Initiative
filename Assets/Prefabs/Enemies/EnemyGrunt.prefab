@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2341240610942086077}
-  - component: {fileID: 7983703137698454370}
   m_Layer: 0
   m_Name: EnemyGrunt
   m_TagString: Untagged
@@ -32,30 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &7983703137698454370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3113695171806212359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feef8098b4c464e4080199f17965a290, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  collisionDamage: 0
-  doNotDespawn: 0
-  lifeTime: 30
-  deathEffect: {fileID: 0}
-  lifeTimer: 0
-  bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
-    type: 3}
-  animations: {fileID: 7461234076286752741}
-  flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
-  flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
-  bulletCount: 5
 --- !u!1 &4970617317209105937
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,9 +158,10 @@ GameObject:
   - component: {fileID: 7461234076286752741}
   - component: {fileID: 1027476070301850907}
   - component: {fileID: 4742829624140814731}
+  - component: {fileID: 3170441327707776266}
   m_Layer: 0
   m_Name: Animations
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,3 +230,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.48921293, y: 0.4613518, z: 0.08685869}
   m_Center: {x: 0, y: -0.054785557, z: 0.017890338}
+--- !u!114 &3170441327707776266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559163360653367018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feef8098b4c464e4080199f17965a290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  collisionDamage: 0
+  doNotDespawn: 0
+  lifeTime: 30
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
+  bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
+    type: 3}
+  animations: {fileID: 7461234076286752741}
+  flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
+  flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
+  bulletCount: 5

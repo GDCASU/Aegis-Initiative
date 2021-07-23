@@ -62,7 +62,7 @@ public class Chameleon : EnemyHealth
     /// </summary>
     private void Update()
     {
-        playerDistance = Vector3.Distance(player.position, transform.position);
+        if(PlayerInfo.singleton!=null)playerDistance = Vector3.Distance(player.position, transform.position);
         traverseDistance = maxDetectionDistance - minDetectionDistance;
 
         // If Player distance is less than the maxDetectionDistance, calculate a new opacity for Chameleon. Otherwise, set the new opacity to the default value.

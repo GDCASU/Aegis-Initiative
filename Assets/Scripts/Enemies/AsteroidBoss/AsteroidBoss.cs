@@ -43,6 +43,12 @@ public class AsteroidBoss : EnemyHealth
         if (collision.gameObject.tag == "Bullet") TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);
     }
 
+    public override void DestroyEnemy()
+    {
+        PlayerInfo.singleton.GetComponent<StageTriggers>().EndLevel();
+        base.DestroyEnemy();
+    }
+
     /// <summary>
     /// Spawns laser bots in randomized formation.
     /// </summary>

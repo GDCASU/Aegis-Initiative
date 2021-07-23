@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4705760943267773882}
   - component: {fileID: 4705760943267773883}
   - component: {fileID: 4705760943267773884}
+  - component: {fileID: 4688887237293713970}
   m_Layer: 0
   m_Name: Animations
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +136,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08923337, y: 0.05984737, z: 0.03274542}
   m_Center: {x: 0, y: 0.011311137, z: 0.0030442318}
+--- !u!114 &4688887237293713970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705760943267773886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feef8098b4c464e4080199f17965a290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  collisionDamage: 0
+  doNotDespawn: 0
+  lifeTime: 20
+  deathEffect: {fileID: 0}
+  lifeTimer: 10
+  bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
+    type: 3}
+  animations: {fileID: 4705760943267773880}
+  flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
+  flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
+  bulletCount: 5
 --- !u!1 &4705760943325353810
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,8 +169,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4705760943325353809}
-  - component: {fileID: 4705760943325353823}
-  - component: {fileID: 4705760943325353808}
   m_Layer: 0
   m_Name: PirateFighter
   m_TagString: Untagged
@@ -168,41 +191,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4705760943325353823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4705760943325353810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feef8098b4c464e4080199f17965a290, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  collisionDamage: 0
-  lifeTime: 20
-  lifeTimer: 10
-  bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
-    type: 3}
-  animations: {fileID: 4705760943267773880}
-  flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
-  flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
-  bulletCount: 5
---- !u!114 &4705760943325353808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4705760943325353810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  collisionDamage: 0
-  lifeTime: 20
-  lifeTimer: 10

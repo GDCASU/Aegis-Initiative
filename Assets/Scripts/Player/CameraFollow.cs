@@ -40,14 +40,14 @@ public class CameraFollow : MonoBehaviour
         {
             transform.localPosition = offset;
         }
-
-        FollowTarget(target);
+        //print(target);
+        if(target)FollowTarget(target);
     }
 
     void LateUpdate()
     {
         Vector3 localPos = transform.localPosition;
-        lastPosition = target.localPosition;
+        if (target) lastPosition = target.localPosition;
         transform.localPosition = new Vector3(Mathf.Clamp(localPos.x, -limits.x, limits.x), Mathf.Clamp(localPos.y, -limits.y, limits.y), localPos.z);
     }
 

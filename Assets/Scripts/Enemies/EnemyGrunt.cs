@@ -44,7 +44,7 @@ public class EnemyGrunt : EnemyHealth
         if (shootingWaitTime <= 0 && shoot)
         {
             Quaternion OriginalRot = transform.rotation;
-            transform.LookAt(gameObject.transform.parent.GetChild(1).transform.position);
+            if (PlayerInfo.singleton!=null) transform.parent.LookAt(PlayerInfo.singleton.transform.GetChild(0).transform.position);
             Quaternion NewRot = transform.rotation;
             transform.rotation = OriginalRot;
             transform.rotation = Quaternion.Lerp(transform.rotation, NewRot, 5f * Time.deltaTime);

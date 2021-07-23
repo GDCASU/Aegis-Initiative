@@ -339,8 +339,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104894947}
-  m_LocalRotation: {x: -0.043619405, y: 0, z: 0, w: 0.9990483}
-  m_LocalPosition: {x: 0, y: 0.64366996, z: -1.2153575}
+  m_LocalRotation: {x: -0.10093054, y: -0.0068694944, z: -0.00069691736, w: 0.99486953}
+  m_LocalPosition: {x: 0.016503941, y: -0.24501874, z: -21.195028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -728,6 +728,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pufferbomb_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: collisionDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: doNotDespawn
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -1672,6 +1687,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid5
       objectReference: {fileID: 0}
+    - target: {fileID: 8872751114067391931, guid: bf4fa86b9c5bf844a80d8e7281d20a81,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 56845373396437263, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
@@ -2147,6 +2167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid6
       objectReference: {fileID: 0}
+    - target: {fileID: 8872751114067391931, guid: bf4fa86b9c5bf844a80d8e7281d20a81,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 56845373396437263, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
@@ -2414,6 +2439,11 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 4174455377587358401, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_Position
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2422,32 +2452,32 @@ PrefabInstance:
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.043619405
+      value: -0.10093054
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.0068694944
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.00069691736
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9990483
+      value: 0.99486953
       objectReference: {fileID: 0}
     - target: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
@@ -2477,7 +2507,7 @@ PrefabInstance:
     - target: {fileID: 4931640489998877274, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
@@ -3236,6 +3266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid1
       objectReference: {fileID: 0}
+    - target: {fileID: 8299096602537148577, guid: 70545e60bbc560846b2e220d3440193f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5001769186911743260, guid: 70545e60bbc560846b2e220d3440193f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70545e60bbc560846b2e220d3440193f, type: 3}
@@ -3337,6 +3372,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid2
       objectReference: {fileID: 0}
+    - target: {fileID: 8872751114067391931, guid: bf4fa86b9c5bf844a80d8e7281d20a81,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 56845373396437263, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf4fa86b9c5bf844a80d8e7281d20a81, type: 3}
@@ -3411,16 +3451,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705760943325353823, guid: ea7012fa5329845489092161367661da,
-        type: 3}
-      propertyPath: lifeTimer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705760943325353823, guid: ea7012fa5329845489092161367661da,
-        type: 3}
-      propertyPath: lifeTime
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -4103,6 +4133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid4
       objectReference: {fileID: 0}
+    - target: {fileID: 5987238900573238461, guid: 19660514c8e817e4197759a49caf517f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8130555842584530841, guid: 19660514c8e817e4197759a49caf517f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4487,6 +4522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Asteroid3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5191091008356267035, guid: ce2a34da6d9ac1246a0496657891a84d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1620720899582172215, guid: ce2a34da6d9ac1246a0496657891a84d, type: 3}
@@ -5073,16 +5113,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PirateFighter2.2
       objectReference: {fileID: 0}
-    - target: {fileID: 4705760943325353823, guid: ea7012fa5329845489092161367661da,
-        type: 3}
-      propertyPath: lifeTimer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705760943325353823, guid: ea7012fa5329845489092161367661da,
-        type: 3}
-      propertyPath: lifeTime
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
 --- !u!1 &1707940444
@@ -5457,11 +5487,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705760943325353823, guid: ea7012fa5329845489092161367661da,
-        type: 3}
-      propertyPath: lifeTimer
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -6037,11 +6062,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4705760943325353823, guid: ea7012fa5329845489092161367661da,
-        type: 3}
-      propertyPath: lifeTimer
-      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}

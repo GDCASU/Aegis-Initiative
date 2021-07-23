@@ -12,6 +12,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 // A list of possible status effects that can be cast onto the Player.
 public enum StatusEffects
@@ -36,6 +37,7 @@ public class PlayerInfo : MonoBehaviour
 
     public int maxHealth = 60;  // health Player should not surpass
     public int health = 50;  // current health of Player
+    public bool alive = true;
 
     public float defense;  // how much damage should be shaved off; EXAMPLE: 0.25 = 25% damage reduced
 
@@ -104,6 +106,8 @@ public class PlayerInfo : MonoBehaviour
     /// </summary>
     public void KillPlayer()
     {
+        alive = false;
+        GetComponentInParent<CinemachineDollyCart>().m_Speed = 0;
         Destroy(gameObject);
     }
     #endregion

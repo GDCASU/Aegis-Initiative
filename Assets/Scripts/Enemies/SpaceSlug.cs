@@ -51,18 +51,18 @@ public class SpaceSlug : EnemyHealth
 
     // Update is called once per frame
     void Update()
-    {   
-        //if (slugCart.transform.position == end)timerReset = true;
-        //if (timerReset) timer -= Time.deltaTime;
-        //if (timer <= 0)
-        //{
-        //    timer = maxTime;
-        //    timerReset = false;
-        //    attack = (rng.Next(100) >= chancesOfAttack) ? false : true;
-        //    SpawnSlug();
-        //}
-        //if (!rockThrown && GetComponentInChildren<Renderer>().isVisible) StartCoroutine(ThrowRock());
-            
+    {
+        if (slugCart.transform.position == end) timerReset = true;
+        if (timerReset) timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            timer = maxTime;
+            timerReset = false;
+            attack = (rng.Next(100) >= chancesOfAttack) ? false : true;
+            SpawnSlug();
+        }
+        if (!rockThrown && GetComponentInChildren<Renderer>().isVisible) StartCoroutine(ThrowRock());
+
     }
 
     private void SpawnSlug()

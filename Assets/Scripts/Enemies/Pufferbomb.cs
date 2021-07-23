@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pufferbomb : MonoBehaviour
+public class Pufferbomb : EnemyHealth
 {
-    public int damage; //damage dealt to Player
     public float distance; //distance between Pufferbomb and Player for Pufferbomb to explode
     public float explosionTime; //time it takes for explosion sequence to finish before destroying the gameObject
 
@@ -59,7 +58,7 @@ public class Pufferbomb : MonoBehaviour
         if (!isExploding && !isShot && other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(Explode()); //start explode coroutine 
-            PlayerInfo.singleton.TakeDamage(damage); //damage Player
+            PlayerInfo.singleton.TakeDamage(collisionDamage); //damage Player
         }
     }
 }
