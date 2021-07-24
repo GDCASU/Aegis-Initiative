@@ -108,6 +108,7 @@ public class PlayerInfo : MonoBehaviour
     {
         alive = false;
         GetComponentInParent<CinemachineDollyCart>().m_Speed = 0;
+        GetComponentInParent<RestartLevel>().ReloadScene();
         Destroy(gameObject);
     }
     #endregion

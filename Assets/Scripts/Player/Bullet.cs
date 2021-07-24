@@ -36,6 +36,7 @@ public class Bullet : MonoBehaviour
     {
         if (bulletSource == BulletSource.Player)
         {
+
             if (collision.gameObject.tag == "Enemy") collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(damage);
             else if (collision.gameObject.tag == "BossBodyPart") collision.gameObject.GetComponent<BossBodyPart>().ApplyDamage(damage);
             else if (collision.gameObject.tag == "BreakableEnvironment") collision.gameObject.GetComponent<EnvironmentHealth>().TakeDamage(damage);

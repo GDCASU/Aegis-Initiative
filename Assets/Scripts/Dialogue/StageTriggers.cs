@@ -14,23 +14,12 @@ public class StageTriggers : MonoBehaviour
     //end of level variables
     private Vector3 endDirection;
     public GameObject playerShip;
-    private bool levelFinished;
     private float endSpeed;
-
-    private void Start()
-    {
-        levelFinished = false;
-    }
 
     void Update()
     {
         if (timer <= 0) cart.enabled = true;
         else timer = timer - Time.deltaTime;
-
-        if(levelFinished)
-        {
-            EndLevel();
-        }
     }
 
     // TODO: assert that the collision is the correct object
@@ -48,7 +37,6 @@ public class StageTriggers : MonoBehaviour
             //store final cart speed and execute end of level
             endSpeed = playerShip.GetComponent<ShipMovement>().forwardSpeed;
             endDirection = new Vector3(0, 0, endSpeed * Time.deltaTime);
-            levelFinished = true;
             EndLevel();
         }
         if(other.gameObject.CompareTag("Dialogue_Trigger"))

@@ -14,6 +14,7 @@ public class SpaceSlugEnd : MonoBehaviour
             slug.maxTime = 4;
             slug.timer = 4;
             slug.outerWidthRange = 75;
+            slug.health = 1;
         } 
     }
 }

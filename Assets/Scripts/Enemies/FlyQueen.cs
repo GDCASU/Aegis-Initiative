@@ -11,7 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyQueen : MonoBehaviour
+public class FlyQueen : EnemyHealth
 {
     [SerializeField]
     private GameObject flyLarvae;  // prefab of Fly Larvae
@@ -34,8 +34,9 @@ public class FlyQueen : MonoBehaviour
     private bool shooting;
 
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         enemyMovement = GetComponentInParent<EnemyMovement>();
     }
     /// <summary>

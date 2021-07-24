@@ -6,19 +6,13 @@ public class SpaceFly_Adult : EnemyHealth
 {
     [SerializeField]
     private GameObject bullet;
-
-    [SerializeField]
-    private int numBullets = 3;
     [SerializeField]
     private float shootTimerMin = 6.0f; //min time until next shot
     [SerializeField]
     private float shootTimerMax = 14.0f; //max time until next shot
     private float shootTimer;
-    [SerializeField]
-    private float rateOfFire = 10f; //RoF for designer
 
     Vector3 playerPos;
-    private WaitForSeconds realRateOfFire; //for Shoot();
 
     public Transform bulletSpawn; 
 
@@ -33,20 +27,27 @@ public class SpaceFly_Adult : EnemyHealth
     {
         base.Start();
         shootTimer = Random.Range(shootTimerMin, shootTimerMax); //timer within a range
-        realRateOfFire = new WaitForSeconds(1.0f/rateOfFire); //for Shoot();
     }
 
     private void FixedUpdate()
     {
-        if(shootTimer <= 0)
+        if (GetComponentInParent<EnemyMovement>().isFlyingAway)
         {
-            playerPos = PlayerInfo.singleton.transform.localPosition;           
-            StartCoroutine(Shoot());
+            animator.SetBool("Shooting", false);
         }
-        else
+        else 
         {
-            shootTimer -= Time.fixedDeltaTime;
+            if (shootTimer <= 0)
+            {
+                if (PlayerInfo.singleton != null) playerPos = PlayerInfo.singleton.transform.localPosition;
+                StartCoroutine(Shoot());
+            }
+            else
+            {
+                shootTimer -= Time.fixedDeltaTime;
+            }
         }
+
     }
 
     IEnumerator Shoot()
@@ -70,9 +71,11 @@ public class SpaceFly_Adult : EnemyHealth
 
     public void SpawnBullet()
     {
-        GameObject temp = Instantiate(bullet, bulletSpawn.position, Quaternion.identity, PlayerInfo.singleton.transform.parent);
-        temp.GetComponent<SalivaBullet>().SetTarget(playerPos);
-
+        if (PlayerInfo.singleton != null)
+        {
+            GameObject temp = Instantiate(bullet, bulletSpawn.position, Quaternion.identity, PlayerInfo.singleton.transform.parent);
+            temp.GetComponent<SalivaBullet>().SetTarget(playerPos);
+        }
     }
 
 }

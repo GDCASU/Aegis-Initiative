@@ -1283,6 +1283,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef3685b85361754180c459397cd854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  collisionDamage: 0
+  doNotDespawn: 0
+  lifeTime: 20
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
   flyLarvae: {fileID: 7641422514903376771, guid: 64052c5f8f8773d4ca788e886d159f2e,
     type: 3}
   firstLarvaeDropRate: 2
@@ -9064,7 +9070,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 60
-  health: 50
+  health: 60
+  alive: 1
   defense: 0
   fireRate: 0.2
   bulletDamage: 5
@@ -9219,6 +9226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4174455377587358406}
   - component: {fileID: 4174455377587358401}
+  - component: {fileID: 5638588325817119375}
   m_Layer: 0
   m_Name: PlayerDollyCart
   m_TagString: Untagged
@@ -9265,6 +9273,18 @@ MonoBehaviour:
   m_PositionUnits: 1
   m_Speed: 12
   m_Position: 0
+--- !u!114 &5638588325817119375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174455377587358400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09cad376237d314e917b03b73cc21f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4195244902571177925
 GameObject:
   m_ObjectHideFlags: 0

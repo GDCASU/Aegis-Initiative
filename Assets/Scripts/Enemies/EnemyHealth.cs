@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public float lifeTime = 20;
     public GameObject deathEffect;
     public float lifeTimer;
+    private bool hasDied;
 
     public virtual void Start()
     {
@@ -23,13 +24,14 @@ public class EnemyHealth : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0 && !hasDied)
         {
             if (deathEffect != null)
             {
                 GameObject temp = Instantiate(deathEffect, transform.position, Quaternion.identity);
                 temp.transform.localScale = transform.localScale;
             }
+            hasDied = true;
             DestroyEnemy();
         }
     }

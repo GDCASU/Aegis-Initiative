@@ -192,9 +192,10 @@ GameObject:
   - component: {fileID: 994452640610363902}
   - component: {fileID: 470293855132447558}
   - component: {fileID: 470293855132447557}
+  - component: {fileID: 803827507846180977}
   m_Layer: 0
   m_Name: Fly Queen
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,6 +251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef3685b85361754180c459397cd854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 20
+  collisionDamage: 5
+  doNotDespawn: 0
+  lifeTime: 15
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
   flyLarvae: {fileID: 8061670157063683931, guid: c8895892658900843bd4d22142d99b03,
     type: 3}
   firstLarvaeDropRate: 1.5
@@ -260,6 +267,19 @@ MonoBehaviour:
   timer: 0.1
   enemyMovement: {fileID: 8737600712104623782}
   framesOfAnimation: 60
+--- !u!135 &803827507846180977
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470293855132447556}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.69
+  m_Center: {x: 0, y: 6.25, z: 0}
 --- !u!1 &498646118099157176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,8 +1385,8 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: -3004516091814458835, guid: ccb6143529fc69d4cabf2dc9f401a65f, type: 3}
   - {fileID: 735469274065408138, guid: ccb6143529fc69d4cabf2dc9f401a65f, type: 3}
-  - {fileID: -3826322074237971736, guid: ccb6143529fc69d4cabf2dc9f401a65f, type: 3}
-  - {fileID: 9193205247352028146, guid: ccb6143529fc69d4cabf2dc9f401a65f, type: 3}
+  - {fileID: 2100000, guid: 8202e6373e5ecc645b0e09f059aa0111, type: 2}
+  - {fileID: 2100000, guid: 03ad10dba62241c40bc96d1a123256e9, type: 2}
   - {fileID: 161500081214876504, guid: ccb6143529fc69d4cabf2dc9f401a65f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1813,7 +1833,6 @@ MonoBehaviour:
     adjustWidth: 0
     adjustHeight: 0.732
     adjustDepth: 3
-  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
 --- !u!1 &5473426026822540001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,6 +2599,8 @@ MonoBehaviour:
   flyingIn: 1
   hover: 1
   hoverTimer: 10
+  isHoverPermanent: 0
+  isModelFacingPlayer: 0
   leaveDirection: 4
   leaveSpeed: 5
   isFlyingAway: 0

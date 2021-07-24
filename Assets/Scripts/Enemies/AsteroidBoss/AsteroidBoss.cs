@@ -45,6 +45,7 @@ public class AsteroidBoss : EnemyHealth
 
     public override void DestroyEnemy()
     {
+        GameManager.singleton.AddCopilot(2);
         PlayerInfo.singleton.GetComponent<StageTriggers>().EndLevel();
         base.DestroyEnemy();
     }

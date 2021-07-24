@@ -19,12 +19,6 @@ using System;
 
 public class SwarmBehavior : EnemyHealth
 {
-    [Header("Swarm Health and Damage")]
-    [SerializeField]
-    private int totalHealth = 100;  // health of full swarm
-
-    [SerializeField]
-    private int totalDamage = 20;  // damage done by a full swarm
 
     [Header("Swarm Units")]
     [SerializeField]
@@ -54,8 +48,8 @@ public class SwarmBehavior : EnemyHealth
         if (swarmPopulation >= 1)
         {
             // Assign health and damage values for each unit.
-            healthPerUnit = (float) totalHealth / swarmPopulation;
-            damagePerUnit = (float) totalDamage / swarmPopulation;
+            healthPerUnit = (float) health / swarmPopulation;
+            damagePerUnit = (float) collisionDamage/ swarmPopulation;
     
             // Initialize units list.
             units = new List<GameObject>();
@@ -72,14 +66,14 @@ public class SwarmBehavior : EnemyHealth
     /// If a bullet passes through Swarm Collider, accesses the damage of the bullet and applies damage to Swarm. Else if a player passes through Swarm Collider,
     /// accesses the player's PlayerInfo script to deal damage to player and then disperses the Swarm.
     /// </summary>
-    /// <param name="other"> the Collider that entered the Swarm Collider </param>
-    private void OnTriggerEnter(Collider other)
+    /// <param name="collision"> the Collider that entered the Swarm Collider </param>
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             int damageDone = (int)Mathf.Round(units.Count * damagePerUnit);
             PlayerInfo.singleton.TakeDamage(damageDone);
-            StartCoroutine(DisperseSwarm());
+            DestroyEnemy();
         }
     }
 
@@ -90,17 +84,17 @@ public class SwarmBehavior : EnemyHealth
     /// <param name="damage"> amount to remove from Swarm health </param>
     public override void TakeDamage(int damage)
     {
-        totalHealth -= damage;
+        health-= damage;
 
         // If total health <= 0, then destroy parent game object and break out of function.
-        if (totalHealth <= 0)
+        if (health <= 0)
         {
             Destroy(this.transform.parent.gameObject);
             return;
         }
 
         // Whilst total health is not proportional to Swarm population, remove a unit randomly and reduce Swarm population by 1.
-        while (totalHealth <= (swarmPopulation - 1) * healthPerUnit)
+        while (health <= (swarmPopulation - 1) * healthPerUnit)
         {
             int removeUnitIndex = UnityEngine.Random.Range(0, units.Count);
             units[removeUnitIndex].GetComponent<SwarmUnit>().DisableUnit();
@@ -108,7 +102,10 @@ public class SwarmBehavior : EnemyHealth
             swarmPopulation--;
         }
     }
-
+    public override void DestroyEnemy()
+    {
+        StartCoroutine(DisperseSwarm());
+    }
     /// <summary>
     /// Calls for each Swarm unit to disperse until disperse time is reached, at which point the Swarm game object's parent shall be destroyed.
     /// </summary>

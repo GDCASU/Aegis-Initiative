@@ -638,7 +638,7 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 161500081214876504, guid: 1f9a985b219064049935d9a269180e18, type: 3}
   - {fileID: 735469274065408138, guid: 1f9a985b219064049935d9a269180e18, type: 3}
-  - {fileID: -3826322074237971736, guid: 1f9a985b219064049935d9a269180e18, type: 3}
+  - {fileID: 2100000, guid: 8202e6373e5ecc645b0e09f059aa0111, type: 2}
   - {fileID: -3004516091814458835, guid: 1f9a985b219064049935d9a269180e18, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 2984532603848997532}
   m_Layer: 0
   m_Name: Mushroom Fly
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -812,11 +812,10 @@ MonoBehaviour:
   doNotDespawn: 0
   lifeTime: 20
   deathEffect: {fileID: 0}
+  lifeTimer: 0
   bullet: {fileID: 6795240632834866146, guid: b8e2597185f1005428bd25b0a8a79dc7, type: 3}
-  numBullets: 3
-  shootTimerMin: 6
-  shootTimerMax: 14
-  rateOfFire: 10
+  shootTimerMin: 2
+  shootTimerMax: 6
   bulletSpawn: {fileID: 2241366257792263813}
   animator: {fileID: 2984532603848997523}
   framesOfAnimation: 79
@@ -1853,9 +1852,10 @@ MonoBehaviour:
   flyingIn: 1
   hover: 1
   hoverTimer: 10
+  isHoverPermanent: 0
   isModelFacingPlayer: 0
   leaveDirection: 2
-  leaveSpeed: 5
+  leaveSpeed: 10
   isFlyingAway: 0
 --- !u!1 &9183805445429094442
 GameObject:

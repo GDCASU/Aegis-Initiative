@@ -29,7 +29,7 @@ public class MenuUI : MonoBehaviour
 
     private void Start()
     {
-        ProfileManager.instance.TestSaveProfiles();
+        //ProfileManager.instance.TestSaveProfiles();
         LoadSaves();
     }
 
@@ -109,8 +109,7 @@ public class MenuUI : MonoBehaviour
         {
             ProfileManager.instance.CurrentProfile.profileID = ProfileManager.instance.currentProfileIndex;
             ProfileManager.instance.CurrentProfile.name = nameInputField.text;
-            ProfileManager.instance.SaveCurrentProfile();
-            //TEST CODE. LATER THIS SHOULD SWAP SCENES BUT FOR NOW I'M SWAPPING PANELS TO HELP TEST
+            ProfileManager.instance.SaveCurrentProfile();    
 
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
 

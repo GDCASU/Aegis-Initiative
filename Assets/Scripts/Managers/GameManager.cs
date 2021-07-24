@@ -19,10 +19,10 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
         levels = new Dictionary<int, string>();
-        levels.Add(0,"MushroomStage");
-        levels.Add(1,"PirateStage");
-        levels.Add(2,"VolcanoStage");
-        levels.Add(3,"AsteroidStage");
+        levels.Add(0, "MushroomStage");
+        levels.Add(1, "VolcanoStage");
+        levels.Add(2, "AsteroidStage");
+        levels.Add(3, "PirateStage");
     }
     public void ChangeActive(System.Type type, CopilotMechanic info)
     {
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         Destroy(passive);
         passive = null;
-        activeCopilot = null;
+        passiveCopilot = null;
     }
     public void SaveProgress()
     {
@@ -63,6 +63,12 @@ public class GameManager : MonoBehaviour
             if (copilotList[x].name == activeData.name) ProfileManager.instance.CurrentProfile.CopilotList[x] = activeData;
             else if (copilotList[x].name == passiveData.name) ProfileManager.instance.CurrentProfile.CopilotList[x] = passiveData;            
         }
+    }
+    public void AddCopilot(int number)
+    {
+        if (number == 1)ProfileManager.instance.CurrentProfile.AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
+        else if(number == 2 ) ProfileManager.instance.CurrentProfile.AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
+        ProfileManager.instance.SaveCurrentProfile();
     }
 }
 

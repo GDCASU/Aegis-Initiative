@@ -58,7 +58,7 @@ public class SaveButtonUI : MonoBehaviour
             menuUI.nameInputField.text = "";
             menuUI.SwitchPanels(4);
         }
-        SceneManager.LoadScene("CopilotUI", LoadSceneMode.Single);
+        else SceneManager.LoadScene("CopilotUI", LoadSceneMode.Single);
     }
 
     /// <summary>

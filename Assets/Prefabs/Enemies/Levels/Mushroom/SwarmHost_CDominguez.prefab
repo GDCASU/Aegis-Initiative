@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 5064829362590917149}
   - component: {fileID: 5064829362590917148}
   - component: {fileID: 5064829362590917139}
-  - component: {fileID: 2997220094531902732}
   - component: {fileID: 5064829362590917144}
   m_Layer: 0
   m_Name: Swarm_CDominguez
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,27 +91,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5064829362590917137}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2997220094531902732
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5064829362590917137}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &5064829362590917144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,12 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e9344d4b4c46f41af000f825e62679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  collisionDamage: 0
+  health: 100
+  collisionDamage: 5
   doNotDespawn: 0
-  lifeTime: 20
-  totalHealth: 100
-  totalDamage: 20
+  lifeTime: 15
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
   unitPrefab: {fileID: 8556706018873613575, guid: ba9c7cbfa3ddb984e8496caa9ddf75e5,
     type: 3}
   swarmPopulation: 100
@@ -184,7 +167,6 @@ MonoBehaviour:
     adjustWidth: 0
     adjustHeight: 0.732
     adjustDepth: 7.8
-  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
 --- !u!1 &8732340240652980503
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +225,8 @@ MonoBehaviour:
   flyingIn: 1
   hover: 1
   hoverTimer: 8.81
+  isHoverPermanent: 0
+  isModelFacingPlayer: 0
   leaveDirection: 4
   leaveSpeed: 11.84
   isFlyingAway: 0

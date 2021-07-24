@@ -135,6 +135,7 @@ public class SpaceSlug : EnemyHealth
     }
     public override void DestroyEnemy()
     {
+        GameManager.singleton.AddCopilot(1);
         PlayerInfo.singleton.GetComponent<StageTriggers>().EndLevel();
         base.DestroyEnemy();
     }
