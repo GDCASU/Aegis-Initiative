@@ -17024,6 +17024,7 @@ GameObject:
   - component: {fileID: 904779923}
   - component: {fileID: 904779922}
   - component: {fileID: 904779921}
+  - component: {fileID: 904779924}
   m_Layer: 0
   m_Name: Ocean
   m_TagString: Untagged
@@ -17108,6 +17109,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904779919}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &904779924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904779919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5baa4e8ea73804dba1cb38ad70760b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &924280056
 GameObject:
   m_ObjectHideFlags: 0
@@ -22202,7 +22215,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh133396
+  m_Name: pb_Mesh203034
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31750,7 +31763,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh133932
+  m_Name: pb_Mesh203608
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -43803,7 +43816,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh134214
+  m_Name: pb_Mesh203896
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
