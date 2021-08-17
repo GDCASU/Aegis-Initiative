@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: cbfe36cfddfde964d9dfce63a355d5dd
   - enabled: 1
     path: Assets/Scenes/MainMenuUI.unity
     guid: 4612789807a824c458cac6b92ab7693a
@@ -26,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AsteroidStage.unity
     guid: ed3077663cfff91439024a8770e340e1
-  - enabled: 0
-    path: Assets/Scenes/brad_mid_stage_remarks.unity
-    guid: ea18078b8bc326c47a8ac9f71d0ab089
   - enabled: 1
     path: Assets/Scenes/VN Scenes/Celeste.unity
     guid: 4935931e1ede945f09cc9c63a5b9b40e
@@ -44,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VN Scenes/Mushii.unity
     guid: 13f6b102c383b0546820b1531b509077
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 889133808f1fbb1488f1384a71e6e1e8
   m_configObjects: {}

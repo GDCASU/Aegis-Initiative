@@ -1347,7 +1347,7 @@ MonoBehaviour:
   - {fileID: 1225625318}
   - {fileID: 505100093}
   currentPanel: 1
-  creditsScene: CreditsScene
+  creditsScene: Credits
   scrollViewContent: {fileID: 425597585}
   saveButtonPrefab: {fileID: 5560898916056023441, guid: e8a83c6605a83814da63524c9a30e2d7,
     type: 3}
