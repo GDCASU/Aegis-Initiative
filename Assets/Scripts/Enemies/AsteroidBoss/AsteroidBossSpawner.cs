@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using FMODUnity;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidBossSpawner : MonoBehaviour
 {
+    [EventRef]
+    public string BossMusic = "";
     public GameObject asteroidBoss;
     public Transform dollyCart;
 
@@ -11,6 +14,11 @@ public class AsteroidBossSpawner : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            FMODStartMusic.music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            FMODStartMusic.music = RuntimeManager.CreateInstance(BossMusic);
+            FMODStartMusic.music.start();
+            FMODStartMusic.music.release();
+
             Vector3 spawnRelativeToPlayer = new Vector3(0, -12.5f, 30);
             Instantiate(asteroidBoss, dollyCart, false).gameObject.transform.localPosition = spawnRelativeToPlayer;
         }

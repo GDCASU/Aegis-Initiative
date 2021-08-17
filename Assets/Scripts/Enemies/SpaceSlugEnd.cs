@@ -11,7 +11,7 @@ public class SpaceSlugEnd : MonoBehaviour
     public SpaceSlug slug;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") 
+        if (other.gameObject.CompareTag("Player"))
         {
             FMODStartMusic.music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             FMODStartMusic.music = RuntimeManager.CreateInstance(BossMusic);
