@@ -45,7 +45,7 @@ public class Chameleon : EnemyHealth
     {
         base.Start();
         player = PlayerInfo.singleton.transform;
-        renderer = transform.GetComponent<MeshRenderer>();
+        renderer = transform.GetComponentInChildren<MeshRenderer>();
 
         opacity = renderer.material.color;
         opacity.a = defaultOpacity;

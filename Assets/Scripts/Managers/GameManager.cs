@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         levels = new Dictionary<int, string>();
         levels.Add(0,"MushroomStage");
         levels.Add(1,"PirateStage");
+        levels.Add(2,"VolcanoStage");
+        levels.Add(3,"AsteroidStage");
     }
     public void ChangeActive(System.Type type, CopilotMechanic info)
     {
