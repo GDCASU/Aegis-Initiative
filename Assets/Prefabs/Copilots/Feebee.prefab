@@ -78,6 +78,7 @@ MonoBehaviour:
     name: 0
     level: 0
     experience: 0
+    vnScenesCompleted: 0
     isUnlocked: 1
   portraits:
   - {fileID: 21300000, guid: de4df24648e433948bed0d6c1d7d1347, type: 3}
@@ -103,8 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfMechanic: 2
   abilityName: Barrel Roll
-  description: blah blah
-  icon: {fileID: 21300000, guid: f2e901e070fff48cda67e3f446d80e79, type: 3}
+  description: Quick dash in any direction
+  icon: {fileID: 0}
   shipMovement: {fileID: 0}
   speedOfDodge: 3
   numberofRolls: 1
@@ -124,9 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfMechanic: 0
-  abilityName: Stubborn
+  abilityName: Receive 20% less damage
   description: blah
-  icon: {fileID: 21300000, guid: bcd5b5f11de95ec4ba92005e4a404502, type: 3}
+  icon: {fileID: 0}
   defenseIncrease: 0.2
 --- !u!114 &8134944865317195555
 MonoBehaviour:

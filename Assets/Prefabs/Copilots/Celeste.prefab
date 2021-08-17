@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfMechanic: 2
   abilityName: Nova
-  description: Option to heal after reaching 25% health once per stage
+  description: Option to fully heal after reaching 25% health once per stage
   icon: {fileID: 0}
   healthPercent: 25
   activeUsed: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfMechanic: 0
   abilityName: Red Giant
-  description: Low health increases damage power
+  description: Increase in damage when health is 25% or below
   icon: {fileID: 0}
   healthPercent: 25
   damageIncrease: 2
