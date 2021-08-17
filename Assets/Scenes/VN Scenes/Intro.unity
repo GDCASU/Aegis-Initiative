@@ -620,8 +620,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573597805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.061, y: 1, z: -0.75}
+  m_LocalScale: {x: 1.3046515, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -655,8 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 6572918113728831403, guid: 6c1130aa89f2d5d428edefa7f3967e1d,
-    type: 3}
+  selectedFlowchart: {fileID: 2000619344}
 --- !u!4 &651662131
 Transform:
   m_ObjectHideFlags: 1
@@ -671,6 +670,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &954645059
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373515, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741623027170373525, guid: ca0bf80552c7328478b152012626f085,
+        type: 3}
+      propertyPath: m_Name
+      value: VNSceneManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca0bf80552c7328478b152012626f085, type: 3}
+--- !u!1 &954645060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4741623027170373525, guid: ca0bf80552c7328478b152012626f085,
+    type: 3}
+  m_PrefabInstance: {fileID: 954645059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1177451763
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +886,7 @@ GameObject:
   - component: {fileID: 1384383775}
   - component: {fileID: 1384383774}
   - component: {fileID: 1384383773}
+  - component: {fileID: 1384383776}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -884,6 +959,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384383776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384383772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1553248883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,6 +1256,7 @@ GameObject:
   - component: {fileID: 2000619384}
   - component: {fileID: 2000619394}
   - component: {fileID: 2000619393}
+  - component: {fileID: 2000619395}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -1188,7 +1295,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 340
     y: 135
-    width: 112.4
+    width: 111
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1246,6 +1353,7 @@ MonoBehaviour:
   - {fileID: 2000619384}
   - {fileID: 2000619394}
   - {fileID: 2000619393}
+  - {fileID: 2000619395}
   suppressAllAutoSelections: 0
 --- !u!114 &2000619344
 MonoBehaviour:
@@ -1260,7 +1368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 84, y: 44}
+  scrollPos: {x: -88.214264, y: 118}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 385.8
@@ -1274,7 +1382,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 2000619343}
   selectedCommands:
-  - {fileID: 2000619355}
+  - {fileID: 2000619395}
   variables: []
   description: 
   stepPause: 0
@@ -2712,6 +2820,23 @@ MonoBehaviour:
   move: 1
   shiftIntoPlace: 0
   waitUntilFinished: 0
+--- !u!114 &2000619395
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000619341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 71
+  indentLevel: 0
+  targetObject: {fileID: 954645060}
+  methodName: EndVNScene
+  delay: 0
 --- !u!1 &2120623419
 GameObject:
   m_ObjectHideFlags: 0

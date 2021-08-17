@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3abd1497cbb764bb5ad6062d4f4d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: CopilotUI
+  sceneToLoad: Intro
   panels:
   - {fileID: 1567802491}
   - {fileID: 438130848}
