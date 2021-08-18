@@ -66,8 +66,8 @@ public class GameManager : MonoBehaviour
     }
     public void AddCopilot(int number)
     {
-        if (number == 1)ProfileManager.instance.CurrentProfile.AddCopilot(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
-        else if(number == 2 ) ProfileManager.instance.CurrentProfile.AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
+        if (number == 1)ProfileManager.instance.CurrentProfile.AddCopilot(new CopilotData(Copilots.MushroomFriend, 0, 0, true));
+        else if(number == 2 ) ProfileManager.instance.CurrentProfile.AddCopilot(new CopilotData(Copilots.Frederick, 0, 0, true));
         ProfileManager.instance.SaveCurrentProfile();
     }
 }

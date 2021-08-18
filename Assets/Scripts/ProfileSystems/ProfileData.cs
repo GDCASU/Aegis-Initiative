@@ -55,7 +55,7 @@ public class ProfileData
         this.currentStage = 0;
         this.newGamePlusCount = 0;
         this._copilotList.Add(new CopilotData(Copilots.Feebee, 0, 0, true));
-        this._copilotList.Add(new CopilotData(Copilots.Frederick, 0, 0, true));
+        this._copilotList.Add(new CopilotData(Copilots.SpaceGirl, 0, 0, true));
     }
 
     /// <summary>
