@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfMechanic: 0
   abilityName: Hibernation
-  description: Increased bullet velocity and fire rate once after the ship has stopped
+  description: Increased bullet velocity and fire rate after the ship has stopped
     firing for a set period of time
   icon: {fileID: 0}
   playerShooting: {fileID: 0}
