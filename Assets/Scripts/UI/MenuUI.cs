@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class MenuUI : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class MenuUI : MonoBehaviour
     [Header("Main Menu")]
     #region Main Menu
     public string creditsScene;
+    public Slider musicSlider;
+    public Slider sfxSlider;
     #endregion
 
     [Header("Load Saves")]
@@ -31,6 +34,16 @@ public class MenuUI : MonoBehaviour
     {
         //ProfileManager.instance.TestSaveProfiles();
         LoadSaves();
+        musicSlider.value = GameManager.singleton.musicVolume;
+        musicSlider.onValueChanged.AddListener((v) => {
+            GameManager.singleton.musicVolume = v;
+            FMODStartMusic.music.setVolume(v);
+        });
+        sfxSlider.value = GameManager.singleton.sfxVolume;
+        sfxSlider.onValueChanged.AddListener((v) => {
+            GameManager.singleton.sfxVolume = v;
+            FMODStartMusic.music.setVolume(v);
+        });
     }
 
     void Update()

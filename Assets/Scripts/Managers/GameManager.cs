@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public CopilotMechanic passive;
     public GameObject activeCopilot;
     public GameObject passiveCopilot;
-
+    public float musicVolume;
+    public float sfxVolume;
     public Dictionary<int, string> levels;
 
     private void Awake()

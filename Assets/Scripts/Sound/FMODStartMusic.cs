@@ -28,21 +28,8 @@ namespace FMODUnity
             music.release();
 
             music.getVolume(out originalVolume);
+            music.setVolume(GameManager.singleton.musicVolume);
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                music.getVolume(out currentVolume);
-
-                if (currentVolume != 0)
-                    music.setVolume(0);
-                else
-                    music.setVolume(originalVolume);
-            }
-        }
-
         void OnDestroy()
         {
             music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using UnityEngine.UI;
 using PlayerInput;
+using FMODUnity;
 using System.Runtime.Serialization;
 
 public class PauseMenu : MonoBehaviour
@@ -21,6 +22,8 @@ public class PauseMenu : MonoBehaviour
     #region Pause Menu
     //UI playerUI;
     public GameObject HUD;
+    public Slider musicSlider;
+    public Slider sfxSlider;
     private bool isPaused = false;
     #endregion
 
@@ -105,6 +108,16 @@ public class PauseMenu : MonoBehaviour
         //var sfxSlider = generalSettings.transform.Find("SFXSlider");
         //sfxSlider.GetComponent<Slider>().value = pOptions.sfxVolume;
         //SetEffectsVolume(pOptions.sfxVolume);
+        musicSlider.value = GameManager.singleton.musicVolume;
+        musicSlider.onValueChanged.AddListener((v) => { 
+            GameManager.singleton.musicVolume = v;
+            FMODStartMusic.music.setVolume(v);
+        });
+        sfxSlider.value = GameManager.singleton.sfxVolume;
+        sfxSlider.onValueChanged.AddListener((v) => { 
+            GameManager.singleton.sfxVolume = v;
+            FMODStartMusic.music.setVolume(v);
+        });
     }
     private void Update()
     {
@@ -199,7 +212,10 @@ public class PauseMenu : MonoBehaviour
         var res = Screen.resolutions[i];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
     }
-
+    public void UpdateMusicVolume(float volume)
+    {
+        GameManager.singleton.musicVolume = volume;
+    }
     //public void SetMusicVolume(float passed)
     //{
     //    music.volume = passed;
