@@ -15,8 +15,8 @@ public class RemarkManager : MonoBehaviour
 
     private GameObject passivePilot;
     private GameObject activePilot;
-    private Flowchart passiveChart;
-    private Flowchart activeChart;
+    public Flowchart passiveChart;
+    public Flowchart activeChart;
 
     private Block lastBlock;
 
@@ -37,8 +37,8 @@ public class RemarkManager : MonoBehaviour
     //Random float landed in proper range
     private bool DialogueSuccessful()
     {
-        passiveChart = GameManager.singleton.passiveCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
-        activeChart = GameManager.singleton.activeCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
+        passiveChart = SelectedCopilots.singleton.passiveCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
+        activeChart = SelectedCopilots.singleton.activeCopilot.GetComponent<SetupFlowchart>().sceneFlowchart;
 
         bool result = false;
         float rand = Random.Range(0.0f, 100.0f);

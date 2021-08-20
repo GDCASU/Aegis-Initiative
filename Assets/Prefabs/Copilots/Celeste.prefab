@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5508218625822248319}
   - component: {fileID: 543747178458099599}
   - component: {fileID: 4004103799520570049}
+  - component: {fileID: -6149692600193294866}
   m_Layer: 0
   m_Name: Celeste
   m_TagString: Untagged
@@ -118,3 +119,18 @@ MonoBehaviour:
   icon: {fileID: 0}
   healthPercent: 25
   damageIncrease: 2
+--- !u!114 &-6149692600193294866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5530163736713283340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 6572918113728831403, guid: d4e1ebd2dbd4de54a9f55feffaddbeb6,
+    type: 3}
+  sceneFlowchart: {fileID: 0}

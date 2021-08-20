@@ -32,12 +32,13 @@ public class EnemyHealth : MonoBehaviour
                 temp.transform.localScale = transform.localScale;
             }
             hasDied = true;
+            RemarkManager.singleton.DefeatingEnemies();
             DestroyEnemy();
         }
     }
     public virtual void DestroyEnemy()
     {
-        //print(UnityEngine.StackTraceUtility.ExtractStackTrace());
+        //print(UnityEngine.StackTraceUtility.ExtractStackTrace
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }
     IEnumerator waitToDespawn()

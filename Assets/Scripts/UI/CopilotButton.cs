@@ -21,7 +21,7 @@ public class CopilotButton : MonoBehaviour
         copilotInfo = copilotPrefab.GetComponent<CopilotInfo>();
         portrait.sprite = copilotInfo.portrait;
         name = copilotInfo.copilotData.name.ToString() + "Button";
-        GetComponentInChildren<Text>().text = copilotInfo.copilotData.name.ToString();
+        GetComponentInChildren<Text>().text = copilotInfo.character.name;
         if (!copilotInfo.copilotData.isUnlocked) button.interactable = false;
     }
 }

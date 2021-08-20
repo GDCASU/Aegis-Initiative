@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1845149114513795917}
   - component: {fileID: 1845149114513795916}
   - component: {fileID: 1845149114513795912}
+  - component: {fileID: -1504542937816319291}
   m_Layer: 0
   m_Name: Mushii
   m_TagString: Untagged
@@ -123,3 +124,18 @@ MonoBehaviour:
   defenseIncrease: 0.05
   sporeTimer: 5
   healthLostPercent: 0
+--- !u!114 &-1504542937816319291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845149114513795889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74b897f83ac64e4985fbf96ec1b3ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pilotFlowchart: {fileID: 6572918113728831403, guid: 6c1130aa89f2d5d428edefa7f3967e1d,
+    type: 3}
+  sceneFlowchart: {fileID: 0}

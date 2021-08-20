@@ -89,6 +89,7 @@ public class PlayerInfo : MonoBehaviour
         {
             KillPlayer();
         }
+        RemarkManager.singleton.TakingDamage();
     }
     /// <summary>
     /// Increases health amount by heal value without succeeding max health.
