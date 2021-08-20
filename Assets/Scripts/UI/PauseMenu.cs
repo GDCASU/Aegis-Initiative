@@ -22,6 +22,7 @@ public class PauseMenu : MonoBehaviour
     #region Pause Menu
     //UI playerUI;
     public GameObject HUD;
+    public GameObject reticle;
     public Slider musicSlider;
     public Slider sfxSlider;
     private bool isPaused = false;
@@ -123,15 +124,18 @@ public class PauseMenu : MonoBehaviour
     {
         if (InputManager.GetButtonDown(PlayerButton.Pause) && SceneManager.GetActiveScene().name!="MainMenuUI")
         {
-            if (!isPaused) Pause();
-            else
+            if (PlayerInfo.singleton)
             {
-                if (InputManager.GetButtonDown(PlayerButton.UI_Cancel))
+                if (!isPaused) Pause();
+                else
                 {
-                    if (currentPanel == 0) ResumeGame();
-                    else SwitchPanels(0);
+                    if (InputManager.GetButtonDown(PlayerButton.UI_Cancel))
+                    {
+                        if (currentPanel == 0) ResumeGame();
+                        else SwitchPanels(0);
+                    }
                 }
-            }          
+            }      
         }
     }
     public void Pause()
@@ -140,6 +144,7 @@ public class PauseMenu : MonoBehaviour
         //playerUI.enabled = false;
         Time.timeScale = 0;
         HUD.SetActive(false);
+        reticle.SetActive(false);
         pauseMenuCanvas.SetActive(true);
 
         //if(player!=null && player.InputMethod!=InputManager.InputMethod.XboxController) Cursor.visible = true;
@@ -159,6 +164,7 @@ public class PauseMenu : MonoBehaviour
         currentPanel = 0;
         //playerUI.enabled = true;
         HUD.SetActive(true);
+        reticle.SetActive(true);
     }
 
     public void ControlSettings()
@@ -216,6 +222,19 @@ public class PauseMenu : MonoBehaviour
     {
         GameManager.singleton.musicVolume = volume;
     }
+    public void UpdateHealt(int value)
+    {
+        HUD.GetComponent<Text>().text = "Health " + value;   
+    }
+    public void PlayerDied()
+    {
+        HUD.SetActive(false);
+        reticle.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SwitchPanels(4);
+    }
+    public void RestartLevel()=> SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     //public void SetMusicVolume(float passed)
     //{
     //    music.volume = passed;

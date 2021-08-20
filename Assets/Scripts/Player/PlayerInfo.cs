@@ -57,6 +57,8 @@ public class PlayerInfo : MonoBehaviour
     public event DamageDelegate damageEvent;
     public event HealingDelegate healEvent;
 
+    public PauseMenu pm;
+
     private Dictionary<StatusEffects, IEnumerator> statuses = new Dictionary<StatusEffects, IEnumerator>(); // a list of status effects and their respective coroutines
                                                                                                             // that shall deactive them once a certain time is reached
     
@@ -76,6 +78,9 @@ public class PlayerInfo : MonoBehaviour
         originalBulletDamage = bulletDamage;
     }
 
+    private void Start()=>pm.UpdateHealt(health);
+    
+
     #region Health Functions
     /// <summary>
     /// Removes health amount by a combination of incoming damage, the damage multipler, and defense.
@@ -84,6 +89,7 @@ public class PlayerInfo : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= Mathf.RoundToInt((float)damage * damageMultiplier * (1f - defense));
+        pm.UpdateHealt(health);
         if (damageEvent != null) damageEvent();
         if (health <= 0)
         {
@@ -109,7 +115,7 @@ public class PlayerInfo : MonoBehaviour
     {
         alive = false;
         GetComponentInParent<CinemachineDollyCart>().m_Speed = 0;
-        GetComponentInParent<RestartLevel>().ReloadScene();
+        pm.PlayerDied();
         Destroy(gameObject);
     }
     #endregion
