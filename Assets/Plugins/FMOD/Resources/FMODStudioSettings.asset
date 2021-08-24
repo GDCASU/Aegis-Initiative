@@ -80,12 +80,14 @@ MonoBehaviour:
   - Master
   Banks:
   - Celeste
+  - Combat
   - Credits Theme
   - Feebee
   - Main Theme
   - Mushii
   - Mushroom Stage
   - Pirate Stage
+  - UI
   - Water Stage
   BanksToLoad:
   - Master.bank

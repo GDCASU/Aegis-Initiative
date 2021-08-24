@@ -19,12 +19,14 @@ public class BasicPlayerShooting : MonoBehaviour
     public Transform spawnL;
     public bool alternate;
 
+    private string Shoot = "event:/SFX/Combat/Shoot";
     private float timerOne;
     private float timerTwo;
 
     private void Start()
     {
         timerOne = PlayerInfo.singleton.fireRate;
+        FMODUnity.RuntimeManager.LoadBank("Combat");
     }
     private void Update()
     {
@@ -34,6 +36,7 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (timerOne < 0)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity =  spawnR.forward.normalized * speed;
                     timerOne = PlayerInfo.singleton.fireRate;
@@ -41,6 +44,7 @@ public class BasicPlayerShooting : MonoBehaviour
                 }
                 if (timerTwo < 0)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position);
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
                     timerTwo = PlayerInfo.singleton.fireRate;
@@ -51,6 +55,7 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (timerOne < 0)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);

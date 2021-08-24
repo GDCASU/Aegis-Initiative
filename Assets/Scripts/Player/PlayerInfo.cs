@@ -51,6 +51,8 @@ public class PlayerInfo : MonoBehaviour
     private int originalBulletDamage;
 
     private float damageMultiplier = 1f;  // amount to multiply incoming damage by
+    private string HealSound = "event:/SFX/UI/Heal";
+    private string LowHealthSound = "event:/SFX/UI/Low Health";
 
     public delegate void DamageDelegate();
     public delegate void HealingDelegate();
@@ -76,6 +78,8 @@ public class PlayerInfo : MonoBehaviour
         originalDefense = defense;
         originalFireRate = fireRate;
         originalBulletDamage = bulletDamage;
+
+        FMODUnity.RuntimeManager.LoadBank("UI");
     }
 
     private void Start()=>pm.UpdateHealt(health);
@@ -95,6 +99,10 @@ public class PlayerInfo : MonoBehaviour
         {
             KillPlayer();
         }
+        if (health < 10)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(LowHealthSound, transform.position);
+        }
         RemarkManager.singleton.TakingDamage();
     }
     /// <summary>
@@ -106,6 +114,7 @@ public class PlayerInfo : MonoBehaviour
         if (health + heal > maxHealth) health = maxHealth;
         else health += heal;
         if (healEvent != null) healEvent();
+        FMODUnity.RuntimeManager.PlayOneShot(HealSound, transform.position);
     }
 
     /// <summary>

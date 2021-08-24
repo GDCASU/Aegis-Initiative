@@ -16,6 +16,7 @@ public class EnemyGrunt : EnemyHealth
     private bool isflying;
     private bool shoot = true;
     private bool flyOff = false;
+    private string Hit = "event:/SFX/Combat/Hit";
     System.Random rng = new System.Random();
 
     public override void Start()
@@ -24,10 +25,15 @@ public class EnemyGrunt : EnemyHealth
         animations.Play(flyIn.name);
         animationWaitTime = flyIn.length;
         shootingWaitTime = 5.0f;
+        FMODUnity.RuntimeManager.LoadBank("Combat");
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Bullet")TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);        
+        if (collision.gameObject.tag == "Bullet")
+        {
+            TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);
+            FMODUnity.RuntimeManager.PlayOneShot(Hit, transform.position);
+        }
     }
     private void FixedUpdate()
     {

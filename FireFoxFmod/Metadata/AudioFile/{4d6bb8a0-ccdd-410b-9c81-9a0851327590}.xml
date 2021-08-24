@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{4d6bb8a0-ccdd-410b-9c81-9a0851327590}">
+		<property name="assetPath">
+			<value>lowHealthBeep.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.6346258503401359</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3605a824-7062-4e86-a4c9-b6a153423afd}</destination>
+		</relationship>
+	</object>
+</objects>
