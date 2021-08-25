@@ -103,7 +103,7 @@ public class CopilotUI : MonoBehaviour
     {
         selectedPrefab = copilotPrefab;
         selected = copilotPrefab.GetComponent<CopilotInfo>();
-        selectionName.text = selected.copilotData.name.ToString();
+        selectionName.text = selected.character.name;
         if (!selectionPanel.activeSelf) selectionPanel.SetActive(true);
         activeName.text = selected.copilotActive.abilityName;
         activeDescription.text = selected.copilotActive.description;
