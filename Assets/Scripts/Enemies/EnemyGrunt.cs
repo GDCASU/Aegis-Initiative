@@ -32,7 +32,7 @@ public class EnemyGrunt : EnemyHealth
         if (collision.gameObject.tag == "Bullet")
         {
             TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);
-            FMODUnity.RuntimeManager.PlayOneShot(Hit, transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot(Hit, transform.position, GameManager.singleton.sfxVolume);
         }
     }
     private void FixedUpdate()
