@@ -17,7 +17,7 @@ public class FeebeeActive : CopilotActiveMechanic
     }
     private void Update()
     {
-        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility))
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.ActiveAbility) && !rollPerforming)
         {
             rollDirection = shipMovement.movementDirection*speedOfDodge;
             shipMovement.stopInput = true;

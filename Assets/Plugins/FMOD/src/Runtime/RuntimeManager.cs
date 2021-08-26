@@ -944,11 +944,11 @@ retry:
             return newInstance;
         }
 
-        public static void PlayOneShot(string path, Vector3 position = new Vector3())
+        public static void PlayOneShot(string path, Vector3 position = new Vector3(), float volume = 1)
         {
             try
             {
-                PlayOneShot(PathToGUID(path), position);
+                PlayOneShot(PathToGUID(path), position, volume);
             }
             catch (EventNotFoundException)
             {
@@ -956,10 +956,11 @@ retry:
             }
         }
 
-        public static void PlayOneShot(Guid guid, Vector3 position = new Vector3())
+        public static void PlayOneShot(Guid guid, Vector3 position = new Vector3(), float volume = 1)
         {
             var instance = CreateInstance(guid);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
+            instance.setVolume(volume);
             instance.start();
             instance.release();
         }

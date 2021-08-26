@@ -7,7 +7,7 @@ using FMODUnity;
 
 public class MenuUI : MonoBehaviour
 {
-
+    private string Select = "event:/SFX/UI/Select";
 
     [Header("General Menu")]
     #region General Menu
@@ -42,8 +42,8 @@ public class MenuUI : MonoBehaviour
         sfxSlider.value = GameManager.singleton.sfxVolume;
         sfxSlider.onValueChanged.AddListener((v) => {
             GameManager.singleton.sfxVolume = v;
-            FMODStartMusic.music.setVolume(v);
         });
+        FMODUnity.RuntimeManager.LoadBank("UI");
     }
 
     void Update()
@@ -83,10 +83,12 @@ public class MenuUI : MonoBehaviour
     }
     public void Settings()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
         SwitchPanels(3);  //3 is the Settings panel
     }
     public void ExitGame()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
         Application.Quit();
     }
     public void LoadSaves()
@@ -100,6 +102,7 @@ public class MenuUI : MonoBehaviour
     }
     public void SelecSave()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
         SwitchPanels(2);
 
         //Updates each save button in case they become unsynced to their associated profiles
@@ -141,6 +144,7 @@ public class MenuUI : MonoBehaviour
     }
     public void Credits()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
         SceneManager.LoadScene(creditsScene, LoadSceneMode.Single);
     }
 }

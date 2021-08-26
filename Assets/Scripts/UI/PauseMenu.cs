@@ -117,7 +117,6 @@ public class PauseMenu : MonoBehaviour
         sfxSlider.value = GameManager.singleton.sfxVolume;
         sfxSlider.onValueChanged.AddListener((v) => { 
             GameManager.singleton.sfxVolume = v;
-            FMODStartMusic.music.setVolume(v);
         });
     }
     private void Update()
