@@ -23,6 +23,7 @@ public class PauseMenu : MonoBehaviour
     //UI playerUI;
     public GameObject HUD;
     public GameObject reticle;
+    public GameObject copilotUI;
     public Slider musicSlider;
     public Slider sfxSlider;
     private bool isPaused = false;
@@ -144,6 +145,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         HUD.SetActive(false);
         reticle.SetActive(false);
+        copilotUI.SetActive(false);
         pauseMenuCanvas.SetActive(true);
 
         //if(player!=null && player.InputMethod!=InputManager.InputMethod.XboxController) Cursor.visible = true;
@@ -164,6 +166,7 @@ public class PauseMenu : MonoBehaviour
         //playerUI.enabled = true;
         HUD.SetActive(true);
         reticle.SetActive(true);
+        copilotUI.SetActive(true);
     }
 
     public void ControlSettings()
