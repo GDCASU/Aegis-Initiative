@@ -91,7 +91,7 @@ public class StageTriggers : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         //update currenStage and save profile
-        ProfileManager.instance.CurrentProfile.currentStage += 1;
+        if(ProfileManager.instance.CurrentProfile.currentStage<4) ProfileManager.instance.CurrentProfile.currentStage += 1;
         ProfileManager.instance.SaveCurrentProfile();
 
         //load active pilot VN scene

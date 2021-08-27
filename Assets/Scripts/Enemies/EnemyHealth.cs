@@ -38,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public virtual void DestroyEnemy()
     {
-        //print(UnityEngine.StackTraceUtility.ExtractStackTrace
+        //print(UnityEngine.StackTraceUtility.ExtractStackTrace());
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }
     IEnumerator waitToDespawn()

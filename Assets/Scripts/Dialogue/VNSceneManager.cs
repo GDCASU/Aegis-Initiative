@@ -49,6 +49,7 @@ public class VNSceneManager : MonoBehaviour
         }
 
         //This should load the next gameplay level
-        SceneManager.LoadScene("CopilotUI");
+        if (ProfileManager.instance.CurrentProfile.currentStage < 4) SceneManager.LoadScene("CopilotUI");
+        else SceneManager.LoadScene("LevelSelect");
     }
 }

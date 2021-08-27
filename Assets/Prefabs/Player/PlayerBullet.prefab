@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89361be58570fcc4baf5a06a3edbe5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDespawnTime: 1.3
+  bulletDespawnTime: 2.5
   timer: 0
   damage: 0
   bulletSource: 0

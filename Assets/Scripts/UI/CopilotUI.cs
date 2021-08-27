@@ -94,6 +94,8 @@ public class CopilotUI : MonoBehaviour
             tempButton.transform.localScale = Vector3.one;
         }
         start.interactable = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     /// <summary>
     /// Method used to pop up the selection panel and give a copilot's info as well as allow the player to choose their passive and active abilities.  Called  by a Unity UI button
@@ -147,7 +149,8 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        SceneManager.LoadScene(GameManager.singleton.levels[ProfileManager.instance.CurrentProfile.currentStage],LoadSceneMode.Single);
+        if (ProfileManager.instance.CurrentProfile.currentStage < 4) SceneManager.LoadScene(GameManager.singleton.levels[ProfileManager.instance.CurrentProfile.currentStage],LoadSceneMode.Single);
+        else SceneManager.LoadScene(GameManager.singleton.levels[GameManager.singleton.levelSelected], LoadSceneMode.Single);
     }
     /// <summary>
     /// Method used to pop up the "Are you sure?" prompt before returning to the Hub UI.  Called  by a Unity UI button

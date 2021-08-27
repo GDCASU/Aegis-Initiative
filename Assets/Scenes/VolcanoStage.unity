@@ -255,6 +255,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1 &55674224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1833,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1001 &220326725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2648,6 +2652,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!4 &276862618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
@@ -3988,6 +3994,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1 &465874718
 GameObject:
   m_ObjectHideFlags: 0
@@ -4357,6 +4365,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1001 &520959849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5326,6 +5336,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1 &625596394
 GameObject:
   m_ObjectHideFlags: 0
@@ -16516,6 +16528,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1001 &816370289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16937,6 +16951,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1001 &877307508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19415,6 +19431,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1001 &1210639452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21498,6 +21516,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1 &1495672479
 GameObject:
   m_ObjectHideFlags: 0
@@ -21832,6 +21852,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1001 &1527360155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33743,6 +33765,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1 &1861780212
 GameObject:
   m_ObjectHideFlags: 0

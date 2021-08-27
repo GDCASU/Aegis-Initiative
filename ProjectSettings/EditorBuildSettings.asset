@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/Scenes/VN Scenes/Mushii.unity
     guid: 13f6b102c383b0546820b1531b509077
   - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: d2e6764a90aded0439b24a6a624ead99
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 889133808f1fbb1488f1384a71e6e1e8
   m_configObjects: {}

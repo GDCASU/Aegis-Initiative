@@ -83,10 +83,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a372410e369a2e848968a29b78bcadf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 500
   collisionDamage: 0
-  doNotDespawn: 0
-  lifeTime: 1e+12
+  doNotDespawn: 1
+  lifeTime: 0
   deathEffect: {fileID: 0}
   lifeTimer: 0
   laserBot: {fileID: 8081589177011574464, guid: f40ee2f1bd4caf24d926571a881b1c01,

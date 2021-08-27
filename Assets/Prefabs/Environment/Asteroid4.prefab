@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  collisionDamage: 0
+  collisionDamage: 2
   destroyReplacements: []
   destroyOnContact: 1
   origin: {x: 0, y: 0, z: 0}
