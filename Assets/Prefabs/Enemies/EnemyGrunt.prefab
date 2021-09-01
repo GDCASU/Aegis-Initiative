@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2341240610942086077}
   m_Layer: 0
   m_Name: EnemyGrunt
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,3 +254,5 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 0

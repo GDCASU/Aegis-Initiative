@@ -1388,6 +1388,7 @@ MonoBehaviour:
   doNotDespawn: 1
   lifeTime: 20
   deathEffect: {fileID: 0}
+  lifeTimer: 0
 --- !u!114 &7212486881963750468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1994,6 +1995,7 @@ MonoBehaviour:
   doNotDespawn: 1
   lifeTime: 20
   deathEffect: {fileID: 0}
+  lifeTimer: 0
   weakpoint: 0
   cancelHealth: 100
 --- !u!1 &8197544043340013228
@@ -2110,6 +2112,7 @@ MonoBehaviour:
   doNotDespawn: 1
   lifeTime: 20
   deathEffect: {fileID: 0}
+  lifeTimer: 0
   weakpoint: 1
   cancelHealth: 100
 --- !u!1 &8197544043369914328
@@ -2125,7 +2128,7 @@ GameObject:
   - component: {fileID: 2080381331}
   m_Layer: 0
   m_Name: SeaSerpentHost_CDominguez
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -14612,6 +14612,7 @@ MonoBehaviour:
   magSize: 100
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
+  reticle: {fileID: 4174455376538911289}
   spawnR: {fileID: 5464987158666677754}
   spawnL: {fileID: 5464987159728112431}
   alternate: 0

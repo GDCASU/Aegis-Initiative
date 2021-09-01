@@ -21,6 +21,11 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+    }
+
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
@@ -32,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
                 temp.transform.localScale = transform.localScale;
             }
             hasDied = true;
-            RemarkManager.singleton.DefeatingEnemies();
+            //RemarkManager.singleton.DefeatingEnemies();
             DestroyEnemy();
         }
     }
