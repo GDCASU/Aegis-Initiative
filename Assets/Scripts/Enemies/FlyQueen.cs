@@ -42,8 +42,9 @@ public class FlyQueen : EnemyHealth
     /// <summary>
     /// Initiates a barrage of larvae at the first larvae drop rate.
     /// </summary>
-    private void Update()
+    override protected void Update()
     {
+        base.Update();
         if (timer <=  0 && !shooting)
         {
             StartCoroutine(DropLarvae());

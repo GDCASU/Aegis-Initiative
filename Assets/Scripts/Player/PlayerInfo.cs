@@ -104,7 +104,7 @@ public class PlayerInfo : MonoBehaviour
         {
             FMODUnity.RuntimeManager.PlayOneShot(LowHealthSound, transform.position, GameManager.singleton.sfxVolume);
         }
-        //RemarkManager.singleton.TakingDamage();
+        RemarkManager.singleton.TakingDamage();
     }
     /// <summary>
     /// Increases health amount by heal value without succeeding max health.

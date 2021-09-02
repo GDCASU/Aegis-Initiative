@@ -23,7 +23,7 @@ public class BasicPlayerShooting : MonoBehaviour
     private string Shoot = "event:/SFX/Combat/Shoot";
     private float timerOne;
     private float timerTwo;
-    private GameObject closestEnemy;
+    public GameObject closestEnemy;
     private Camera playerCam;
 
     private void Start()
@@ -71,7 +71,7 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (timerOne < 0)
                 {
-                    //FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
+                    FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     if(closestEnemy != null)
@@ -96,31 +96,32 @@ public class BasicPlayerShooting : MonoBehaviour
         Vector2 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
         Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticle.transform.position);
 
-        if (!enemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
-        {            
-            var distance = Vector2.Distance(enemyConversion, reticleConversion);
-            Debug.Log(distance);
-            if (distance < PlayerInfo.singleton.aimAssistStrength)
+        if(enemy.GetComponentInParent<EnemyMovement>() != null)
+        {
+            if (!enemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
             {
-                if (closestEnemy != null)
+                var distance = Vector2.Distance(enemyConversion, reticleConversion);
+                if (distance < PlayerInfo.singleton.aimAssistStrength)
                 {
-                    if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
+                    if (closestEnemy != null)
+                    {
+                        if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
+                        {
+                            closestEnemy = enemy;
+                        }
+                    }
+                    else
                     {
                         closestEnemy = enemy;
                     }
                 }
                 else
                 {
-                    closestEnemy = enemy;
+                    if (closestEnemy == enemy)
+                        closestEnemy = null;
                 }
             }
-            else
-            {
-                if (closestEnemy == enemy)
-                    closestEnemy = null;
-            }
-        }
-            
+        }            
     }
 
     private void EnemyInRange()
