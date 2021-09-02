@@ -24,11 +24,13 @@ public class BasicPlayerShooting : MonoBehaviour
     private float timerOne;
     private float timerTwo;
     private GameObject closestEnemy;
+    private Camera playerCam;
 
     private void Start()
     {
         timerOne = PlayerInfo.singleton.fireRate;
         FMODUnity.RuntimeManager.LoadBank("Combat");
+        playerCam = GameObject.Find("Player Camera").GetComponent<Camera>();
     }
     private void Update()
     {
@@ -91,21 +93,18 @@ public class BasicPlayerShooting : MonoBehaviour
 
     public void AimAssist(GameObject enemy)
     {
-        Vector2 enemyConversion = Camera.main.WorldToViewportPoint(enemy.transform.position);
-        Vector2 reticleConversion = Camera.main.WorldToViewportPoint(reticle.transform.position);
+        Vector2 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
+        Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticle.transform.position);
 
         if (!enemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
-        {
-            Debug.Log("Enemy: " + enemyConversion);
-            Debug.Log("Reticle: " + reticleConversion);
-            var temp = Vector2.Distance(enemyConversion, reticleConversion);
-            Debug.Log("Distance: " + temp);
-            if (Vector2.Distance(enemyConversion, reticleConversion) < PlayerInfo.singleton.aimAssistStrength)
+        {            
+            var distance = Vector2.Distance(enemyConversion, reticleConversion);
+            Debug.Log(distance);
+            if (distance < PlayerInfo.singleton.aimAssistStrength)
             {
-                //Debug.Log("ENEMY DETECTED");
                 if (closestEnemy != null)
                 {
-                    if (Vector2.Distance(enemyConversion, reticleConversion) < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
+                    if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
                     {
                         closestEnemy = enemy;
                     }
@@ -114,6 +113,11 @@ public class BasicPlayerShooting : MonoBehaviour
                 {
                     closestEnemy = enemy;
                 }
+            }
+            else
+            {
+                if (closestEnemy == enemy)
+                    closestEnemy = null;
             }
         }
             

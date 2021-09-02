@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour
     public int damage;
     public BulletSource bulletSource;
 
-    private bool lockedOn;
     private GameObject _target;
 
     private void Start()
@@ -31,21 +30,14 @@ public class Bullet : MonoBehaviour
         if (bulletSource == BulletSource.Player) damage = PlayerInfo.singleton.bulletDamage;
     }
 
-    /*private void OnEnable()
-    {
-        Time.timeScale = 0.1f;
-    }*/
-
     private void Update()
     {
         timer -= Time.deltaTime;
         if (timer < 0) Destroy(transform.gameObject);
-
     }
 
     private void FixedUpdate()
     {
-
         if (_target != null)
         {
             GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.magnitude * (_target.transform.position - gameObject.transform.position).normalized;
@@ -74,11 +66,6 @@ public class Bullet : MonoBehaviour
 
     public void LockOn(GameObject target)
     {        
-        if(target != null)
-        {
-            lockedOn = true;
-            _target = target;
-        }
-        
+        _target = target;
     }
 }

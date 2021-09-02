@@ -42,7 +42,7 @@ public class PlayerInfo : MonoBehaviour
     public float defense;  // how much damage should be shaved off; EXAMPLE: 0.25 = 25% damage reduced
 
     public float fireRate = 0.2f;  // how fast the Player can shoot
-    public float aimAssistStrength = 0.3f;
+    public float aimAssistStrength = 0.05f;
 
     public int bulletDamage;  // how much damage a Player bullet should deal
 
