@@ -15,6 +15,7 @@ public class BasicPlayerShooting : MonoBehaviour
     public int magSize;
     public GameObject bulletPrefab;
     private GameObject bullet;
+    public GameObject reticle;
     public Transform spawnR;
     public Transform spawnL;
     public bool alternate;
@@ -22,14 +23,32 @@ public class BasicPlayerShooting : MonoBehaviour
     private string Shoot = "event:/SFX/Combat/Shoot";
     private float timerOne;
     private float timerTwo;
+    private GameObject closestEnemy;
+    private Camera playerCam;
 
     private void Start()
     {
         timerOne = PlayerInfo.singleton.fireRate;
         FMODUnity.RuntimeManager.LoadBank("Combat");
+        playerCam = GameObject.Find("Player Camera").GetComponent<Camera>();
     }
     private void Update()
     {
+        if (closestEnemy != null)
+        {
+            if(closestEnemy.GetComponentInParent<EnemyMovement>() != null)
+            {
+                if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
+                    closestEnemy = null;
+            }
+            else
+            {
+                if(closestEnemy.transform.parent.transform.localPosition.z < 0)
+                    closestEnemy = null;  
+            }
+        }
+            
+
         if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot))
         {
             if (alternate)
@@ -39,6 +58,10 @@ public class BasicPlayerShooting : MonoBehaviour
                     FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity =  spawnR.forward.normalized * speed;
+                    if (closestEnemy != null)
+                    {
+                        EnemyInRange();
+                    }
                     timerOne = PlayerInfo.singleton.fireRate;
                     timerTwo = PlayerInfo.singleton.fireRate / 2f;
                 }
@@ -47,6 +70,10 @@ public class BasicPlayerShooting : MonoBehaviour
                     FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
+                    if (closestEnemy != null)
+                    {
+                        EnemyInRange();
+                    }
                     timerTwo = PlayerInfo.singleton.fireRate;
                 }
                 timerTwo -= Time.deltaTime;
@@ -58,12 +85,76 @@ public class BasicPlayerShooting : MonoBehaviour
                     FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
+                    if(closestEnemy != null)
+                    {
+                        EnemyInRange();
+                    }
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
+                    if (closestEnemy != null)
+                    {
+                        EnemyInRange();
+                    }
                     timerOne = PlayerInfo.singleton.fireRate;
                 }
             }          
         }
         timerOne -= Time.deltaTime;
+    }
+
+    public void AimAssist(GameObject enemy)
+    {
+        
+
+        if(enemy.GetComponentInParent<EnemyMovement>() != null)
+        {
+            if (!enemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
+            {
+                SetClosestEnemy(enemy);
+            }
+        }
+        else
+        {
+            SetClosestEnemy(enemy);
+        }
+    }
+
+    private void SetClosestEnemy(GameObject enemy)
+    {
+        Vector2 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
+        Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticle.transform.position);
+
+        var distance = Vector2.Distance(enemyConversion, reticleConversion);
+        //enemy is in AimAssist range
+        if (distance < PlayerInfo.singleton.aimAssistStrength)
+        {
+            //enemy is in front of player
+            if (enemy.transform.parent.transform.localPosition.z > 0)
+            {
+                if (closestEnemy != null)
+                {
+                    //enemy is closer than current closestEnemy
+                    if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
+                    {
+                        closestEnemy = enemy;
+                    }
+                }
+                else
+                {
+                    closestEnemy = enemy;
+                }
+            }
+        }
+        else
+        {
+            //enemy is out of AimAssist range
+            if (closestEnemy == enemy)
+                closestEnemy = null;
+        }
+    }
+
+    private void EnemyInRange()
+    {
+        bullet.GetComponent<Bullet>().LockOn(closestEnemy);
     }
 }

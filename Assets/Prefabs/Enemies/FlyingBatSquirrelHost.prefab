@@ -319,6 +319,8 @@ MonoBehaviour:
   flying: {fileID: 7400000, guid: 0040a62db377728449e2ba7280303802, type: 2}
   flyIn: {fileID: 7400000, guid: 44026f50744fec14a987f05632c865b8, type: 2}
   bulletCount: 5
+  flyOff: 0
+  overrideBulletSize: 1
 --- !u!1 &6548269751276756189
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  collisionDamage: 20
+  collisionDamage: 5
   doNotDespawn: 0
   lifeTime: 20
   deathEffect: {fileID: 0}
@@ -526,7 +528,7 @@ GameObject:
   - component: {fileID: 7233429079901812976}
   m_Layer: 0
   m_Name: FlyingBatSquirrelHost
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

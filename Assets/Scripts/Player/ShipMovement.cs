@@ -46,17 +46,17 @@ private Transform playerModel;
         float v = joystick ? InputManager.GetAxis(PlayerInput.PlayerAxis.MoveVertical) : InputManager.GetAxis(PlayerInput.PlayerAxis.CameraHorizontal);
 
         // Ship decelerates when no button is held in direction when moving
-        if(h != Mathf.Sign(currentVelocity.x)) h += -Mathf.Sign(currentVelocity.x);
-        if(v != Mathf.Sign(currentVelocity.y)) v += -Mathf.Sign(currentVelocity.y);
+        if (h != Mathf.Sign(currentVelocity.x)) h += -Mathf.Sign(currentVelocity.x);
+        if (v != Mathf.Sign(currentVelocity.y)) v += -Mathf.Sign(currentVelocity.y);
         // Turning ship input into acceleration for ship
         h *= xyAcceleration; v *= xyAcceleration;
         h = Mathf.Clamp(currentVelocity.x + h, -xySpeed, xySpeed);
         v = Mathf.Clamp(currentVelocity.y + v, -xySpeed, xySpeed);
         // Resetting when close to zero
-        if(Mathf.Abs(h) < xyAcceleration) h = 0;
-        if(Mathf.Abs(v) < xyAcceleration) v = 0;
-        currentVelocity = new Vector3(h,v,0f);
-        
+        if (Mathf.Abs(h) < xyAcceleration) h = 0;
+        if (Mathf.Abs(v) < xyAcceleration) v = 0;
+        currentVelocity = new Vector3(h, v, 0f);
+
         // Setting player movement
         float moveH = currentVelocity.x; if(Mathf.Abs(moveH) <= xyAcceleration) moveH = 0;
         float moveV = currentVelocity.y; if(Mathf.Abs(moveV) <= xyAcceleration) moveV = 0;

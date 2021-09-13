@@ -110,6 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDespawnTime: 5
   timer: 0
-  damage: 10
+  damage: 2
   bulletSource: 1
   bulletSpeed: 0.3

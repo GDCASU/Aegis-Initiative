@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public float musicVolume;
     public float sfxVolume;
     public Dictionary<int, string> levels;
+    public int levelSelected;
 
     private void Awake()
     {

@@ -152,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 1551946293993138698}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -6.36, y: 1, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 574345633959086767}
   - {fileID: 574345635334873767}
@@ -214,6 +214,8 @@ MonoBehaviour:
   collisionDamage: 25
   doNotDespawn: 0
   lifeTime: 20
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
 --- !u!136 &7193908017830718102
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -244,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1551946294004766098
 Transform:
   m_ObjectHideFlags: 0
@@ -286,6 +288,7 @@ MonoBehaviour:
   flyingIn: 1
   hover: 1
   hoverTimer: 1
+  isHoverPermanent: 0
   isModelFacingPlayer: 0
   leaveDirection: 0
   leaveSpeed: 2
@@ -339,7 +342,6 @@ MonoBehaviour:
     adjustWidth: 0
     adjustHeight: 0
     adjustDepth: 11.2
-  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
 --- !u!1 &2208189355971752793
 GameObject:
   m_ObjectHideFlags: 0

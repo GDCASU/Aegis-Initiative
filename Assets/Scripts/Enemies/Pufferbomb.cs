@@ -12,8 +12,9 @@ public class Pufferbomb : EnemyHealth
     private bool isExploding; //check that Pufferbomb is already exploding
     private bool isShot; //check if Player already shot Pufferbomb
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         explosion = transform.GetComponent<ParticleSystem>();
         mesh = transform.GetComponentInChildren<MeshRenderer>();
         //Set distance value to the sphere collider that has trigger enabled
@@ -39,12 +40,14 @@ public class Pufferbomb : EnemyHealth
         Destroy(gameObject);
     }
 
+
+
     //If Player shoots Pufferbomb, destroy Pufferbomb
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         if (mesh != null && explosion != null)
         {
-            if (!isExploding && collision.gameObject.CompareTag("Bullet"))
+            if (!isExploding && other.gameObject.CompareTag("Bullet"))
             {
                 isShot = true;
                 StartCoroutine(Explode()); //start explode coroutine  
@@ -53,9 +56,9 @@ public class Pufferbomb : EnemyHealth
     }
 
     //If Player collides with sphere collider trigger, then explode Pufferbomb and deal damage to Player
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (!isExploding && !isShot && other.gameObject.CompareTag("Player"))
+        if (!isExploding && !isShot && collision.gameObject.CompareTag("Player"))
         {
             StartCoroutine(Explode()); //start explode coroutine 
             PlayerInfo.singleton.TakeDamage(collisionDamage); //damage Player

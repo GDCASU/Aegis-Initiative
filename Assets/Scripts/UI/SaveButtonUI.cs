@@ -58,7 +58,11 @@ public class SaveButtonUI : MonoBehaviour
             menuUI.nameInputField.text = "";
             menuUI.SwitchPanels(4);
         }
-        else SceneManager.LoadScene("CopilotUI", LoadSceneMode.Single);
+        else
+        {
+            if (ProfileManager.instance.CurrentProfile.currentStage < 4) SceneManager.LoadScene("CopilotUI");
+            else SceneManager.LoadScene("LevelSelect");
+        }
     }
 
     /// <summary>

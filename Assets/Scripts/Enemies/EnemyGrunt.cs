@@ -15,8 +15,10 @@ public class EnemyGrunt : EnemyHealth
     private float bulletSpeed = 0.25f;
     private bool isflying;
     private bool shoot = true;
-    private bool flyOff = false;
+    public bool flyOff = false;
     private string Hit = "event:/SFX/Combat/Hit";
+    public bool overrideBulletSize;
+
     System.Random rng = new System.Random();
 
     public override void Start()
@@ -31,7 +33,6 @@ public class EnemyGrunt : EnemyHealth
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            TakeDamage(collision.gameObject.GetComponent<Bullet>().damage);
             FMODUnity.RuntimeManager.PlayOneShot(Hit, transform.position, GameManager.singleton.sfxVolume);
         }
     }
@@ -62,10 +63,15 @@ public class EnemyGrunt : EnemyHealth
             }
         }
 
-        if (flyOff)
+        if (flyOff)     
         {
             // TODO: some animation here instead of MoveTowards
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, -1), 5f * Time.deltaTime);
+            if (overrideBulletSize)
+            {
+                transform.localPosition -= transform.parent.forward * .05f;
+                animations.Stop();
+            }
+            else transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, -1), 5f * Time.deltaTime);
 
             if (!GetComponentInChildren<Renderer>().isVisible)
                 DestroyEnemy();
@@ -75,8 +81,9 @@ public class EnemyGrunt : EnemyHealth
     {
         for (int i = 0; i < bulletCount; i++)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation, transform);
-            bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 200f);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position + transform.parent.forward * (overrideBulletSize ? .5f : 0) , transform.rotation, transform);
+            if (overrideBulletSize) bullet.transform.localScale = Vector3.one * .05f;
+            bullet.GetComponent<Rigidbody>().AddForce( (overrideBulletSize ? transform.parent.forward : transform.forward) * 200f);
             yield return new WaitForSeconds(bulletSpeed);
         }
         flyOff = true;

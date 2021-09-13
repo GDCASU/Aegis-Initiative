@@ -21,6 +21,11 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    virtual protected void Update()
+    {
+        PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+    }
+
     public virtual void TakeDamage(int damage)
     {
         health -= damage;
@@ -38,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public virtual void DestroyEnemy()
     {
-        //print(UnityEngine.StackTraceUtility.ExtractStackTrace
+        //print(UnityEngine.StackTraceUtility.ExtractStackTrace());
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }
     IEnumerator waitToDespawn()

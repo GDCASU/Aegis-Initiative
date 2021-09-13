@@ -40,7 +40,7 @@ public class SpaceGirlPassive : CopilotPassiveMechanic
     }
     public void OnDestroy()
     {
-        PlayerInfo.singleton.damageEvent -= CheckPassiveActivation;
-        PlayerInfo.singleton.damageEvent -= CheckPassiveDeactivation;
+        if (PlayerInfo.singleton) PlayerInfo.singleton.damageEvent -= CheckPassiveActivation;
+        if (PlayerInfo.singleton) PlayerInfo.singleton.damageEvent -= CheckPassiveDeactivation;
     }
 }
