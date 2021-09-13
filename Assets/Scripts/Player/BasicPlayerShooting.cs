@@ -34,9 +34,20 @@ public class BasicPlayerShooting : MonoBehaviour
     }
     private void Update()
     {
-        if(closestEnemy != null && closestEnemy.GetComponentInParent<EnemyMovement>() != null)
-            if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
-                closestEnemy = null;
+        if (closestEnemy != null)
+        {
+            if(closestEnemy.GetComponentInParent<EnemyMovement>() != null)
+            {
+                if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
+                    closestEnemy = null;
+            }
+            else
+            {
+                if(closestEnemy.transform.parent.transform.localPosition.z < 0)
+                    closestEnemy = null;  
+            }
+        }
+            
 
         if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot))
         {
@@ -114,22 +125,29 @@ public class BasicPlayerShooting : MonoBehaviour
         Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticle.transform.position);
 
         var distance = Vector2.Distance(enemyConversion, reticleConversion);
+        //enemy is in AimAssist range
         if (distance < PlayerInfo.singleton.aimAssistStrength)
         {
-            if (closestEnemy != null)
+            //enemy is in front of player
+            if (enemy.transform.parent.transform.localPosition.z > 0)
             {
-                if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
+                if (closestEnemy != null)
+                {
+                    //enemy is closer than current closestEnemy
+                    if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
+                    {
+                        closestEnemy = enemy;
+                    }
+                }
+                else
                 {
                     closestEnemy = enemy;
                 }
             }
-            else
-            {
-                closestEnemy = enemy;
-            }
         }
         else
         {
+            //enemy is out of AimAssist range
             if (closestEnemy == enemy)
                 closestEnemy = null;
         }

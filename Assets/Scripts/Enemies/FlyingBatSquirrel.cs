@@ -54,6 +54,7 @@ public class FlyingBatSquirrel : EnemyHealth
     /// </summary>
     private void Update()
     {
+        base.Update();
         if (isFollowingPlayer)
             host.eulerAngles = RotateToObject(player);
 
