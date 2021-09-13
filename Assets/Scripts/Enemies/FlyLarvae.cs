@@ -19,19 +19,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyLarvae : MonoBehaviour
+public class FlyLarvae : EnemyHealth
 {
-    [SerializeField]
-    private int damage = 10;  // damage done to Player upon collision
-
     [SerializeField]
     private float vulnerabilityDamageMultiplier = 1.25f;  // amount to multiply Player incoming damage by temporarily
 
     [SerializeField]
     private float vulnerabilityActiveTime = 5f;  // how long the vulnerability effect last
-
-    [SerializeField]
-    private float lifeTime = 3f;  // life time of the larvae gameobject
 
     [SerializeField]
     private float forwardSpeed;  // speed the larvae should be ejected from the Fly Queen's front
@@ -45,24 +39,12 @@ public class FlyLarvae : MonoBehaviour
     /// <summary>
     /// Obtains the Fly Larvae's Rigidbody and Collider as well as grant it a velocity in the direction of the Fly Queen's front.
     /// </summary>
-    private void Start()
+    override public void Start()
     {
+        base.Start();
         larvaeBody = GetComponent<Rigidbody>();
         larvaeCollider = GetComponent<Collider>();
         larvaeBody.velocity = transform.forward * forwardSpeed;
-    }
-
-    /// <summary>
-    /// Destroys the larvae gameobject once it has reached its life time.
-    /// </summary>
-    private void Update()
-    {
-        if (elapsedTime >= lifeTime)
-        {
-            Destroy(this.gameObject);
-        }
-
-        elapsedTime += Time.deltaTime;
     }
 
     /// <summary>
@@ -83,10 +65,8 @@ public class FlyLarvae : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            PlayerInfo PlayerInfo = collision.transform.GetComponent<PlayerInfo>();
-
-            PlayerInfo.TakeDamage(damage);
-            PlayerInfo.AddStatusEffect(StatusEffects.VULNERABILITY, vulnerabilityDamageMultiplier, vulnerabilityActiveTime);
+            PlayerInfo.singleton.TakeDamage(collisionDamage);
+            PlayerInfo.singleton.AddStatusEffect(StatusEffects.VULNERABILITY, vulnerabilityDamageMultiplier, vulnerabilityActiveTime);
             collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             Destroy(this.gameObject);
         }

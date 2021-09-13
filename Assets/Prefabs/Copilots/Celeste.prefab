@@ -99,7 +99,7 @@ MonoBehaviour:
   abilityName: Nova
   description: Option to fully heal after reaching 25% health once per stage
   icon: {fileID: 0}
-  healthPercent: 25
+  healthPercent: 0.25
   activeUsed: 0
 --- !u!114 &4004103799520570049
 MonoBehaviour:
@@ -117,7 +117,7 @@ MonoBehaviour:
   abilityName: Red Giant
   description: Increase in damage when health is 25% or below
   icon: {fileID: 0}
-  healthPercent: 25
+  healthPercent: 0.25
   damageIncrease: 2
 --- !u!114 &-6149692600193294866
 MonoBehaviour:

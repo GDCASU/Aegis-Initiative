@@ -41,11 +41,6 @@ public class BasicPlayerShooting : MonoBehaviour
                 if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
                     closestEnemy = null;
             }
-            else
-            {
-                if(closestEnemy.transform.parent.transform.localPosition.z < 0)
-                    closestEnemy = null;  
-            }
         }
             
 
@@ -104,8 +99,6 @@ public class BasicPlayerShooting : MonoBehaviour
 
     public void AimAssist(GameObject enemy)
     {
-        
-
         if(enemy.GetComponentInParent<EnemyMovement>() != null)
         {
             if (!enemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
@@ -121,28 +114,29 @@ public class BasicPlayerShooting : MonoBehaviour
 
     private void SetClosestEnemy(GameObject enemy)
     {
-        Vector2 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
+        Vector3 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
+        if (enemyConversion.z < 0)
+        {
+            closestEnemy = null;
+            return;      //Exits if the enemy is behind of the player
+        }
         Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticle.transform.position);
 
         var distance = Vector2.Distance(enemyConversion, reticleConversion);
         //enemy is in AimAssist range
         if (distance < PlayerInfo.singleton.aimAssistStrength)
         {
-            //enemy is in front of player
-            if (enemy.transform.parent.transform.localPosition.z > 0)
+            if (closestEnemy != null)
             {
-                if (closestEnemy != null)
-                {
-                    //enemy is closer than current closestEnemy
-                    if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
-                    {
-                        closestEnemy = enemy;
-                    }
-                }
-                else
+                //enemy is closer than current closestEnemy
+                if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
                 {
                     closestEnemy = enemy;
                 }
+            }
+            else
+            {
+                closestEnemy = enemy;
             }
         }
         else
