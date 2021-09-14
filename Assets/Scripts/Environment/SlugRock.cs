@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class SlugRock : EnemyHealth
 {
-    private void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        base.Start();
-       StartCoroutine(ActivateColldier());
-
+        if (collision.gameObject.tag == "Player") PlayerInfo.singleton.TakeDamage(collisionDamage);
     }
-    public IEnumerator ActivateColldier()
+
+    override protected void Update()
     {
-        float delay = 1;
-        while (delay > 0)
-        {
-            delay -= Time.deltaTime;
-            yield return null;
-        }
-        GetComponent<SphereCollider>().enabled = true;
+        
     }
 }

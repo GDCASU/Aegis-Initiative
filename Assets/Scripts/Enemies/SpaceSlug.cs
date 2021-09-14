@@ -36,9 +36,8 @@ public class SpaceSlug : EnemyHealth
     private GameObject rock;
 
     // Start is called before the first frame update
-    void Start()
+    override public void Start()
     {
-        base.Start();
         playerCart = PlayerInfo.singleton.GetComponentInParent<CinemachineDollyCart>();
         rng = new System.Random();
         start = new Vector3();
@@ -50,7 +49,7 @@ public class SpaceSlug : EnemyHealth
     }
 
     // Update is called once per frame
-    void Update()
+    override protected void Update()
     {
         if (slugCart.transform.position == end) timerReset = true;
         if (timerReset) timer -= Time.deltaTime;
@@ -72,12 +71,12 @@ public class SpaceSlug : EnemyHealth
         if (side == 0)
         {
             start = middle - minHeight * Vector3.up * maxHeight - playerCart.transform.right.normalized * rng.Next(outerWidthRange);
-            end = middle - minHeight * Vector3.up * maxHeight + playerCart.transform.right.normalized * ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange));
+            end = middle - minHeight * Vector3.up * maxHeight + playerCart.transform.right.normalized * ((endReached)? rng.Next(outerWidthRange - 5, outerWidthRange) :((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange)));
         }
         else
         {
             start = middle - minHeight * Vector3.up * maxHeight + playerCart.transform.right.normalized * rng.Next(outerWidthRange);
-            end = middle - minHeight * Vector3.up * maxHeight - playerCart.transform.right.normalized * ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange));
+            end = middle - minHeight * Vector3.up * maxHeight - playerCart.transform.right.normalized * ((endReached) ? rng.Next(outerWidthRange - 5, outerWidthRange) : ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange)));
         }
         speed = path.PathLength / timeAhead - 3;
         if (attack)
@@ -90,9 +89,9 @@ public class SpaceSlug : EnemyHealth
 
         if (endReached)
         {
-            start += PlayerInfo.singleton.transform.forward.normalized * 45;
+            start += PlayerInfo.singleton.transform.forward.normalized * 45 - Vector3.up * 50;
             middle += PlayerInfo.singleton.transform.forward.normalized * 45;
-            end += PlayerInfo.singleton.transform.forward.normalized * 45;
+            end += PlayerInfo.singleton.transform.forward.normalized * 45 - Vector3.up * 50;
             rockThrown = false;
         }
 
@@ -112,7 +111,7 @@ public class SpaceSlug : EnemyHealth
 
     public IEnumerator ThrowRock()
     {
-        float dealy = 3;
+        float dealy = 3.3f;
         rockThrown = true;
         while (dealy > 0)
         {
@@ -120,8 +119,8 @@ public class SpaceSlug : EnemyHealth
             yield return new WaitForFixedUpdate();
         }
         numSelected = rng.Next(100);
-        if (precision < numSelected) ProjectileAttack.ShootProjectileAroundPlayer(playerCart, (CinemachineSmoothPath)playerCart.m_Path, projectilePrefab, slugHead.transform.position);
-        else ProjectileAttack.ShootProjectileAtPlayer(playerCart, (CinemachineSmoothPath)playerCart.m_Path, projectilePrefab, slugHead.transform.position);
+        if (precision < numSelected) ProjectileAttack.ShootProjectileAroundPlayer(playerCart, (CinemachineSmoothPath)playerCart.m_Path, projectilePrefab, slugHead.transform.position - slugHead.transform.right * 35);
+        else ProjectileAttack.ShootProjectileAtPlayer(playerCart, (CinemachineSmoothPath)playerCart.m_Path, projectilePrefab, slugHead.transform.position - slugHead.transform.right * 35);
     }
 
     //If player collides with SpaceSlug, Player takes damage

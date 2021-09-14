@@ -41,10 +41,9 @@ public class BasicPlayerShooting : MonoBehaviour
                 if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
                     closestEnemy = null;
             }
-        }
-            
+        }            
 
-        if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot))
+        if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot) && Time.timeScale==1)
         {
             if (alternate)
             {

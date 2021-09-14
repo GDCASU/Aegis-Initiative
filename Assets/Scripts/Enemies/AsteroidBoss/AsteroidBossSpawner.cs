@@ -18,6 +18,7 @@ public class AsteroidBossSpawner : MonoBehaviour
             FMODStartMusic.music = RuntimeManager.CreateInstance(BossMusic);
             FMODStartMusic.music.start();
             FMODStartMusic.music.release();
+            FMODStartMusic.music.setVolume(GameManager.singleton.musicVolume);
 
             Vector3 spawnRelativeToPlayer = new Vector3(0, -12.5f, 30);
             Instantiate(asteroidBoss, dollyCart, false).gameObject.transform.localPosition = spawnRelativeToPlayer;
