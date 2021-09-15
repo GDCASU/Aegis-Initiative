@@ -22,7 +22,7 @@ public class SpaceSlugEnd : MonoBehaviour
             slug.endReached = true;
             slug.chancesOfAttack = 0;
             slug.maxTime = 4;
-            slug.timer = 4;
+            slug.timer = 0;
             slug.outerWidthRange = 75;
             slug.health = 60;
         } 

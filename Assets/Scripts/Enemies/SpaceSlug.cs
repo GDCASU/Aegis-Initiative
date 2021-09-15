@@ -111,7 +111,7 @@ public class SpaceSlug : EnemyHealth
 
     public IEnumerator ThrowRock()
     {
-        float dealy = 3.3f;
+        float dealy = 1;
         rockThrown = true;
         while (dealy > 0)
         {
