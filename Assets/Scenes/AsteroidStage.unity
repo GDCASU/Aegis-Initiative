@@ -450,6 +450,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771987132}
     m_Modifications:
+    - target: {fileID: 5718617894263982944, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: health
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: approachSpeed
@@ -705,6 +710,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771987132}
     m_Modifications:
+    - target: {fileID: 5718617894263982944, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: health
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: approachSpeed
@@ -794,6 +804,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771987132}
     m_Modifications:
+    - target: {fileID: 5718617894263982944, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: health
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: approachSpeed
@@ -883,6 +898,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771987132}
     m_Modifications:
+    - target: {fileID: 5718617894263982944, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: health
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: approachSpeed
@@ -2558,6 +2578,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1771987132}
     m_Modifications:
+    - target: {fileID: 5718617894263982944, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: health
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: approachSpeed

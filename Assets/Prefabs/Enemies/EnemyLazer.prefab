@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5651382284111415594}
   - component: {fileID: 159254163650452400}
   m_Layer: 11
-  m_Name: EnemyBullet
+  m_Name: EnemyLazer
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1515815717681115604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.584, y: 6.9714, z: -197.253}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 5150920062383178272}
   - {fileID: 1572100121282382442}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDespawnTime: 2
   timer: 0
-  damage: 2
+  damage: 5
   bulletSource: 1
 --- !u!1 &3548061375921869689
 GameObject:

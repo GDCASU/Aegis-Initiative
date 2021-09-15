@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: a7ab0ca56ac660840822a42399c1043d, type: 2}
+    - target: {fileID: 5718617894263982944, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: health
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: approachSpeed
@@ -38,6 +43,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1515815717681115604, guid: d74e28b32de24574298a60c573b6c00a,
         type: 3}
+    - target: {fileID: 5718617894263982945, guid: 16df8f0df322d6644a593c3ad4c855ec,
+        type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5718617894621415332, guid: 16df8f0df322d6644a593c3ad4c855ec,
         type: 3}
       propertyPath: m_Enabled

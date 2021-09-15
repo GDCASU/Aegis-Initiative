@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
 
     virtual protected void Update()
     {
-        PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+        if(PlayerInfo.singleton!=null)PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
     }
 
     public virtual void TakeDamage(int damage)
