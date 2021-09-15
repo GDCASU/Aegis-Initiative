@@ -158,9 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a865d2372a85694d8d75f8a99ca6174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 55
   collisionDamage: 0
+  doNotDespawn: 0
   lifeTime: 20
+  deathEffect: {fileID: 0}
   lifeTimer: 0
 --- !u!114 &5718617894263982945
 MonoBehaviour:
@@ -178,7 +180,7 @@ MonoBehaviour:
   betweenShotTime: 0.3
   bulletsInBurst: 3
   bulletSpeed: 10
-  bulletDamage: 0
+  bulletDamage: 5
   maxSpreadDistance: 5.5
   bullet: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30, type: 3}
   bulletSpawnpoint: {fileID: 5718617893803942737}
@@ -227,18 +229,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateWithMovement: 1
+  lockedOntoPlayer: 1
   waveMovement: 2
   maxWavePeak: 1.2
   minWaveDip: 0
   waveFrequency: 0.5
   maxAngle: 10
-  shipSpeed: 2
+  flyingInSpeed: 2
+  flyingInTime: 3
+  flyingInDirection: -1
+  flyingIn: 1
   hover: 1
   hoverTimer: 5
+  isHoverPermanent: 0
+  isModelFacingPlayer: 0
   leaveDirection: 3
-  moveDirection: 1
-  isRotating: 0
-  lockedOntoPlayer: 1
+  leaveSpeed: 5
+  isFlyingAway: 0
 --- !u!1 &8720367190852108383
 GameObject:
   m_ObjectHideFlags: 0

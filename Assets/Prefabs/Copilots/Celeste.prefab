@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: Celeste
-  nameColor: {r: 1, g: 1, b: 1, a: 1}
+  nameColor: {r: 0, g: 0, b: 0, a: 1}
   soundEffect: {fileID: 0}
   portraits: []
   portraitsFace: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   abilityName: Nova
   description: Option to fully heal after reaching 25% health once per stage
   icon: {fileID: 0}
-  healthPercent: 25
+  healthPercent: 0.25
   activeUsed: 0
 --- !u!114 &4004103799520570049
 MonoBehaviour:
@@ -117,7 +117,7 @@ MonoBehaviour:
   abilityName: Red Giant
   description: Increase in damage when health is 25% or below
   icon: {fileID: 0}
-  healthPercent: 25
+  healthPercent: 0.25
   damageIncrease: 2
 --- !u!114 &-6149692600193294866
 MonoBehaviour:

@@ -535,6 +535,11 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -801,6 +806,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pufferbomb_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -1094,6 +1104,11 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -1231,7 +1246,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -1328,7 +1343,7 @@ PrefabInstance:
     - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
       propertyPath: health
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -1888,6 +1903,11 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -2057,6 +2077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pufferbomb_3
       objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2140,6 +2165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pufferbomb_3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -2716,6 +2746,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2066503047}
     m_Modifications:
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -3758,6 +3793,11 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -3836,6 +3876,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lifeTime
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -4199,7 +4244,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -4287,6 +4332,11 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -4365,6 +4415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pufferbomb_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -4762,6 +4817,11 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -4844,12 +4904,12 @@ PrefabInstance:
     - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
       propertyPath: health
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
       propertyPath: collisionDamage
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -5222,7 +5282,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -5617,6 +5677,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pufferbomb_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -6152,6 +6217,11 @@ PrefabInstance:
       propertyPath: lifeTime
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -6644,6 +6714,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lifeTime
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -7530,6 +7605,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pufferbomb_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -8446,7 +8526,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -8521,6 +8601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lifeTime
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -8618,6 +8703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lifeTime
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -9011,7 +9101,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -9098,6 +9188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pufferbomb_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 608068949763136507, guid: 7858e7a4cf178eb44bb55d453f2704be,
+        type: 3}
+      propertyPath: health
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 608068949763136511, guid: 7858e7a4cf178eb44bb55d453f2704be,
         type: 3}
@@ -9298,6 +9393,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 905032024}
     m_Modifications:
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer
@@ -9777,7 +9877,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -10223,6 +10323,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 905032024}
     m_Modifications:
+    - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: health
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: lifeTimer

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpaceGirlActive : CopilotActiveMechanic
 {
+    [Range (0,1)]
     public float healthPercent = 0.25f;
     public bool activeUsed;
 

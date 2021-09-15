@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpaceGirlPassive : CopilotPassiveMechanic
 {
-
+    [Range (0,1)]
     public float healthPercent = 0.25f;//Percent Health threshold
     public int damageIncrease;//Amount of damage added to base damage
 

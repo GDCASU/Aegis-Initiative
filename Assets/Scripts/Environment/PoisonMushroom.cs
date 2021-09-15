@@ -44,7 +44,7 @@ public class PoisonMushroom : EnvironmentHealth
     {
         base.OnPlayerCollision();
 
-        Debug.Log("Deactivate Player's Active Abilities");
+        //Debug.Log("Deactivate Player's Active Abilities");
     }
     IEnumerator PlayParticle()
     {

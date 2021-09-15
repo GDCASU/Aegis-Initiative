@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CreditsManager : MonoBehaviour
 {
     public List<Transform> Path = new List<Transform>();
@@ -34,7 +34,8 @@ public class CreditsManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift)) IsSpeedingUp = SpedUpOriginalValue;
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Pause)) SceneManager.LoadScene("MainMenuUI");
+        if (InputManager.GetButton(PlayerInput.PlayerButton.ActiveAbility)) IsSpeedingUp = SpedUpOriginalValue;
         else IsSpeedingUp = 1;
     }
 

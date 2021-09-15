@@ -56,6 +56,8 @@ public class BounceMushroom : MonoBehaviour
         if (collision.transform.tag == "Player" && bounceable == true)
         {
             // Acquire Player transform and initiate the direction variable.
+
+            PlayerInfo.singleton.TakeDamage(5);
             Transform player = collision.transform;
             Vector2 direction;
 

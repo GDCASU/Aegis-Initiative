@@ -8,4 +8,9 @@ public class BossBodyPart : MonoBehaviour
 
     public void ApplyDamage(int damage) => enemyHealth.TakeDamage(damage);
 
+    private void Update()
+    {
+        PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+    }
+
 }

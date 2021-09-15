@@ -2317,7 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  collisionDamage: 5
+  collisionDamage: 7
   doNotDespawn: 0
   lifeTime: 20
   deathEffect: {fileID: 0}

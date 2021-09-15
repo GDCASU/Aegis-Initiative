@@ -125,8 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d66700d3130d71488499933627cca00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  health: 0
+  collisionDamage: 5
+  doNotDespawn: 0
+  lifeTime: 3
+  deathEffect: {fileID: 0}
+  lifeTimer: 3
   vulnerabilityDamageMultiplier: 1.25
   vulnerabilityActiveTime: 5
-  lifeTime: 3
   forwardSpeed: 10

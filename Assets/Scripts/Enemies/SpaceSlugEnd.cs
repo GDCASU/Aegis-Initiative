@@ -17,13 +17,14 @@ public class SpaceSlugEnd : MonoBehaviour
             FMODStartMusic.music = RuntimeManager.CreateInstance(BossMusic);
             FMODStartMusic.music.start();
             FMODStartMusic.music.release();
+            FMODStartMusic.music.setVolume(GameManager.singleton.musicVolume);
 
             slug.endReached = true;
             slug.chancesOfAttack = 0;
             slug.maxTime = 4;
-            slug.timer = 4;
+            slug.timer = 0;
             slug.outerWidthRange = 75;
-            slug.health = 40;
+            slug.health = 60;
         } 
     }
 }
