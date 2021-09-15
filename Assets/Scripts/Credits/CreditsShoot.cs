@@ -13,7 +13,7 @@ public class CreditsShoot : MonoBehaviour
     public float MoveSpeed = 30f;
     public float MoveBackSpeed = 10f;
     public Canvas canvas;
-
+    private string shootSFX = "event:/SFX/Combat/Shoot";
     private Ray ray;
     private bool isShooting = false;
 
@@ -27,7 +27,7 @@ public class CreditsShoot : MonoBehaviour
     void Update()
     {
         MoveReticle();
-        if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)) && !isShooting) Shoot();
+        if (InputManager.GetButtonDown(PlayerInput.PlayerButton.Shoot) && !isShooting) Shoot();
     }
 
     private void MoveReticle()
@@ -83,6 +83,7 @@ public class CreditsShoot : MonoBehaviour
 
     private void ShootLaserPrefabs(Vector3 position)
     {
+        FMODUnity.RuntimeManager.PlayOneShot(shootSFX, transform.position, GameManager.singleton.sfxVolume);
         GameObject laser = Instantiate(LaserParent, LaserSpawn1.position, LaserSpawn1.rotation);
         laser.GetComponent<CreditsLaser>().Direction = position;
         laser = Instantiate(LaserParent, LaserSpawn2.position, LaserSpawn2.rotation);

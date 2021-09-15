@@ -192,6 +192,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void MainMenuPromptConfirm()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenuUI");
     }
 
