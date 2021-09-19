@@ -7,6 +7,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class BasicPlayerShooting : MonoBehaviour
@@ -15,7 +16,12 @@ public class BasicPlayerShooting : MonoBehaviour
     public int magSize;
     public GameObject bulletPrefab;
     private GameObject bullet;
-    public GameObject reticle;
+    [SerializeField]
+    private GameObject reticleReferencePoint;
+    [SerializeField]
+    private Image outerReticle;
+    [SerializeField]
+    private Image innerReticle;
     public Transform spawnR;
     public Transform spawnL;
     public bool alternate;
@@ -39,7 +45,11 @@ public class BasicPlayerShooting : MonoBehaviour
             if(closestEnemy.GetComponentInParent<EnemyMovement>() != null)
             {
                 if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
+                {
+                    outerReticle.color = Color.white;
+                    innerReticle.color = Color.white;
                     closestEnemy = null;
+                }
             }
         }            
 
@@ -116,10 +126,12 @@ public class BasicPlayerShooting : MonoBehaviour
         Vector3 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
         if (enemyConversion.z < 0)
         {
+            outerReticle.color = Color.white;
+            innerReticle.color = Color.white;
             closestEnemy = null;
             return;      //Exits if the enemy is behind of the player
         }
-        Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticle.transform.position);
+        Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticleReferencePoint.transform.position);
 
         var distance = Vector2.Distance(enemyConversion, reticleConversion);
         //enemy is in AimAssist range
@@ -130,11 +142,15 @@ public class BasicPlayerShooting : MonoBehaviour
                 //enemy is closer than current closestEnemy
                 if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
                 {
+                    outerReticle.color = Color.red;
+                    innerReticle.color = Color.red;
                     closestEnemy = enemy;
                 }
             }
             else
             {
+                outerReticle.color = Color.red;
+                innerReticle.color = Color.red;
                 closestEnemy = enemy;
             }
         }
@@ -142,7 +158,11 @@ public class BasicPlayerShooting : MonoBehaviour
         {
             //enemy is out of AimAssist range
             if (closestEnemy == enemy)
+            {
+                outerReticle.color = Color.white;
+                innerReticle.color = Color.white;
                 closestEnemy = null;
+            }
         }
     }
 
