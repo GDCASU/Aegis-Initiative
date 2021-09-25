@@ -15074,8 +15074,8 @@ MonoBehaviour:
   roll: 15
   pitch: 8
   yaw: 12
-  rotationLerp: 0.25
-  rollLerp: 0.08
+  rotationLerp: 0.08
+  rollLerp: 0.05
   currentVelocity: {x: 0, y: 0, z: 0}
   movementDirection: {x: 0, y: 0, z: 0}
   stopInput: 0
@@ -15094,7 +15094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0957298378642f459eda138141ed49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 50
   magSize: 100
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}

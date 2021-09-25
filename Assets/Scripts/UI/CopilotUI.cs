@@ -152,8 +152,8 @@ public class CopilotUI : MonoBehaviour
     public void StartGame()
     {
         FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
-        if (ProfileManager.instance.CurrentProfile.currentStage < 4) SceneManager.LoadScene(GameManager.singleton.levels[ProfileManager.instance.CurrentProfile.currentStage],LoadSceneMode.Single);
-        else SceneManager.LoadScene(GameManager.singleton.levels[GameManager.singleton.levelSelected], LoadSceneMode.Single);
+        if (ProfileManager.instance.CurrentProfile.currentStage < 4) LevelChanger.singleton.FadeOutToLevel(GameManager.singleton.levels[ProfileManager.instance.CurrentProfile.currentStage]);
+        else LevelChanger.singleton.FadeOutToLevel(GameManager.singleton.levels[GameManager.singleton.levelSelected]);
     }
     /// <summary>
     /// Method used to pop up the "Are you sure?" prompt before returning to the Hub UI.  Called  by a Unity UI button
