@@ -46,12 +46,11 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
                 {
-                    outerReticle.color = Color.white;
-                    innerReticle.color = Color.white;
+                    WhiteReticle();
                     closestEnemy = null;
                 }
             }
-        }            
+        }
 
         if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot) && Time.timeScale==1)
         {
@@ -126,10 +125,9 @@ public class BasicPlayerShooting : MonoBehaviour
         Vector3 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
         if (enemyConversion.z < 0)
         {
-            outerReticle.color = Color.white;
-            innerReticle.color = Color.white;
+            WhiteReticle();
             closestEnemy = null;
-            return;      //Exits if the enemy is behind of the player
+            return;      //Exits if the enemy is behind the player
         }
         Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticleReferencePoint.transform.position);
 
@@ -142,15 +140,13 @@ public class BasicPlayerShooting : MonoBehaviour
                 //enemy is closer than current closestEnemy
                 if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
                 {
-                    outerReticle.color = Color.red;
-                    innerReticle.color = Color.red;
+                    RedReticle();
                     closestEnemy = enemy;
                 }
             }
             else
             {
-                outerReticle.color = Color.red;
-                innerReticle.color = Color.red;
+                RedReticle();
                 closestEnemy = enemy;
             }
         }
@@ -159,8 +155,7 @@ public class BasicPlayerShooting : MonoBehaviour
             //enemy is out of AimAssist range
             if (closestEnemy == enemy)
             {
-                outerReticle.color = Color.white;
-                innerReticle.color = Color.white;
+                WhiteReticle();
                 closestEnemy = null;
             }
         }
@@ -169,5 +164,17 @@ public class BasicPlayerShooting : MonoBehaviour
     private void EnemyInRange()
     {
         bullet.GetComponent<Bullet>().LockOn(closestEnemy);
+    }
+
+    private void RedReticle()
+    {
+        outerReticle.color = Color.red;
+        innerReticle.color = Color.red;
+    }
+
+    private void WhiteReticle()
+    {
+        outerReticle.color = Color.white;
+        innerReticle.color = Color.white;
     }
 }

@@ -15074,8 +15074,8 @@ MonoBehaviour:
   roll: 15
   pitch: 8
   yaw: 12
-  rotationLerp: 0.08
-  rollLerp: 0.05
+  rotationLerp: 0.1
+  rollLerp: 0.06
   currentVelocity: {x: 0, y: 0, z: 0}
   movementDirection: {x: 0, y: 0, z: 0}
   stopInput: 0

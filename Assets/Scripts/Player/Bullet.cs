@@ -40,6 +40,7 @@ public class Bullet : MonoBehaviour
     {
         if (_target != null)
         {
+            Debug.Log(gameObject.name + " " + _target.name);
             GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.magnitude * (_target.transform.position - gameObject.transform.position).normalized;
         }
     }
