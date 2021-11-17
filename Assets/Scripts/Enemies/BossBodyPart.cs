@@ -10,7 +10,19 @@ public class BossBodyPart : MonoBehaviour
 
     private void Update()
     {
-        PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+        if (!enemyHealth.calledResetEnemy)
+        {
+            Vector3 enemyConversion = Camera.main.WorldToViewportPoint(transform.position);
+            if (enemyConversion.z < 0)
+            {
+                PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
+                enemyHealth.calledResetEnemy = true;
+            }
+            else
+            {
+                if (PlayerInfo.singleton != null) PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+            }
+        }
     }
 
 }

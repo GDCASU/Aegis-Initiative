@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
     public float lifeTimer;
     private bool hasDied;
 
+    public bool calledResetEnemy;
+
     public virtual void Start()
     {
         if (!doNotDespawn)
@@ -21,9 +23,26 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        calledResetEnemy = false;
+    }
+
     virtual protected void Update()
     {
-        if(PlayerInfo.singleton!=null)PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+        if (!calledResetEnemy)
+        {
+            Vector3 enemyConversion = Camera.main.WorldToViewportPoint(transform.position);
+            if(enemyConversion.z < 0)
+            {
+                PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
+                calledResetEnemy = true;
+            }
+            else
+            {
+                if (PlayerInfo.singleton != null) PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+            }
+        }
     }
 
     public virtual void TakeDamage(int damage)
@@ -44,6 +63,7 @@ public class EnemyHealth : MonoBehaviour
     public virtual void DestroyEnemy()
     {
         //print(UnityEngine.StackTraceUtility.ExtractStackTrace());
+        PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }
     IEnumerator waitToDespawn()

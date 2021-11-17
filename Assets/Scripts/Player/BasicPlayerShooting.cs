@@ -44,18 +44,18 @@ public class BasicPlayerShooting : MonoBehaviour
     }
     private void Update()
     {
-        //if (closestEnemy != null)
-        //{
-        //    if(closestEnemy.GetComponentInParent<EnemyMovement>() != null)
-        //    {
-        //        if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
-        //        {
-        //            WhiteReticle();
-        //            closestEnemy = null;
-        //            targetName.text = "none";
-        //        }
-        //    }
-        //}
+        if (closestEnemy != null)
+        {
+            if (closestEnemy.GetComponentInParent<EnemyMovement>() != null)
+            {
+                if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
+                {
+                    WhiteReticle();
+                    closestEnemy = null;
+                    targetName.text = "none";
+                }
+            }
+        }
         if (Input.GetKeyDown(KeyCode.E))
         { 
             Time.timeScale = (Time.timeScale!=.1f)?1f:.1f;
@@ -67,7 +67,7 @@ public class BasicPlayerShooting : MonoBehaviour
         else wtf.text = "idk wtf";
         if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot) && Time.timeScale==1)
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             if (closestEnemy != null)
             {
                 aid.text = closestEnemy.name;
@@ -144,13 +144,13 @@ public class BasicPlayerShooting : MonoBehaviour
     private void SetClosestEnemy(GameObject enemy)
     {
         Vector3 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
-        if (enemyConversion.z < 0)
-        {
-            WhiteReticle();
-            closestEnemy = null;
-            targetName.text = "im fucking it up 1";
-            return;      //Exits if the enemy is behind the player
-        }
+        //if (closestEnemy != null && closestEnemy == enemy && enemyConversion.z < 0)
+        //{
+        //    WhiteReticle();
+        //    closestEnemy = null;
+        //    targetName.text = "im fucking it up 1";
+        //    return;      //Exits if the enemy is behind the player
+        //}
         //aid.text = "" + enemyConversion.z;
         Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticleReferencePoint.transform.position);
 
@@ -203,5 +203,15 @@ public class BasicPlayerShooting : MonoBehaviour
     {
         outerReticle.color = Color.white;
         innerReticle.color = Color.white;
+    }
+
+    public void ResetEnemy(GameObject enemy)
+    {
+        if (closestEnemy == enemy)
+        {
+            WhiteReticle();
+            closestEnemy = null;
+            targetName.text = "im fucking it up 2";
+        }
     }
 }

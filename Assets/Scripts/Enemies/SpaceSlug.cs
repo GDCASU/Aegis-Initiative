@@ -58,6 +58,7 @@ public class SpaceSlug : EnemyHealth
             timer = maxTime;
             timerReset = false;
             attack = (rng.Next(100) >= chancesOfAttack) ? false : true;
+            calledResetEnemy = false;
             SpawnSlug();
         }
         if (!rockThrown && GetComponentInChildren<Renderer>().isVisible) StartCoroutine(ThrowRock());
