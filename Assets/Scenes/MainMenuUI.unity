@@ -963,7 +963,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aeigis Initiative
+  m_Text: Aegis Initiative
 --- !u!222 &223477439
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1734,7 +1734,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aeigis Initiative
+  m_Text: Aegis Initiative
 --- !u!222 &446457365
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3334,7 +3334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744808765
@@ -9407,6 +9407,7 @@ MonoBehaviour:
   passiveCopilot: {fileID: 0}
   musicVolume: 1
   sfxVolume: 1
+  levelSelected: 0
 --- !u!1 &2024775196
 GameObject:
   m_ObjectHideFlags: 0
