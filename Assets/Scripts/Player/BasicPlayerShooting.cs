@@ -29,9 +29,8 @@ public class BasicPlayerShooting : MonoBehaviour
     private string Shoot = "event:/SFX/Combat/Shoot";
     private float timerOne;
     private float timerTwo;
-    private GameObject closestEnemy;
+    public GameObject closestEnemy;
     private Camera playerCam;
-
     private void Start()
     {
         timerOne = PlayerInfo.singleton.fireRate;
@@ -42,7 +41,7 @@ public class BasicPlayerShooting : MonoBehaviour
     {
         if (closestEnemy != null)
         {
-            if(closestEnemy.GetComponentInParent<EnemyMovement>() != null)
+            if (closestEnemy.GetComponentInParent<EnemyMovement>() != null)
             {
                 if (closestEnemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
                 {
@@ -51,8 +50,7 @@ public class BasicPlayerShooting : MonoBehaviour
                 }
             }
         }
-
-        if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot) && Time.timeScale==1)
+        if (InputManager.GetButton(PlayerInput.PlayerButton.Shoot) && Time.timeScale == 1)
         {
             if (alternate)
             {
@@ -60,7 +58,7 @@ public class BasicPlayerShooting : MonoBehaviour
                 {
                     FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
-                    bullet.GetComponent<Rigidbody>().velocity =  spawnR.forward.normalized * speed;
+                    bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     if (closestEnemy != null)
                     {
                         EnemyInRange();
@@ -81,14 +79,14 @@ public class BasicPlayerShooting : MonoBehaviour
                 }
                 timerTwo -= Time.deltaTime;
             }
-            else 
+            else
             {
                 if (timerOne < 0)
                 {
                     FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
-                    if(closestEnemy != null)
+                    if (closestEnemy != null)
                     {
                         EnemyInRange();
                     }
@@ -100,14 +98,14 @@ public class BasicPlayerShooting : MonoBehaviour
                     }
                     timerOne = PlayerInfo.singleton.fireRate;
                 }
-            }          
+            }
         }
         timerOne -= Time.deltaTime;
     }
 
     public void AimAssist(GameObject enemy)
     {
-        if(enemy.GetComponentInParent<EnemyMovement>() != null)
+        if (enemy.GetComponentInParent<EnemyMovement>() != null)
         {
             if (!enemy.GetComponentInParent<EnemyMovement>().isFlyingAway)
             {
@@ -123,12 +121,6 @@ public class BasicPlayerShooting : MonoBehaviour
     private void SetClosestEnemy(GameObject enemy)
     {
         Vector3 enemyConversion = playerCam.WorldToViewportPoint(enemy.transform.position);
-        if (enemyConversion.z < 0)
-        {
-            WhiteReticle();
-            closestEnemy = null;
-            return;      //Exits if the enemy is behind the player
-        }
         Vector2 reticleConversion = playerCam.WorldToViewportPoint(reticleReferencePoint.transform.position);
 
         var distance = Vector2.Distance(enemyConversion, reticleConversion);
@@ -138,7 +130,7 @@ public class BasicPlayerShooting : MonoBehaviour
             if (closestEnemy != null)
             {
                 //enemy is closer than current closestEnemy
-                if (distance < Vector2.Distance(closestEnemy.transform.position, reticleConversion))
+                if (distance < Vector2.Distance(playerCam.WorldToViewportPoint(closestEnemy.transform.position), reticleConversion))
                 {
                     RedReticle();
                     closestEnemy = enemy;
@@ -176,5 +168,14 @@ public class BasicPlayerShooting : MonoBehaviour
     {
         outerReticle.color = Color.white;
         innerReticle.color = Color.white;
+    }
+
+    public void ResetEnemy(GameObject enemy)
+    {
+        if (closestEnemy == enemy)
+        {
+            WhiteReticle();
+            closestEnemy = null;
+        }
     }
 }
