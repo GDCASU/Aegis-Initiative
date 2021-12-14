@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         if (!calledResetEnemy)
         {
             Vector3 enemyConversion = Camera.main.WorldToViewportPoint(transform.position);
-            if(enemyConversion.z < 0)
+            if (enemyConversion.z < 0)
             {
                 PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
                 calledResetEnemy = true;
@@ -62,7 +62,6 @@ public class EnemyHealth : MonoBehaviour
     }
     public virtual void DestroyEnemy()
     {
-        //print(UnityEngine.StackTraceUtility.ExtractStackTrace());
         PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }

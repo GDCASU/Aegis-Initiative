@@ -538,7 +538,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -604,6 +604,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -1107,7 +1112,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -1173,6 +1178,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -1246,7 +1256,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -1307,6 +1317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SharkHost (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551946294004766099, guid: 2df55508105327649bc649744174415f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df55508105327649bc649744174415f, type: 3}
@@ -1906,7 +1921,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -1972,6 +1987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -2749,7 +2769,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -2815,6 +2835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -3796,7 +3821,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -3863,6 +3888,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PirateFighter2.2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
 --- !u!1001 &692901042
@@ -3880,7 +3910,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -3946,6 +3976,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -4244,7 +4279,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -4306,6 +4341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharkHost (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1551946294004766099, guid: 2df55508105327649bc649744174415f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df55508105327649bc649744174415f, type: 3}
 --- !u!1 &734109047 stripped
@@ -4335,7 +4375,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -4401,6 +4441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -4889,7 +4934,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -4955,6 +5000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -5351,7 +5401,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -5412,6 +5462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SharkHost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551946294004766099, guid: 2df55508105327649bc649744174415f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df55508105327649bc649744174415f, type: 3}
@@ -6289,7 +6344,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -6355,6 +6410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -6787,7 +6847,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -6853,6 +6913,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -8595,7 +8660,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -8657,6 +8722,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharkHost
       objectReference: {fileID: 0}
+    - target: {fileID: 1551946294004766099, guid: 2df55508105327649bc649744174415f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df55508105327649bc649744174415f, type: 3}
 --- !u!1001 &1656062681
@@ -8674,7 +8744,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -8740,6 +8810,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -8776,7 +8851,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -8842,6 +8917,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -9170,7 +9250,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -9231,6 +9311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SharkHost (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551946294004766099, guid: 2df55508105327649bc649744174415f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df55508105327649bc649744174415f, type: 3}
@@ -9465,7 +9550,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -9531,6 +9616,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
@@ -9946,7 +10036,7 @@ PrefabInstance:
     - target: {fileID: 1551946293993138739, guid: 2df55508105327649bc649744174415f,
         type: 3}
       propertyPath: health
-      value: 25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1551946294004766098, guid: 2df55508105327649bc649744174415f,
         type: 3}
@@ -10007,6 +10097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SharkHost (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551946294004766099, guid: 2df55508105327649bc649744174415f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df55508105327649bc649744174415f, type: 3}
@@ -10395,7 +10490,7 @@ PrefabInstance:
     - target: {fileID: 4688887237293713970, guid: ea7012fa5329845489092161367661da,
         type: 3}
       propertyPath: health
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4705760943325353808, guid: ea7012fa5329845489092161367661da,
         type: 3}
@@ -10461,6 +10556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PirateFighter1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705760943325353810, guid: ea7012fa5329845489092161367661da,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea7012fa5329845489092161367661da, type: 3}
