@@ -15104,6 +15104,8 @@ MonoBehaviour:
   spawnR: {fileID: 5464987158666677754}
   spawnL: {fileID: 5464987159728112431}
   alternate: 0
+  closestEnemy: {fileID: 0}
+  shipModel: {fileID: 6013571340837069800}
 --- !u!114 &1077621587703858222
 MonoBehaviour:
   m_ObjectHideFlags: 0

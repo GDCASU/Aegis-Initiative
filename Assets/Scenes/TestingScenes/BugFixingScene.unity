@@ -6618,10 +6618,14 @@ MonoBehaviour:
   magSize: 100
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
-  reticle: {fileID: 3002303597315027199}
+  reticleReferencePoint: {fileID: 0}
+  outerReticle: {fileID: 4841520777626052503}
+  innerReticle: {fileID: 4841520777080901931}
   spawnR: {fileID: 3533536455343267565}
   spawnL: {fileID: 3533536454282874936}
   alternate: 0
+  closestEnemy: {fileID: 0}
+  shipModel: {fileID: 5691483771352479090}
 --- !u!4 &3533536455343267565
 Transform:
   m_ObjectHideFlags: 0
