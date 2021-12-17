@@ -249,6 +249,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 39537698}
@@ -1852,6 +1853,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 207868521}
@@ -2681,6 +2683,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 268290411}
@@ -4028,6 +4031,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 456509169}
@@ -4404,6 +4408,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 519320255}
@@ -5380,6 +5385,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 614678278}
@@ -14243,7 +14249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &670380867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14282,7 +14288,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 67.380135
+  field of view: 67
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -16597,6 +16603,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 812666677}
@@ -17020,6 +17027,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 872661228}
@@ -19550,6 +19558,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 1208529737}
@@ -19840,6 +19849,21 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 670380868}
+    - target: {fileID: 4174455376411874717, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000011850148
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174455376411874717, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000054223638
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174455376411874717, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2200012
+      objectReference: {fileID: 0}
     - target: {fileID: 4174455376538911295, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: playerCam
@@ -19929,6 +19953,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8101882521294301605, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000011850148
+      objectReference: {fileID: 0}
+    - target: {fileID: 8101882521294301605, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000054223638
+      objectReference: {fileID: 0}
+    - target: {fileID: 8101882521294301605, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.2200012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
@@ -21650,6 +21689,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 1471767424}
@@ -21986,6 +22026,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 1517391526}
@@ -33993,6 +34034,7 @@ MonoBehaviour:
   lifeTime: 30
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   bulletPrefab: {fileID: 1515815717681115604, guid: c709294c1ab2f244bbfe8e2a35a97a30,
     type: 3}
   animations: {fileID: 1855917520}
