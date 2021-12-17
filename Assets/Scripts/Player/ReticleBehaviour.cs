@@ -14,17 +14,20 @@ public class ReticleBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        playerCam = Camera.main;
         rectTransform = GetComponent<RectTransform>();
         imageWidth = rectTransform.rect.width;
         imageHeight = rectTransform.rect.height;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if(playerCam && shipWorldReference)
+        if (playerCam && shipWorldReference)
         {
             Vector2 screenPosition = playerCam.WorldToScreenPoint(shipWorldReference.transform.position);
-            screenPosition -= new Vector2(imageWidth / 2, imageHeight / 2);
+            screenPosition -= new Vector2(imageWidth / 2.0f, imageHeight / 2.0f);
+            screenPosition.x = Mathf.Floor(screenPosition.x);
+            screenPosition.y = Mathf.Floor(screenPosition.y);
             rectTransform.anchoredPosition = screenPosition;
         }
     }

@@ -322,6 +322,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 126d88173fb2d994182d3a1a6f756c07, type: 3}
+--- !u!20 &859375349 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6276305171376843204, guid: 2c04bb611c018fd478016be0d4fface7,
+    type: 3}
+  m_PrefabInstance: {fileID: 937737085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &937737085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6618,10 +6624,13 @@ MonoBehaviour:
   magSize: 100
   bulletPrefab: {fileID: 2899691383110078768, guid: a051dff142e12ae4ca3987b8356695c6,
     type: 3}
-  reticle: {fileID: 3002303597315027199}
+  reticleReferencePoint: {fileID: 3002303597315027199}
+  outerReticle: {fileID: 4841520777626052503}
+  innerReticle: {fileID: 4841520777080901931}
   spawnR: {fileID: 3533536455343267565}
   spawnL: {fileID: 3533536454282874936}
   alternate: 0
+  closestEnemy: {fileID: 0}
 --- !u!4 &3533536455343267565
 Transform:
   m_ObjectHideFlags: 0
@@ -7060,8 +7069,8 @@ MonoBehaviour:
   roll: 15
   pitch: 8
   yaw: 12
-  rotationLerp: 0.25
-  rollLerp: 0.08
+  rotationLerp: 0.15
+  rollLerp: 0.09
   currentVelocity: {x: 0, y: 0, z: 0}
   movementDirection: {x: 0, y: 0, z: 0}
   stopInput: 0
@@ -7327,7 +7336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0881ed83c26e945a3f5fc2ea1cc2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCam: {fileID: 0}
+  playerCam: {fileID: 859375349}
   shipWorldReference: {fileID: 5435760051469296453}
 --- !u!224 &4841520777080901929
 RectTransform:
@@ -7560,7 +7569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0881ed83c26e945a3f5fc2ea1cc2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCam: {fileID: 0}
+  playerCam: {fileID: 859375349}
   shipWorldReference: {fileID: 6640421521551178439}
 --- !u!224 &4841520777626052501
 RectTransform:

@@ -20,8 +20,8 @@ private Transform playerModel;
     public float roll = 20;
     public float pitch = 20;
     public float yaw = 20;
-    public float rotationLerp = 0.1f;
-    public float rollLerp = 0.05f;
+    public float rotationLerp = 0.15f;
+    public float rollLerp = 0.09f;
     public Vector3 currentVelocity = new Vector3(0f, 0f, 0f);
     public Vector3 movementDirection;
     public bool stopInput;
@@ -39,7 +39,7 @@ private Transform playerModel;
         SetSpeed(forwardSpeed);
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         // Getting input
         float h = joystick ? InputManager.GetAxis(PlayerInput.PlayerAxis.MoveHorizontal) : InputManager.GetAxis(PlayerInput.PlayerAxis.CameraHorizontal);
@@ -58,8 +58,8 @@ private Transform playerModel;
         currentVelocity = new Vector3(h, v, 0f);
 
         // Setting player movement
-        float moveH = currentVelocity.x; if(Mathf.Abs(moveH) <= xyAcceleration) moveH = 0;
-        float moveV = currentVelocity.y; if(Mathf.Abs(moveV) <= xyAcceleration) moveV = 0;
+        float moveH = currentVelocity.x; if (Mathf.Abs(moveH) <= xyAcceleration) moveH = 0;
+        float moveV = currentVelocity.y; if (Mathf.Abs(moveV) <= xyAcceleration) moveV = 0;
         movementDirection = new Vector3(moveH, moveV, 0) * Time.deltaTime;
         if (!stopInput)
         {
@@ -68,6 +68,7 @@ private Transform playerModel;
         }
         ClampPosition();
     }
+
     // Keeps the ship from moving too far away from the cart/rails
     void ClampPosition()
     {
@@ -75,15 +76,25 @@ private Transform playerModel;
         pos.x = Mathf.Clamp01(pos.x);
         pos.y = Mathf.Clamp01(pos.y);
         transform.position = Camera.main.ViewportToWorldPoint(pos);
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+        float rnd = 10000f;
+        float x = Mathf.Round(transform.localPosition.x * rnd) / rnd;
+        float y = Mathf.Round(transform.localPosition.y * rnd) / rnd;
+        transform.localPosition = new Vector3(x, y, 0);
     }
     // Angles the ship towards a target location as it moves along the 2d gameplay plane
     void RotationLook(Transform target, float h, float v)
     {
         Vector3 targetEulerAngels = target.localEulerAngles;
-        target.localEulerAngles = new Vector3(
-            Mathf.LerpAngle(targetEulerAngels.x, -v * pitch, rotationLerp), Mathf.LerpAngle(targetEulerAngels.y, h * yaw,  rotationLerp), Mathf.LerpAngle(targetEulerAngels.z, -h * roll, rollLerp)
-        );
+        float scale = 10f;
+        float x = Mathf.Round(Mathf.LerpAngle(targetEulerAngels.x, -v * pitch, rotationLerp) * scale) / scale;
+        float y = Mathf.Round(Mathf.LerpAngle(targetEulerAngels.y, h * yaw, rotationLerp) * scale) / scale;
+        float z = Mathf.Round(Mathf.LerpAngle(targetEulerAngels.z, -h * roll, rollLerp) * scale) / scale;
+        float minAngle = 0.8f;
+        x = (x < minAngle && x > -minAngle) ? 0 : x;
+        y = (y < minAngle && y > -minAngle) ? 0 : y;
+        z = (z < minAngle && z > -minAngle) ? 0 : z;
+        target.localEulerAngles = new Vector3(x, y, z);
+        //target.localEulerAngles = new Vector3(Mathf.LerpAngle(targetEulerAngels.x, -v * pitch, rotationLerp), Mathf.LerpAngle(targetEulerAngels.y, h * yaw, rotationLerp), Mathf.LerpAngle(targetEulerAngels.z, -h * roll, rollLerp));
     }
 
     void SetSpeed(float x)
