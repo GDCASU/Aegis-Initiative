@@ -44,6 +44,7 @@ public class FlyLarvae : EnemyHealth
         base.Start();
         larvaeBody = GetComponent<Rigidbody>();
         larvaeCollider = GetComponent<Collider>();
+        if (PlayerInfo.singleton) transform.LookAt(PlayerInfo.singleton.transform);
         larvaeBody.velocity = transform.forward * forwardSpeed;
     }
 

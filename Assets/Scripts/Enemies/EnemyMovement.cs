@@ -30,7 +30,8 @@ public class EnemyMovement : MonoBehaviour
     public enum FlyingInDirection
     {
         Towards = -1,
-        Away = 1
+        Player = 0,
+        Away = 1,
     }
 
     [Header("Basic Variables")]
@@ -46,12 +47,12 @@ public class EnemyMovement : MonoBehaviour
 
     [Tooltip("Max positive value the enemy will reach when using a wave movement")]
     [SerializeField]
-    [Range(0.0f, 5.0f)]
+    [Range(0.0f, 25.0f)]
     private float maxWavePeak = 1.2f;
 
     [Tooltip("Max negative value the enemy will reach when using a wave movement")]
     [SerializeField]
-    [Range(-5.0f, 0.0f)]
+    [Range(-25.0f, 0.0f)]
     private float minWaveDip = -1.2f;
 
     [Tooltip("Frequency of wave")]
@@ -121,6 +122,7 @@ public class EnemyMovement : MonoBehaviour
     public bool isFlyingAway;
 
     Transform shipModel;
+    Vector3 directionToPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -213,9 +215,16 @@ public class EnemyMovement : MonoBehaviour
 
         if(flyingInTime > 0)
         {
-            transform.Translate(new Vector3(x, y, flyingInSpeed * (int)flyingInDirection) * Time.fixedDeltaTime); //ship movement wave or no wave
+            directionToPlayer = (PlayerInfo.singleton.transform.position - transform.position).normalized;
+            transform.Translate( ((flyingInDirection == FlyingInDirection.Player && PlayerInfo.singleton )? directionToPlayer * flyingInSpeed:   new Vector3(x, y, flyingInSpeed * (int)flyingInDirection)) * Time.fixedDeltaTime); //ship movement wave or no wave
             flyingInTime -= Time.fixedDeltaTime;
+            if (flyingInDirection == FlyingInDirection.Player)
+            {
+                startY = transform.localPosition.y;
+                startX = transform.localPosition.x;
+            }
             if (flyingInTime <= 0) flyingIn = false;
+            
         }
         else
         {

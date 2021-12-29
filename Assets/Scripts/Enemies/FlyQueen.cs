@@ -45,10 +45,7 @@ public class FlyQueen : EnemyHealth
     override protected void Update()
     {
         base.Update();
-        if (timer <=  0 && !shooting)
-        {
-            StartCoroutine(DropLarvae());
-        }
+        if (timer <=  0 && !shooting)StartCoroutine(DropLarvae());
         if (!enemyMovement.flyingIn && !enemyMovement.isFlyingAway) timer -= Time.deltaTime;
     }
 
