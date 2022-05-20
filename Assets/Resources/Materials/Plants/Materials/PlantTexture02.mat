@@ -32,10 +32,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Control:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -56,39 +52,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: 50b9773500c0e5b41aad3392472e7879, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Mask0:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Mask1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Mask2:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Mask3:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal0:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal2:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal3:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -104,31 +68,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Splat0:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Splat1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Splat2:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Splat3:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TerrainHolesTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_42B42031: 0.889
+    - Vector1_42B42031: 0.154
     - Vector1_70EE6245: 32
     - Vector1_D94C2B7F: 0.01
-    - Vector1_EF566761: 0.619
+    - Vector1_EF566761: 0.811
     - _AO: 2.4
     - _AlphaClip: 0
     - _BaseLight: 0.35
@@ -138,37 +82,20 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EnableHeightBlend: 0
-    - _EnableInstancedPerPixelNormal: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.3
-    - _GlossinessSource: 0
     - _GlossyReflections: 1
-    - _HeightTransition: 0
     - _Metallic: 0
-    - _Metallic0: 0
-    - _Metallic1: 0
-    - _Metallic2: 0
-    - _Metallic3: 0
     - _Mode: 1
-    - _NumLayersCount: 1
     - _Occlusion: 7.5
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SampleGI: 0
     - _ShadowStrength: 1
-    - _Shininess: 0
     - _Smoothness: 0.5
-    - _Smoothness0: 0.5
-    - _Smoothness1: 0.5
-    - _Smoothness2: 0.5
-    - _Smoothness3: 0.5
-    - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
-    - _SpecSource: 0
     - _SpecularHighlights: 1
     - _SquashAmount: 1
     - _SrcBlend: 1
@@ -178,11 +105,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_AC8DA5E6: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
-    - Color_BAED503F: {r: 1, g: 1, b: 1, a: 1}
-    - Color_C31FA31D: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+    - Color_AC8DA5E6: {r: 1, g: 1, b: 1, a: 1}
+    - Color_BAED503F: {r: 0.2988163, g: 0.8018868, b: 0.2988163, a: 1}
+    - Color_C31FA31D: {r: 1.0514885, g: 1.3041189, b: 0.32090884, a: 1}
     - Color_D022FE9D: {r: 0, g: 0, b: 0, a: 0}
-    - Color_F7F37CE1: {r: 0, g: 13.718699, b: 1.6139647, a: 1}
+    - Color_F7F37CE1: {r: 1.7837701, g: 12.996038, b: 2.7521024, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

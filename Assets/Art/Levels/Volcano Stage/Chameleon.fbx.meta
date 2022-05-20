@@ -6,7 +6,47 @@ ModelImporter:
   - first:
       74: 8450808836658823645
     second: Armature|Armature|Armature|ArmatureAction|Armature|ArmatureAction
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green
+    second: {fileID: 2100000, guid: c97089ea7509cf24f86613651dfce68c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 512ad7225925e594299b94c3fc557351, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silver Metal
+    second: {fileID: 2100000, guid: 5198bde2d47c247408467e649d2b0fb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100000, guid: b13870ad1425310418027661d7222868, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 179072cfca9821e48a112201ff3fa9af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow
+    second: {fileID: 2100000, guid: aa6f2a5db7503174db2f3864046a8929, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pink
+    second: {fileID: 2100000, guid: bd37daada080a3e449940c7b7a3ca949, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purple
+    second: {fileID: 2100000, guid: 50d77b364072f764082b09ef44de4e82, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
