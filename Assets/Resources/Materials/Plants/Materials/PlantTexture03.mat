@@ -143,7 +143,7 @@ Material:
     - Color_F7F37CE1: {r: 0.08957815, g: 0.2638986, b: 0.5754717, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.33910936, g: 0.6718802, b: 0.5407288, a: 1}
+    - _EmissionColor: {r: 0.6590238, g: 1.3298268, b: 0.11918256, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TranslucencyColor: {r: 0.73, g: 0.85, b: 0.40999997, a: 1}
