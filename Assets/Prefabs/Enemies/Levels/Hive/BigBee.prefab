@@ -282,6 +282,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef3685b85361754180c459397cd854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  collisionDamage: 0
+  doNotDespawn: 0
+  lifeTime: 20
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
+  calledResetEnemy: 0
   flyLarvae: {fileID: 7641422514903376771, guid: 64052c5f8f8773d4ca788e886d159f2e,
     type: 3}
   firstLarvaeDropRate: 2
@@ -654,7 +661,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5354028657143720620, guid: eac45b81599412a419a25c72e4a19c11, type: 3}
+  - {fileID: 2100000, guid: b154c33d100d6454f9d6418e3d16569e, type: 2}
   - {fileID: -3879621958714992793, guid: eac45b81599412a419a25c72e4a19c11, type: 3}
   - {fileID: 4362962105363994262, guid: eac45b81599412a419a25c72e4a19c11, type: 3}
   m_StaticBatchInfo:
@@ -771,7 +778,6 @@ MonoBehaviour:
     adjustWidth: 0
     adjustHeight: 0.732
     adjustDepth: 20.3
-  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
 --- !u!1 &7750920815336484989
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,8 +864,10 @@ MonoBehaviour:
   flyingInTime: 3
   flyingInDirection: -1
   flyingIn: 1
+  InFrontOfPlayerOffset: {x: 0, y: 0, z: 0}
   hover: 1
   hoverTimer: 10
+  isHoverPermanent: 0
   isModelFacingPlayer: 1
   leaveDirection: 4
   leaveSpeed: 5

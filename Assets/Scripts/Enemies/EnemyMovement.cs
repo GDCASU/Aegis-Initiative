@@ -79,6 +79,9 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Is the enemy flying in")]
     [SerializeField]
     public bool flyingIn = true;
+    [Tooltip("Vector used to position  the enemy in front of the player")]
+    [SerializeField]
+    public Vector3 InFrontOfPlayerOffset;
 
     [Header("Hover Variables")]
     [Tooltip("Does ship follow the player after flying in")]
@@ -215,8 +218,16 @@ public class EnemyMovement : MonoBehaviour
 
         if(flyingInTime > 0)
         {
-            directionToPlayer = (PlayerInfo.singleton.transform.position - transform.position).normalized;
-            transform.Translate( ((flyingInDirection == FlyingInDirection.Player && PlayerInfo.singleton )? directionToPlayer * flyingInSpeed:   new Vector3(x, y, flyingInSpeed * (int)flyingInDirection)) * Time.fixedDeltaTime); //ship movement wave or no wave
+            directionToPlayer = ((PlayerInfo.singleton.transform.position +
+                PlayerInfo.singleton.transform.right * InFrontOfPlayerOffset.x +
+                PlayerInfo.singleton.transform.up * InFrontOfPlayerOffset.y + 
+                PlayerInfo.singleton.transform.forward * InFrontOfPlayerOffset.z)
+                - transform.position).normalized;
+            if (flyingInDirection == FlyingInDirection.Player && PlayerInfo.singleton)
+                transform.Translate(directionToPlayer * flyingInSpeed, Space.World);
+            else 
+                transform.Translate(new Vector3(x, y, flyingInSpeed * (int)flyingInDirection) * Time.fixedDeltaTime); //ship movement wave or no wave
+            
             flyingInTime -= Time.fixedDeltaTime;
             if (flyingInDirection == FlyingInDirection.Player)
             {

@@ -27,8 +27,12 @@ public class FlyingBatSquirrel : EnemyHealth
     [Tooltip("Does the Squirrel spawn in the Player Dolly Cart?")]
     private bool spawnsInDollyCart = true;
 
+    [Tooltip("Vector used to position  the enemy in front of the player")]
+    [SerializeField]
+    public Vector3 InFrontOfPlayerOffset;
+
     private Transform host, player;
-    private bool isFollowingPlayer = true;  // Is the Squirrel (Host) following the Player?
+    private bool inFrontOfPlayer = false;  // Is the Squirrel (Host) following the Player?
 
     Vector3 targetDirection, newDirection;  // for rotation calculation
 
@@ -55,11 +59,25 @@ public class FlyingBatSquirrel : EnemyHealth
     private void Update()
     {
         base.Update();
-        if (isFollowingPlayer)
-            host.eulerAngles = RotateToObject(player);
-
+        Vector3 dirToPlayer = ((PlayerInfo.singleton.transform.position +
+                PlayerInfo.singleton.transform.right * InFrontOfPlayerOffset.x +
+                PlayerInfo.singleton.transform.up * InFrontOfPlayerOffset.y +
+                PlayerInfo.singleton.transform.forward * InFrontOfPlayerOffset.z)
+                - transform.position);
         transform.RotateAround(host.position, host.forward, spinSpeed * Time.deltaTime);
-        host.Translate(Vector3.forward * approachSpeed * Time.deltaTime);
+
+        //print(dirToPlayer.magnitude);
+        if (!inFrontOfPlayer)
+        {
+            if (dirToPlayer.magnitude > 1) host.Translate(dirToPlayer.normalized * approachSpeed * Time.deltaTime, Space.World);
+            else
+            {
+                if (approachSpeed > 1.5) approachSpeed = 1.5f;
+                inFrontOfPlayer = true;
+            }
+            //print("in here");
+        }
+        else host.Translate(Vector3.forward * approachSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -91,7 +109,7 @@ public class FlyingBatSquirrel : EnemyHealth
     /// <summary>
     /// Notifies Host to stop following the Player.
     /// </summary>
-    public void StopFollowingPlayer() => isFollowingPlayer = false;
+    public void StopFollowingPlayer() => inFrontOfPlayer = false;
 
     public override void DestroyEnemy()
     {

@@ -247,7 +247,6 @@ MonoBehaviour:
     adjustWidth: -5
     adjustHeight: 0.732
     adjustDepth: 15.5
-  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
 --- !u!1 &4572203919533269138
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +566,8 @@ MonoBehaviour:
   chargeDelay: 1
   chargeTime: 4
   followIntensity: 0.3
+  spinAround: 0
+  animationDelayer: 0
   animator: {fileID: 8270502497855090547}
 --- !u!114 &7750216725436466261
 MonoBehaviour:
@@ -581,9 +582,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  collisionDamage: 25
+  collisionDamage: 5
   doNotDespawn: 0
   lifeTime: 20
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
+  calledResetEnemy: 0
 --- !u!1 &7750216725449948149
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,8 +644,10 @@ MonoBehaviour:
   flyingInTime: 3
   flyingInDirection: -1
   flyingIn: 1
+  InFrontOfPlayerOffset: {x: 0, y: 0, z: 0}
   hover: 1
   hoverTimer: 1.46
+  isHoverPermanent: 0
   isModelFacingPlayer: 1
   leaveDirection: 0
   leaveSpeed: 5
@@ -783,8 +789,8 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -6470239749380754557, guid: 2408ffdae298aff449814a2276d0f4a2, type: 3}
-  - {fileID: -5354028657143720620, guid: 2408ffdae298aff449814a2276d0f4a2, type: 3}
-  - {fileID: 4362962105363994262, guid: 2408ffdae298aff449814a2276d0f4a2, type: 3}
+  - {fileID: 2100000, guid: 03ad10dba62241c40bc96d1a123256e9, type: 2}
+  - {fileID: 2100000, guid: b154c33d100d6454f9d6418e3d16569e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
