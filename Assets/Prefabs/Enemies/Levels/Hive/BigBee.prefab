@@ -282,8 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef3685b85361754180c459397cd854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  collisionDamage: 0
+  health: 30
+  collisionDamage: 5
   doNotDespawn: 0
   lifeTime: 20
   deathEffect: {fileID: 0}
@@ -732,7 +732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6586861973936850454
 Transform:
   m_ObjectHideFlags: 0
