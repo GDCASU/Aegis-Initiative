@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 1523640590969384745}
   - component: {fileID: 1346495431540328644}
   - component: {fileID: 1346495431540328646}
+  - component: {fileID: 4788013040580014180}
   m_Layer: 0
   m_Name: Bigbee
   m_TagString: Untagged
@@ -299,6 +300,19 @@ MonoBehaviour:
   timer: 0.1
   enemyMovement: {fileID: 7777021647690434516}
   framesOfAnimation: 12
+--- !u!135 &4788013040580014180
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2192935980764820883}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.75
+  m_Center: {x: 0, y: 1.79, z: -3.11}
 --- !u!1 &2881265305800667362
 GameObject:
   m_ObjectHideFlags: 0
