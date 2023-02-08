@@ -3698,7 +3698,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4728.85
+      value: 4730.9
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -3708,7 +3708,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2752.76
+      value: -2749.5
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -3803,12 +3803,12 @@ PrefabInstance:
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustWidth
-      value: -3
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustHeight
-      value: -12
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -5282,7 +5282,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23032
+  m_Name: pb_Mesh97154
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8710,6 +8710,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 958029161}
     m_Modifications:
+    - target: {fileID: 1346495431540328646, guid: 3e9036793dcbdfb4883dee111ddc8dce,
+        type: 3}
+      propertyPath: timer
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346495431540328646, guid: 3e9036793dcbdfb4883dee111ddc8dce,
+        type: 3}
+      propertyPath: firstLarvaeDropRate
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6586861973936850459, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: m_IsActive
@@ -8733,7 +8743,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInTime
-      value: 0.9
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -8748,7 +8758,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInSpeed
-      value: 0.4
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -9837,17 +9847,17 @@ PrefabInstance:
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustDepth
-      value: 25
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustWidth
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustHeight
-      value: -18
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -10101,7 +10111,7 @@ PrefabInstance:
     - target: {fileID: 7750216725449948147, guid: 2c1beca299a610f41a56a620419417f0,
         type: 3}
       propertyPath: InFrontOfPlayerOffset.z
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7750216725449948147, guid: 2c1beca299a610f41a56a620419417f0,
         type: 3}
@@ -10981,17 +10991,17 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4591.03
+      value: 4612.71
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -405.15
+      value: -392
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2753.69
+      value: -2768.53
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -11076,12 +11086,12 @@ PrefabInstance:
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[1].adjustDepth
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustDepth
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -11101,17 +11111,17 @@ PrefabInstance:
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[1].adjustWidth
-      value: -20
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[1].adjustHeight
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustWidth
-      value: -15.1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -11767,6 +11777,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284339265}
     m_Modifications:
+    - target: {fileID: 2192935980764820883, guid: 3e9036793dcbdfb4883dee111ddc8dce,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6586861973936850459, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: m_IsActive
@@ -11790,7 +11805,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInTime
-      value: 1.45
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -11805,7 +11820,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInSpeed
-      value: 0.4
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -11836,6 +11851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isModelFacingPlayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
+        type: 3}
+      propertyPath: InFrontOfPlayerOffset.x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434517, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -24515,6 +24535,11 @@ PrefabInstance:
       propertyPath: rotateSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7750216725436466262, guid: 2c1beca299a610f41a56a620419417f0,
+        type: 3}
+      propertyPath: chargeDelay
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7750216725449948147, guid: 2c1beca299a610f41a56a620419417f0,
         type: 3}
       propertyPath: flyingInTime
@@ -25706,7 +25731,7 @@ MonoBehaviour:
     roll: 0
   - position: {x: -166.08603, y: 11.472549, z: 336.17084}
     roll: 0
-  - position: {x: -71.900955, y: 69.24992, z: 355.97235}
+  - position: {x: -71.90085, y: 64.322586, z: 355.9723}
     roll: 0
   - position: {x: -15.348803, y: 131.32707, z: 426.2549}
     roll: 0
@@ -28832,7 +28857,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4743.9
+      value: 4746.32
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -28842,7 +28867,7 @@ PrefabInstance:
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2726.52
+      value: -2722.72
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546192, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -28937,12 +28962,12 @@ PrefabInstance:
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustWidth
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustHeight
-      value: -18
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -28973,6 +28998,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 958029161}
     m_Modifications:
+    - target: {fileID: 1346495431540328646, guid: 3e9036793dcbdfb4883dee111ddc8dce,
+        type: 3}
+      propertyPath: firstLarvaeDropRate
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346495431540328646, guid: 3e9036793dcbdfb4883dee111ddc8dce,
+        type: 3}
+      propertyPath: timer
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 6586861973936850459, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: m_IsActive
@@ -28996,7 +29031,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInTime
-      value: 0.75
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -29011,7 +29046,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInSpeed
-      value: 0.4
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -29021,7 +29056,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: InFrontOfPlayerOffset.z
-      value: 13
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -29046,12 +29081,12 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: InFrontOfPlayerOffset.x
-      value: -3.5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: hoverTimer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434517, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -34793,7 +34828,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInTime
-      value: 0.9
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -34808,7 +34843,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInSpeed
-      value: 0.4
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -37416,12 +37451,12 @@ PrefabInstance:
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustWidth
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
       propertyPath: _enemies.Array.data[0].adjustHeight
-      value: -12
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5316088585750546194, guid: 0ff1a47edf65fb8448ea4163ca9b00ef,
         type: 3}
@@ -39444,7 +39479,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21590
+  m_Name: pb_Mesh95606
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -51465,7 +51500,7 @@ PrefabInstance:
     - target: {fileID: 7750216725449948147, guid: 2c1beca299a610f41a56a620419417f0,
         type: 3}
       propertyPath: InFrontOfPlayerOffset.z
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7750216725449948148, guid: 2c1beca299a610f41a56a620419417f0,
         type: 3}
@@ -54033,7 +54068,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22584
+  m_Name: pb_Mesh96692
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -70127,7 +70162,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: flyingInSpeed
-      value: 0.4
+      value: 20.1
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
@@ -70162,7 +70197,7 @@ PrefabInstance:
     - target: {fileID: 7777021647690434516, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}
       propertyPath: InFrontOfPlayerOffset.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7777021647690434517, guid: 3e9036793dcbdfb4883dee111ddc8dce,
         type: 3}

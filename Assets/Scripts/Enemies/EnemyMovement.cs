@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Flying In Variables")]
     [Tooltip("How fast the enemy ship moves when flying in")]
     [SerializeField]
-    [Range(0.0f, 5.0f)]
+    [Range(0.0f, 25.0f)]
     private float flyingInSpeed = 2;
     [SerializeField]
     [Tooltip("Duration of the enemy flying in sequence")]
@@ -218,24 +218,29 @@ public class EnemyMovement : MonoBehaviour
 
         if(flyingInTime > 0)
         {
-            directionToPlayer = ((PlayerInfo.singleton.transform.position +
-                PlayerInfo.singleton.transform.right * InFrontOfPlayerOffset.x +
-                PlayerInfo.singleton.transform.up * InFrontOfPlayerOffset.y + 
-                PlayerInfo.singleton.transform.forward * InFrontOfPlayerOffset.z)
-                - transform.position).normalized;
-            if (flyingInDirection == FlyingInDirection.Player && PlayerInfo.singleton)
-                transform.Translate(directionToPlayer * flyingInSpeed, Space.World);
+            if (flyingInDirection == FlyingInDirection.Player)
+            {
+                if (PlayerInfo.singleton)
+                {
+                    directionToPlayer = ((PlayerInfo.singleton.transform.position +
+                    PlayerInfo.singleton.transform.right * InFrontOfPlayerOffset.x +
+                    PlayerInfo.singleton.transform.up * InFrontOfPlayerOffset.y +
+                    PlayerInfo.singleton.transform.forward * InFrontOfPlayerOffset.z)
+                    - transform.position).normalized;
+                    transform.Translate(directionToPlayer * flyingInSpeed * Time.deltaTime, Space.World);
+                }
+            }
             else 
                 transform.Translate(new Vector3(x, y, flyingInSpeed * (int)flyingInDirection) * Time.fixedDeltaTime); //ship movement wave or no wave
             
             flyingInTime -= Time.fixedDeltaTime;
-            if (flyingInDirection == FlyingInDirection.Player)
+            if (flyingInTime <= 0) flyingIn = false;
+            if (!flyingIn && flyingInDirection == FlyingInDirection.Player)
             {
                 startY = transform.localPosition.y;
                 startX = transform.localPosition.x;
             }
-            if (flyingInTime <= 0) flyingIn = false;
-            
+
         }
         else
         {
