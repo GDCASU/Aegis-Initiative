@@ -20,8 +20,10 @@ public class AsteroidBossSpawner : MonoBehaviour
             FMODStartMusic.music.release();
             FMODStartMusic.music.setVolume(GameManager.singleton.musicVolume);
 
-            Vector3 spawnRelativeToPlayer = new Vector3(0, -12.5f, 30);
-            Instantiate(asteroidBoss, dollyCart, false).gameObject.transform.localPosition = spawnRelativeToPlayer;
+            Vector3 spawnRelativeToPlayer = new Vector3(0, -50f, 30);
+            GameObject boss = Instantiate(asteroidBoss, dollyCart, false);
+            boss.transform.localPosition = spawnRelativeToPlayer;
+            boss.transform.forward = PlayerInfo.singleton.transform.forward;
         }
     }
 }

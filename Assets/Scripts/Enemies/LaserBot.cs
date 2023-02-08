@@ -138,6 +138,7 @@ public class LaserBot : MonoBehaviour
 
         for (int i = 0; i < bulletsInBurst; i++)
         {
+            if (!player) break;
             // Determine bullet velocity to predicted player position.
             initialBulletPosition = dollyCart.InverseTransformPoint(bulletSpawnpoint.position);
             initialPlayerPosition = player.localPosition;
