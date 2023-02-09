@@ -26,13 +26,14 @@ public class SpaceSlugEnd : MonoBehaviour
             slug.playerPath = bossTrack;
             playerCart.m_Position = 0;
 
-            //slug.endReached = true;
+            slug.endReached = true;
             slug.chancesOfAttack = 100;
-            slug.timeAhead = 7;
+            slug.timeAhead = 10;
             slug.maxTime = 4;
             slug.timer = 0;
             slug.outerWidthRange = 75;
-            slug.health = 60;
+            slug.health = 200;
+            slug.minHeight = 50;
         } 
     }
 }
