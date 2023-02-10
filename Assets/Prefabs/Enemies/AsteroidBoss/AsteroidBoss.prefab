@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 4317884631668656975}
   - component: {fileID: 6796629688428296855}
   - component: {fileID: 5289014550129624855}
+  - component: {fileID: 190562834648525364}
   m_Layer: 0
   m_Name: AsteroidBoss
   m_TagString: Enemy
@@ -89,6 +90,7 @@ MonoBehaviour:
   lifeTime: 0
   deathEffect: {fileID: 0}
   lifeTimer: 0
+  calledResetEnemy: 0
   laserBot: {fileID: 8081589177011574464, guid: f40ee2f1bd4caf24d926571a881b1c01,
     type: 3}
   formation1:
@@ -132,8 +134,39 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &190562834648525364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276769626762386363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0275e00d7be1dd94b968fc250e13cb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateWithMovement: 1
+  lockedOntoPlayer: 0
+  waveMovement: 0
+  maxWavePeak: 0
+  minWaveDip: 0
+  waveFrequency: 0
+  maxAngle: 0
+  flyingInSpeed: 12
+  flyingInTime: 3.2
+  flyingInDirection: 0
+  flyingIn: 1
+  InFrontOfPlayerOffset: {x: 0, y: -12.5, z: 30}
+  hover: 1
+  hoverTimer: 0.6
+  isHoverPermanent: 1
+  isModelFacingPlayer: 0
+  leaveDirection: 0
+  leaveSpeed: 5
+  isFlyingAway: 0
 --- !u!1 &385070060436732652
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +579,7 @@ GameObject:
   - component: {fileID: 6186222521096035344}
   m_Layer: 0
   m_Name: Laser
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

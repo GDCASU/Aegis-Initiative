@@ -33,7 +33,7 @@ public class AsteroidBoss : EnemyHealth
         formations[2] = formation3;
 
         //start events
-        StartCoroutine("Event2");
+        StartCoroutine(SpawningDelay());
         bossAnimation.Play("AsteroidBossAnimation");
     }
     
@@ -62,12 +62,32 @@ public class AsteroidBoss : EnemyHealth
         //instantiate each laser bot
         foreach (Transform t in formation)
         {
-            Instantiate(laserBot, t.position, Quaternion.identity, transform);
+            GameObject bot = Instantiate(laserBot, t.position, Quaternion.identity, transform);
+            if (PlayerInfo.singleton) bot.transform.forward = bot.transform.position - PlayerInfo.singleton.transform.position;
             yield return new WaitForSeconds(0.5f);
         }
 
         //pause before next event
         yield return new WaitForSeconds(3f);
+        StartCoroutine("Event2");
+    }
+
+    IEnumerator SpawningDelay()
+    {
+        float timer = 3.2f;
+        float screenShake = .5f;
+        float subTimer = 0;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            subTimer -= Time.deltaTime;
+            if (subTimer <= 0)
+            {
+                PlayerInfo.singleton?.GetComponent<ScreenShake>()?.ShakeCamera();
+                subTimer = screenShake;
+            }
+            yield return null;
+        }
         StartCoroutine("Event2");
     }
 
@@ -103,9 +123,9 @@ public class AsteroidBoss : EnemyHealth
                 asteroidObj.GetComponent<Rigidbody>().AddForce((player - asteroidObj.transform.position) * 25f);
                 yield return new WaitForSeconds(0.5f/6);
             }
-            yield return new WaitForSeconds(1f);
+            if (shot != 7) yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         StartCoroutine("Event3");
     }
 

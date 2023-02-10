@@ -68,19 +68,20 @@ public class SpaceSlug : EnemyHealth
     private void SpawnSlug()
     {
         int side = rng.Next(2); //0 = left side of player track, 1 = right side of player track
-        middle = playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)) + Vector3.up * maxHeight;
+        middle = playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)) + PlayerInfo.singleton.transform.up * maxHeight;
+        
         if (side == 0)
         {
-            start = middle - minHeight * Vector3.up * maxHeight - playerCart.transform.right.normalized * rng.Next(outerWidthRange);
-            end = middle - minHeight * Vector3.up * maxHeight + playerCart.transform.right.normalized * ((endReached)? rng.Next(outerWidthRange - 5, outerWidthRange) :((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange)));
+            start = middle - PlayerInfo.singleton.transform.up * minHeight - PlayerInfo.singleton.transform.right.normalized * rng.Next(outerWidthRange);
+            end = middle - PlayerInfo.singleton.transform.up * (minHeight +  (!endReached? 20: 0)) + PlayerInfo.singleton.transform.right.normalized * ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange));
         }
         else
         {
-            start = middle - minHeight * Vector3.up * maxHeight + playerCart.transform.right.normalized * rng.Next(outerWidthRange);
-            end = middle - minHeight * Vector3.up * maxHeight - playerCart.transform.right.normalized * ((endReached) ? rng.Next(outerWidthRange - 5, outerWidthRange) : ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange)));
+            start = middle - PlayerInfo.singleton.transform.up * minHeight + PlayerInfo.singleton.transform.right.normalized * rng.Next(outerWidthRange);
+            end = middle - PlayerInfo.singleton.transform.up * (minHeight + (!endReached ? 20 : 0)) - PlayerInfo.singleton.transform.right.normalized * ((attack) ? rng.Next(closeWidthMin, closeWidthMax) : rng.Next(outerWidthRange));
         }
         speed = path.PathLength / timeAhead - 3;
-        if (attack)
+        if (!endReached && attack)
         {
             Vector3 direction = start - new Vector3(middle.x, end.y, middle.z);
             middle +=new Vector3(direction.x*.25f,0, direction.z/2f * .25f);
@@ -88,11 +89,12 @@ public class SpaceSlug : EnemyHealth
             //start += new Vector3(depthAdjustment.x, 0, depthAdjustment.z) * .25f;
         }
 
+
         if (endReached)
         {
-            start += PlayerInfo.singleton.transform.forward.normalized * 45 - Vector3.up * 50;
-            middle += PlayerInfo.singleton.transform.forward.normalized * 45;
-            end += PlayerInfo.singleton.transform.forward.normalized * 45 - Vector3.up * 50;
+            //start += PlayerInfo.singleton.transform.forward.normalized * 45 - Vector3.up * 50;
+            //middle += PlayerInfo.singleton.transform.forward.normalized * 45;
+            //end += PlayerInfo.singleton.transform.forward.normalized * 45 - Vector3.up * 50;
             rockThrown = false;
         }
 
@@ -112,7 +114,7 @@ public class SpaceSlug : EnemyHealth
 
     public IEnumerator ThrowRock()
     {
-        float dealy = 1;
+        float dealy = 1.5f;
         rockThrown = true;
         while (dealy > 0)
         {

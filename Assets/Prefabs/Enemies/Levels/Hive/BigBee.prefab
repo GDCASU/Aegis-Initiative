@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 1523640590969384745}
   - component: {fileID: 1346495431540328644}
   - component: {fileID: 1346495431540328646}
+  - component: {fileID: 4788013040580014180}
   m_Layer: 0
   m_Name: Bigbee
   m_TagString: Untagged
@@ -282,6 +283,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef3685b85361754180c459397cd854b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 30
+  collisionDamage: 5
+  doNotDespawn: 0
+  lifeTime: 20
+  deathEffect: {fileID: 0}
+  lifeTimer: 0
+  calledResetEnemy: 0
   flyLarvae: {fileID: 7641422514903376771, guid: 64052c5f8f8773d4ca788e886d159f2e,
     type: 3}
   firstLarvaeDropRate: 2
@@ -292,6 +300,19 @@ MonoBehaviour:
   timer: 0.1
   enemyMovement: {fileID: 7777021647690434516}
   framesOfAnimation: 12
+--- !u!135 &4788013040580014180
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2192935980764820883}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.75
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2881265305800667362
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +675,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5354028657143720620, guid: eac45b81599412a419a25c72e4a19c11, type: 3}
+  - {fileID: 2100000, guid: b154c33d100d6454f9d6418e3d16569e, type: 2}
   - {fileID: -3879621958714992793, guid: eac45b81599412a419a25c72e4a19c11, type: 3}
   - {fileID: 4362962105363994262, guid: eac45b81599412a419a25c72e4a19c11, type: 3}
   m_StaticBatchInfo:
@@ -725,7 +746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6586861973936850454
 Transform:
   m_ObjectHideFlags: 0
@@ -771,7 +792,6 @@ MonoBehaviour:
     adjustWidth: 0
     adjustHeight: 0.732
     adjustDepth: 20.3
-  player: {fileID: 4174455377587358406, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28, type: 3}
 --- !u!1 &7750920815336484989
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,8 +878,10 @@ MonoBehaviour:
   flyingInTime: 3
   flyingInDirection: -1
   flyingIn: 1
+  InFrontOfPlayerOffset: {x: 0, y: 0, z: 0}
   hover: 1
   hoverTimer: 10
+  isHoverPermanent: 0
   isModelFacingPlayer: 1
   leaveDirection: 4
   leaveSpeed: 5
