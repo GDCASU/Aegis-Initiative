@@ -110,19 +110,23 @@ public class PauseMenu : MonoBehaviour
         //var sfxSlider = generalSettings.transform.Find("SFXSlider");
         //sfxSlider.GetComponent<Slider>().value = pOptions.sfxVolume;
         //SetEffectsVolume(pOptions.sfxVolume);
-        musicSlider.value = GameManager.singleton.musicVolume;
-        musicSlider.onValueChanged.AddListener((v) => { 
-            GameManager.singleton.musicVolume = v;
-            FMODStartMusic.music.setVolume(v);
-        });
-        sfxSlider.value = GameManager.singleton.sfxVolume;
-        sfxSlider.onValueChanged.AddListener((v) => { 
-            GameManager.singleton.sfxVolume = v;
-        });
+        if(musicSlider != null)
+        {
+            musicSlider.value = GameManager.singleton.musicVolume;
+            musicSlider.onValueChanged.AddListener((v) => {
+                GameManager.singleton.musicVolume = v;
+                FMODStartMusic.music.setVolume(v);
+            });
+            sfxSlider.value = GameManager.singleton.sfxVolume;
+            sfxSlider.onValueChanged.AddListener((v) => {
+                GameManager.singleton.sfxVolume = v;
+            });
+        }
+       
     }
     private void Update()
     {
-        if (InputManager.GetButtonDown(PlayerButton.Pause) && SceneManager.GetActiveScene().name!="MainMenuUI")
+        if (InputManager.GetButtonDown(PlayerButton.Pause) && SceneManager.GetActiveScene().name != "MainMenuUI")
         {
             if (PlayerInfo.singleton)
             {
