@@ -64,6 +64,9 @@ public class MenuUI : MonoBehaviour
                 case 3:
                     SwitchPanels(1);
                     break;
+                default:
+                    SwitchPanels(1);
+                    break;
             }
         }
     }
@@ -72,6 +75,11 @@ public class MenuUI : MonoBehaviour
         panels[currentPanel].SetActive(false);
         panels[panelToActivate].SetActive(true);
         currentPanel = panelToActivate;
+    }
+
+    public void ShowControls()
+    {
+        SwitchPanels(5);
     }
     public void CancelExitPrompt()
     {
@@ -146,5 +154,10 @@ public class MenuUI : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
         SceneManager.LoadScene(creditsScene, LoadSceneMode.Single);
+    }
+
+    public void ClickBackButton()
+    {
+        SwitchPanels(1);
     }
 }

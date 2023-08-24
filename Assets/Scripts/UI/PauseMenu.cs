@@ -256,4 +256,9 @@ public class PauseMenu : MonoBehaviour
     //    sfxVolume = passed;
     //}
 
+    public void ClickBackButton()
+    {
+        MainMenuPromptCancel();
+    }
+
 }
