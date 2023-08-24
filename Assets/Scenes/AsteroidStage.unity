@@ -1281,6 +1281,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4939977167759774998, guid: 3e65aac998dbfc349b29fa0a2182ee47, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3e65aac998dbfc349b29fa0a2182ee47, type: 3}
+--- !u!1 &643495872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4460718835612581514, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+    type: 3}
+  m_PrefabInstance: {fileID: 796840275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &655075877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1772,6 +1778,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3397034640241803148, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 796840277}
+    - target: {fileID: 3397034640241803148, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickBackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397034640241803148, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415087799815854586, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 32767
+      objectReference: {fileID: 0}
     - target: {fileID: 3415087799815854590, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_IsActive
@@ -1927,6 +1953,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5877986407221308693, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: panels.Array.data[2]
+      value: 
+      objectReference: {fileID: 643495872}
+    - target: {fileID: 7279415726661846987, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 796840277}
+    - target: {fileID: 7279415726661846987, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickBackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7279415726661846987, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8101882521294301605, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1967,6 +2013,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 796840275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &796840277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5877986407221308693, guid: e324ef3f0f8c2b044bd1aafdbf5a7b28,
+    type: 3}
+  m_PrefabInstance: {fileID: 796840275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a125051760d20564ca1ae308655a5860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &852742574
 PrefabInstance:
   m_ObjectHideFlags: 0
