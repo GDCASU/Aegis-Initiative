@@ -62,7 +62,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public virtual void DestroyEnemy()
     {
-        PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
+        if(PlayerInfo.singleton) PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
         Destroy(GetComponentInParent<EnemyMovement>()?.gameObject ?? gameObject);
     }
     IEnumerator waitToDespawn()

@@ -67,6 +67,8 @@ public class SpaceSlug : EnemyHealth
 
     private void SpawnSlug()
     {
+        calledResetEnemy = false;
+
         int side = rng.Next(2); //0 = left side of player track, 1 = right side of player track
         middle = playerPath.EvaluatePositionAtUnit(playerCart.m_Position + playerCart.m_Speed * timeAhead, playerCart.m_PositionUnits + (int)(playerCart.m_Speed * timeAhead)) + PlayerInfo.singleton.transform.up * maxHeight;
         

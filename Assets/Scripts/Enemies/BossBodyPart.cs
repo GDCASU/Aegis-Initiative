@@ -1,28 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BossBodyPart : MonoBehaviour
 {
     public EnemyHealth enemyHealth;
-
+    public GameObject visualLocation;
+    public float offsetDistance = 33.857f;
     public void ApplyDamage(int damage) => enemyHealth.TakeDamage(damage);
 
     private void Update()
     {
         if (!enemyHealth.calledResetEnemy)
         {
-            Vector3 enemyConversion = Camera.main.WorldToViewportPoint(transform.position);
+            Vector3 calculatedLocation = transform.position + transform.right * -offsetDistance;
+            visualLocation.transform.position = calculatedLocation;
+            Vector3 enemyConversion = Camera.main.WorldToViewportPoint(visualLocation.transform.position);
             if (enemyConversion.z < 0)
             {
                 PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().ResetEnemy(gameObject);
-                enemyHealth.calledResetEnemy = true;
             }
             else
             {
-                if (PlayerInfo.singleton != null) PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(gameObject);
+                if (PlayerInfo.singleton != null) PlayerInfo.singleton.GetComponent<BasicPlayerShooting>().AimAssist(visualLocation);
             }
         }
     }
-
 }
