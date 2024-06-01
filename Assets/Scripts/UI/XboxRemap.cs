@@ -38,7 +38,7 @@ public class XboxRemap : MonoBehaviour
     }
     public void InitiateButton()
     {   
-        button = InputManager.playerButtons[action].xboxKey;
+        button = InputManager.allKeybinds[InputManager.InputMode.controller][action];
         keyName = InputManager.playerXboxButtons[button];
         keyName = button.ToString();
         textUI.text = keyName;
@@ -59,9 +59,7 @@ public class XboxRemap : MonoBehaviour
         }
         if (InputManager.playerXboxButtons.ContainsKey(passed))
         {
-            PlayerAction actn = InputManager.playerButtons[action];
-            actn.xboxKey = passed;
-            InputManager.playerButtons[action] = actn;
+            InputManager.allKeybinds[InputManager.InputMode.controller][action] = passed;
             xboxCodes.Remove(keyName);
             keyName = passed.ToString();
             xboxCodes.Add(keyName);

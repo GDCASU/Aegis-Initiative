@@ -3822,6 +3822,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 143233819105719361, guid: 63e77e6bd875fef46a7cbfdc3bbac7c2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 972974194}
+    - target: {fileID: 143233819105719361, guid: 63e77e6bd875fef46a7cbfdc3bbac7c2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchControllerType
+      objectReference: {fileID: 0}
     - target: {fileID: 143233819279393155, guid: 63e77e6bd875fef46a7cbfdc3bbac7c2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -4011,8 +4021,8 @@ MonoBehaviour:
   HUD: {fileID: 0}
   reticle: {fileID: 0}
   copilotUI: {fileID: 0}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  musicSlider: {fileID: 465720107}
+  sfxSlider: {fileID: 442318546}
 --- !u!1 &991271743
 GameObject:
   m_ObjectHideFlags: 0
