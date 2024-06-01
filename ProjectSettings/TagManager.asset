@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - BreakableEnvironment
   - BossBodyPart
+  - Laser
+  - Terrain
   layers:
   - Default
   - TransparentFX
