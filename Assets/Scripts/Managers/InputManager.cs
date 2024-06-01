@@ -26,11 +26,12 @@ namespace PlayerInput {
     {
         ActiveAbility,
         Shoot,
-        UI_Submit,     // UI Button
-        UI_Cancel,     // UI Button
+        UI_Submit,
+        UI_Cancel,
         Pause,
         None,
-    };
+    }; 
+
     [Serializable]
     public struct PlayerAction 
     {
@@ -38,17 +39,43 @@ namespace PlayerInput {
         public KeyCode xboxKey;
     }
 }
+
 public class InputManager : MonoBehaviour {
-    public enum InputMode {
-        both,
+    public enum InputMode
+    {
+        keyboard,
         controller,
-        keyboard
+        both
     }
     public static int inputType;
-    public static InputMode inputMode = InputMode.both;
+    public static InputMode inputMode = InputMode.keyboard;
     // there is literally no reason for this to exist ffs
     [SerializeField]
     public static PlayerAction[] playerActions = new PlayerAction[5];
+
+    public static Dictionary<PlayerButton, KeyCode> defaultKeyboardBinds = new Dictionary<PlayerButton, KeyCode> {
+            {PlayerButton.ActiveAbility, KeyCode.LeftShift},
+            {PlayerButton.Shoot, KeyCode.Mouse0},
+            {PlayerButton.UI_Submit, KeyCode.KeypadEnter},
+            {PlayerButton.UI_Cancel, KeyCode.Escape},
+            {PlayerButton.Pause, KeyCode.Escape},
+    };
+
+    public static Dictionary<PlayerButton, KeyCode> defaultControllerBinds = new Dictionary<PlayerButton, KeyCode> {
+            {PlayerButton.ActiveAbility, KeyCode.JoystickButton2},
+            {PlayerButton.Shoot, KeyCode.JoystickButton0},
+            {PlayerButton.UI_Submit, KeyCode.JoystickButton0},
+            {PlayerButton.UI_Cancel, KeyCode.JoystickButton1},
+            {PlayerButton.Pause, KeyCode.JoystickButton7},
+    };
+
+    public static Dictionary<PlayerButton, KeyCode> keyboardBinds = defaultKeyboardBinds;
+    public static Dictionary<PlayerButton, KeyCode> controllerBinds = defaultControllerBinds;
+
+    public static Dictionary<InputMode, Dictionary<PlayerButton, KeyCode>> allKeybinds = new Dictionary<InputMode, Dictionary<PlayerButton, KeyCode>> {
+            {InputMode.controller, controllerBinds},
+            {InputMode.keyboard, keyboardBinds},
+    };
 
     public static Dictionary<KeyCode, string> playerXboxButtons = new Dictionary<KeyCode, string> {
         {KeyCode.JoystickButton0, "A"},
@@ -62,7 +89,7 @@ public class InputManager : MonoBehaviour {
         {KeyCode.JoystickButton8, "L3"},
         {KeyCode.JoystickButton9, "R3"},
     };
-    public static Dictionary<PlayerButton, PlayerAction> playerButtons = new Dictionary<PlayerButton, PlayerAction> { };
+    public static Dictionary<PlayerButton, PlayerAction> playerButtons = new Dictionary<PlayerButton, PlayerAction> {};
     public static Dictionary<PlayerAxis, string > joyAxis = new Dictionary <PlayerAxis, string> {
         {PlayerAxis.MoveHorizontal, "JoystickX1"},
         {PlayerAxis.MoveVertical, "JoystickY1"},
@@ -81,48 +108,17 @@ public class InputManager : MonoBehaviour {
         {PlayerAxis.UI_Vertical, "KeyboardY"},
     };
 
-    private void Start()
-    {
-        ResetKeycodes();
-    }
-    public static void ResetKeycodes () {
-        playerActions[0].keyboardKey = KeyCode.LeftShift;
-        playerActions[0].xboxKey = KeyCode.JoystickButton2;
-        playerActions[1].keyboardKey = KeyCode.Mouse0;
-        playerActions[1].xboxKey = KeyCode.JoystickButton0;
-        playerActions[2].keyboardKey = KeyCode.KeypadEnter;
-        playerActions[2].xboxKey = KeyCode.JoystickButton0;
-        playerActions[3].keyboardKey = KeyCode.Escape;
-        playerActions[3].xboxKey = KeyCode.JoystickButton1;
-        playerActions[4].keyboardKey = KeyCode.Escape;
-        playerActions[4].xboxKey = KeyCode.JoystickButton7;
-        playerButtons[PlayerButton.ActiveAbility] = playerActions[0];
-        playerButtons[PlayerButton.Shoot] = playerActions[1];
-        playerButtons[PlayerButton.UI_Submit] = playerActions[2];
-        playerButtons[PlayerButton.UI_Cancel] = playerActions[3];
-        playerButtons[PlayerButton.Pause] = playerActions[4];
-        if (inputType == 1) inputMode = InputMode.controller;
-        if (inputType == 2) inputMode = InputMode.keyboard;
-    }
     public static bool GetButtonDown(PlayerButton button) {
-        bool input = false;
-        input |= inputMode != InputMode.controller && Input.GetKeyDown(playerButtons[button].keyboardKey);
-        input |= inputMode != InputMode.keyboard && Input.GetKeyDown(playerButtons[button].xboxKey);
-        return input;
+        Debug.Log("input: " + button);
+        return Input.GetKeyDown(allKeybinds[inputMode][button]);
     }
 
     public static bool GetButtonUp (PlayerButton button) {
-        bool input = false;
-        input |= inputMode != InputMode.controller && Input.GetKeyUp(playerButtons[button].keyboardKey);
-        input |= inputMode != InputMode.keyboard && Input.GetKeyUp(playerButtons[button].xboxKey);
-        return input;
+        return Input.GetKeyUp(allKeybinds[inputMode][button]);
     }
 
     public static bool GetButton (PlayerButton button) {
-        bool input = false;
-        input |= inputMode != InputMode.controller && Input.GetKey(playerButtons[button].keyboardKey);
-        input |= inputMode != InputMode.keyboard && Input.GetKey(playerButtons[button].xboxKey);
-        return input;
+        return Input.GetKey(allKeybinds[inputMode][button]);
     }
     public static float GetAxis (PlayerAxis axis) {
         var mouse = mouseAxis.ContainsKey(axis) ? Input.GetAxis(mouseAxis[axis]) : 0;

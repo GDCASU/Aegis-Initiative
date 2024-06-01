@@ -41,7 +41,7 @@ public class KeyboardRemap : MonoBehaviour
     }
     public void InitiateButton()
     {
-        button = InputManager.playerButtons[action].keyboardKey;
+        button = InputManager.allKeybinds[InputManager.InputMode.keyboard][action];
         keyName = button.ToString();
         textUI.text = keyName;
     }
@@ -56,9 +56,7 @@ public class KeyboardRemap : MonoBehaviour
                 return;
             }
         }
-        PlayerAction actn = InputManager.playerButtons[action];
-        actn.keyboardKey = passed;
-        InputManager.playerButtons[action]=actn;
+        InputManager.allKeybinds[InputManager.InputMode.keyboard][action] = passed;
         keyboardCodes.Remove(keyName);
         keyName = passed.ToString();
         keyboardCodes.Add(keyName);
