@@ -109,7 +109,6 @@ public class InputManager : MonoBehaviour {
     };
 
     public static bool GetButtonDown(PlayerButton button) {
-        Debug.Log("input: " + button);
         return Input.GetKeyDown(allKeybinds[inputMode][button]);
     }
 
