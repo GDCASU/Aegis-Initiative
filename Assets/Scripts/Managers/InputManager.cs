@@ -41,6 +41,8 @@ namespace PlayerInput {
 }
 
 public class InputManager : MonoBehaviour {
+    public readonly static string keybindFilePath = "/keybinds.data";
+
     public enum InputMode
     {
         keyboard,
@@ -108,6 +110,11 @@ public class InputManager : MonoBehaviour {
         {PlayerAxis.UI_Vertical, "KeyboardY"},
     };
 
+    private void Start()
+    {
+        allKeybinds = LoadKeybinds();
+    }
+
     public static bool GetButtonDown(PlayerButton button) {
         return Input.GetKeyDown(allKeybinds[inputMode][button]);
     }
@@ -124,5 +131,23 @@ public class InputManager : MonoBehaviour {
         var controller = joyAxis.ContainsKey(axis) ? Input.GetAxis(joyAxis[axis]) : 0;
         
         return (inputMode == InputMode.both && controller != 0) || inputMode == InputMode.controller ? controller : mouse;
+    }
+
+    public static void SaveKeybinds ()
+    {
+        SaveManager.SaveContent(allKeybinds, keybindFilePath);
+    }
+
+    public static Dictionary<InputMode, Dictionary<PlayerButton, KeyCode>> LoadKeybinds ()
+    {
+        var keybinds = SaveManager.LoadContent(keybindFilePath);
+
+        if(keybinds == null)
+        {
+            SaveManager.SaveContent(allKeybinds, keybindFilePath);
+            return allKeybinds;
+        }
+
+        return keybinds as Dictionary<InputMode, Dictionary<PlayerButton, KeyCode>>;
     }
 }
