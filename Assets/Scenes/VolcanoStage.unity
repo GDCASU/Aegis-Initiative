@@ -27152,6 +27152,7 @@ GameObject:
   - component: {fileID: 866751230}
   - component: {fileID: 866751232}
   - component: {fileID: 866751231}
+  - component: {fileID: 866751233}
   m_Layer: 0
   m_Name: Terrain2
   m_TagString: Untagged
@@ -27217,6 +27218,18 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
+--- !u!114 &866751233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866751229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa59ddee2b791645acfb5fcd8132611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &867684211
 PrefabInstance:
   m_ObjectHideFlags: 0
