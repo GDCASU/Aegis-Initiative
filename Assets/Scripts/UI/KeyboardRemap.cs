@@ -10,7 +10,7 @@ public class KeyboardRemap : MonoBehaviour
     KeyCode button;
     int index;
     public string keyName;
-    bool remaping;
+    bool remapping;
     public Text textUI;
 
 
@@ -20,8 +20,15 @@ public class KeyboardRemap : MonoBehaviour
     }
     public void Update()
     {
-        if (remaping)
+        if (remapping)
         {
+            textUI.text = "";
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                textUI.text = keyName;
+                SetRemapping(false);
+                return;
+            }
             if (Input.anyKey)
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
@@ -29,15 +36,15 @@ public class KeyboardRemap : MonoBehaviour
                     if (Input.GetKeyDown(vKey))
                     {
                         SetButton(vKey);
-                        remaping = false;
+                        SetRemapping(false);
                     }
                 }
             }
         }
     }
-    public void Remaping()
+    public void SetRemapping(bool _remapping)
     {
-        remaping = true;
+        remapping = _remapping;
     }
     public void InitiateButton()
     {
@@ -61,6 +68,7 @@ public class KeyboardRemap : MonoBehaviour
         keyName = passed.ToString();
         keyboardCodes.Add(keyName);
         GetComponentInChildren<Text>().text = keyName;
+        InputManager.SaveKeybinds();
     }
 
 }

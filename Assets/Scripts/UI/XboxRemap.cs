@@ -11,7 +11,7 @@ public class XboxRemap : MonoBehaviour
     KeyCode button;
     int index;
     public string keyName;
-    bool remaping;
+    bool remapping;
     public Text textUI;
     private void Start()
     {
@@ -20,9 +20,14 @@ public class XboxRemap : MonoBehaviour
 
     public void Update()
     {
-
-        if (remaping)
+        if (remapping)
         {
+             textUI.text = "";
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                textUI.text = keyName;
+                return;
+            }
             if (Input.anyKey)
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
@@ -30,7 +35,7 @@ public class XboxRemap : MonoBehaviour
                     if (Input.GetKeyDown(vKey))
                     {
                         SetButton(vKey);
-                        remaping = false;
+                        remapping = false;
                     }
                 }
             }
@@ -64,7 +69,8 @@ public class XboxRemap : MonoBehaviour
             keyName = passed.ToString();
             xboxCodes.Add(keyName);
             GetComponentInChildren<Text>().text = keyName;
-        }        
+        }
+        InputManager.SaveKeybinds();
     }
     public IEnumerator timerRemaping()
     {
@@ -72,7 +78,7 @@ public class XboxRemap : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        remaping = true;
+        remapping = true;
     }
 }
 
