@@ -202,9 +202,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchControllerType(Dropdown change)
     {
-        Debug.Log("value: " + change.value);
         InputManager.inputMode = (InputManager.InputMode)change.value;
-        Debug.Log("after: " + InputManager.inputMode);
     }
     public void SwitchPanels(int panelToActivate)
     {
