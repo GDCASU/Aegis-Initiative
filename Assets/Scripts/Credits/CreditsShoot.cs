@@ -83,7 +83,7 @@ public class CreditsShoot : MonoBehaviour
 
     private void ShootLaserPrefabs(Vector3 position)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(shootSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(shootSFX, transform.position, SoundManager.VolumeType.sfx);
         GameObject laser = Instantiate(LaserParent, LaserSpawn1.position, LaserSpawn1.rotation);
         laser.GetComponent<CreditsLaser>().Direction = position;
         laser = Instantiate(LaserParent, LaserSpawn2.position, LaserSpawn2.rotation);

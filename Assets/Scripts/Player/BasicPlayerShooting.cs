@@ -56,7 +56,7 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (timerOne < 0)
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
+                    SoundManager.singleton.PlayOneShot(Shoot, transform.position, SoundManager.VolumeType.sfx);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     if (closestEnemy != null)
@@ -68,7 +68,7 @@ public class BasicPlayerShooting : MonoBehaviour
                 }
                 if (timerTwo < 0)
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
+                    SoundManager.singleton.PlayOneShot(Shoot, transform.position, SoundManager.VolumeType.sfx);
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
                     if (closestEnemy != null)
@@ -83,7 +83,7 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (timerOne < 0)
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(Shoot, transform.position, GameManager.singleton.sfxVolume);
+                    SoundManager.singleton.PlayOneShot(Shoot, transform.position, SoundManager.VolumeType.sfx);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     if (closestEnemy != null)

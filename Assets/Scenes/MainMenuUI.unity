@@ -2766,6 +2766,26 @@ PrefabInstance:
       propertyPath: Banks.Array.data[0]
       value: Main Theme
       objectReference: {fileID: 0}
+    - target: {fileID: 1078879281001968218, guid: aeca5824c9773ae418d1dc0194843d72,
+        type: 3}
+      propertyPath: Banks.Array.data[1]
+      value: Combat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078879281001968218, guid: aeca5824c9773ae418d1dc0194843d72,
+        type: 3}
+      propertyPath: PreloadSamples
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078879281001968218, guid: aeca5824c9773ae418d1dc0194843d72,
+        type: 3}
+      propertyPath: Banks.Array.data[2]
+      value: Combat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078879281001968218, guid: aeca5824c9773ae418d1dc0194843d72,
+        type: 3}
+      propertyPath: Banks.Array.data[3]
+      value: Combat
+      objectReference: {fileID: 0}
     - target: {fileID: 1078879281001968219, guid: aeca5824c9773ae418d1dc0194843d72,
         type: 3}
       propertyPath: Event
@@ -2799,6 +2819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MenuUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652731944215430, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3495652732289581596, guid: e12d8421ae93c2143bc7a246a6f340e2,
         type: 3}
@@ -2923,6 +2948,47 @@ PrefabInstance:
     - target: {fileID: 3495652732345808192, guid: e12d8421ae93c2143bc7a246a6f340e2,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SoundManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: -5211308963051666582, guid: aeca5824c9773ae418d1dc0194843d72,
+        type: 3}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495652732449222502, guid: e12d8421ae93c2143bc7a246a6f340e2,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3495652732781441892, guid: e12d8421ae93c2143bc7a246a6f340e2,
@@ -4021,8 +4087,6 @@ MonoBehaviour:
   HUD: {fileID: 0}
   reticle: {fileID: 0}
   copilotUI: {fileID: 0}
-  musicSlider: {fileID: 465720107}
-  sfxSlider: {fileID: 442318546}
 --- !u!1 &991271743
 GameObject:
   m_ObjectHideFlags: 0
@@ -8722,8 +8786,6 @@ MonoBehaviour:
   passive: {fileID: 0}
   activeCopilot: {fileID: 0}
   passiveCopilot: {fileID: 0}
-  musicVolume: 1
-  sfxVolume: 1
   levelSelected: 0
 --- !u!1 &2024775196
 GameObject:

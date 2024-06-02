@@ -33,7 +33,7 @@ public class EnemyGrunt : EnemyHealth
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            FMODUnity.RuntimeManager.PlayOneShot(Hit, transform.position, GameManager.singleton.sfxVolume);
+            SoundManager.singleton.PlayOneShot(Hit, transform.position, SoundManager.VolumeType.sfx);
         }
     }
     private void FixedUpdate()

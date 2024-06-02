@@ -12,6 +12,8 @@ using System.Runtime.Serialization;
 
 public class PauseMenu : MonoBehaviour
 {
+    private string Select = "event:/SFX/UI/Select";
+
     public List<GameObject> panels;
     public List<string> keyboardCodes;
     public List<string> xboxCodes;
@@ -24,8 +26,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject HUD;
     public GameObject reticle;
     public GameObject copilotUI;
-    public Slider musicSlider;
-    public Slider sfxSlider;
+    public GameObject settingsUiObject;
     private bool isPaused = false;
     #endregion
 
@@ -101,28 +102,13 @@ public class PauseMenu : MonoBehaviour
         //var inputDropdown = controlSettings.transform.Find("InputDropdown");
         //inputDropdown.GetComponent<Dropdown>().value = pOptions.controlType;
 
-        //// music
-        //var musicSlider = generalSettings.transform.Find("MusicSlider");
-        //musicSlider.GetComponent<Slider>().value = pOptions.musicVolume;
-        //SetMusicVolume(pOptions.musicVolume);
+        // music
+        var musicSlider = settingsUiObject.transform.Find("MusicSlider");
+        musicSlider.GetComponent<Slider>().value = SoundManager.singleton.currentMusicVolume;
 
-        //// sfx
-        //var sfxSlider = generalSettings.transform.Find("SFXSlider");
-        //sfxSlider.GetComponent<Slider>().value = pOptions.sfxVolume;
-        //SetEffectsVolume(pOptions.sfxVolume);
-        if(musicSlider != null)
-        {
-            musicSlider.value = GameManager.singleton.musicVolume;
-            musicSlider.onValueChanged.AddListener((v) => {
-                GameManager.singleton.musicVolume = v;
-                FMODStartMusic.music.setVolume(v);
-            });
-            sfxSlider.value = GameManager.singleton.sfxVolume;
-            sfxSlider.onValueChanged.AddListener((v) => {
-                GameManager.singleton.sfxVolume = v;
-            });
-        }
-       
+        // sfx
+        var sfxSlider = settingsUiObject.transform.Find("SFXSlider");
+        sfxSlider.GetComponent<Slider>().value = SoundManager.singleton.currentSfxVolume;
     }
     private void Update()
     {
@@ -206,6 +192,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void SwitchPanels(int panelToActivate)
     {
+        SoundManager.singleton.PlayOneShot(Select, transform.position, SoundManager.VolumeType.sfx);
         panels[currentPanel].SetActive(false);
         panels[panelToActivate].SetActive(true);
         currentPanel = panelToActivate;
@@ -227,7 +214,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void UpdateMusicVolume(float volume)
     {
-        GameManager.singleton.musicVolume = volume;
+        SoundManager.singleton.SetMusicVolume(volume);
     }
     public void UpdateHealt(int value)
     {

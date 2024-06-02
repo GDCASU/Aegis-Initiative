@@ -18,17 +18,13 @@ namespace FMODUnity
         public string Event = "";
         public static FMOD.Studio.EventInstance music;
 
-        private float originalVolume;
-        private float currentVolume;
-
         void Start()
         {
             music = RuntimeManager.CreateInstance(Event);
             music.start();
             music.release();
 
-            music.getVolume(out originalVolume);
-            music.setVolume(GameManager.singleton.musicVolume);
+            music.setVolume(SoundManager.singleton.currentMusicVolume);
         }
         void OnDestroy()
         {

@@ -102,7 +102,7 @@ public class PlayerInfo : MonoBehaviour
         }
         if (health < 10)
         {
-            FMODUnity.RuntimeManager.PlayOneShot(LowHealthSound, transform.position, GameManager.singleton.sfxVolume);
+            SoundManager.singleton.PlayOneShot(LowHealthSound, transform.position, SoundManager.VolumeType.sfx);
         }
         RemarkManager.singleton.TakingDamage();
     }
@@ -115,7 +115,7 @@ public class PlayerInfo : MonoBehaviour
         if (health + heal > maxHealth) health = maxHealth;
         else health += heal;
         if (healEvent != null) healEvent();
-        FMODUnity.RuntimeManager.PlayOneShot(HealSound, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(HealSound, transform.position, SoundManager.VolumeType.sfx);
     }
 
     /// <summary>
