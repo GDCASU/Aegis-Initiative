@@ -7,8 +7,6 @@ using FMODUnity;
 
 public class MenuUI : MonoBehaviour
 {
-    private string Select = "event:/SFX/UI/Select";
-
     [Header("General Menu")]
     #region General Menu
     public string sceneToLoad;
@@ -34,14 +32,15 @@ public class MenuUI : MonoBehaviour
     {
         //ProfileManager.instance.TestSaveProfiles();
         LoadSaves();
-        musicSlider.value = GameManager.singleton.musicVolume;
-        musicSlider.onValueChanged.AddListener((v) => {
-            GameManager.singleton.musicVolume = v;
-            FMODStartMusic.music.setVolume(v);
+        musicSlider.value = SoundManager.singleton.currentMusicVolume;
+        musicSlider.onValueChanged.AddListener((v) =>
+        {
+            SoundManager.singleton.SetMusicVolume(v);
         });
-        sfxSlider.value = GameManager.singleton.sfxVolume;
-        sfxSlider.onValueChanged.AddListener((v) => {
-            GameManager.singleton.sfxVolume = v;
+        sfxSlider.value = SoundManager.singleton.currentSfxVolume;
+        sfxSlider.onValueChanged.AddListener((v) =>
+        {
+            SoundManager.singleton.SetSFxVolume(v);
         });
         FMODUnity.RuntimeManager.LoadBank("UI");
     }
@@ -72,6 +71,7 @@ public class MenuUI : MonoBehaviour
     }
     public void SwitchPanels(int panelToActivate)
     {
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         panels[currentPanel].SetActive(false);
         panels[panelToActivate].SetActive(true);
         currentPanel = panelToActivate;
@@ -91,12 +91,11 @@ public class MenuUI : MonoBehaviour
     }
     public void Settings()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
         SwitchPanels(3);  //3 is the Settings panel
     }
     public void ExitGame()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         Application.Quit();
     }
     public void LoadSaves()
@@ -110,7 +109,6 @@ public class MenuUI : MonoBehaviour
     }
     public void SelecSave()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
         SwitchPanels(2);
 
         //Updates each save button in case they become unsynced to their associated profiles
@@ -133,10 +131,11 @@ public class MenuUI : MonoBehaviour
         {
             ProfileManager.instance.CurrentProfile.profileID = ProfileManager.instance.currentProfileIndex;
             ProfileManager.instance.CurrentProfile.name = nameInputField.text;
-            ProfileManager.instance.SaveCurrentProfile();    
+            ProfileManager.instance.SaveCurrentProfile();
+
+            SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
 
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
-
         }    
     }
     
@@ -152,7 +151,7 @@ public class MenuUI : MonoBehaviour
     }
     public void Credits()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(Select, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         SceneManager.LoadScene(creditsScene, LoadSceneMode.Single);
     }
 

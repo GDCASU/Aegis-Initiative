@@ -20,7 +20,7 @@ public class SpaceSlugEnd : MonoBehaviour
             FMODStartMusic.music = RuntimeManager.CreateInstance(BossMusic);
             FMODStartMusic.music.start();
             FMODStartMusic.music.release();
-            FMODStartMusic.music.setVolume(GameManager.singleton.musicVolume);
+            FMODStartMusic.music.setVolume(SoundManager.singleton.currentMusicVolume);
 
             playerCart.m_Path = bossTrack;
             slug.playerPath = bossTrack;

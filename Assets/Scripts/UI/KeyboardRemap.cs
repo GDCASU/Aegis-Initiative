@@ -13,22 +13,22 @@ public class KeyboardRemap : MonoBehaviour
     bool remapping;
     public Text textUI;
 
-
     private void Start()
     {
         InitiateButton();
     }
+
+    private void OnDisable()
+    {
+        textUI.text = keyName;
+        SetRemapping(false);
+    }
+
     public void Update()
     {
         if (remapping)
         {
             textUI.text = "";
-            if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                textUI.text = keyName;
-                SetRemapping(false);
-                return;
-            }
             if (Input.anyKey)
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))

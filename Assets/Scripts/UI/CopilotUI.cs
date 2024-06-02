@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class CopilotUI : MonoBehaviour
 {
-    private string selectSFX = "event:/SFX/UI/Select";
     public static CopilotUI singleton;
 
     private CopilotInfo selected;
@@ -103,7 +102,7 @@ public class CopilotUI : MonoBehaviour
     /// <param name="copilotPrefab">The Prefab of the selected copilot</param>
     public void CharacterSelected(GameObject copilotPrefab)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         selectedPrefab = copilotPrefab;
         selected = copilotPrefab.GetComponent<CopilotInfo>();
         selectionName.text = selected.character.name;
@@ -119,14 +118,14 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void SelectPassive()
     {
-        if (GameManager.singleton.active!=null &&
-            selected.copilotActive.abilityName == GameManager.singleton.active.abilityName)
+        if (GameManager.singleton.active!=null && selected.copilotActive.abilityName == GameManager.singleton.active.abilityName)
+        {
             ClearSelectedCopilotAbilities();
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        }
         passive.text = selected.copilotPassive.abilityName;
         passiveIcon.sprite = selected.copilotPassive.icon;
         GameManager.singleton.ChangePassive(selected.copilotPassive.GetType(),selected.copilotPassive);
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         passiveSelected = true;
         if (activeSelected && passiveSelected) start.interactable = true;
 
@@ -142,7 +141,7 @@ public class CopilotUI : MonoBehaviour
         active.text = selected.copilotActive.abilityName;
         activeIcon.sprite = selected.copilotActive.icon;
         GameManager.singleton.ChangeActive(selected.copilotActive.GetType(), selected.copilotActive);
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         activeSelected = true;
         if (activeSelected && passiveSelected) start.interactable = true;
     }
@@ -151,7 +150,7 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         if (ProfileManager.instance.CurrentProfile.currentStage < 4) LevelChanger.singleton.FadeOutToLevel(GameManager.singleton.levels[ProfileManager.instance.CurrentProfile.currentStage]);
         else LevelChanger.singleton.FadeOutToLevel(GameManager.singleton.levels[GameManager.singleton.levelSelected]);
     }
@@ -160,7 +159,7 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void GoBackToHubPrompt()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         goBackPrompt.SetActive(true);
     }
     /// <summary>
@@ -168,7 +167,7 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void GoBackToHubPromptConfirm()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         selectionPanel.SetActive(false);
         selectionName.text = "";
         activeName.text = "";
@@ -189,7 +188,7 @@ public class CopilotUI : MonoBehaviour
     /// </summary>
     public void GoBackToHubPromptCancel() 
     {
-        FMODUnity.RuntimeManager.PlayOneShot(selectSFX, transform.position, GameManager.singleton.sfxVolume);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         goBackPrompt.SetActive(false);
     }
     /// <summary>

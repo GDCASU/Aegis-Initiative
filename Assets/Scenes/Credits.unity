@@ -564,12 +564,17 @@ PrefabInstance:
     - target: {fileID: 1078879281001968218, guid: aeca5824c9773ae418d1dc0194843d72,
         type: 3}
       propertyPath: Banks.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1078879281001968218, guid: aeca5824c9773ae418d1dc0194843d72,
         type: 3}
       propertyPath: Banks.Array.data[0]
       value: Credits Theme
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078879281001968218, guid: aeca5824c9773ae418d1dc0194843d72,
+        type: 3}
+      propertyPath: Banks.Array.data[1]
+      value: Combat
       objectReference: {fileID: 0}
     - target: {fileID: 1078879281001968219, guid: aeca5824c9773ae418d1dc0194843d72,
         type: 3}

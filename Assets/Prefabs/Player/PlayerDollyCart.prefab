@@ -15393,8 +15393,7 @@ MonoBehaviour:
   HUD: {fileID: 7149483638127530848}
   reticle: {fileID: 4174455376922858437}
   copilotUI: {fileID: 3829927121092661816}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  settingsUiObject: {fileID: 4460718835612581514}
 --- !u!1 &8301946541191758029
 GameObject:
   m_ObjectHideFlags: 0
