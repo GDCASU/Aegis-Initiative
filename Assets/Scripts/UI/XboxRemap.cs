@@ -31,7 +31,7 @@ public class XboxRemap : MonoBehaviour
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKeyDown(vKey))
+                    if (Input.GetKeyDown(vKey) && !DoesKeybindExist(vKey))
                     {
                         SetButton(vKey);
                         remapping = false;
@@ -50,6 +50,13 @@ public class XboxRemap : MonoBehaviour
     public void Remaping()
     {
         StartCoroutine(timerRemaping());
+    }
+    private bool DoesKeybindExist(KeyCode key)
+    {
+        var allBinds = InputManager.allKeybinds[InputManager.InputMode.controller];
+        bool isCurrKey = allBinds[action] == key;
+        bool isBoundToOtherAction = allBinds.ContainsValue(key);
+        return isBoundToOtherAction && !isCurrKey;
     }
     public void SetButton(KeyCode passed)
     {
