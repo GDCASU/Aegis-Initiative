@@ -35,7 +35,7 @@ public class PlayerInfo : MonoBehaviour
 {
     public static PlayerInfo singleton;
 
-    public int maxHealth = 60;  // health Player should not surpass
+    public int maxHealth = 50;  // health Player should not surpass
     public int health = 50;  // current health of Player
     public bool alive = true;
 
@@ -82,7 +82,6 @@ public class PlayerInfo : MonoBehaviour
     }
 
     private void Start()=>pm.UpdateHealt(health);
-    
 
     #region Health Functions
     /// <summary>
@@ -92,7 +91,7 @@ public class PlayerInfo : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= Mathf.RoundToInt((float)damage * damageMultiplier * (1f - defense));
-        pm.UpdateHealt(health);
+        UpdateHealth(health);
         if (damageEvent != null) damageEvent();
         SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Hit], transform.position, SoundManager.VolumeType.sfx);
 
@@ -115,7 +114,13 @@ public class PlayerInfo : MonoBehaviour
         if (health + heal > maxHealth) health = maxHealth;
         else health += heal;
         if (healEvent != null) healEvent();
+        UpdateHealth(health);
         SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Heal], transform.position, SoundManager.VolumeType.sfx);
+    }
+
+    private void UpdateHealth(int newHealth)
+    {
+        pm.UpdateHealt(newHealth);
     }
 
     /// <summary>
