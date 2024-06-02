@@ -6,6 +6,24 @@ using FMODUnity;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager singleton;
+
+    public enum SFX
+    {
+        Select,
+        Shoot,
+        Hit,
+        Heal,
+        LowHealth,
+    }
+    public static Dictionary<SFX, string> sfxMap = new Dictionary<SFX, string>
+    {
+        {SFX.Select,  "event:/SFX/UI/Select"},
+        {SFX.Shoot, "event:/SFX/Combat/Shoot"},
+        {SFX.Hit, "event:/SFX/Combat/Hit"},
+        {SFX.Heal, "event:/SFX/UI/Heal"},
+        {SFX.LowHealth, "event:/SFX/UI/Low Health"}
+    };
+
     private static string volumeSettingsPath = "/volume.data";
     public enum VolumeType
     {
@@ -47,10 +65,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayOneShot(string path, Vector3 position, VolumeType type)
     {
-        Debug.Log("path: " + path);
-        Debug.Log("position: " + position);
-        Debug.Log("type: " + type);
-
         FMODUnity.RuntimeManager.PlayOneShot(path, position, volumeMap[type]);
     }
 

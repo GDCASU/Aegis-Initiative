@@ -60,6 +60,7 @@ public class SaveButtonUI : MonoBehaviour
         }
         else
         {
+            SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
             if (ProfileManager.instance.CurrentProfile.currentStage < 4) SceneManager.LoadScene("CopilotUI");
             else SceneManager.LoadScene("LevelSelect");
         }

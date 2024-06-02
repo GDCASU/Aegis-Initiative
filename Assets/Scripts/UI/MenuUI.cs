@@ -7,8 +7,6 @@ using FMODUnity;
 
 public class MenuUI : MonoBehaviour
 {
-    private string Select = "event:/SFX/UI/Select";
-
     [Header("General Menu")]
     #region General Menu
     public string sceneToLoad;
@@ -73,7 +71,7 @@ public class MenuUI : MonoBehaviour
     }
     public void SwitchPanels(int panelToActivate)
     {
-        SoundManager.singleton.PlayOneShot(Select, transform.position, SoundManager.VolumeType.sfx);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         panels[currentPanel].SetActive(false);
         panels[panelToActivate].SetActive(true);
         currentPanel = panelToActivate;
@@ -97,6 +95,7 @@ public class MenuUI : MonoBehaviour
     }
     public void ExitGame()
     {
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         Application.Quit();
     }
     public void LoadSaves()
@@ -132,10 +131,11 @@ public class MenuUI : MonoBehaviour
         {
             ProfileManager.instance.CurrentProfile.profileID = ProfileManager.instance.currentProfileIndex;
             ProfileManager.instance.CurrentProfile.name = nameInputField.text;
-            ProfileManager.instance.SaveCurrentProfile();    
+            ProfileManager.instance.SaveCurrentProfile();
+
+            SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
 
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
-
         }    
     }
     
@@ -151,7 +151,7 @@ public class MenuUI : MonoBehaviour
     }
     public void Credits()
     {
-        SoundManager.singleton.PlayOneShot(Select, transform.position, SoundManager.VolumeType.sfx);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
         SceneManager.LoadScene(creditsScene, LoadSceneMode.Single);
     }
 

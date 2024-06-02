@@ -12,8 +12,6 @@ using System.Runtime.Serialization;
 
 public class PauseMenu : MonoBehaviour
 {
-    private string Select = "event:/SFX/UI/Select";
-
     public List<GameObject> panels;
     public List<string> keyboardCodes;
     public List<string> xboxCodes;
@@ -102,13 +100,16 @@ public class PauseMenu : MonoBehaviour
         //var inputDropdown = controlSettings.transform.Find("InputDropdown");
         //inputDropdown.GetComponent<Dropdown>().value = pOptions.controlType;
 
-        // music
-        var musicSlider = settingsUiObject.transform.Find("MusicSlider");
-        musicSlider.GetComponent<Slider>().value = SoundManager.singleton.currentMusicVolume;
+        if(settingsUiObject != null)
+        {
+            // music
+            var musicSlider = settingsUiObject.transform.Find("MusicSlider");
+            musicSlider.GetComponent<Slider>().value = SoundManager.singleton.currentMusicVolume;
 
-        // sfx
-        var sfxSlider = settingsUiObject.transform.Find("SFXSlider");
-        sfxSlider.GetComponent<Slider>().value = SoundManager.singleton.currentSfxVolume;
+            // sfx
+            var sfxSlider = settingsUiObject.transform.Find("SFXSlider");
+            sfxSlider.GetComponent<Slider>().value = SoundManager.singleton.currentSfxVolume;
+        }
     }
     private void Update()
     {
@@ -144,6 +145,7 @@ public class PauseMenu : MonoBehaviour
         currentPanel = 0;
         //print(panels[currentPanel].transform.GetChild(1).transform.GetChild(0).gameObject);
         //EventSystem.current.SetSelectedGameObject(panels[currentPanel].transform.GetChild(1).transform.GetChild(0).gameObject);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
     }
     public void ResumeGame()
     {
@@ -157,6 +159,7 @@ public class PauseMenu : MonoBehaviour
         HUD.SetActive(true);
         reticle.SetActive(true);
         copilotUI.SetActive(true);
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
     }
 
     public void ControlSettings()
@@ -192,7 +195,11 @@ public class PauseMenu : MonoBehaviour
     }
     public void SwitchPanels(int panelToActivate)
     {
-        SoundManager.singleton.PlayOneShot(Select, transform.position, SoundManager.VolumeType.sfx);
+        // don't play menu sound when death screen appears
+        if(panelToActivate != 4)
+        {
+            SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
+        }
         panels[currentPanel].SetActive(false);
         panels[panelToActivate].SetActive(true);
         currentPanel = panelToActivate;

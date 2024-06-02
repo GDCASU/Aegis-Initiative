@@ -26,7 +26,6 @@ public class BasicPlayerShooting : MonoBehaviour
     public Transform spawnL;
     public bool alternate;
 
-    private string Shoot = "event:/SFX/Combat/Shoot";
     private float timerOne;
     private float timerTwo;
     public GameObject closestEnemy;
@@ -56,7 +55,7 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (timerOne < 0)
                 {
-                    SoundManager.singleton.PlayOneShot(Shoot, transform.position, SoundManager.VolumeType.sfx);
+                    SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Shoot], transform.position, SoundManager.VolumeType.sfx);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     if (closestEnemy != null)
@@ -68,7 +67,7 @@ public class BasicPlayerShooting : MonoBehaviour
                 }
                 if (timerTwo < 0)
                 {
-                    SoundManager.singleton.PlayOneShot(Shoot, transform.position, SoundManager.VolumeType.sfx);
+                    SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Shoot], transform.position, SoundManager.VolumeType.sfx);
                     bullet = Instantiate(bulletPrefab, spawnL.position, spawnL.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnL.forward.normalized * speed;
                     if (closestEnemy != null)
@@ -83,7 +82,7 @@ public class BasicPlayerShooting : MonoBehaviour
             {
                 if (timerOne < 0)
                 {
-                    SoundManager.singleton.PlayOneShot(Shoot, transform.position, SoundManager.VolumeType.sfx);
+                    SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Shoot], transform.position, SoundManager.VolumeType.sfx);
                     bullet = Instantiate(bulletPrefab, spawnR.position, spawnR.rotation);
                     bullet.GetComponent<Rigidbody>().velocity = spawnR.forward.normalized * speed;
                     if (closestEnemy != null)

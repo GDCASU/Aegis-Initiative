@@ -17,17 +17,16 @@ public class XboxRemap : MonoBehaviour
     {
         InitiateButton();
     }
-
+    private void OnDisable()
+    {
+        textUI.text = keyName;
+        remapping = false;
+    }
     public void Update()
     {
         if (remapping)
         {
-             textUI.text = "";
-            if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                textUI.text = keyName;
-                return;
-            }
+            textUI.text = "";
             if (Input.anyKey)
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
