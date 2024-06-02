@@ -29,6 +29,10 @@ namespace PlayerInput {
         UI_Submit,
         UI_Cancel,
         Pause,
+        Up,
+        Down,
+        Left,
+        Right,
         None,
     }; 
 
@@ -61,6 +65,10 @@ public class InputManager : MonoBehaviour {
             {PlayerButton.UI_Submit, KeyCode.KeypadEnter},
             {PlayerButton.UI_Cancel, KeyCode.Escape},
             {PlayerButton.Pause, KeyCode.Escape},
+            {PlayerButton.Up, KeyCode.W},
+            {PlayerButton.Down, KeyCode.S},
+            {PlayerButton.Left, KeyCode.A},
+            {PlayerButton.Right, KeyCode.D},
     };
 
     public static Dictionary<PlayerButton, KeyCode> defaultControllerBinds = new Dictionary<PlayerButton, KeyCode> {
@@ -69,6 +77,10 @@ public class InputManager : MonoBehaviour {
             {PlayerButton.UI_Submit, KeyCode.JoystickButton0},
             {PlayerButton.UI_Cancel, KeyCode.JoystickButton1},
             {PlayerButton.Pause, KeyCode.JoystickButton7},
+            {PlayerButton.Up, KeyCode.W},
+            {PlayerButton.Down, KeyCode.S},
+            {PlayerButton.Left, KeyCode.A},
+            {PlayerButton.Right, KeyCode.D},
     };
 
     public static Dictionary<PlayerButton, KeyCode> keyboardBinds = defaultKeyboardBinds;
@@ -80,10 +92,10 @@ public class InputManager : MonoBehaviour {
     };
 
     public static Dictionary<KeyCode, string> xboxButtonToNameMap = new Dictionary<KeyCode, string> {
-        {KeyCode.JoystickButton0, "A"},
-        {KeyCode.JoystickButton1, "B"},
-        {KeyCode.JoystickButton2, "X"},
-        {KeyCode.JoystickButton3, "Y"},
+        {KeyCode.JoystickButton0, "A Button"},
+        {KeyCode.JoystickButton1, "B Button"},
+        {KeyCode.JoystickButton2, "X Button"},
+        {KeyCode.JoystickButton3, "Y Button"},
         {KeyCode.JoystickButton4,"Left Bumper"},
         {KeyCode.JoystickButton5, "Right Bumper"},
         {KeyCode.JoystickButton6, "Back"},
@@ -137,6 +149,12 @@ public class InputManager : MonoBehaviour {
         var controller = joyAxis.ContainsKey(axis) ? Input.GetAxis(joyAxis[axis]) : 0;
         
         return (inputMode == InputMode.both && controller != 0) || inputMode == InputMode.controller ? controller : mouse;
+    }
+
+    public static void SetKeybind(InputMode mode, PlayerButton action, KeyCode newKey)
+    {
+        allKeybinds[mode][action] = newKey;
+        SaveKeybinds();
     }
 
     public static void SaveKeybinds ()

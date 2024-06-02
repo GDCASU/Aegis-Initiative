@@ -31,7 +31,7 @@ public class XboxRemap : MonoBehaviour
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKeyDown(vKey) && !DoesKeybindExist(vKey))
+                    if (Input.GetKeyDown(vKey) && CanSetKeybind(vKey))
                     {
                         SetButton(vKey);
                         remapping = false;
@@ -44,11 +44,11 @@ public class XboxRemap : MonoBehaviour
     {   
         button = InputManager.allKeybinds[InputManager.InputMode.controller][action];
         SetKeyName(button);
-        textUI.text = keyName;
     }
 
     private void SetKeyName(KeyCode newKey)
     {
+        // use human readable keyname if it exists
         if (InputManager.xboxButtonToNameMap.ContainsKey(newKey))
         {
             keyName = InputManager.xboxButtonToNameMap[newKey];
@@ -57,30 +57,28 @@ public class XboxRemap : MonoBehaviour
         {
             keyName = newKey.ToString();
         }
+        textUI.text = keyName;
     }
     public void Remaping()
     {
         StartCoroutine(timerRemaping());
     }
-    private bool DoesKeybindExist(KeyCode key)
+    private bool CanSetKeybind(KeyCode newKey)
     {
         var allBinds = InputManager.allKeybinds[InputManager.InputMode.controller];
-        bool isCurrKey = allBinds[action] == key;
-        bool isBoundToOtherAction = allBinds.ContainsValue(key);
-        return isBoundToOtherAction && !isCurrKey;
+        bool isCurrKey = allBinds[action] == newKey;
+        bool isBoundToOtherAction = allBinds.ContainsValue(newKey);
+        bool result = !isBoundToOtherAction || isCurrKey;
+
+        return result;
     }
     public void SetButton(KeyCode passed)
     {
-        List<string> xboxCodes = PauseMenu.singleton.xboxCodes;
         if (InputManager.xboxButtonToNameMap.ContainsKey(passed))
         {
-            InputManager.allKeybinds[InputManager.InputMode.controller][action] = passed;
-            xboxCodes.Remove(keyName);
+            InputManager.SetKeybind(InputManager.InputMode.controller, action, passed);
             SetKeyName(passed);
-            xboxCodes.Add(keyName);
-            GetComponentInChildren<Text>().text = keyName;
         }
-        InputManager.SaveKeybinds();
     }
     public IEnumerator timerRemaping()
     {

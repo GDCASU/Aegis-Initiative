@@ -33,7 +33,7 @@ public class KeyboardRemap : MonoBehaviour
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKeyDown(vKey) && !DoesKeybindExist(vKey))
+                    if (Input.GetKeyDown(vKey) && CanSetKeybind(vKey))
                     {
                         SetButton(vKey);
                         SetRemapping(false);
@@ -51,11 +51,11 @@ public class KeyboardRemap : MonoBehaviour
     {
         button = InputManager.allKeybinds[InputManager.InputMode.keyboard][action];
         SetKeyName(button);
-        textUI.text = keyName;
     }
 
     private void SetKeyName(KeyCode newKey)
     {
+        // use human readable keyname if it exists
         if (InputManager.mouseButtonToNameMap.ContainsKey(newKey))
         {
             keyName = InputManager.mouseButtonToNameMap[newKey];
@@ -64,25 +64,22 @@ public class KeyboardRemap : MonoBehaviour
         {
             keyName = newKey.ToString();
         }
+        textUI.text = keyName;
     }
 
-    private bool DoesKeybindExist(KeyCode key)
+    private bool CanSetKeybind(KeyCode newKey)
     {
         var allBinds = InputManager.allKeybinds[InputManager.InputMode.keyboard];
-        bool isCurrKey = allBinds[action] == key;
-        bool isBoundToOtherAction = allBinds.ContainsValue(key);
-        return isBoundToOtherAction && !isCurrKey;
+        bool isCurrKey = allBinds[action] == newKey;
+        bool isBoundToOtherAction = allBinds.ContainsValue(newKey);
+        bool result = !isBoundToOtherAction || isCurrKey;
+
+        return result;
     }
     public void SetButton(KeyCode passed)
     {
-        List<string> keyboardCodes = PauseMenu.singleton.keyboardCodes;
-
-        InputManager.allKeybinds[InputManager.InputMode.keyboard][action] = passed;
-        keyboardCodes.Remove(keyName);
+        InputManager.SetKeybind(InputManager.InputMode.keyboard, action, passed);
         SetKeyName(passed);
-        keyboardCodes.Add(keyName);
-        GetComponentInChildren<Text>().text = keyName;
-        InputManager.SaveKeybinds();
     }
 
 }
