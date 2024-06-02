@@ -79,7 +79,7 @@ public class InputManager : MonoBehaviour {
             {InputMode.keyboard, keyboardBinds},
     };
 
-    public static Dictionary<KeyCode, string> playerXboxButtons = new Dictionary<KeyCode, string> {
+    public static Dictionary<KeyCode, string> xboxButtonToNameMap = new Dictionary<KeyCode, string> {
         {KeyCode.JoystickButton0, "A"},
         {KeyCode.JoystickButton1, "B"},
         {KeyCode.JoystickButton2, "X"},
@@ -90,6 +90,12 @@ public class InputManager : MonoBehaviour {
         {KeyCode.JoystickButton7, "Start"},
         {KeyCode.JoystickButton8, "L3"},
         {KeyCode.JoystickButton9, "R3"},
+    };
+
+    public static Dictionary<KeyCode, string> mouseButtonToNameMap = new Dictionary<KeyCode, string> {
+        {KeyCode.Mouse0, "Left Click"},
+        {KeyCode.Mouse1, "Right Click"},
+
     };
     public static Dictionary<PlayerButton, PlayerAction> playerButtons = new Dictionary<PlayerButton, PlayerAction> {};
     public static Dictionary<PlayerAxis, string > joyAxis = new Dictionary <PlayerAxis, string> {
