@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfMechanic: 0
   abilityName: Regrowth
-  description: Spawn an orb that heals you
+  description: Spawn an orb that heals you slightly. Health must be 15% or below.
   icon: {fileID: 0}
   HealingBubblePrefab: {fileID: 7820509114651452771, guid: 0c4c09eb4c790a44ebc4ef3a0875c533,
     type: 3}

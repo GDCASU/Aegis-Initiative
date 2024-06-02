@@ -9,7 +9,7 @@ public class MushroomFriendActive : CopilotActiveMechanic
     private GameObject healingBubble;   //Spawned bubble
     public int heal; //amount to heal player
     public float healTime; //time to restore health
-    public float minHealthPercentage = 0.25f;   //Percernt of max health needed to activate bubble
+    public float minHealthPercentage = 0.15f;   //Percernt of max health needed to activate bubble
     public bool healPlayer; //check that Player is allowed to heal
 
 
