@@ -19,6 +19,9 @@ public class HealingBubble : MonoBehaviour
     private bool healPlayer;
     private float healTime;
 
+    [SerializeField]
+    private int healAmount = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +55,7 @@ public class HealingBubble : MonoBehaviour
         //stop spore particle system and reset healing bubble
         if (sporeTimer < 0)
         {
-            PlayerInfo.singleton.health = PlayerInfo.singleton.maxHealth;
+            PlayerInfo.singleton.Heal(healAmount);
             spreParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             healPlayer = false;
             sporeTimer = 0;
