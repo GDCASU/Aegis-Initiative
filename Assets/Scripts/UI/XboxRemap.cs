@@ -71,7 +71,7 @@ public class XboxRemap : MonoBehaviour
     }
     public void SetButton(KeyCode passed)
     {
-        List<string> xboxCodes = GameObject.Find("Player 1 Camera").GetComponentInChildren<PauseMenu>().xboxCodes;
+        List<string> xboxCodes = PauseMenu.singleton.xboxCodes;
         if (InputManager.xboxButtonToNameMap.ContainsKey(passed))
         {
             InputManager.allKeybinds[InputManager.InputMode.controller][action] = passed;
