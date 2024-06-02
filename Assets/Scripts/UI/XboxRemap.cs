@@ -31,7 +31,7 @@ public class XboxRemap : MonoBehaviour
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKeyDown(vKey))
+                    if (Input.GetKeyDown(vKey) && !DoesKeybindExist(vKey))
                     {
                         SetButton(vKey);
                         remapping = false;
@@ -43,29 +43,40 @@ public class XboxRemap : MonoBehaviour
     public void InitiateButton()
     {   
         button = InputManager.allKeybinds[InputManager.InputMode.controller][action];
-        keyName = InputManager.playerXboxButtons[button];
-        keyName = button.ToString();
+        SetKeyName(button);
         textUI.text = keyName;
+    }
+
+    private void SetKeyName(KeyCode newKey)
+    {
+        if (InputManager.xboxButtonToNameMap.ContainsKey(newKey))
+        {
+            keyName = InputManager.xboxButtonToNameMap[newKey];
+        }
+        else
+        {
+            keyName = newKey.ToString();
+        }
     }
     public void Remaping()
     {
         StartCoroutine(timerRemaping());
     }
+    private bool DoesKeybindExist(KeyCode key)
+    {
+        var allBinds = InputManager.allKeybinds[InputManager.InputMode.controller];
+        bool isCurrKey = allBinds[action] == key;
+        bool isBoundToOtherAction = allBinds.ContainsValue(key);
+        return isBoundToOtherAction && !isCurrKey;
+    }
     public void SetButton(KeyCode passed)
     {
         List<string> xboxCodes = GameObject.Find("Player 1 Camera").GetComponentInChildren<PauseMenu>().xboxCodes;
-        foreach (string xKey in xboxCodes)
-        {
-            if (passed.ToString() == xKey)
-            {
-                return;
-            }
-        }
-        if (InputManager.playerXboxButtons.ContainsKey(passed))
+        if (InputManager.xboxButtonToNameMap.ContainsKey(passed))
         {
             InputManager.allKeybinds[InputManager.InputMode.controller][action] = passed;
             xboxCodes.Remove(keyName);
-            keyName = passed.ToString();
+            SetKeyName(passed);
             xboxCodes.Add(keyName);
             GetComponentInChildren<Text>().text = keyName;
         }

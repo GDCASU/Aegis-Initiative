@@ -33,7 +33,7 @@ public class KeyboardRemap : MonoBehaviour
             {
                 foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKeyDown(vKey))
+                    if (Input.GetKeyDown(vKey) && !DoesKeybindExist(vKey))
                     {
                         SetButton(vKey);
                         SetRemapping(false);
@@ -42,6 +42,7 @@ public class KeyboardRemap : MonoBehaviour
             }
         }
     }
+
     public void SetRemapping(bool _remapping)
     {
         remapping = _remapping;
@@ -49,23 +50,36 @@ public class KeyboardRemap : MonoBehaviour
     public void InitiateButton()
     {
         button = InputManager.allKeybinds[InputManager.InputMode.keyboard][action];
-        keyName = button.ToString();
+        SetKeyName(button);
         textUI.text = keyName;
+    }
+
+    private void SetKeyName(KeyCode newKey)
+    {
+        if (InputManager.mouseButtonToNameMap.ContainsKey(newKey))
+        {
+            keyName = InputManager.mouseButtonToNameMap[newKey];
+        }
+        else
+        {
+            keyName = newKey.ToString();
+        }
+    }
+
+    private bool DoesKeybindExist(KeyCode key)
+    {
+        var allBinds = InputManager.allKeybinds[InputManager.InputMode.keyboard];
+        bool isCurrKey = allBinds[action] == key;
+        bool isBoundToOtherAction = allBinds.ContainsValue(key);
+        return isBoundToOtherAction && !isCurrKey;
     }
     public void SetButton(KeyCode passed)
     {
         List<string> keyboardCodes = PauseMenu.singleton.keyboardCodes;
 
-        foreach (string key in keyboardCodes)
-        {
-            if (passed.ToString() == key)
-            {
-                return;
-            }
-        }
         InputManager.allKeybinds[InputManager.InputMode.keyboard][action] = passed;
         keyboardCodes.Remove(keyName);
-        keyName = passed.ToString();
+        SetKeyName(passed);
         keyboardCodes.Add(keyName);
         GetComponentInChildren<Text>().text = keyName;
         InputManager.SaveKeybinds();
