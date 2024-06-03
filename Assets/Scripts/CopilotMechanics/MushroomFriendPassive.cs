@@ -32,6 +32,9 @@ public class MushroomFriendPassive : CopilotPassiveMechanic
     }
     private void OnDestroy()
     {
-        PlayerInfo.singleton.damageEvent -= AddSpore;
+        if(PlayerInfo.singleton != null)
+        {
+            PlayerInfo.singleton.damageEvent -= AddSpore;
+        }
     }
 }
