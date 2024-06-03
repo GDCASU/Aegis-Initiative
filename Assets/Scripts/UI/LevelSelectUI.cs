@@ -30,4 +30,10 @@ public class LevelSelectUI : MonoBehaviour
         GameManager.singleton.levelSelected = 3;
         SceneManager.LoadScene("CopilotUI");
     }
+
+    public void BackToMainMenu()
+    {
+        SoundManager.singleton.PlayOneShot(SoundManager.sfxMap[SoundManager.SFX.Select], transform.position, SoundManager.VolumeType.sfx);
+        SceneManager.LoadScene("MainMenuUI", LoadSceneMode.Single);
+    }
 }
