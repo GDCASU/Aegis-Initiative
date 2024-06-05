@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pufferbomb : EnemyHealth
 {
-    public float distance; //distance between Pufferbomb and Player for Pufferbomb to explode
     public float explosionTime; //time it takes for explosion sequence to finish before destroying the gameObject
 
     private ParticleSystem explosion;
@@ -17,14 +16,6 @@ public class Pufferbomb : EnemyHealth
         base.Start();
         explosion = transform.GetComponent<ParticleSystem>();
         mesh = transform.GetComponentInChildren<MeshRenderer>();
-        //Set distance value to the sphere collider that has trigger enabled
-        foreach (SphereCollider collider in transform.GetComponents<SphereCollider>())
-        {
-            if (collider.isTrigger)
-            {
-                collider.radius = distance;
-            }
-        }
 
         isExploding = false;
         isShot = false;
