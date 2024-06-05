@@ -80,6 +80,15 @@ public class StageTriggers : MonoBehaviour
     //prob will need to use a coroutine later
     public void EndLevel()
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if(sceneName == "MushroomStage")
+        {
+            GameManager.singleton.AddCopilot(1);
+        }
+        else if (sceneName == "AsteroidStage")
+        {
+            GameManager.singleton.AddCopilot(2);
+        }
         //fly ship away from camera at cart speed (can adjust later)
         playerShip.transform.Translate(endDirection);
         StartCoroutine(FinishLevel());
